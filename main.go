@@ -1,7 +1,7 @@
 package main
 
 import (
-	"wh/cmd"
+	"github.com/fhluo/giwh/cmd"
 )
 
 func main() {

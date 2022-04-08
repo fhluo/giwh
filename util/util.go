@@ -2,20 +2,21 @@ package util
 
 import (
 	"errors"
+	"github.com/fhluo/giwh/wh"
 	"github.com/hashicorp/go-multierror"
 	jsoniter "github.com/json-iterator/go"
 	"io/fs"
 	"net/url"
 	"os"
 	"regexp"
-	"wh/wh"
+	"time"
 )
 
 var ErrNotFound = errors.New("not found")
 
 type info struct {
 	name string
-	time int64
+	time time.Time
 }
 
 func ReadLatestFile(names ...string) ([]byte, error) {
@@ -30,7 +31,7 @@ func ReadLatestFile(names ...string) ([]byte, error) {
 			continue
 		}
 
-		infos = append(infos, &info{name: name, time: fi.ModTime().UnixNano()})
+		infos = append(infos, &info{name: name, time: fi.ModTime()})
 	}
 
 	if len(infos) == 0 {
@@ -39,7 +40,7 @@ func ReadLatestFile(names ...string) ([]byte, error) {
 
 	latest := infos[0]
 	for _, i := range infos[1:] {
-		if i.time > latest.time {
+		if i.time.After(latest.time) {
 			latest = i
 		}
 	}

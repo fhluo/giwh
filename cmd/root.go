@@ -2,14 +2,14 @@ package cmd
 
 import (
 	"fmt"
+	"github.com/fhluo/giwh/util"
+	"github.com/fhluo/giwh/wh"
 	"github.com/samber/lo"
 	"github.com/spf13/cobra"
 	"log"
 	"net/url"
 	"os"
 	"path/filepath"
-	"wh/util"
-	"wh/wh"
 )
 
 var rootCmd = &cobra.Command{

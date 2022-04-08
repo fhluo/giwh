@@ -1,4 +1,4 @@
-module wh
+module github.com/fhluo/giwh
 
 go 1.18
 
