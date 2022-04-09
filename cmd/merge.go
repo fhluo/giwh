@@ -1,9 +1,7 @@
 package cmd
 
 import (
-	"github.com/fhluo/giwh/util"
 	"github.com/fhluo/giwh/wh"
-	"github.com/samber/lo"
 	"github.com/spf13/cobra"
 	"path/filepath"
 )
@@ -23,33 +21,27 @@ var mergeCmd = &cobra.Command{
 			filenames = append(filenames, matches...)
 		}
 
-		result, err := util.LoadItemsIfExits(args[len(args)-1])
+		result, err := wh.LoadItemsIfExits(args[len(args)-1])
 		if err != nil {
 			return err
 		}
 
 		for _, filename := range filenames {
-			items, err := util.LoadItems(filename)
+			items, err := wh.LoadItems(filename)
 			if err != nil {
 				return err
 			}
 			result = append(result, items...)
 		}
 
-		result = lo.UniqBy(result, func(item wh.Item) int64 {
-			return item.ID()
-		})
+		result = result.Unique()
 
 		if cmd.PersistentFlags().Changed("uid") {
-			result = lo.Filter(result, func(item wh.Item, _ int) bool {
-				return item.UID == uid
-			})
+			result = result.FilterByUID(uid)
 		}
 
 		if cmd.PersistentFlags().Changed("wish") {
-			result = lo.Filter(result, func(item wh.Item, _ int) bool {
-				return item.WishType == wish
-			})
+			result = result.FilterByWishType(wish)
 		}
 
 		return result.Save(args[len(args)-1])

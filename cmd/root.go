@@ -17,7 +17,7 @@ var rootCmd = &cobra.Command{
 	Short: "Genshin Impact Wish History Exporter",
 	Args:  cobra.MaximumNArgs(1),
 	RunE: func(cmd *cobra.Command, args []string) error {
-		uid, baseURL, err := util.GetUIDAndAPIBaseURL()
+		authInfo, err := util.GetUIDAndAPIBaseURL()
 		if err != nil {
 			return err
 		}
@@ -30,16 +30,16 @@ var rootCmd = &cobra.Command{
 		if len(args) != 0 {
 			input = args[0]
 		} else {
-			input = uid + ".json"
+			input = authInfo.UID + ".json"
 		}
 
-		items, err = util.LoadItemsIfExits(input)
+		items, err = wh.LoadItemsIfExits(input)
 		if err != nil {
 			return err
 		}
 
 		items = append(items, lo.Filter(config.CachedItems, func(item wh.Item, _ int) bool {
-			return item.UID == uid
+			return item.UID == authInfo.UID
 		})...)
 
 		visit := make(map[int64]bool)
@@ -55,7 +55,7 @@ var rootCmd = &cobra.Command{
 		}
 
 		for _, wish := range wh.Wishes {
-			items_, err := wh.NewFetcher(baseURL, wish, visit).FetchALL()
+			items_, err := wh.NewFetcher(authInfo.BaseURL, wish, visit).FetchALL()
 			if err != nil {
 				log.Fatalln(err)
 			}
@@ -80,22 +80,14 @@ var rootCmd = &cobra.Command{
 		}
 
 		if len(args) == 2 && cmd.PersistentFlags().Changed("uid") {
-			items = lo.Filter(items, func(item wh.Item, _ int) bool {
-				return item.UID == uid
-			})
+			items = items.FilterByUID(uid)
 		}
 
 		if len(args) == 2 && cmd.PersistentFlags().Changed("wish") {
-			items = lo.Filter(items, func(item wh.Item, _ int) bool {
-				return item.WishType == wish
-			})
+			items = items.FilterByWishType(wish)
 		}
 
-		items = lo.UniqBy(items, func(item wh.Item) int64 {
-			return item.ID()
-		})
-
-		return items.Save(filename)
+		return items.Unique().Save(filename)
 	},
 }
 
@@ -112,5 +104,8 @@ func init() {
 func Execute() {
 	if err := rootCmd.Execute(); err != nil {
 		log.Fatalln(err)
+	}
+	if err := config.Save(); err != nil {
+		log.Printf("fail to save config file: %s\n", err)
 	}
 }

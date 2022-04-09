@@ -17,6 +17,11 @@ const (
 	DefaultInterval = time.Second / 2
 )
 
+type AuthInfo struct {
+	UID     string
+	BaseURL string
+}
+
 // QP Query Parameters
 type QP struct {
 	WishType int   `url:"gacha_type"`

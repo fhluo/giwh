@@ -1,7 +1,10 @@
 package wh
 
 import (
+	"errors"
 	jsoniter "github.com/json-iterator/go"
+	"github.com/samber/lo"
+	"io/fs"
 	"log"
 	"os"
 	"sort"
@@ -66,6 +69,24 @@ func (items Items) Swap(i, j int) {
 	items[i], items[j] = items[j], items[i]
 }
 
+func (items Items) Unique() Items {
+	return lo.UniqBy(items, func(item Item) int64 {
+		return item.ID()
+	})
+}
+
+func (items Items) FilterByUID(uid string) Items {
+	return lo.Filter(items, func(item Item, _ int) bool {
+		return item.UID == uid
+	})
+}
+
+func (items Items) FilterByWishType(wishType string) Items {
+	return lo.Filter(items, func(item Item, _ int) bool {
+		return item.WishType == wishType
+	})
+}
+
 func (items Items) Save(filename string) error {
 	sort.Sort(sort.Reverse(items))
 
@@ -75,4 +96,26 @@ func (items Items) Save(filename string) error {
 	}
 
 	return os.WriteFile(filename, data, 0666)
+}
+
+func LoadItems(filename string) (Items, error) {
+	data, err := os.ReadFile(filename)
+	if err != nil {
+		return nil, err
+	}
+
+	var items Items
+	return items, jsoniter.Unmarshal(data, &items)
+}
+
+func LoadItemsIfExits(filename string) (Items, error) {
+	_, err := os.Stat(filename)
+	if err != nil {
+		if !errors.Is(err, fs.ErrNotExist) {
+			return nil, err
+		}
+		return nil, nil
+	}
+
+	return LoadItems(filename)
 }

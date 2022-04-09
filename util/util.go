@@ -2,11 +2,10 @@ package util
 
 import (
 	"errors"
+	"github.com/fhluo/giwh/config"
 	"github.com/fhluo/giwh/wh"
 	"github.com/hashicorp/go-multierror"
-	jsoniter "github.com/json-iterator/go"
 	"github.com/samber/lo"
-	"io/fs"
 	"net/url"
 	"os"
 	"path/filepath"
@@ -142,63 +141,77 @@ func GetUID(filename string) (string, error) {
 	return string(r), nil
 }
 
-func GetUIDAndAPIBaseURL() (string, string, error) {
+func GetUIDAndAPIBaseURL() (authInfo wh.AuthInfo, err error) {
 	result, err := FindLatest(OutputLogCN, OutputLogGlobal)
 	if err != nil {
-		return "", "", err
+		return
 	}
 
 	switch result {
 	case OutputLogCN:
-		u, err := FindURLFromOutputLog(OutputLogCN, func(u *url.URL) bool {
+		var u *url.URL
+		u, err = FindURLFromOutputLog(OutputLogCN, func(u *url.URL) bool {
 			return u.Query().Has("authkey") && u.Hostname() == HostNameCN
 		})
-		if err != nil {
-			return "", "", err
+		if err != nil && !errors.Is(err, ErrNotFound) {
+			return
 		}
 
-		uid, err := GetUID(UIDInfoCN)
+		var uid string
+		uid, err = GetUID(UIDInfoCN)
 		if err != nil {
-			return "", "", err
+			return
 		}
 
-		return uid, APIBaseURLCN + "?" + u.RawQuery, nil
+		if errors.Is(err, ErrNotFound) {
+			var ok bool
+			authInfo, ok = config.GetAuthInfo(uid)
+			if ok {
+				return authInfo, nil
+			} else {
+				return
+			}
+		}
+
+		authInfo = wh.AuthInfo{
+			UID:     uid,
+			BaseURL: APIBaseURLCN + "?" + u.RawQuery,
+		}
+
+		config.UpdateAuthInfo(authInfo)
+		return
 
 	default:
-		u, err := FindURLFromOutputLog(OutputLogGlobal, func(u *url.URL) bool {
+		var u *url.URL
+		u, err = FindURLFromOutputLog(OutputLogGlobal, func(u *url.URL) bool {
 			return u.Query().Has("authkey") && u.Hostname() == HostNameGlobal
 		})
+		if err != nil && !errors.Is(err, ErrNotFound) {
+			return
+		}
+
+		var uid string
+		uid, err = GetUID(UIDInfoGlobal)
 		if err != nil {
-			return "", "", err
+			return
 		}
 
-		uid, err := GetUID(UIDInfoGlobal)
-		if err != nil {
-			return "", "", err
+		if errors.Is(err, ErrNotFound) {
+			var ok bool
+			authInfo, ok = config.GetAuthInfo(uid)
+			if ok {
+				return authInfo, nil
+			} else {
+				return
+			}
 		}
 
-		return uid, APIBaseURLGlobal + "?" + u.RawQuery, nil
-	}
-}
-
-func LoadItems(filename string) (wh.Items, error) {
-	data, err := os.ReadFile(filename)
-	if err != nil {
-		return nil, err
-	}
-
-	var items wh.Items
-	return items, jsoniter.Unmarshal(data, &items)
-}
-
-func LoadItemsIfExits(filename string) (wh.Items, error) {
-	_, err := os.Stat(filename)
-	if err != nil {
-		if !errors.Is(err, fs.ErrNotExist) {
-			return nil, err
+		authInfo = wh.AuthInfo{
+			UID:     uid,
+			BaseURL: APIBaseURLGlobal + "?" + u.RawQuery,
 		}
-		return nil, nil
-	}
 
-	return LoadItems(filename)
+		config.UpdateAuthInfo(authInfo)
+		return
+	}
 }
