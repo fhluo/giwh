@@ -3,6 +3,7 @@ package cmd
 import (
 	"errors"
 	"fmt"
+	"github.com/fhluo/giwh/config"
 	"github.com/fhluo/giwh/util"
 	"github.com/fhluo/giwh/wh"
 	"github.com/samber/lo"
@@ -16,24 +17,35 @@ var rootCmd = &cobra.Command{
 	Short: "Genshin Impact Wish History Exporter",
 	Args:  cobra.MaximumNArgs(1),
 	RunE: func(cmd *cobra.Command, args []string) error {
+		uid, baseURL, err := util.GetUIDAndAPIBaseURL()
+		if err != nil {
+			return err
+		}
+
 		var (
 			items wh.Items
-			err   error
 		)
 
+		var input string
 		if len(args) != 0 {
-			items, err = util.LoadItemsIfExits(args[0])
-			if err != nil {
-				return err
-			}
+			input = args[0]
+		} else {
+			input = uid + ".json"
 		}
+
+		items, err = util.LoadItemsIfExits(input)
+		if err != nil {
+			return err
+		}
+
+		items = append(items, lo.Filter(config.CachedItems, func(item wh.Item, _ int) bool {
+			return item.UID == uid
+		})...)
 
 		visit := make(map[int64]bool)
 		for _, item := range items {
 			visit[item.ID()] = true
 		}
-
-		baseURL, err := util.GetAPIBaseURL()
 
 		if err != nil {
 			if errors.Is(err, util.ErrNotFound) {
@@ -49,7 +61,9 @@ var rootCmd = &cobra.Command{
 			}
 
 			items = append(items, items_...)
+			config.CachedItems = append(config.CachedItems, items_...)
 		}
+		_ = config.SaveCache()
 
 		if len(items) == 0 {
 			return fmt.Errorf("wish history not found")
@@ -65,17 +79,21 @@ var rootCmd = &cobra.Command{
 			filename = args[1]
 		}
 
-		if cmd.PersistentFlags().Changed("uid") {
+		if len(args) == 2 && cmd.PersistentFlags().Changed("uid") {
 			items = lo.Filter(items, func(item wh.Item, _ int) bool {
 				return item.UID == uid
 			})
 		}
 
-		if cmd.PersistentFlags().Changed("wish") {
+		if len(args) == 2 && cmd.PersistentFlags().Changed("wish") {
 			items = lo.Filter(items, func(item wh.Item, _ int) bool {
 				return item.WishType == wish
 			})
 		}
+
+		items = lo.UniqBy(items, func(item wh.Item) int64 {
+			return item.ID()
+		})
 
 		return items.Save(filename)
 	},

@@ -23,7 +23,10 @@ var mergeCmd = &cobra.Command{
 			filenames = append(filenames, matches...)
 		}
 
-		var result wh.Items
+		result, err := util.LoadItemsIfExits(args[len(args)-1])
+		if err != nil {
+			return err
+		}
 
 		for _, filename := range filenames {
 			items, err := util.LoadItems(filename)

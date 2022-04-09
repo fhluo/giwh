@@ -24,8 +24,14 @@ const (
 )
 
 var (
-	OutputLogCN     = filepath.Join(os.Getenv("USERPROFILE"), `\AppData\LocalLow\miHoYo\原神\output_log.txt`)
-	OutputLogGlobal = filepath.Join(os.Getenv("USERPROFILE"), `\AppData\LocalLow\miHoYo\Genshin Impact\output_log.txt`)
+	PathCN     = filepath.Join(os.Getenv("USERPROFILE"), `\AppData\LocalLow\miHoYo\原神`)
+	PathGlobal = filepath.Join(os.Getenv("USERPROFILE"), `\AppData\LocalLow\miHoYo\Genshin Impact`)
+
+	OutputLogCN     = filepath.Join(PathCN, `output_log.txt`)
+	OutputLogGlobal = filepath.Join(PathGlobal, `output_log.txt`)
+
+	UIDInfoCN     = filepath.Join(PathCN, `UidInfo.txt`)
+	UIDInfoGlobal = filepath.Join(PathGlobal, `UidInfo.txt`)
 )
 
 var ErrNotFound = errors.New("not found")
@@ -122,10 +128,24 @@ func FindURLFromOutputLog(filename string, f func(u *url.URL) bool) (*url.URL, e
 	return nil, ErrNotFound
 }
 
-func GetAPIBaseURL() (string, error) {
-	result, err := FindLatest(OutputLogCN, OutputLogGlobal)
+func GetUID(filename string) (string, error) {
+	data, err := os.ReadFile(filename)
 	if err != nil {
 		return "", err
+	}
+
+	r := regexp.MustCompile(`\d{9}`).Find(data)
+	if r == nil {
+		return "", ErrNotFound
+	}
+
+	return string(r), nil
+}
+
+func GetUIDAndAPIBaseURL() (string, string, error) {
+	result, err := FindLatest(OutputLogCN, OutputLogGlobal)
+	if err != nil {
+		return "", "", err
 	}
 
 	switch result {
@@ -134,20 +154,30 @@ func GetAPIBaseURL() (string, error) {
 			return u.Query().Has("authkey") && u.Hostname() == HostNameCN
 		})
 		if err != nil {
-			return "", err
+			return "", "", err
 		}
 
-		return APIBaseURLCN + "?" + u.RawQuery, nil
+		uid, err := GetUID(UIDInfoCN)
+		if err != nil {
+			return "", "", err
+		}
+
+		return uid, APIBaseURLCN + "?" + u.RawQuery, nil
 
 	default:
 		u, err := FindURLFromOutputLog(OutputLogGlobal, func(u *url.URL) bool {
 			return u.Query().Has("authkey") && u.Hostname() == HostNameGlobal
 		})
 		if err != nil {
-			return "", err
+			return "", "", err
 		}
 
-		return APIBaseURLGlobal + "?" + u.RawQuery, nil
+		uid, err := GetUID(UIDInfoGlobal)
+		if err != nil {
+			return "", "", err
+		}
+
+		return uid, APIBaseURLGlobal + "?" + u.RawQuery, nil
 	}
 }
 
