@@ -55,7 +55,7 @@ type Fetcher struct {
 	*QP
 }
 
-func NewFetcher(baseURL string, wishType int, visit map[int64]bool) *Fetcher {
+func NewFetcher(baseURL string, wishType WishType, visit map[int64]bool) *Fetcher {
 	if visit == nil {
 		visit = make(map[int64]bool)
 	}
@@ -63,7 +63,7 @@ func NewFetcher(baseURL string, wishType int, visit map[int64]bool) *Fetcher {
 		BaseURL:  baseURL,
 		Visit:    visit,
 		Interval: DefaultInterval,
-		QP:       NewQP(wishType),
+		QP:       NewQP(int(wishType)),
 	}
 }
 
@@ -144,7 +144,7 @@ func (f *Fetcher) FetchALL() (Items, error) {
 			break
 		}
 
-		fmt.Printf("%v: %s\n", items[0].WishType, strings.Join(
+		fmt.Printf("%s: %s\n", items[0].WishType(), strings.Join(
 			lo.Map(items, func(item Item, _ int) string {
 				return item.String()
 			}),

@@ -41,7 +41,7 @@ var mergeCmd = &cobra.Command{
 		}
 
 		if cmd.PersistentFlags().Changed("wish") {
-			result = result.FilterByWishType(wish)
+			result = result.FilterByWishType(wh.WishType(wish))
 		}
 
 		return result.Save(args[len(args)-1])

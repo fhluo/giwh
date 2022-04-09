@@ -11,15 +11,6 @@ import (
 	"strconv"
 )
 
-const (
-	NoviceWish         = 100
-	PermanentWish      = 200
-	CharacterEventWish = 301
-	WeaponEventWish    = 302
-)
-
-var Wishes = []int{NoviceWish, PermanentWish, CharacterEventWish, WeaponEventWish}
-
 type RawItem struct {
 	UID      string `json:"uid"`
 	WishType string `json:"gacha_type"`
@@ -29,14 +20,16 @@ type RawItem struct {
 	Name     string `json:"name"`
 	Lang     string `json:"lang"`
 	ItemType string `json:"item_type"`
-	RankType string `json:"rank_type"`
+	Rarity   string `json:"rank_type"`
 	ID       string `json:"id"`
 }
 
 type Item struct {
 	*RawItem
 
-	id *int64
+	id       *int64
+	rarity   *Rarity
+	wishType *WishType
 }
 
 func (item Item) ID() int64 {
@@ -49,6 +42,32 @@ func (item Item) ID() int64 {
 	}
 
 	return *item.id
+}
+
+func (item Item) Rarity() Rarity {
+	if item.rarity == nil {
+		i, err := strconv.Atoi(item.RawItem.Rarity)
+		if err != nil {
+			log.Fatalln(err)
+		}
+		r := Rarity(i)
+		item.rarity = &r
+	}
+
+	return *item.rarity
+}
+
+func (item Item) WishType() WishType {
+	if item.wishType == nil {
+		i, err := strconv.Atoi(item.RawItem.WishType)
+		if err != nil {
+			log.Fatalln(err)
+		}
+		t := WishType(i)
+		item.wishType = &t
+	}
+
+	return *item.wishType
 }
 
 func (item Item) String() string {
@@ -81,9 +100,9 @@ func (items Items) FilterByUID(uid string) Items {
 	})
 }
 
-func (items Items) FilterByWishType(wishType string) Items {
+func (items Items) FilterByWishType(wishTypes ...WishType) Items {
 	return lo.Filter(items, func(item Item, _ int) bool {
-		return item.WishType == wishType
+		return lo.Contains(wishTypes, item.WishType())
 	})
 }
 

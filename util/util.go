@@ -141,7 +141,7 @@ func GetUID(filename string) (string, error) {
 	return string(r), nil
 }
 
-func GetUIDAndAPIBaseURL() (authInfo wh.AuthInfo, err error) {
+func GetAuthInfo() (authInfo wh.AuthInfo, err error) {
 	result, err := FindLatest(OutputLogCN, OutputLogGlobal)
 	if err != nil {
 		return

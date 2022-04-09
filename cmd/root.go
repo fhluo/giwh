@@ -6,7 +6,6 @@ import (
 	"github.com/fhluo/giwh/config"
 	"github.com/fhluo/giwh/util"
 	"github.com/fhluo/giwh/wh"
-	"github.com/samber/lo"
 	"github.com/spf13/cobra"
 	"log"
 	"os"
@@ -15,9 +14,9 @@ import (
 var rootCmd = &cobra.Command{
 	Use:   "giwh",
 	Short: "Genshin Impact Wish History Exporter",
-	Args:  cobra.MaximumNArgs(1),
+	Args:  cobra.MaximumNArgs(2),
 	RunE: func(cmd *cobra.Command, args []string) error {
-		authInfo, err := util.GetUIDAndAPIBaseURL()
+		authInfo, err := util.GetAuthInfo()
 		if err != nil {
 			return err
 		}
@@ -38,9 +37,7 @@ var rootCmd = &cobra.Command{
 			return err
 		}
 
-		items = append(items, lo.Filter(config.CachedItems, func(item wh.Item, _ int) bool {
-			return item.UID == authInfo.UID
-		})...)
+		items = append(items, config.CachedItems.FilterByUID(authInfo.UID)...)
 
 		visit := make(map[int64]bool)
 		for _, item := range items {
@@ -84,7 +81,7 @@ var rootCmd = &cobra.Command{
 		}
 
 		if len(args) == 2 && cmd.PersistentFlags().Changed("wish") {
-			items = items.FilterByWishType(wish)
+			items = items.FilterByWishType(wh.WishType(wish))
 		}
 
 		return items.Unique().Save(filename)
@@ -93,12 +90,12 @@ var rootCmd = &cobra.Command{
 
 var (
 	uid  string
-	wish string
+	wish int
 )
 
 func init() {
 	rootCmd.PersistentFlags().StringVar(&uid, "uid", "", "specify uid")
-	rootCmd.PersistentFlags().StringVar(&wish, "wish", "", "specify wish type")
+	rootCmd.PersistentFlags().IntVar(&wish, "wish", 0, "specify wish type")
 }
 
 func Execute() {
