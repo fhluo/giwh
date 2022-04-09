@@ -15,8 +15,6 @@ import (
 
 const (
 	DefaultInterval = time.Second / 2
-
-	BaseURL = "https://hk4e-api.mihoyo.com/event/gacha_info/api/getGachaLog"
 )
 
 // QP Query Parameters
@@ -45,19 +43,19 @@ func (qp *QP) Values() url.Values {
 }
 
 type Fetcher struct {
-	AuthInfo url.Values
+	BaseURL  string
 	Visit    map[int64]bool
 	Interval time.Duration
 
 	*QP
 }
 
-func NewFetcher(authInfo url.Values, wishType int, visit map[int64]bool) *Fetcher {
+func NewFetcher(baseURL string, wishType int, visit map[int64]bool) *Fetcher {
 	if visit == nil {
 		visit = make(map[int64]bool)
 	}
 	return &Fetcher{
-		AuthInfo: authInfo,
+		BaseURL:  baseURL,
 		Visit:    visit,
 		Interval: DefaultInterval,
 		QP:       NewQP(wishType),
@@ -65,11 +63,11 @@ func NewFetcher(authInfo url.Values, wishType int, visit map[int64]bool) *Fetche
 }
 
 func (f *Fetcher) URL() string {
-	u, err := url.Parse(BaseURL)
+	u, err := url.Parse(f.BaseURL)
 	if err != nil {
 		log.Fatalln(err)
 	}
-	u.RawQuery = f.AuthInfo.Encode() + "&" + f.Values().Encode()
+	u.RawQuery += "&" + f.Values().Encode()
 	return u.String()
 }
 

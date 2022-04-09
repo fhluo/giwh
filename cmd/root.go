@@ -1,15 +1,14 @@
 package cmd
 
 import (
+	"errors"
 	"fmt"
 	"github.com/fhluo/giwh/util"
 	"github.com/fhluo/giwh/wh"
 	"github.com/samber/lo"
 	"github.com/spf13/cobra"
 	"log"
-	"net/url"
 	"os"
-	"path/filepath"
 )
 
 var rootCmd = &cobra.Command{
@@ -34,20 +33,17 @@ var rootCmd = &cobra.Command{
 			visit[item.ID()] = true
 		}
 
-		u, err := util.FindURLFromOutputLog(
-			func(u *url.URL) bool {
-				return u.Query().Has("authkey")
-			},
-			filepath.Join(os.Getenv("USERPROFILE"), `\AppData\LocalLow\miHoYo\原神\output_log.txt`),
-			filepath.Join(os.Getenv("USERPROFILE"), `\AppData\LocalLow\miHoYo\Genshin Impact\output_log.txt`),
-		)
+		baseURL, err := util.GetAPIBaseURL()
 
 		if err != nil {
+			if errors.Is(err, util.ErrNotFound) {
+				_, _ = fmt.Fprintln(os.Stderr, "Please open the wish history page in the game.")
+			}
 			return err
 		}
 
 		for _, wish := range wh.Wishes {
-			items_, err := wh.NewFetcher(u.Query(), wish, visit).FetchALL()
+			items_, err := wh.NewFetcher(baseURL, wish, visit).FetchALL()
 			if err != nil {
 				log.Fatalln(err)
 			}
