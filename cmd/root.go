@@ -3,8 +3,8 @@ package cmd
 import (
 	"errors"
 	"fmt"
+	"github.com/fhluo/giwh/clients"
 	"github.com/fhluo/giwh/config"
-	"github.com/fhluo/giwh/util"
 	"github.com/fhluo/giwh/wh"
 	"github.com/spf13/cobra"
 	"log"
@@ -16,10 +16,17 @@ var rootCmd = &cobra.Command{
 	Short: "Genshin Impact Wish History Exporter",
 	Args:  cobra.MaximumNArgs(2),
 	RunE: func(cmd *cobra.Command, args []string) error {
-		authInfo, err := util.GetAuthInfo()
+		client, err := clients.RecentlyUsed()
 		if err != nil {
 			return err
 		}
+
+		authInfo, err := client.GetAuthInfo()
+		if err != nil {
+			return err
+		}
+
+		fmt.Println("UID:", authInfo.UID)
 
 		var (
 			items wh.Items
@@ -45,7 +52,7 @@ var rootCmd = &cobra.Command{
 		}
 
 		if err != nil {
-			if errors.Is(err, util.ErrNotFound) {
+			if errors.Is(err, clients.ErrNotFound) {
 				_, _ = fmt.Fprintln(os.Stderr, "Please open the wish history page in the game.")
 			}
 			return err
