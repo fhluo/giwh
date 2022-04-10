@@ -1,43 +1,43 @@
 package cmd
 
 import (
+	"github.com/fhluo/giwh/util"
 	"github.com/fhluo/giwh/wh"
 	"github.com/spf13/cobra"
-	"path/filepath"
 )
 
 var mergeCmd = &cobra.Command{
 	Use:   "merge",
 	Short: "merge wish histories",
 	Args:  cobra.MinimumNArgs(2),
-	RunE: func(cmd *cobra.Command, args []string) error {
-		filenames := make([]string, 0, len(args)-1)
-
-		for _, arg := range args[:len(args)-1] {
-			matches, err := filepath.Glob(arg)
-			if err != nil {
-				return err
-			}
-			filenames = append(filenames, matches...)
-		}
-
-		result, err := wh.LoadItemsIfExits(args[len(args)-1])
+	Run: func(cmd *cobra.Command, args []string) {
+		filenames, err := util.ExpandPaths(args...)
 		if err != nil {
-			return err
+			logger.Fatalln(err)
 		}
+
+		var result wh.Items
 
 		for _, filename := range filenames {
 			items, err := wh.LoadItems(filename)
 			if err != nil {
-				return err
+				logger.Fatalln(err)
 			}
 			result = append(result, items...)
 		}
 
-		return result.Unique().Save(args[len(args)-1])
+		if err = result.Unique().Save(outputFilename); err != nil {
+			logger.Fatalln(err)
+		}
 	},
 }
 
+var outputFilename string
+
 func init() {
 	rootCmd.AddCommand(mergeCmd)
+	mergeCmd.Flags().StringVarP(&outputFilename, "output", "o", "", "specify output filename")
+	if err := mergeCmd.MarkFlagRequired("output"); err != nil {
+		logger.Fatalln(err)
+	}
 }

@@ -5,7 +5,6 @@ import (
 	"github.com/fhluo/giwh/config"
 	"github.com/fhluo/giwh/wh"
 	"github.com/spf13/cobra"
-	"os"
 )
 
 var exportCmd = &cobra.Command{
@@ -27,12 +26,11 @@ var exportCmd = &cobra.Command{
 		}
 
 		if len(items) == 0 {
-			fmt.Println("No such wish history.")
-			return
+			logger.Fatalln("No such wish history.")
 		}
 
 		if err := items.Save(args[0]); err != nil {
-			_, _ = fmt.Fprintln(os.Stderr, err)
+			logger.Fatalln(err)
 		} else {
 			fmt.Printf("%d items exported.\n", len(items))
 		}

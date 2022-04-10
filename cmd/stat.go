@@ -9,15 +9,13 @@ import (
 var statCmd = &cobra.Command{
 	Use:  "stat",
 	Args: cobra.ExactArgs(1),
-	RunE: func(cmd *cobra.Command, args []string) error {
+	Run: func(cmd *cobra.Command, args []string) {
 		items, err := wh.LoadItems(args[0])
 		if err != nil {
-			return err
+			logger.Fatalln(err)
 		}
 
 		stat.Stat(items)
-
-		return nil
 	},
 }
 

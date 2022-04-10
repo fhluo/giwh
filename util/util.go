@@ -1,9 +1,12 @@
 package util
 
 import (
+	"github.com/fhluo/giwh/config"
+	"github.com/fhluo/giwh/wh"
 	"github.com/hashicorp/go-multierror"
 	"github.com/samber/lo"
 	"os"
+	"path/filepath"
 	"sort"
 	"time"
 )
@@ -70,4 +73,38 @@ func SortExisting(names ...string) ([]string, error) {
 			return i.name
 		}), nil
 	}
+}
+
+func ExpandPaths(paths ...string) ([]string, error) {
+	result := make([]string, 0, len(paths))
+
+	for _, path := range paths {
+		matches, err := filepath.Glob(path)
+		if err != nil {
+			return nil, err
+		}
+		result = append(result, matches...)
+	}
+
+	return result, nil
+}
+
+func FetchAllWishHistory(baseURL string, items wh.Items) (wh.Items, error) {
+	visit := make(map[int64]bool)
+	for _, item := range items {
+		visit[item.ID()] = true
+	}
+
+	for _, wish := range wh.Wishes {
+		r, err := wh.NewFetcher(baseURL, wish, visit).FetchALL()
+		if err != nil {
+			return nil, err
+		}
+
+		items = append(items, r...)
+		config.WishHistory = append(config.WishHistory, r...)
+	}
+
+	_ = config.SaveWishHistory()
+	return items, nil
 }
