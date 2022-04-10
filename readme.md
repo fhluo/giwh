@@ -10,11 +10,11 @@ Please make sure you have opened the wish history page in the game before using 
 
 Wish history is saved in `%LocalAppData%\giwh\wish_history.json`.
 
-### `giwh`
+### giwh
 
 Update wish history and show stats.
 
-### `giwh import`
+### giwh import
 
 Import wish history.
 
@@ -22,7 +22,7 @@ Import wish history.
 giwh import <filename>...
 ```
 
-### `giwh export`
+### giwh export
 
 Export wish history.
 
@@ -30,7 +30,26 @@ Export wish history.
 giwh export <filename>
 ```
 
-### `giwh merge`
+Specify UID.
+
+```
+giwh export <filename> -u <UID>
+```
+
+Specify wish types.
+
+```
+giwh export <filename> -w 301,400
+```
+|  ID  |       Wish Type        |
+| :--: | :--------------------: |
+| 100  |    Beginners' Wish     |
+| 200  |     Standard Wish      |
+| 301  |  Character Event Wish  |
+| 302  |   Weapon Event Wish    |
+| 400  | Character Event Wish-2 |
+
+### giwh merge
 
 Merge wish histories.
 
@@ -38,9 +57,9 @@ Merge wish histories.
 giwh merge <filename>... -o <filename>
 ```
 
-### `giwh stat`
+### giwh stat
 
-Show stats for the given wish history.
+Show stats.
 
 ```
 giwh stat <filename>
