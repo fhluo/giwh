@@ -2,6 +2,7 @@ package wh
 
 import (
 	"errors"
+	"github.com/fatih/color"
 	jsoniter "github.com/json-iterator/go"
 	"github.com/samber/lo"
 	"io/fs"
@@ -74,6 +75,17 @@ func (item Item) String() string {
 	return item.Name
 }
 
+func (item Item) ColoredString() string {
+	switch item.Rarity() {
+	case FourStar:
+		return color.MagentaString(item.Name)
+	case FiveStar:
+		return color.YellowString(item.Name)
+	default:
+		return color.CyanString(item.Name)
+	}
+}
+
 type Items []Item
 
 func (items Items) Len() int {
@@ -94,6 +106,10 @@ func (items Items) Unique() Items {
 	})
 }
 
+func (items Items) Count() int {
+	return len(items)
+}
+
 func (items Items) FilterByUID(uid string) Items {
 	return lo.Filter(items, func(item Item, _ int) bool {
 		return item.UID == uid
@@ -103,6 +119,12 @@ func (items Items) FilterByUID(uid string) Items {
 func (items Items) FilterByWishType(wishTypes ...WishType) Items {
 	return lo.Filter(items, func(item Item, _ int) bool {
 		return lo.Contains(wishTypes, item.WishType())
+	})
+}
+
+func (items Items) FilterByRarity(rarities ...Rarity) Items {
+	return lo.Filter(items, func(item Item, _ int) bool {
+		return lo.Contains(rarities, item.Rarity())
 	})
 }
 

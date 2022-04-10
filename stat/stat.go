@@ -2,6 +2,7 @@ package stat
 
 import (
 	"fmt"
+	"github.com/fatih/color"
 	"github.com/fhluo/giwh/wh"
 	"github.com/samber/lo"
 	"sort"
@@ -15,7 +16,7 @@ type info struct {
 }
 
 func (i info) String() string {
-	return fmt.Sprintf("%s(%d)", i.Name, i.pulls)
+	return fmt.Sprintf("%s(%d)", i.ColoredString(), i.pulls)
 }
 
 func stat(items wh.Items) (infos []info, fourStar int, fiveStar int) {
@@ -52,28 +53,45 @@ func show5stars(infos []info) {
 	))
 }
 
+func show(items wh.Items, title string, fourStarPity int, fiveStarPity int) {
+	color.HiBlue(title)
+	fmt.Println()
+	infos, fourStar, fiveStar := stat(items)
+	fmt.Printf("Next 4 star in %s pulls.\n", color.HiWhiteString("%2d", fourStarPity-fourStar))
+	fmt.Printf("Next 5 star in %s pulls.\n", color.HiWhiteString("%2d", fiveStarPity-fiveStar))
+
+	if items.FilterByRarity(wh.FiveStar).Count() != 0 {
+		fmt.Println()
+		show5stars(infos)
+		fmt.Println()
+	}
+}
+
+func drawLine(length int) {
+	if color.NoColor {
+		fmt.Println(strings.Repeat("─", length))
+	} else {
+		fmt.Printf("\x1B[38;5;239m%s\x1B[0m\n", strings.Repeat("─", length))
+	}
+}
+
 func Stat(items wh.Items) {
+	color.New()
+
 	items = items.Unique()
 	sort.Sort(items)
 
-	fmt.Println("Character Event Wish and Character Event Wish-2")
-	infos, fourStar, fiveStar := stat(items.FilterByWishType(wh.CharacterEventWish, wh.CharacterEventWish2))
-	fmt.Printf("Next 4 star in %d pulls\n", 10-fourStar)
-	fmt.Printf("Next 5 star in %d pulls\n", 90-fiveStar)
-	show5stars(infos)
-	fmt.Println(strings.Repeat("-", 50))
+	drawLine(50)
+	show(
+		items.FilterByWishType(wh.CharacterEventWish, wh.CharacterEventWish2),
+		"Character Event Wish and Character Event Wish-2", 10, 90,
+	)
 
-	fmt.Println("Weapon Event Wish")
-	infos, fourStar, fiveStar = stat(items.FilterByWishType(wh.WeaponEventWish))
-	fmt.Printf("Next 4 star in %d pulls\n", 10-fourStar)
-	fmt.Printf("Next 5 star in %d pulls\n", 80-fiveStar)
-	show5stars(infos)
-	fmt.Println(strings.Repeat("-", 50))
+	drawLine(50)
+	show(items.FilterByWishType(wh.WeaponEventWish), "Weapon Event Wish", 10, 80)
 
-	fmt.Println("Standard Wish")
-	infos, fourStar, fiveStar = stat(items.FilterByWishType(wh.StandardWish))
-	fmt.Printf("Next 4 star in %d pulls\n", 10-fourStar)
-	fmt.Printf("Next 5 star in %d pulls\n", 90-fiveStar)
-	show5stars(infos)
-	fmt.Println(strings.Repeat("-", 50))
+	drawLine(50)
+	show(items.FilterByWishType(wh.StandardWish), "Standard Wish", 10, 90)
+
+	drawLine(50)
 }

@@ -144,12 +144,16 @@ func (f *Fetcher) FetchALL() (Items, error) {
 			break
 		}
 
-		fmt.Printf("%s: %s\n", items[0].WishType(), strings.Join(
-			lo.Map(items, func(item Item, _ int) string {
-				return item.String()
-			}),
-			", ",
-		))
+		fmt.Printf("%d items fetched", len(items))
+
+		r := items.FilterByRarity(FourStar, FiveStar)
+		if len(r) == 0 {
+			fmt.Println(".")
+		} else {
+			fmt.Println(":", strings.Join(lo.Map(r, func(item Item, _ int) string {
+				return item.ColoredString()
+			}), ", "))
+		}
 
 		result = append(result, items...)
 		time.Sleep(f.Interval)
