@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/fhluo/giwh/config"
 	"github.com/fhluo/giwh/wh"
+	"github.com/samber/lo"
 	"github.com/spf13/cobra"
 )
 
@@ -18,11 +19,15 @@ var exportCmd = &cobra.Command{
 
 		switch {
 		case cmd.Flags().Changed("uid") && cmd.Flags().Changed("wish"):
-			items = items.FilterByUIDAndWishType(uid, wh.WishType(wish))
+			items = items.FilterByUIDAndWishType(uid, lo.Map(wishes, func(t int, _ int) wh.WishType {
+				return wh.WishType(t)
+			})...)
 		case cmd.Flags().Changed("uid"):
 			items = items.FilterByUID(uid)
 		case cmd.Flags().Changed("wish"):
-			items = items.FilterByWishType(wh.WishType(wish))
+			items = items.FilterByWishType(lo.Map(wishes, func(t int, _ int) wh.WishType {
+				return wh.WishType(t)
+			})...)
 		}
 
 		if len(items) == 0 {
@@ -38,13 +43,13 @@ var exportCmd = &cobra.Command{
 }
 
 var (
-	uid  string
-	wish int
+	uid    string
+	wishes []int
 )
 
 func init() {
 	rootCmd.AddCommand(exportCmd)
 
 	exportCmd.Flags().StringVarP(&uid, "uid", "u", "", "specify uid")
-	exportCmd.Flags().IntVarP(&wish, "wish", "w", 0, "specify wish type")
+	exportCmd.Flags().IntSliceVarP(&wishes, "wishes", "w", nil, "specify wish types")
 }
