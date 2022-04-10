@@ -16,11 +16,11 @@ import (
 var (
 	Dir = filepath.Join(os.Getenv("LOCALAPPDATA"), "giwh")
 
-	Path            = filepath.Join(Dir, "config.toml")
-	CachePath       = filepath.Join(Dir, "cache.json")
-	CacheBackupPath = filepath.Join(Dir, "cache_backup.json")
+	Path                  = filepath.Join(Dir, "config.toml")
+	WishHistoryPath       = filepath.Join(Dir, "wish_history.json")
+	WishHistoryBackupPath = filepath.Join(Dir, "wish_history_backup.json")
 
-	CachedItems wh.Items
+	WishHistory wh.Items
 
 	config *Config
 )
@@ -39,17 +39,17 @@ func init() {
 		}
 	}
 
-	CachedItems, err = wh.LoadItemsIfExits(CachePath)
+	WishHistory, err = wh.LoadItemsIfExits(WishHistoryPath)
 	if err != nil {
 		log.Fatalln(err)
 	}
-	if len(CachedItems) != 0 {
-		_ = CachedItems.Unique().Save(CacheBackupPath)
+	if len(WishHistory) != 0 {
+		_ = WishHistory.Unique().Save(WishHistoryBackupPath)
 	}
 }
 
-func SaveCache() error {
-	return CachedItems.Unique().Save(CachePath)
+func SaveWishHistory() error {
+	return WishHistory.Unique().Save(WishHistoryPath)
 }
 
 type Config struct {

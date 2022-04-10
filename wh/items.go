@@ -106,6 +106,12 @@ func (items Items) FilterByWishType(wishTypes ...WishType) Items {
 	})
 }
 
+func (items Items) FilterByUIDAndWishType(uid string, wishTypes ...WishType) Items {
+	return lo.Filter(items, func(item Item, _ int) bool {
+		return item.UID == uid && lo.Contains(wishTypes, item.WishType())
+	})
+}
+
 func (items Items) Save(filename string) error {
 	sort.Sort(sort.Reverse(items))
 

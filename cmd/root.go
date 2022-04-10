@@ -44,7 +44,7 @@ var rootCmd = &cobra.Command{
 			return err
 		}
 
-		items = append(items, config.CachedItems.FilterByUID(authInfo.UID)...)
+		items = append(items, config.WishHistory.FilterByUID(authInfo.UID)...)
 
 		visit := make(map[int64]bool)
 		for _, item := range items {
@@ -65,9 +65,9 @@ var rootCmd = &cobra.Command{
 			}
 
 			items = append(items, items_...)
-			config.CachedItems = append(config.CachedItems, items_...)
+			config.WishHistory = append(config.WishHistory, items_...)
 		}
-		_ = config.SaveCache()
+		_ = config.SaveWishHistory()
 
 		if len(items) == 0 {
 			return fmt.Errorf("wish history not found")
@@ -83,33 +83,16 @@ var rootCmd = &cobra.Command{
 			filename = args[1]
 		}
 
-		if len(args) == 2 && cmd.PersistentFlags().Changed("uid") {
-			items = items.FilterByUID(uid)
-		}
-
-		if len(args) == 2 && cmd.PersistentFlags().Changed("wish") {
-			items = items.FilterByWishType(wh.WishType(wish))
-		}
-
 		return items.Unique().Save(filename)
 	},
 }
 
-var (
-	uid  string
-	wish int
-)
-
-func init() {
-	rootCmd.PersistentFlags().StringVar(&uid, "uid", "", "specify uid")
-	rootCmd.PersistentFlags().IntVar(&wish, "wish", 0, "specify wish type")
-}
-
 func Execute() {
 	if err := rootCmd.Execute(); err != nil {
-		log.Fatalln(err)
+		_, _ = fmt.Fprintln(os.Stderr, err)
+		os.Exit(1)
 	}
 	if err := config.Save(); err != nil {
-		log.Printf("fail to save config file: %s\n", err)
+		_, _ = fmt.Fprintf(os.Stderr, "fail to save config file: %s\n", err)
 	}
 }

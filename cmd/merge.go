@@ -34,17 +34,7 @@ var mergeCmd = &cobra.Command{
 			result = append(result, items...)
 		}
 
-		result = result.Unique()
-
-		if cmd.PersistentFlags().Changed("uid") {
-			result = result.FilterByUID(uid)
-		}
-
-		if cmd.PersistentFlags().Changed("wish") {
-			result = result.FilterByWishType(wh.WishType(wish))
-		}
-
-		return result.Save(args[len(args)-1])
+		return result.Unique().Save(args[len(args)-1])
 	},
 }
 
