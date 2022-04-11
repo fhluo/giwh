@@ -54,6 +54,8 @@ func show5stars(infos []info) {
 }
 
 func show(items wh.Items, title string, fourStarPity int, fiveStarPity int) {
+	sort.Sort(items)
+
 	color.HiBlue(title)
 	fmt.Println()
 	infos, fourStar, fiveStar := stat(items)
@@ -63,6 +65,12 @@ func show(items wh.Items, title string, fourStarPity int, fiveStarPity int) {
 	if items.FilterByRarity(wh.FiveStar).Count() != 0 {
 		fmt.Println()
 		show5stars(infos)
+	}
+
+	if len(items) >= 2 {
+		fmt.Println()
+		fmt.Printf("Latest  : %s %s\n", items[len(items)-1].Time, items[len(items)-1].ColoredString())
+		fmt.Printf("Earliest: %s %s\n", items[0].Time, items[0].ColoredString())
 		fmt.Println()
 	}
 }
@@ -77,7 +85,6 @@ func drawLine(length int) {
 
 func Stat(items wh.Items) {
 	items = items.Unique()
-	sort.Sort(items)
 
 	drawLine(50)
 	show(
