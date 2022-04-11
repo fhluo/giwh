@@ -5,6 +5,7 @@ import (
 	"github.com/fatih/color"
 	jsoniter "github.com/json-iterator/go"
 	"github.com/samber/lo"
+	"golang.org/x/exp/slices"
 	"io/fs"
 	"log"
 	"os"
@@ -98,6 +99,12 @@ func (items Items) Less(i, j int) bool {
 
 func (items Items) Swap(i, j int) {
 	items[i], items[j] = items[j], items[i]
+}
+
+func (items Items) Equal(items2 Items) bool {
+	return slices.EqualFunc(items, items2, func(item1, item2 Item) bool {
+		return item1.ID() == item2.ID()
+	})
 }
 
 func (items Items) Unique() Items {

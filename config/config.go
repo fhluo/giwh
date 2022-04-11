@@ -2,7 +2,6 @@ package config
 
 import (
 	"errors"
-	"fmt"
 	"github.com/fhluo/giwh/wh"
 	"github.com/pelletier/go-toml/v2"
 	"github.com/samber/lo"
@@ -23,6 +22,8 @@ var (
 	WishHistory wh.Items
 
 	config *Config
+
+	logger = log.New(os.Stderr, "", 0)
 )
 
 func init() {
@@ -34,21 +35,27 @@ func init() {
 		if errors.Is(err, fs.ErrNotExist) {
 			config = new(Config)
 		} else {
-			_, _ = fmt.Fprintf(os.Stderr, "fail to open config file: %s\n", err)
-			os.Exit(1)
+			logger.Fatalf("fail to open config file: %s\n", err)
 		}
 	}
 
 	WishHistory, err = wh.LoadItemsIfExits(WishHistoryPath)
 	if err != nil {
-		log.Fatalln(err)
-	}
-	if len(WishHistory) != 0 {
-		_ = WishHistory.Unique().Save(WishHistoryBackupPath)
+		logger.Fatalln(err)
 	}
 }
 
 func SaveWishHistory() error {
+	items, err := wh.LoadItemsIfExits(WishHistoryPath)
+	if err != nil {
+		return err
+	}
+
+	if items.Equal(WishHistory) {
+		return nil
+	}
+
+	_ = os.Rename(WishHistoryPath, WishHistoryBackupPath)
 	return WishHistory.Unique().Save(WishHistoryPath)
 }
 
