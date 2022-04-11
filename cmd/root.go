@@ -2,10 +2,10 @@ package cmd
 
 import (
 	"errors"
+	"fmt"
 	"github.com/fhluo/giwh/clients"
 	"github.com/fhluo/giwh/config"
 	"github.com/fhluo/giwh/stat"
-	"github.com/fhluo/giwh/util"
 	"github.com/spf13/cobra"
 	"log"
 	"os"
@@ -27,18 +27,17 @@ var rootCmd = &cobra.Command{
 			}
 		}
 
-		authInfo, err := client.GetAuthInfo()
+		uid, err := client.GetUID()
 		if err != nil {
 			logger.Fatalln(err)
 		}
 
-		items, err := util.FetchAllWishHistory(authInfo.BaseURL, config.WishHistory.FilterByUID(authInfo.UID))
-		if err != nil {
-			logger.Fatalln(err)
-		}
-
+		items := config.WishHistory.FilterByUID(uid)
 		if len(items) == 0 {
-			logger.Fatalln("Wish history not found.")
+			fmt.Printf("The wish history is empty. (UID: %s)\n", uid)
+			fmt.Println("You can use the update subcommand to update the wish history.")
+			fmt.Println()
+			return
 		}
 
 		stat.Stat(items)

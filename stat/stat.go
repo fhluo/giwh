@@ -76,8 +76,6 @@ func drawLine(length int) {
 }
 
 func Stat(items wh.Items) {
-	color.New()
-
 	items = items.Unique()
 	sort.Sort(items)
 

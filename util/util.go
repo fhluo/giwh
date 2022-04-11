@@ -1,7 +1,6 @@
 package util
 
 import (
-	"github.com/fhluo/giwh/config"
 	"github.com/fhluo/giwh/wh"
 	"github.com/hashicorp/go-multierror"
 	"github.com/samber/lo"
@@ -102,9 +101,7 @@ func FetchAllWishHistory(baseURL string, items wh.Items) (wh.Items, error) {
 		}
 
 		items = append(items, r...)
-		config.WishHistory = append(config.WishHistory, r...)
 	}
 
-	_ = config.SaveWishHistory()
 	return items, nil
 }
