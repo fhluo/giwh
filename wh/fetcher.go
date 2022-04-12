@@ -2,6 +2,7 @@ package wh
 
 import (
 	"fmt"
+	"github.com/fatih/color"
 	"github.com/google/go-querystring/query"
 	jsoniter "github.com/json-iterator/go"
 	"github.com/samber/lo"
@@ -144,16 +145,9 @@ func (f *Fetcher) FetchALL() (Items, error) {
 			break
 		}
 
-		fmt.Printf("%d items fetched", len(items))
-
-		r := items.FilterByRarity(FourStar, FiveStar)
-		if len(r) == 0 {
-			fmt.Println(".")
-		} else {
-			fmt.Println(":", strings.Join(lo.Map(r, func(item Item, _ int) string {
-				return item.ColoredString()
-			}), ", "))
-		}
+		fmt.Println(strings.Join(lo.Map(items, func(item Item, _ int) string {
+			return item.ColoredString()
+		}), color.HiBlackString(", ")))
 
 		result = append(result, items...)
 		time.Sleep(f.Interval)
