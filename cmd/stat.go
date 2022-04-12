@@ -8,7 +8,7 @@ import (
 
 var statCmd = &cobra.Command{
 	Use:   "stat",
-	Short: "show stats",
+	Short: "Show stats",
 	Args:  cobra.ExactArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
 		items, err := wh.LoadItems(args[0])

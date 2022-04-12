@@ -8,7 +8,7 @@ import (
 
 var mergeCmd = &cobra.Command{
 	Use:   "merge",
-	Short: "merge wish histories",
+	Short: "Merge wish histories",
 	Args:  cobra.MinimumNArgs(2),
 	Run: func(cmd *cobra.Command, args []string) {
 		filenames, err := util.ExpandPaths(args...)

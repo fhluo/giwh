@@ -11,7 +11,7 @@ import (
 
 var updateCmd = &cobra.Command{
 	Use:   "update",
-	Short: "update wish history",
+	Short: "Update wish history",
 	Run: func(cmd *cobra.Command, args []string) {
 		client, err := clients.RecentlyUsed()
 		if err != nil {

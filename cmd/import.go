@@ -10,7 +10,7 @@ import (
 
 var importCmd = &cobra.Command{
 	Use:   "import",
-	Short: "import wish history",
+	Short: "Import wish history",
 	Args:  cobra.MinimumNArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
 		filenames, err := util.ExpandPaths(args...)
