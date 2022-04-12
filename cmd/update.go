@@ -27,22 +27,24 @@ var updateCmd = &cobra.Command{
 			logger.Fatalln(err)
 		}
 
-		items, err := util.FetchAllWishHistory(authInfo.BaseURL, config.WishHistory.FilterByUID(authInfo.UID))
+		items := config.WishHistory.FilterByUID(authInfo.UID)
+		result, err := util.FetchAllWishHistory(authInfo.BaseURL, items)
 		if err != nil {
 			logger.Fatalln(err)
 		}
 
-		if len(items) == 0 {
-			fmt.Println("Your wish history is up to date.")
+		count := len(result) - len(items)
+		if count == 0 {
+			fmt.Println("No items fetched. Your wish history is up to date.")
 			return
 		}
 
-		config.WishHistory = append(config.WishHistory, items...)
+		config.WishHistory = append(config.WishHistory, result...)
 		if err := config.SaveWishHistory(); err != nil {
 			logger.Fatalln(err)
 		}
 
-		fmt.Printf("%d items fetched.\n", len(items))
+		fmt.Printf("%d items fetched.\n", count)
 	},
 }
 
