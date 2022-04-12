@@ -16,7 +16,7 @@ type info struct {
 }
 
 func (i info) String() string {
-	return fmt.Sprintf("%s(%d)", i.ColoredString(), i.pulls)
+	return i.ColoredString() + color.HiBlackString("(%d)", i.pulls)
 }
 
 func stat(items wh.Items) (infos []info, fourStar int, fiveStar int) {
@@ -56,11 +56,18 @@ func show5stars(infos []info) {
 func show(items wh.Items, title string, fourStarPity int, fiveStarPity int) {
 	sort.Sort(items)
 
-	color.HiBlue(title)
+	fmt.Println()
+	color.HiBlack(title)
 	fmt.Println()
 	infos, fourStar, fiveStar := stat(items)
-	fmt.Printf("Next 4 star in %s pulls.\n", color.HiWhiteString("%2d", fourStarPity-fourStar))
-	fmt.Printf("Next 5 star in %s pulls.\n", color.HiWhiteString("%2d", fiveStarPity-fiveStar))
+	fmt.Println(
+		color.MagentaString("4-Star:"),
+		color.WhiteString("%2d", fourStar), color.HiBlackString("/ %d", fourStarPity),
+	)
+	fmt.Println(
+		color.YellowString("5-Star:"),
+		color.WhiteString("%2d", fiveStar), color.HiBlackString("/ %d", fiveStarPity),
+	)
 
 	if items.FilterByRarity(wh.FiveStar).Count() != 0 {
 		fmt.Println()
@@ -69,8 +76,7 @@ func show(items wh.Items, title string, fourStarPity int, fiveStarPity int) {
 
 	if len(items) >= 2 {
 		fmt.Println()
-		fmt.Printf("Latest  : %s %s\n", items[len(items)-1].Time, items[len(items)-1].ColoredString())
-		fmt.Printf("Earliest: %s %s\n", items[0].Time, items[0].ColoredString())
+		color.HiBlack("%s ~ %s", items[0].Time().Format("2006/01/02"), items[len(items)-1].Time().Format("2006/01/02"))
 		fmt.Println()
 	}
 }

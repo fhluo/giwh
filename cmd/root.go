@@ -48,7 +48,4 @@ func Execute() {
 	if err := rootCmd.Execute(); err != nil {
 		logger.Fatalln(err)
 	}
-	if err := config.Save(); err != nil {
-		logger.Fatalf("fail to save config file: %s\n", err)
-	}
 }

@@ -131,5 +131,6 @@ func (client Client) GetAuthInfo() (authInfo wh.AuthInfo, err error) {
 	}
 
 	config.UpdateAuthInfo(authInfo)
+	_ = config.Save()
 	return
 }

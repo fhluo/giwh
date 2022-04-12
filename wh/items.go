@@ -11,6 +11,7 @@ import (
 	"os"
 	"sort"
 	"strconv"
+	"time"
 )
 
 type RawItem struct {
@@ -32,6 +33,7 @@ type Item struct {
 	id       *int64
 	rarity   *Rarity
 	wishType *WishType
+	time     *time.Time
 }
 
 func (item Item) ID() int64 {
@@ -70,6 +72,18 @@ func (item Item) WishType() WishType {
 	}
 
 	return *item.wishType
+}
+
+func (item Item) Time() time.Time {
+	if item.time == nil {
+		t, err := time.Parse("2006-01-02 15:04:05", item.RawItem.Time)
+		if err != nil {
+			log.Fatalln(err)
+		}
+		item.time = &t
+	}
+
+	return *item.time
 }
 
 func (item Item) String() string {
