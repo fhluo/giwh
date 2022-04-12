@@ -12,7 +12,11 @@ Wish history is saved in `%LocalAppData%\giwh\wish_history.json`.
 
 ### giwh
 
-Update wish history and show stats.
+Show stats.
+
+### giwh update
+
+Update wish history.
 
 ### giwh import
 
@@ -41,13 +45,14 @@ Specify wish types.
 ```
 giwh export <filename> -w 301,400
 ```
-|  ID  |       Wish Type        |
-| :--: | :--------------------: |
-| 100  |    Beginners' Wish     |
-| 200  |     Standard Wish      |
-| 301  |  Character Event Wish  |
-| 302  |   Weapon Event Wish    |
-| 400  | Character Event Wish-2 |
+
+| ID | Wish Type |
+| :--: | :--------------------- |
+| 100 | Beginners' Wish |
+| 200 | Standard Wish |
+| 301 | Character Event Wish |
+| 302 | Weapon Event Wish |
+| 400 | Character Event Wish-2 |
 
 ### giwh merge
 
