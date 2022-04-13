@@ -1,14 +1,22 @@
 # GIWH
 
-原神祈愿记录导出工具
+《原神》祈愿记录导出工具
 
 [English](readme.md) | 简体中文
 
+GIWH 是一个帮你导出《原神》祈愿记录的命令行工具。
+
+注：
+
+- 由于查询API的限制，仅能获取最近六个月的祈愿记录
+- 新记录的获取可能有1小时左右的延迟。
+- 祈愿记录保存在 `%LocalAppData%\giwh\wish_history.json`。
+
 ## 使用
 
-使用前请确保打开过游戏中的祈愿历史记录页面。
-
-祈愿记录保存在 `%LocalAppData%\giwh\wish_history.json`。
+1. 首先打开游戏中的祈愿历史记录页面。
+2. 使用 `giwh update` 命令更新祈愿记录。
+3. 使用 `giwh` 命令查看统计信息或使用 `giwh export` 导出祈愿记录。
 
 ### giwh
 
@@ -69,3 +77,7 @@ giwh merge <文件名>... -o <文件名>
 ```
 giwh stat <文件名>
 ```
+
+### giwh version
+
+显示版本号。
