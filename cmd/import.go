@@ -1,7 +1,7 @@
 package cmd
 
 import (
-	"github.com/fhluo/giwh/config"
+	"github.com/fhluo/giwh/internal/config"
 	"github.com/fhluo/giwh/util"
 	"github.com/fhluo/giwh/wh"
 	"github.com/spf13/cobra"
@@ -19,7 +19,7 @@ var importCmd = &cobra.Command{
 		}
 
 		for _, filename := range filenames {
-			items, err := wh.LoadItems(filename)
+			items, err := wh.LoadWishHistory(filename)
 			if err != nil {
 				logger.Fatalln(err)
 			}

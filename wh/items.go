@@ -110,62 +110,62 @@ func (item Item) ColoredString() string {
 	}
 }
 
-type Items []Item
+type WishHistory []Item
 
-func (items Items) Len() int {
-	return len(items)
+func (wh WishHistory) Len() int {
+	return len(wh)
 }
 
-func (items Items) Less(i, j int) bool {
-	return items[i].ID() < items[j].ID()
+func (wh WishHistory) Less(i, j int) bool {
+	return wh[i].ID() < wh[j].ID()
 }
 
-func (items Items) Swap(i, j int) {
-	items[i], items[j] = items[j], items[i]
+func (wh WishHistory) Swap(i, j int) {
+	wh[i], wh[j] = wh[j], wh[i]
 }
 
-func (items Items) Equal(items2 Items) bool {
-	return slices.EqualFunc(items, items2, func(item1, item2 Item) bool {
+func (wh WishHistory) Equal(items2 WishHistory) bool {
+	return slices.EqualFunc(wh, items2, func(item1, item2 Item) bool {
 		return item1.ID() == item2.ID()
 	})
 }
 
-func (items Items) Unique() Items {
-	return lo.UniqBy(items, func(item Item) int64 {
+func (wh WishHistory) Unique() WishHistory {
+	return lo.UniqBy(wh, func(item Item) int64 {
 		return item.ID()
 	})
 }
 
-func (items Items) Count() int {
-	return len(items)
+func (wh WishHistory) Count() int {
+	return len(wh)
 }
 
-func (items Items) FilterByUID(uid string) Items {
-	return lo.Filter(items, func(item Item, _ int) bool {
+func (wh WishHistory) FilterByUID(uid string) WishHistory {
+	return lo.Filter(wh, func(item Item, _ int) bool {
 		return item.UID == uid
 	})
 }
 
-func (items Items) FilterByWishType(wishTypes ...WishType) Items {
-	return lo.Filter(items, func(item Item, _ int) bool {
+func (wh WishHistory) FilterByWishType(wishTypes ...WishType) WishHistory {
+	return lo.Filter(wh, func(item Item, _ int) bool {
 		return lo.Contains(wishTypes, item.WishType())
 	})
 }
 
-func (items Items) FilterByRarity(rarities ...Rarity) Items {
-	return lo.Filter(items, func(item Item, _ int) bool {
+func (wh WishHistory) FilterByRarity(rarities ...Rarity) WishHistory {
+	return lo.Filter(wh, func(item Item, _ int) bool {
 		return lo.Contains(rarities, item.Rarity())
 	})
 }
 
-func (items Items) FilterByUIDAndWishType(uid string, wishTypes ...WishType) Items {
-	return lo.Filter(items, func(item Item, _ int) bool {
+func (wh WishHistory) FilterByUIDAndWishType(uid string, wishTypes ...WishType) WishHistory {
+	return lo.Filter(wh, func(item Item, _ int) bool {
 		return item.UID == uid && lo.Contains(wishTypes, item.WishType())
 	})
 }
 
-func (items Items) Save(filename string) error {
-	sort.Sort(sort.Reverse(items))
+func (wh WishHistory) Save(filename string) error {
+	sort.Sort(sort.Reverse(wh))
 
 	var (
 		data []byte
@@ -174,7 +174,7 @@ func (items Items) Save(filename string) error {
 
 	switch filepath.Ext(filename) {
 	case ".json":
-		data, err = jsoniter.MarshalIndent(items, "", "  ")
+		data, err = jsoniter.MarshalIndent(wh, "", "  ")
 		if err != nil {
 			return err
 		}
@@ -183,7 +183,7 @@ func (items Items) Save(filename string) error {
 		e := toml.NewEncoder(buf)
 		e.Indent = ""
 
-		err = e.Encode(map[string]interface{}{"list": items})
+		err = e.Encode(map[string]interface{}{"list": wh})
 		data = buf.Bytes()
 
 		if err != nil {
@@ -196,7 +196,7 @@ func (items Items) Save(filename string) error {
 	return os.WriteFile(filename, data, 0666)
 }
 
-func LoadItems(filename string) (Items, error) {
+func LoadWishHistory(filename string) (WishHistory, error) {
 	data, err := os.ReadFile(filename)
 	if err != nil {
 		return nil, err
@@ -204,11 +204,11 @@ func LoadItems(filename string) (Items, error) {
 
 	switch filepath.Ext(filename) {
 	case ".json":
-		var items Items
+		var items WishHistory
 		return items, jsoniter.Unmarshal(data, &items)
 	case ".toml":
 		var result struct {
-			List Items `toml:"list"`
+			List WishHistory `toml:"list"`
 		}
 		return result.List, toml.Unmarshal(data, &result)
 	default:
@@ -216,7 +216,7 @@ func LoadItems(filename string) (Items, error) {
 	}
 }
 
-func LoadItemsIfExits(filename string) (Items, error) {
+func LoadWishHistoryIfExits(filename string) (WishHistory, error) {
 	_, err := os.Stat(filename)
 	if err != nil {
 		if !errors.Is(err, fs.ErrNotExist) {
@@ -225,5 +225,5 @@ func LoadItemsIfExits(filename string) (Items, error) {
 		return nil, nil
 	}
 
-	return LoadItems(filename)
+	return LoadWishHistory(filename)
 }

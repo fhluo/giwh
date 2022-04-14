@@ -2,7 +2,7 @@ package cmd
 
 import (
 	"fmt"
-	"github.com/fhluo/giwh/config"
+	"github.com/fhluo/giwh/internal/config"
 	"github.com/fhluo/giwh/wh"
 	"github.com/samber/lo"
 	"github.com/spf13/cobra"

@@ -16,10 +16,10 @@ var mergeCmd = &cobra.Command{
 			logger.Fatalln(err)
 		}
 
-		var result wh.Items
+		var result wh.WishHistory
 
 		for _, filename := range filenames {
-			items, err := wh.LoadItems(filename)
+			items, err := wh.LoadWishHistory(filename)
 			if err != nil {
 				logger.Fatalln(err)
 			}

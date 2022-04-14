@@ -11,7 +11,7 @@ var statCmd = &cobra.Command{
 	Short: "Show stats",
 	Args:  cobra.ExactArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
-		items, err := wh.LoadItems(args[0])
+		items, err := wh.LoadWishHistory(args[0])
 		if err != nil {
 			logger.Fatalln(err)
 		}

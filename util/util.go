@@ -1,8 +1,6 @@
 package util
 
 import (
-	"fmt"
-	"github.com/fhluo/giwh/wh"
 	"github.com/hashicorp/go-multierror"
 	"github.com/samber/lo"
 	"os"
@@ -87,34 +85,4 @@ func ExpandPaths(paths ...string) ([]string, error) {
 	}
 
 	return result, nil
-}
-
-func FetchAllWishHistory(baseURL string, items wh.Items) (wh.Items, error) {
-	visit := make(map[int64]bool)
-	for _, item := range items {
-		visit[item.ID()] = true
-	}
-
-	wishes := []wh.WishType{wh.CharacterEventWish, wh.WeaponEventWish, wh.StandardWish, wh.BeginnersWish}
-	descriptions := map[wh.WishType]string{
-		wh.CharacterEventWish: wh.CharacterEventWish.String() + " and " + wh.CharacterEventWish2.String(),
-		wh.WeaponEventWish:    wh.WeaponEventWish.String(),
-		wh.StandardWish:       wh.StandardWish.String(),
-		wh.BeginnersWish:      wh.BeginnersWish.String(),
-	}
-
-	for i, wish := range wishes {
-		fmt.Printf("Fetching the wish history of %s.\n", descriptions[wish])
-		r, err := wh.NewFetcher(baseURL, wish, visit).FetchALL()
-		if err != nil {
-			return nil, err
-		}
-
-		items = append(items, r...)
-		if i != len(wishes)-1 {
-			time.Sleep(wh.DefaultInterval)
-		}
-	}
-
-	return items, nil
 }

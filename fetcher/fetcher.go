@@ -1,8 +1,9 @@
-package wh
+package fetcher
 
 import (
 	"fmt"
 	"github.com/fatih/color"
+	"github.com/fhluo/giwh/wh"
 	"github.com/google/go-querystring/query"
 	jsoniter "github.com/json-iterator/go"
 	"github.com/samber/lo"
@@ -56,7 +57,7 @@ type Fetcher struct {
 	*QP
 }
 
-func NewFetcher(baseURL string, wishType WishType, visit map[int64]bool) *Fetcher {
+func New(baseURL string, wishType wh.WishType, visit map[int64]bool) *Fetcher {
 	if visit == nil {
 		visit = make(map[int64]bool)
 	}
@@ -77,7 +78,7 @@ func (f *Fetcher) URL() string {
 	return u.String()
 }
 
-func (f *Fetcher) Fetch() (items Items, err error) {
+func (f *Fetcher) Fetch() (items wh.WishHistory, err error) {
 
 	resp, err := http.Get(f.URL())
 	if err != nil {
@@ -107,7 +108,7 @@ func (f *Fetcher) Fetch() (items Items, err error) {
 	return
 }
 
-func (f *Fetcher) FetchNext() (Items, error) {
+func (f *Fetcher) FetchNext() (wh.WishHistory, error) {
 	items, err := f.Fetch()
 	if err != nil {
 		return nil, err
@@ -132,8 +133,8 @@ func (f *Fetcher) FetchNext() (Items, error) {
 	return items, nil
 }
 
-func (f *Fetcher) FetchALL() (Items, error) {
-	var result Items
+func (f *Fetcher) FetchALL() (wh.WishHistory, error) {
+	var result wh.WishHistory
 
 	for {
 		items, err := f.FetchNext()
@@ -145,7 +146,7 @@ func (f *Fetcher) FetchALL() (Items, error) {
 			break
 		}
 
-		fmt.Println(strings.Join(lo.Map(items, func(item Item, _ int) string {
+		fmt.Println(strings.Join(lo.Map(items, func(item wh.Item, _ int) string {
 			return item.ColoredString()
 		}), color.HiBlackString(", ")))
 
@@ -154,4 +155,34 @@ func (f *Fetcher) FetchALL() (Items, error) {
 	}
 
 	return result, nil
+}
+
+func FetchAllWishHistory(baseURL string, items wh.WishHistory) (wh.WishHistory, error) {
+	visit := make(map[int64]bool)
+	for _, item := range items {
+		visit[item.ID()] = true
+	}
+
+	wishes := []wh.WishType{wh.CharacterEventWish, wh.WeaponEventWish, wh.StandardWish, wh.BeginnersWish}
+	descriptions := map[wh.WishType]string{
+		wh.CharacterEventWish: wh.CharacterEventWish.String() + " and " + wh.CharacterEventWish2.String(),
+		wh.WeaponEventWish:    wh.WeaponEventWish.String(),
+		wh.StandardWish:       wh.StandardWish.String(),
+		wh.BeginnersWish:      wh.BeginnersWish.String(),
+	}
+
+	for i, wish := range wishes {
+		fmt.Printf("Fetching the wish history of %s.\n", descriptions[wish])
+		r, err := New(baseURL, wish, visit).FetchALL()
+		if err != nil {
+			return nil, err
+		}
+
+		items = append(items, r...)
+		if i != len(wishes)-1 {
+			time.Sleep(DefaultInterval)
+		}
+	}
+
+	return items, nil
 }

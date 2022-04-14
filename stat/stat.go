@@ -19,7 +19,7 @@ func (i info) String() string {
 	return i.ColoredString() + color.HiBlackString("(%d)", i.pulls)
 }
 
-func stat(items wh.Items) (infos []info, fourStar int, fiveStar int) {
+func stat(items wh.WishHistory) (infos []info, fourStar int, fiveStar int) {
 	for i := range items {
 		switch items[i].Rarity() {
 		case wh.FourStar:
@@ -53,7 +53,7 @@ func show5stars(infos []info) {
 	))
 }
 
-func show(items wh.Items, title string, fourStarPity int, fiveStarPity int) {
+func show(items wh.WishHistory, title string, fourStarPity int, fiveStarPity int) {
 	sort.Sort(items)
 
 	fmt.Println()
@@ -89,7 +89,7 @@ func drawLine(length int) {
 	}
 }
 
-func Stat(items wh.Items) {
+func Stat(items wh.WishHistory) {
 	items = items.Unique()
 
 	drawLine(50)

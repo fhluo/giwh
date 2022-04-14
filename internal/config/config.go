@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"errors"
 	"github.com/BurntSushi/toml"
+	"github.com/fhluo/giwh/fetcher"
 	"github.com/fhluo/giwh/wh"
 	"github.com/samber/lo"
 	"golang.org/x/exp/slices"
@@ -20,7 +21,7 @@ var (
 	WishHistoryPath       = filepath.Join(Dir, "wish_history.json")
 	WishHistoryBackupPath = filepath.Join(Dir, "wish_history_backup.json")
 
-	WishHistory wh.Items
+	WishHistory wh.WishHistory
 
 	config *Config
 
@@ -40,14 +41,14 @@ func init() {
 		}
 	}
 
-	WishHistory, err = wh.LoadItemsIfExits(WishHistoryPath)
+	WishHistory, err = wh.LoadWishHistoryIfExits(WishHistoryPath)
 	if err != nil {
 		logger.Fatalln(err)
 	}
 }
 
 func SaveWishHistory() error {
-	items, err := wh.LoadItemsIfExits(WishHistoryPath)
+	items, err := wh.LoadWishHistoryIfExits(WishHistoryPath)
 	if err != nil {
 		return err
 	}
@@ -61,8 +62,8 @@ func SaveWishHistory() error {
 }
 
 type Config struct {
-	Language  string        `toml:"language"`
-	AuthInfos []wh.AuthInfo `toml:"auth_infos"`
+	Language  string             `toml:"language"`
+	AuthInfos []fetcher.AuthInfo `toml:"auth_infos"`
 }
 
 func Load(filename string) (*Config, error) {
@@ -75,18 +76,18 @@ func Load(filename string) (*Config, error) {
 	return cfg, toml.Unmarshal(data, cfg)
 }
 
-func (config *Config) GetAuthInfo(uid string) (wh.AuthInfo, bool) {
-	return lo.Find(config.AuthInfos, func(authInfo wh.AuthInfo) bool {
+func (config *Config) GetAuthInfo(uid string) (fetcher.AuthInfo, bool) {
+	return lo.Find(config.AuthInfos, func(authInfo fetcher.AuthInfo) bool {
 		return authInfo.UID == uid
 	})
 }
 
-func GetAuthInfo(uid string) (wh.AuthInfo, bool) {
+func GetAuthInfo(uid string) (fetcher.AuthInfo, bool) {
 	return config.GetAuthInfo(uid)
 }
 
-func (config *Config) UpdateAuthInfo(authInfo wh.AuthInfo) {
-	i := slices.IndexFunc(config.AuthInfos, func(info wh.AuthInfo) bool {
+func (config *Config) UpdateAuthInfo(authInfo fetcher.AuthInfo) {
+	i := slices.IndexFunc(config.AuthInfos, func(info fetcher.AuthInfo) bool {
 		return info.UID == authInfo.UID
 	})
 	if i < 0 {
@@ -96,7 +97,7 @@ func (config *Config) UpdateAuthInfo(authInfo wh.AuthInfo) {
 	}
 }
 
-func UpdateAuthInfo(authInfo wh.AuthInfo) {
+func UpdateAuthInfo(authInfo fetcher.AuthInfo) {
 	config.UpdateAuthInfo(authInfo)
 }
 

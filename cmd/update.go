@@ -4,8 +4,8 @@ import (
 	"errors"
 	"fmt"
 	"github.com/fhluo/giwh/clients"
-	"github.com/fhluo/giwh/config"
-	"github.com/fhluo/giwh/util"
+	"github.com/fhluo/giwh/fetcher"
+	"github.com/fhluo/giwh/internal/config"
 	"github.com/spf13/cobra"
 )
 
@@ -28,7 +28,7 @@ var updateCmd = &cobra.Command{
 		}
 
 		items := config.WishHistory.FilterByUID(authInfo.UID)
-		result, err := util.FetchAllWishHistory(authInfo.BaseURL, items)
+		result, err := fetcher.FetchAllWishHistory(authInfo.BaseURL, items)
 		if err != nil {
 			logger.Fatalln(err)
 		}

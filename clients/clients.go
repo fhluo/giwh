@@ -2,9 +2,9 @@ package clients
 
 import (
 	"errors"
-	"github.com/fhluo/giwh/config"
+	"github.com/fhluo/giwh/fetcher"
+	"github.com/fhluo/giwh/internal/config"
 	"github.com/fhluo/giwh/util"
-	"github.com/fhluo/giwh/wh"
 	"github.com/hashicorp/go-multierror"
 	"net/url"
 	"os"
@@ -100,7 +100,7 @@ func (client Client) FindURLFromOutputLog(f func(u *url.URL) bool) (*url.URL, er
 	return nil, ErrNotFound
 }
 
-func (client Client) GetAuthInfo() (authInfo wh.AuthInfo, err error) {
+func (client Client) GetAuthInfo() (authInfo fetcher.AuthInfo, err error) {
 	var u *url.URL
 	u, err = client.FindURLFromOutputLog(func(u *url.URL) bool {
 		return u.Query().Has("authkey") && u.Hostname() == client.QueryLinkHostName
@@ -125,7 +125,7 @@ func (client Client) GetAuthInfo() (authInfo wh.AuthInfo, err error) {
 		}
 	}
 
-	authInfo = wh.AuthInfo{
+	authInfo = fetcher.AuthInfo{
 		UID:     uid,
 		BaseURL: client.APIGetWishHistory + "?" + u.RawQuery,
 	}
