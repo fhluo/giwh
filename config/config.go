@@ -1,9 +1,10 @@
 package config
 
 import (
+	"bytes"
 	"errors"
+	"github.com/BurntSushi/toml"
 	"github.com/fhluo/giwh/wh"
-	"github.com/pelletier/go-toml/v2"
 	"github.com/samber/lo"
 	"golang.org/x/exp/slices"
 	"io/fs"
@@ -100,7 +101,12 @@ func UpdateAuthInfo(authInfo wh.AuthInfo) {
 }
 
 func (config *Config) Save() error {
-	data, err := toml.Marshal(config)
+	buf := new(bytes.Buffer)
+	e := toml.NewEncoder(buf)
+	e.Indent = ""
+
+	err := e.Encode(config)
+	data := buf.Bytes()
 	if err != nil {
 		return err
 	}

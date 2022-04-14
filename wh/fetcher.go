@@ -19,8 +19,8 @@ const (
 )
 
 type AuthInfo struct {
-	UID     string
-	BaseURL string
+	UID     string `toml:"uid"`
+	BaseURL string `toml:"base_url"`
 }
 
 // QP Query Parameters

@@ -1,7 +1,10 @@
 package wh
 
 import (
+	"bytes"
 	"errors"
+	"fmt"
+	"github.com/BurntSushi/toml"
 	"github.com/fatih/color"
 	"github.com/fhluo/giwh/i18n"
 	jsoniter "github.com/json-iterator/go"
@@ -10,22 +13,23 @@ import (
 	"io/fs"
 	"log"
 	"os"
+	"path/filepath"
 	"sort"
 	"strconv"
 	"time"
 )
 
 type RawItem struct {
-	UID      string `json:"uid"`
-	WishType string `json:"gacha_type"`
-	ItemID   string `json:"item_id"`
-	Count    string `json:"count"`
-	Time     string `json:"time"`
-	Name     string `json:"name"`
-	Lang     string `json:"lang"`
-	ItemType string `json:"item_type"`
-	Rarity   string `json:"rank_type"`
-	ID       string `json:"id"`
+	UID      string `json:"uid" toml:"uid"`
+	WishType string `json:"gacha_type" toml:"gacha_type"`
+	ItemID   string `json:"item_id" toml:"item_id"`
+	Count    string `json:"count" toml:"count"`
+	Time     string `json:"time" toml:"time"`
+	Name     string `json:"name" toml:"name"`
+	Lang     string `json:"lang" toml:"lang"`
+	ItemType string `json:"item_type" toml:"item_type"`
+	Rarity   string `json:"rank_type" toml:"rank_type"`
+	ID       string `json:"id" toml:"id"`
 }
 
 type Item struct {
@@ -163,9 +167,30 @@ func (items Items) FilterByUIDAndWishType(uid string, wishTypes ...WishType) Ite
 func (items Items) Save(filename string) error {
 	sort.Sort(sort.Reverse(items))
 
-	data, err := jsoniter.MarshalIndent(items, "", "  ")
-	if err != nil {
-		return err
+	var (
+		data []byte
+		err  error
+	)
+
+	switch filepath.Ext(filename) {
+	case ".json":
+		data, err = jsoniter.MarshalIndent(items, "", "  ")
+		if err != nil {
+			return err
+		}
+	case ".toml":
+		buf := new(bytes.Buffer)
+		e := toml.NewEncoder(buf)
+		e.Indent = ""
+
+		err = e.Encode(map[string]interface{}{"list": items})
+		data = buf.Bytes()
+
+		if err != nil {
+			return err
+		}
+	default:
+		return fmt.Errorf("format %s is not supported", filepath.Ext(filename))
 	}
 
 	return os.WriteFile(filename, data, 0666)
@@ -177,8 +202,18 @@ func LoadItems(filename string) (Items, error) {
 		return nil, err
 	}
 
-	var items Items
-	return items, jsoniter.Unmarshal(data, &items)
+	switch filepath.Ext(filename) {
+	case ".json":
+		var items Items
+		return items, jsoniter.Unmarshal(data, &items)
+	case ".toml":
+		var result struct {
+			List Items `toml:"list"`
+		}
+		return result.List, toml.Unmarshal(data, &result)
+	default:
+		return nil, fmt.Errorf("format %s is not supported", filepath.Ext(filename))
+	}
 }
 
 func LoadItemsIfExits(filename string) (Items, error) {
