@@ -15,7 +15,7 @@ import (
 )
 
 const (
-	DefaultInterval = time.Second / 2
+	DefaultInterval = 500 * time.Millisecond
 )
 
 type AuthInfo struct {

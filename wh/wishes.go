@@ -11,7 +11,7 @@ const (
 )
 
 var (
-	Wishes = []WishType{CharacterEventWish, WeaponEventWish, StandardWish, BeginnersWish}
+	Wishes = []WishType{BeginnersWish, StandardWish, CharacterEventWish, WeaponEventWish, CharacterEventWish2}
 
 	wishes = map[WishType]string{
 		BeginnersWish:       "Beginners' Wish",
