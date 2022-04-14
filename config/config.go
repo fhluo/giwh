@@ -60,6 +60,7 @@ func SaveWishHistory() error {
 }
 
 type Config struct {
+	Language  string        `toml:"language"`
 	AuthInfos []wh.AuthInfo `toml:"auth_infos"`
 }
 
@@ -105,6 +106,14 @@ func (config *Config) Save() error {
 	}
 
 	return os.WriteFile(Path, data, 0666)
+}
+
+func GetLanguage() string {
+	return config.Language
+}
+
+func SetLanguage(lang string) {
+	config.Language = lang
 }
 
 func Save() error {

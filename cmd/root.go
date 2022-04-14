@@ -50,7 +50,16 @@ func init() {
 }
 
 func Execute() {
+	if config.GetLanguage() != "" {
+		i18n.Language = config.GetLanguage()
+	}
 	if err := rootCmd.Execute(); err != nil {
 		logger.Fatalln(err)
+	}
+	if rootCmd.PersistentFlags().Changed("lang") {
+		config.SetLanguage(i18n.Language)
+		if err := config.Save(); err != nil {
+			logger.Fatalln(err)
+		}
 	}
 }
