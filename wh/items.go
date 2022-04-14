@@ -3,6 +3,7 @@ package wh
 import (
 	"errors"
 	"github.com/fatih/color"
+	"github.com/fhluo/giwh/i18n"
 	jsoniter "github.com/json-iterator/go"
 	"github.com/samber/lo"
 	"golang.org/x/exp/slices"
@@ -87,17 +88,21 @@ func (item Item) Time() time.Time {
 }
 
 func (item Item) String() string {
-	return item.Name
+	if i18n.Language == "" {
+		return item.Name
+	} else {
+		return i18n.Item{Name: item.Name, Lang: item.Lang}.GetName()
+	}
 }
 
 func (item Item) ColoredString() string {
 	switch item.Rarity() {
 	case FourStar:
-		return color.MagentaString(item.Name)
+		return color.MagentaString(item.String())
 	case FiveStar:
-		return color.YellowString(item.Name)
+		return color.YellowString(item.String())
 	default:
-		return color.CyanString(item.Name)
+		return color.CyanString(item.String())
 	}
 }
 

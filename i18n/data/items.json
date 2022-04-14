@@ -1,0 +1,9938 @@
+[
+  [
+    {
+      "name": "Kamisato Ayaka",
+      "lang": "de-de"
+    },
+    {
+      "name": "Kamisato Ayaka",
+      "lang": "en-us"
+    },
+    {
+      "name": "Kamisato Ayaka",
+      "lang": "es-es"
+    },
+    {
+      "name": "Kamisato Ayaka",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Kamisato Ayaka",
+      "lang": "id-id"
+    },
+    {
+      "name": "神里綾華",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "카미사토 아야카",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Kamisato Ayaka",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Аяка",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Kamisato Ayaka",
+      "lang": "th-th"
+    },
+    {
+      "name": "Kamisato Ayaka",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "神里绫华",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "神里綾華",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Jean",
+      "lang": "de-de"
+    },
+    {
+      "name": "Jean",
+      "lang": "en-us"
+    },
+    {
+      "name": "Jean",
+      "lang": "es-es"
+    },
+    {
+      "name": "Jean",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Jean",
+      "lang": "id-id"
+    },
+    {
+      "name": "ジン",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "진",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Jean",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Джинн",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Jean",
+      "lang": "th-th"
+    },
+    {
+      "name": "Jean",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "琴",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "琴",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Reisender",
+      "lang": "de-de"
+    },
+    {
+      "name": "Traveler",
+      "lang": "en-us"
+    },
+    {
+      "name": "Viajero",
+      "lang": "es-es"
+    },
+    {
+      "name": "Voyageur",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Pengembara",
+      "lang": "id-id"
+    },
+    {
+      "name": "旅人",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "여행자",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Viajante",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Путешественник",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "นักเดินทาง",
+      "lang": "th-th"
+    },
+    {
+      "name": "Nhà Lữ Hành",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "旅行者",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "旅行者",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Lisa",
+      "lang": "de-de"
+    },
+    {
+      "name": "Lisa",
+      "lang": "en-us"
+    },
+    {
+      "name": "Lisa",
+      "lang": "es-es"
+    },
+    {
+      "name": "Lisa",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Lisa",
+      "lang": "id-id"
+    },
+    {
+      "name": "リサ",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "리사",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Lisa",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Лиза",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Lisa",
+      "lang": "th-th"
+    },
+    {
+      "name": "Lisa",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "丽莎",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "麗莎",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Reisende",
+      "lang": "de-de"
+    },
+    {
+      "name": "Traveler",
+      "lang": "en-us"
+    },
+    {
+      "name": "Viajera",
+      "lang": "es-es"
+    },
+    {
+      "name": "Voyageuse",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Pengembara",
+      "lang": "id-id"
+    },
+    {
+      "name": "旅人",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "여행자",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Viajante",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Путешественница",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "นักเดินทาง",
+      "lang": "th-th"
+    },
+    {
+      "name": "Nhà Lữ Hành",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "旅行者",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "旅行者",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Barbara",
+      "lang": "de-de"
+    },
+    {
+      "name": "Barbara",
+      "lang": "en-us"
+    },
+    {
+      "name": "Bárbara",
+      "lang": "es-es"
+    },
+    {
+      "name": "Barbara",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Barbara",
+      "lang": "id-id"
+    },
+    {
+      "name": "バーバラ",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "바바라",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Barbara",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Барбара",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Barbara",
+      "lang": "th-th"
+    },
+    {
+      "name": "Barbara",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "芭芭拉",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "芭芭拉",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Kaeya",
+      "lang": "de-de"
+    },
+    {
+      "name": "Kaeya",
+      "lang": "en-us"
+    },
+    {
+      "name": "Kaeya",
+      "lang": "es-es"
+    },
+    {
+      "name": "Kaeya",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Kaeya",
+      "lang": "id-id"
+    },
+    {
+      "name": "ガイア",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "케이아",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Kaeya",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Кэйа",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Kaeya",
+      "lang": "th-th"
+    },
+    {
+      "name": "Kaeya",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "凯亚",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "凱亞",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Diluc",
+      "lang": "de-de"
+    },
+    {
+      "name": "Diluc",
+      "lang": "en-us"
+    },
+    {
+      "name": "Diluc",
+      "lang": "es-es"
+    },
+    {
+      "name": "Diluc",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Diluc",
+      "lang": "id-id"
+    },
+    {
+      "name": "ディルック",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "다이루크",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Diluc",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Дилюк",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Diluc",
+      "lang": "th-th"
+    },
+    {
+      "name": "Diluc",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "迪卢克",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "迪盧克",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Razor",
+      "lang": "de-de"
+    },
+    {
+      "name": "Razor",
+      "lang": "en-us"
+    },
+    {
+      "name": "Razor",
+      "lang": "es-es"
+    },
+    {
+      "name": "Razor",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Razor",
+      "lang": "id-id"
+    },
+    {
+      "name": "レザー",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "레이저",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Razor",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Рэйзор",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Razor",
+      "lang": "th-th"
+    },
+    {
+      "name": "Razor",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "雷泽",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "雷澤",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Amber",
+      "lang": "de-de"
+    },
+    {
+      "name": "Amber",
+      "lang": "en-us"
+    },
+    {
+      "name": "Amber",
+      "lang": "es-es"
+    },
+    {
+      "name": "Amber",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Amber",
+      "lang": "id-id"
+    },
+    {
+      "name": "アンバー",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "엠버",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Amber",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Эмбер",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Amber",
+      "lang": "th-th"
+    },
+    {
+      "name": "Amber",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "安柏",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "安柏",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Venti",
+      "lang": "de-de"
+    },
+    {
+      "name": "Venti",
+      "lang": "en-us"
+    },
+    {
+      "name": "Venti",
+      "lang": "es-es"
+    },
+    {
+      "name": "Venti",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Venti",
+      "lang": "id-id"
+    },
+    {
+      "name": "ウェンティ",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "벤티",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Venti",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Венти",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Venti",
+      "lang": "th-th"
+    },
+    {
+      "name": "Venti",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "温迪",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "溫迪",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Xiangling",
+      "lang": "de-de"
+    },
+    {
+      "name": "Xiangling",
+      "lang": "en-us"
+    },
+    {
+      "name": "Xiangling",
+      "lang": "es-es"
+    },
+    {
+      "name": "Xiangling",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Xiangling",
+      "lang": "id-id"
+    },
+    {
+      "name": "香菱",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "향릉",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Xiangling",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Сян Лин",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Xiangling",
+      "lang": "th-th"
+    },
+    {
+      "name": "Xiangling",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "香菱",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "香菱",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Beidou",
+      "lang": "de-de"
+    },
+    {
+      "name": "Beidou",
+      "lang": "en-us"
+    },
+    {
+      "name": "Beidou",
+      "lang": "es-es"
+    },
+    {
+      "name": "Beidou",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Beidou",
+      "lang": "id-id"
+    },
+    {
+      "name": "北斗",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "북두",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Beidou",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Бэй Доу",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Beidou",
+      "lang": "th-th"
+    },
+    {
+      "name": "Beidou",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "北斗",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "北斗",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Xingqiu",
+      "lang": "de-de"
+    },
+    {
+      "name": "Xingqiu",
+      "lang": "en-us"
+    },
+    {
+      "name": "Xingchiu",
+      "lang": "es-es"
+    },
+    {
+      "name": "Xingqiu",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Xingqiu",
+      "lang": "id-id"
+    },
+    {
+      "name": "行秋",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "행추",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Xingqiu",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Син Цю",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Xingqiu",
+      "lang": "th-th"
+    },
+    {
+      "name": "Xingqiu",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "行秋",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "行秋",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Xiao",
+      "lang": "de-de"
+    },
+    {
+      "name": "Xiao",
+      "lang": "en-us"
+    },
+    {
+      "name": "Xiao",
+      "lang": "es-es"
+    },
+    {
+      "name": "Xiao",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Xiao",
+      "lang": "id-id"
+    },
+    {
+      "name": "魈",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "소",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Xiao",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Сяо",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Xiao",
+      "lang": "th-th"
+    },
+    {
+      "name": "Xiao",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "魈",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "魈",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Ningguang",
+      "lang": "de-de"
+    },
+    {
+      "name": "Ningguang",
+      "lang": "en-us"
+    },
+    {
+      "name": "Ninguang",
+      "lang": "es-es"
+    },
+    {
+      "name": "Ningguang",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Ningguang",
+      "lang": "id-id"
+    },
+    {
+      "name": "凝光",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "응광",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Ningguang",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Нин Гуан",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Ningguang",
+      "lang": "th-th"
+    },
+    {
+      "name": "Ningguang",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "凝光",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "凝光",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Klee",
+      "lang": "de-de"
+    },
+    {
+      "name": "Klee",
+      "lang": "en-us"
+    },
+    {
+      "name": "Klee",
+      "lang": "es-es"
+    },
+    {
+      "name": "Klee",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Klee",
+      "lang": "id-id"
+    },
+    {
+      "name": "クレー",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "클레",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Klee",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Кли",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Klee",
+      "lang": "th-th"
+    },
+    {
+      "name": "Klee",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "可莉",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "可莉",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Zhongli",
+      "lang": "de-de"
+    },
+    {
+      "name": "Zhongli",
+      "lang": "en-us"
+    },
+    {
+      "name": "Zhongli",
+      "lang": "es-es"
+    },
+    {
+      "name": "Zhongli",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Zhongli",
+      "lang": "id-id"
+    },
+    {
+      "name": "鍾離",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "종려",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Zhongli",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Чжун Ли",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Zhongli",
+      "lang": "th-th"
+    },
+    {
+      "name": "Zhongli",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "钟离",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "鍾離",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Fischl",
+      "lang": "de-de"
+    },
+    {
+      "name": "Fischl",
+      "lang": "en-us"
+    },
+    {
+      "name": "Fischl",
+      "lang": "es-es"
+    },
+    {
+      "name": "Fischl",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Fischl",
+      "lang": "id-id"
+    },
+    {
+      "name": "フィッシュル",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "피슬",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Fischl",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Фишль",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Fischl",
+      "lang": "th-th"
+    },
+    {
+      "name": "Fischl",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "菲谢尔",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "菲謝爾",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Bennett",
+      "lang": "de-de"
+    },
+    {
+      "name": "Bennett",
+      "lang": "en-us"
+    },
+    {
+      "name": "Bennett",
+      "lang": "es-es"
+    },
+    {
+      "name": "Bennett",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Bennett",
+      "lang": "id-id"
+    },
+    {
+      "name": "ベネット",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "베넷",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Bennett",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Беннет",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Bennett",
+      "lang": "th-th"
+    },
+    {
+      "name": "Bennett",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "班尼特",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "班尼特",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Tartaglia",
+      "lang": "de-de"
+    },
+    {
+      "name": "Tartaglia",
+      "lang": "en-us"
+    },
+    {
+      "name": "Tartaglia",
+      "lang": "es-es"
+    },
+    {
+      "name": "Tartaglia",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Tartaglia",
+      "lang": "id-id"
+    },
+    {
+      "name": "タルタリヤ",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "타르탈리아",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Tartaglia",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Тарталья",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Tartaglia",
+      "lang": "th-th"
+    },
+    {
+      "name": "Tartaglia",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "达达利亚",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "達達利亞",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Noelle",
+      "lang": "de-de"
+    },
+    {
+      "name": "Noelle",
+      "lang": "en-us"
+    },
+    {
+      "name": "Noelle",
+      "lang": "es-es"
+    },
+    {
+      "name": "Noëlle",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Noelle",
+      "lang": "id-id"
+    },
+    {
+      "name": "ノエル",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "노엘",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Noelle",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Ноэлль",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Noelle",
+      "lang": "th-th"
+    },
+    {
+      "name": "Noelle",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "诺艾尔",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "諾艾爾",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Qiqi",
+      "lang": "de-de"
+    },
+    {
+      "name": "Qiqi",
+      "lang": "en-us"
+    },
+    {
+      "name": "Qiqi",
+      "lang": "es-es"
+    },
+    {
+      "name": "Qiqi",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Qiqi",
+      "lang": "id-id"
+    },
+    {
+      "name": "七七",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "치치",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Qiqi",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Ци Ци",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Qiqi",
+      "lang": "th-th"
+    },
+    {
+      "name": "Qiqi",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "七七",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "七七",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Chongyun",
+      "lang": "de-de"
+    },
+    {
+      "name": "Chongyun",
+      "lang": "en-us"
+    },
+    {
+      "name": "Chongyun",
+      "lang": "es-es"
+    },
+    {
+      "name": "Chongyun",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Chongyun",
+      "lang": "id-id"
+    },
+    {
+      "name": "重雲",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "중운",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Chongyun",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Чун Юнь",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Chongyun",
+      "lang": "th-th"
+    },
+    {
+      "name": "Chongyun",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "重云",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "重雲",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Ganyu",
+      "lang": "de-de"
+    },
+    {
+      "name": "Ganyu",
+      "lang": "en-us"
+    },
+    {
+      "name": "Ganyu",
+      "lang": "es-es"
+    },
+    {
+      "name": "Ganyu",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Ganyu",
+      "lang": "id-id"
+    },
+    {
+      "name": "甘雨",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "감우",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Ganyu",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Гань Юй",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Ganyu",
+      "lang": "th-th"
+    },
+    {
+      "name": "Ganyu",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "甘雨",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "甘雨",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Albedo",
+      "lang": "de-de"
+    },
+    {
+      "name": "Albedo",
+      "lang": "en-us"
+    },
+    {
+      "name": "Albedo",
+      "lang": "es-es"
+    },
+    {
+      "name": "Albedo",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Albedo",
+      "lang": "id-id"
+    },
+    {
+      "name": "アルベド",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "알베도",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Albedo",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Альбедо",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Albedo",
+      "lang": "th-th"
+    },
+    {
+      "name": "Albedo",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "阿贝多",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "阿貝多",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Diona",
+      "lang": "de-de"
+    },
+    {
+      "name": "Diona",
+      "lang": "en-us"
+    },
+    {
+      "name": "Diona",
+      "lang": "es-es"
+    },
+    {
+      "name": "Diona",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Diona",
+      "lang": "id-id"
+    },
+    {
+      "name": "ディオナ",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "디오나",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Diona",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Диона",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Diona",
+      "lang": "th-th"
+    },
+    {
+      "name": "Diona",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "迪奥娜",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "迪奧娜",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Mona",
+      "lang": "de-de"
+    },
+    {
+      "name": "Mona",
+      "lang": "en-us"
+    },
+    {
+      "name": "Mona",
+      "lang": "es-es"
+    },
+    {
+      "name": "Mona",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Mona",
+      "lang": "id-id"
+    },
+    {
+      "name": "モナ",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "모나",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Mona",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Мона",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Mona",
+      "lang": "th-th"
+    },
+    {
+      "name": "Mona",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "莫娜",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "莫娜",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Keqing",
+      "lang": "de-de"
+    },
+    {
+      "name": "Keqing",
+      "lang": "en-us"
+    },
+    {
+      "name": "Keching",
+      "lang": "es-es"
+    },
+    {
+      "name": "Keqing",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Keqing",
+      "lang": "id-id"
+    },
+    {
+      "name": "刻晴",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "각청",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Keqing",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Кэ Цин",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Keqing",
+      "lang": "th-th"
+    },
+    {
+      "name": "Keqing",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "刻晴",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "刻晴",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Saccharose",
+      "lang": "de-de"
+    },
+    {
+      "name": "Sucrose",
+      "lang": "en-us"
+    },
+    {
+      "name": "Sacarosa",
+      "lang": "es-es"
+    },
+    {
+      "name": "Sucrose",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Sucrose",
+      "lang": "id-id"
+    },
+    {
+      "name": "スクロース",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "설탕",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Sucrose",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Сахароза",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Sucrose",
+      "lang": "th-th"
+    },
+    {
+      "name": "Sucrose",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "砂糖",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "砂糖",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Xinyan",
+      "lang": "de-de"
+    },
+    {
+      "name": "Xinyan",
+      "lang": "en-us"
+    },
+    {
+      "name": "Xinyan",
+      "lang": "es-es"
+    },
+    {
+      "name": "Xinyan",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Xinyan",
+      "lang": "id-id"
+    },
+    {
+      "name": "辛炎",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "신염",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Xinyan",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Синь Янь",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Xinyan",
+      "lang": "th-th"
+    },
+    {
+      "name": "Xinyan",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "辛焱",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "辛焱",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Rosaria",
+      "lang": "de-de"
+    },
+    {
+      "name": "Rosaria",
+      "lang": "en-us"
+    },
+    {
+      "name": "Rosaria",
+      "lang": "es-es"
+    },
+    {
+      "name": "Rosalia",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Rosaria",
+      "lang": "id-id"
+    },
+    {
+      "name": "ロサリア",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "로자리아",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Rosaria",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Розария",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Rosaria",
+      "lang": "th-th"
+    },
+    {
+      "name": "Rosaria",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "罗莎莉亚",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "蘿莎莉亞",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Hu Tao",
+      "lang": "de-de"
+    },
+    {
+      "name": "Hu Tao",
+      "lang": "en-us"
+    },
+    {
+      "name": "Hu Tao",
+      "lang": "es-es"
+    },
+    {
+      "name": "Hu Tao",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Hu Tao",
+      "lang": "id-id"
+    },
+    {
+      "name": "胡桃",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "호두",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Hutao",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Ху Тао",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Hu Tao",
+      "lang": "th-th"
+    },
+    {
+      "name": "Hu Tao",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "胡桃",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "胡桃",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Kaedehara Kazuha",
+      "lang": "de-de"
+    },
+    {
+      "name": "Kaedehara Kazuha",
+      "lang": "en-us"
+    },
+    {
+      "name": "Kaedehara Kazuha",
+      "lang": "es-es"
+    },
+    {
+      "name": "Kaedehara Kazuha",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Kaedehara Kazuha",
+      "lang": "id-id"
+    },
+    {
+      "name": "楓原万葉",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "카에데하라 카즈하",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Kaedehara Kazuha",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Кадзуха",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Kaedehara Kazuha",
+      "lang": "th-th"
+    },
+    {
+      "name": "Kaedehara Kazuha",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "枫原万叶",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "楓原萬葉",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Yanfei",
+      "lang": "de-de"
+    },
+    {
+      "name": "Yanfei",
+      "lang": "en-us"
+    },
+    {
+      "name": "Yanfei",
+      "lang": "es-es"
+    },
+    {
+      "name": "Yanfei",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Yanfei",
+      "lang": "id-id"
+    },
+    {
+      "name": "煙緋",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "연비",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Yanfei",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Янь Фэй",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Yanfei",
+      "lang": "th-th"
+    },
+    {
+      "name": "Yanfei",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "烟绯",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "煙緋",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Yoimiya",
+      "lang": "de-de"
+    },
+    {
+      "name": "Yoimiya",
+      "lang": "en-us"
+    },
+    {
+      "name": "Yoimiya",
+      "lang": "es-es"
+    },
+    {
+      "name": "Yoimiya",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Yoimiya",
+      "lang": "id-id"
+    },
+    {
+      "name": "宵宮",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "요이미야",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Yoimiya",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Ёимия",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Yoimiya",
+      "lang": "th-th"
+    },
+    {
+      "name": "Yoimiya",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "宵宫",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "宵宮",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Thoma",
+      "lang": "de-de"
+    },
+    {
+      "name": "Thoma",
+      "lang": "en-us"
+    },
+    {
+      "name": "Thoma",
+      "lang": "es-es"
+    },
+    {
+      "name": "Thomas",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Thoma",
+      "lang": "id-id"
+    },
+    {
+      "name": "トーマ",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "토마",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Thoma",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Тома",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Thoma",
+      "lang": "th-th"
+    },
+    {
+      "name": "Thoma",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "托马",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "托馬",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Eula",
+      "lang": "de-de"
+    },
+    {
+      "name": "Eula",
+      "lang": "en-us"
+    },
+    {
+      "name": "Eula",
+      "lang": "es-es"
+    },
+    {
+      "name": "Eula",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Eula",
+      "lang": "id-id"
+    },
+    {
+      "name": "エウルア",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "유라",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Eula",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Эола",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Eula",
+      "lang": "th-th"
+    },
+    {
+      "name": "Eula",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "优菈",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "優菈",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Shougun Raiden",
+      "lang": "de-de"
+    },
+    {
+      "name": "Raiden Shogun",
+      "lang": "en-us"
+    },
+    {
+      "name": "Shogun Raiden",
+      "lang": "es-es"
+    },
+    {
+      "name": "Shogun Raiden",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Raiden Shogun",
+      "lang": "id-id"
+    },
+    {
+      "name": "雷電将軍",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "라이덴 쇼군",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Shogun Raiden",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Райдэн",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Raiden Shogun",
+      "lang": "th-th"
+    },
+    {
+      "name": "Raiden Shogun",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "雷电将军",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "雷電將軍",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Sayu",
+      "lang": "de-de"
+    },
+    {
+      "name": "Sayu",
+      "lang": "en-us"
+    },
+    {
+      "name": "Sayu",
+      "lang": "es-es"
+    },
+    {
+      "name": "Sayu",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Sayu",
+      "lang": "id-id"
+    },
+    {
+      "name": "早柚",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "사유",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Sayu",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Саю",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Sayu",
+      "lang": "th-th"
+    },
+    {
+      "name": "Sayu",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "早柚",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "早柚",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Sangonomiya Kokomi",
+      "lang": "de-de"
+    },
+    {
+      "name": "Sangonomiya Kokomi",
+      "lang": "en-us"
+    },
+    {
+      "name": "Sangonomiya Kokomi",
+      "lang": "es-es"
+    },
+    {
+      "name": "Sangonomiya Kokomi",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Sangonomiya Kokomi",
+      "lang": "id-id"
+    },
+    {
+      "name": "珊瑚宮心海",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "산고노미야 코코미",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Sangonomiya Kokomi",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Кокоми",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Sangonomiya Kokomi",
+      "lang": "th-th"
+    },
+    {
+      "name": "Sangonomiya Kokomi",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "珊瑚宫心海",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "珊瑚宮心海",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Gorou",
+      "lang": "de-de"
+    },
+    {
+      "name": "Gorou",
+      "lang": "en-us"
+    },
+    {
+      "name": "Gorou",
+      "lang": "es-es"
+    },
+    {
+      "name": "Gorou",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Gorou",
+      "lang": "id-id"
+    },
+    {
+      "name": "ゴロー",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "고로",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Gorou",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Горо",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Gorou",
+      "lang": "th-th"
+    },
+    {
+      "name": "Gorou",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "五郎",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "五郎",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Kujou Sara",
+      "lang": "de-de"
+    },
+    {
+      "name": "Kujou Sara",
+      "lang": "en-us"
+    },
+    {
+      "name": "Kujou Sara",
+      "lang": "es-es"
+    },
+    {
+      "name": "Kujou Sara",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Kujou Sara",
+      "lang": "id-id"
+    },
+    {
+      "name": "九条裟羅",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "쿠죠 사라",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Kujou Sara",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Сара",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Kujou Sara",
+      "lang": "th-th"
+    },
+    {
+      "name": "Kujou Sara",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "九条裟罗",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "九條裟羅",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Arataki Itto",
+      "lang": "de-de"
+    },
+    {
+      "name": "Arataki Itto",
+      "lang": "en-us"
+    },
+    {
+      "name": "Arataki Itto",
+      "lang": "es-es"
+    },
+    {
+      "name": "Arataki Itto",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Arataki Itto",
+      "lang": "id-id"
+    },
+    {
+      "name": "荒瀧一斗",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "아라타키 이토",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Arataki Itto",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Итто",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Arataki Itto",
+      "lang": "th-th"
+    },
+    {
+      "name": "Arataki Itto",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "荒泷一斗",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "荒瀧一斗",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Yae Miko",
+      "lang": "de-de"
+    },
+    {
+      "name": "Yae Miko",
+      "lang": "en-us"
+    },
+    {
+      "name": "Yae Miko",
+      "lang": "es-es"
+    },
+    {
+      "name": "Yae Miko",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Yae Miko",
+      "lang": "id-id"
+    },
+    {
+      "name": "八重神子",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "야에 미코",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Yae Miko",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Яэ Мико",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Yae Miko",
+      "lang": "th-th"
+    },
+    {
+      "name": "Yae Miko",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "八重神子",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "八重神子",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Aloy",
+      "lang": "de-de"
+    },
+    {
+      "name": "Aloy",
+      "lang": "en-us"
+    },
+    {
+      "name": "Aloy",
+      "lang": "es-es"
+    },
+    {
+      "name": "Aloy",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Aloy",
+      "lang": "id-id"
+    },
+    {
+      "name": "アーロイ",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "에일로이",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Aloy",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Элой",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Aloy",
+      "lang": "th-th"
+    },
+    {
+      "name": "Aloy",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "埃洛伊",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "亞蘿伊",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Shenhe",
+      "lang": "de-de"
+    },
+    {
+      "name": "Shenhe",
+      "lang": "en-us"
+    },
+    {
+      "name": "Shenhe",
+      "lang": "es-es"
+    },
+    {
+      "name": "Shenhe",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Shenhe",
+      "lang": "id-id"
+    },
+    {
+      "name": "申鶴",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "신학",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Shenhe",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Шэнь Хэ",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Shenhe",
+      "lang": "th-th"
+    },
+    {
+      "name": "Shenhe",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "申鹤",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "申鶴",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Yun Jin",
+      "lang": "de-de"
+    },
+    {
+      "name": "Yun Jin",
+      "lang": "en-us"
+    },
+    {
+      "name": "Yun Jin",
+      "lang": "es-es"
+    },
+    {
+      "name": "Yun Jin",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Yun Jin",
+      "lang": "id-id"
+    },
+    {
+      "name": "雲菫",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "운근",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Yunjin",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Юнь Цзинь",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Yun Jin",
+      "lang": "th-th"
+    },
+    {
+      "name": "Yun Jin",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "云堇",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "雲堇",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Kamisato Ayato",
+      "lang": "de-de"
+    },
+    {
+      "name": "Kamisato Ayato",
+      "lang": "en-us"
+    },
+    {
+      "name": "Kamisato Ayato",
+      "lang": "es-es"
+    },
+    {
+      "name": "Kamisato Ayato",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Kamisato Ayato",
+      "lang": "id-id"
+    },
+    {
+      "name": "神里綾人",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "카미사토 아야토",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Kamisato Ayato",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Аято",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Kamisato Ayato",
+      "lang": "th-th"
+    },
+    {
+      "name": "Kamisato Ayato",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "神里绫人",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "神里綾人",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Stumpfes Schwert",
+      "lang": "de-de"
+    },
+    {
+      "name": "Dull Blade",
+      "lang": "en-us"
+    },
+    {
+      "name": "Hoja Desafilada",
+      "lang": "es-es"
+    },
+    {
+      "name": "Épée émoussée",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Dull Blade",
+      "lang": "id-id"
+    },
+    {
+      "name": "無鋒の剣",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "무인검",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Lâmina Sem Fio",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Тупой меч",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Dull Blade",
+      "lang": "th-th"
+    },
+    {
+      "name": "Vô Phong Kiếm",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "无锋剑",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "無鋒劍",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Silberschwert",
+      "lang": "de-de"
+    },
+    {
+      "name": "Silver Sword",
+      "lang": "en-us"
+    },
+    {
+      "name": "Espada Plateada",
+      "lang": "es-es"
+    },
+    {
+      "name": "Épée en argent",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Silver Sword",
+      "lang": "id-id"
+    },
+    {
+      "name": "銀の剣",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "실버 소드",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Espada de Prata",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Серебряный меч",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Silver Sword",
+      "lang": "th-th"
+    },
+    {
+      "name": "Kiếm Bạc",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "银剑",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "銀劍",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Kühle Klinge",
+      "lang": "de-de"
+    },
+    {
+      "name": "Cool Steel",
+      "lang": "en-us"
+    },
+    {
+      "name": "Hoja Fría",
+      "lang": "es-es"
+    },
+    {
+      "name": "Lame froide",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Cool Steel",
+      "lang": "id-id"
+    },
+    {
+      "name": "冷刃",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "차가운 칼날",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Lâmina Fria",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Холодное лезвие",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Cool Steel",
+      "lang": "th-th"
+    },
+    {
+      "name": "Lãnh Nhẫn",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "冷刃",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "冷刃",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Schwert der Dämmerung",
+      "lang": "de-de"
+    },
+    {
+      "name": "Harbinger of Dawn",
+      "lang": "en-us"
+    },
+    {
+      "name": "Espada del Alba",
+      "lang": "es-es"
+    },
+    {
+      "name": "Messager de l'Aube",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Harbinger of Dawn",
+      "lang": "id-id"
+    },
+    {
+      "name": "黎明の神剣",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "여명신검",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Prenúncio do Alvorecer",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Предвестник зари",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Harbinger of Dawn",
+      "lang": "th-th"
+    },
+    {
+      "name": "Thần Kiếm Lê Minh",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "黎明神剑",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "黎明神劍",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Reiseschwert",
+      "lang": "de-de"
+    },
+    {
+      "name": "Traveler's Handy Sword",
+      "lang": "en-us"
+    },
+    {
+      "name": "Espada del Viajero",
+      "lang": "es-es"
+    },
+    {
+      "name": "Épée du voyageur",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Traveler's Handy Sword",
+      "lang": "id-id"
+    },
+    {
+      "name": "旅道の剣",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "여행자의 검",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Espada do Viajante",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Меч путешественника",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Traveler's Handy Sword",
+      "lang": "th-th"
+    },
+    {
+      "name": "Kiếm Lữ Hành",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "旅行剑",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "旅行劍",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Dunkles Eisenschwert",
+      "lang": "de-de"
+    },
+    {
+      "name": "Dark Iron Sword",
+      "lang": "en-us"
+    },
+    {
+      "name": "Espada de Hierro Oscuro",
+      "lang": "es-es"
+    },
+    {
+      "name": "Épée en fer noir",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Dark Iron Sword",
+      "lang": "id-id"
+    },
+    {
+      "name": "暗鉄剣",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "암철검",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Espada de Ferro Negro",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Тёмный железный меч",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Dark Iron Sword",
+      "lang": "th-th"
+    },
+    {
+      "name": "Kiếm Sắt Đen",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "暗铁剑",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "暗鐵劍",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Filetiermesser",
+      "lang": "de-de"
+    },
+    {
+      "name": "Fillet Blade",
+      "lang": "en-us"
+    },
+    {
+      "name": "Hoja de Filetear",
+      "lang": "es-es"
+    },
+    {
+      "name": "Couteau à filets",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Fillet Blade",
+      "lang": "id-id"
+    },
+    {
+      "name": "チ虎魚の刀",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "흘호 생선회칼",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Lâmina de Filés",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Филейный нож",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Fillet Blade",
+      "lang": "th-th"
+    },
+    {
+      "name": "Đao Săn Cá",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "吃虎鱼刀",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "吃虎魚刀",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Himmelsflug-Schwert",
+      "lang": "de-de"
+    },
+    {
+      "name": "Skyrider Sword",
+      "lang": "en-us"
+    },
+    {
+      "name": "Espada Surcacielos",
+      "lang": "es-es"
+    },
+    {
+      "name": "Épée céleste",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Skyrider Sword",
+      "lang": "id-id"
+    },
+    {
+      "name": "飛天御剣",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "비천어검",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Espada do Cavaleiro do Céu",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Меч небесного всадника",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Skyrider Sword",
+      "lang": "th-th"
+    },
+    {
+      "name": "Kiếm Phi Thiên",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "飞天御剑",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "飛天御劍",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Favonius-Schwert",
+      "lang": "de-de"
+    },
+    {
+      "name": "Favonius Sword",
+      "lang": "en-us"
+    },
+    {
+      "name": "Espada de Favonius",
+      "lang": "es-es"
+    },
+    {
+      "name": "Épée de Favonius",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Favonius Sword",
+      "lang": "id-id"
+    },
+    {
+      "name": "西風剣",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "페보니우스 검",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Espada de Favonius",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Меч Фавония",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Favonius Sword",
+      "lang": "th-th"
+    },
+    {
+      "name": "Tây Phong Kiếm",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "西风剑",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "西風劍",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Flöte",
+      "lang": "de-de"
+    },
+    {
+      "name": "The Flute",
+      "lang": "en-us"
+    },
+    {
+      "name": "Flauta",
+      "lang": "es-es"
+    },
+    {
+      "name": "Flûte",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "The Flute",
+      "lang": "id-id"
+    },
+    {
+      "name": "笛の剣",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "피리검",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "A Flauta",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Меч-флейта",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "The Flute",
+      "lang": "th-th"
+    },
+    {
+      "name": "Kiếm Sáo",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "笛剑",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "笛劍",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Opferschwert",
+      "lang": "de-de"
+    },
+    {
+      "name": "Sacrificial Sword",
+      "lang": "en-us"
+    },
+    {
+      "name": "Espada de Sacrificio",
+      "lang": "es-es"
+    },
+    {
+      "name": "Épée rituelle",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Sacrificial Sword",
+      "lang": "id-id"
+    },
+    {
+      "name": "祭礼の剣",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "제례검",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Espada do Sacrifício",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Церемониальный меч",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Sacrificial Sword",
+      "lang": "th-th"
+    },
+    {
+      "name": "Kiếm Tế Lễ",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "祭礼剑",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "祭禮劍",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Königliches Langschwert",
+      "lang": "de-de"
+    },
+    {
+      "name": "Royal Longsword",
+      "lang": "en-us"
+    },
+    {
+      "name": "Espada Real Larga",
+      "lang": "es-es"
+    },
+    {
+      "name": "Épée longue royale",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Royal Longsword",
+      "lang": "id-id"
+    },
+    {
+      "name": "旧貴族長剣",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "왕실의 장검",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Espada Longa Real",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Меч аристократов",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Royal Longsword",
+      "lang": "th-th"
+    },
+    {
+      "name": "Trường Kiếm Tông Thất",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "宗室长剑",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "宗室長劍",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Drachenschrei",
+      "lang": "de-de"
+    },
+    {
+      "name": "Lion's Roar",
+      "lang": "en-us"
+    },
+    {
+      "name": "Rugido del León",
+      "lang": "es-es"
+    },
+    {
+      "name": "Rugissement du Lion",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Lion's Roar",
+      "lang": "id-id"
+    },
+    {
+      "name": "匣中龍吟",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "용의 포효",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Rugido do Leão",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Драконий рык",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Lion's Roar",
+      "lang": "th-th"
+    },
+    {
+      "name": "Tiếng Hét Của Rồng",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "匣里龙吟",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "匣裡龍吟",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Steinschneider-Prototyp",
+      "lang": "de-de"
+    },
+    {
+      "name": "Prototype Rancour",
+      "lang": "en-us"
+    },
+    {
+      "name": "Prototipo Rencor",
+      "lang": "es-es"
+    },
+    {
+      "name": "Tailleur de pierre (prototype)",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Prototype Rancour",
+      "lang": "id-id"
+    },
+    {
+      "name": "斬岩·試作",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "참암 프로토타입",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Protótipo Rancor",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Прототип: Злоба",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Prototype Rancour",
+      "lang": "th-th"
+    },
+    {
+      "name": "Mẫu Trảm Nham",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "试作斩岩",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "試作斬岩",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Eisenstich",
+      "lang": "de-de"
+    },
+    {
+      "name": "Iron Sting",
+      "lang": "en-us"
+    },
+    {
+      "name": "Espina de Hierro",
+      "lang": "es-es"
+    },
+    {
+      "name": "Piqûre de fer",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Iron Sting",
+      "lang": "id-id"
+    },
+    {
+      "name": "鉄蜂の刺し",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "강철 벌침",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Espinho de Ferro",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Стальное жало",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Iron Sting",
+      "lang": "th-th"
+    },
+    {
+      "name": "Thiết Phong Kích",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "铁蜂刺",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "鐵蜂刺",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Schwarzstein-Langschwert",
+      "lang": "de-de"
+    },
+    {
+      "name": "Blackcliff Longsword",
+      "lang": "en-us"
+    },
+    {
+      "name": "Espada Larga del Peñasco Oscuro",
+      "lang": "es-es"
+    },
+    {
+      "name": "Épée longue de Rochenoire",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Blackcliff Longsword",
+      "lang": "id-id"
+    },
+    {
+      "name": "黒岩の長剣",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "흑암 장검",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Espada do Penhasco Obscuro",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Черногорский длинный меч",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Blackcliff Longsword",
+      "lang": "th-th"
+    },
+    {
+      "name": "Hắc Nham Trường Kiếm",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "黑岩长剑",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "黑岩長劍",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Schwarzes Schwert",
+      "lang": "de-de"
+    },
+    {
+      "name": "The Black Sword",
+      "lang": "en-us"
+    },
+    {
+      "name": "Espada Negra",
+      "lang": "es-es"
+    },
+    {
+      "name": "Épée noire",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "The Black Sword",
+      "lang": "id-id"
+    },
+    {
+      "name": "黒剣",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "칠흑검",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Espada Negra",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Чёрный меч",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "The Black Sword",
+      "lang": "th-th"
+    },
+    {
+      "name": "Kiếm Đen",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "黑剑",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "黑劍",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Gassenleuchte",
+      "lang": "de-de"
+    },
+    {
+      "name": "The Alley Flash",
+      "lang": "en-us"
+    },
+    {
+      "name": "Destello en la Oscuridad",
+      "lang": "es-es"
+    },
+    {
+      "name": "Éclair des impasses",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "The Alley Flash",
+      "lang": "id-id"
+    },
+    {
+      "name": "ダークアレイの閃光",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "뒷골목의 섬광",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Brilho do Beco",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Вспышка во тьме",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "The Alley Flash",
+      "lang": "th-th"
+    },
+    {
+      "name": "Tia Sáng Nơi Hẻm Tối",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "暗巷闪光",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "暗巷閃光",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Schwert der Niederkunft",
+      "lang": "de-de"
+    },
+    {
+      "name": "Sword of Descension",
+      "lang": "en-us"
+    },
+    {
+      "name": "Espada del Descenso",
+      "lang": "es-es"
+    },
+    {
+      "name": "Épée de la descente",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Sword of Descension",
+      "lang": "id-id"
+    },
+    {
+      "name": "降臨の剣",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "강림의 검",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Espada do Advento",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Меч нисхождения",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Sword of Descension",
+      "lang": "th-th"
+    },
+    {
+      "name": "Kiếm Giáng Lâm",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "降临之剑",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "降臨之劍",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Schwert der Verderbnis",
+      "lang": "de-de"
+    },
+    {
+      "name": "Festering Desire",
+      "lang": "en-us"
+    },
+    {
+      "name": "Deseo Ponzoñoso",
+      "lang": "es-es"
+    },
+    {
+      "name": "Croc suppurant",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Festering Desire",
+      "lang": "id-id"
+    },
+    {
+      "name": "腐植の剣",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "부식의 검",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Espada Pútrida",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Осквернённое желание",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Festering Desire",
+      "lang": "th-th"
+    },
+    {
+      "name": "Răng Nanh Rỉ Sét",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "腐殖之剑",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "腐殖之劍",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Amenoma Kageuchi",
+      "lang": "de-de"
+    },
+    {
+      "name": "Amenoma Kageuchi",
+      "lang": "en-us"
+    },
+    {
+      "name": "Espada Amenoma Gemela",
+      "lang": "es-es"
+    },
+    {
+      "name": "Lame kageuchi d'Amenoma",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Amenoma Kageuchi",
+      "lang": "id-id"
+    },
+    {
+      "name": "天目影打",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "아메노마 카게우치가타나",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Lâmina Amenoma Kageuta",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Амэнома Кагэути",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Amenoma Kageuchi",
+      "lang": "th-th"
+    },
+    {
+      "name": "Đoản Đao Amenoma",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "天目影打刀",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "天目影打刀",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Zinnoberspindel",
+      "lang": "de-de"
+    },
+    {
+      "name": "Cinnabar Spindle",
+      "lang": "en-us"
+    },
+    {
+      "name": "Huso de Cinabrio",
+      "lang": "es-es"
+    },
+    {
+      "name": "Fuseau de cinabre",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Cinnabar Spindle",
+      "lang": "id-id"
+    },
+    {
+      "name": "シナバースピンドル",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "진사의 방추",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Haste de Cinábrio",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Киноварное веретено",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Cinnabar Spindle",
+      "lang": "th-th"
+    },
+    {
+      "name": "Con Thoi Chu Sa",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "辰砂之纺锤",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "辰砂之紡錘",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Windfalke",
+      "lang": "de-de"
+    },
+    {
+      "name": "Aquila Favonia",
+      "lang": "en-us"
+    },
+    {
+      "name": "Aquila Favonia",
+      "lang": "es-es"
+    },
+    {
+      "name": "Épée du faucon",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Aquila Favonia",
+      "lang": "id-id"
+    },
+    {
+      "name": "風鷹剣",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "매의 검",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Falcão",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Меч Сокола",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Aquila Favonia",
+      "lang": "th-th"
+    },
+    {
+      "name": "Phong Ưng Kiếm",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "风鹰剑",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "風鷹劍",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Himmelsklinge",
+      "lang": "de-de"
+    },
+    {
+      "name": "Skyward Blade",
+      "lang": "en-us"
+    },
+    {
+      "name": "Hoja Afilada Celestial",
+      "lang": "es-es"
+    },
+    {
+      "name": "Lame de la Voûte d'Azur",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Skyward Blade",
+      "lang": "id-id"
+    },
+    {
+      "name": "天空の刃",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "천공의 검",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Espada Celestial",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Небесный меч",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Skyward Blade",
+      "lang": "th-th"
+    },
+    {
+      "name": "Thiên Không Kiếm",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "天空之刃",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "天空之刃",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Blasser Schwur der Freiheit",
+      "lang": "de-de"
+    },
+    {
+      "name": "Freedom-Sworn",
+      "lang": "en-us"
+    },
+    {
+      "name": "Juramento por la Libertad",
+      "lang": "es-es"
+    },
+    {
+      "name": "Serment de la liberté",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Freedom-Sworn",
+      "lang": "id-id"
+    },
+    {
+      "name": "蒼古なる自由への誓い",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "오래된 자유의 서약",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Juramento pela Liberdade",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Клятва свободы",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Freedom-Sworn",
+      "lang": "th-th"
+    },
+    {
+      "name": "Lời Thề Tự Do Cổ Xưa",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "苍古自由之誓",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "蒼古自由之誓",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Gipfelbrecher",
+      "lang": "de-de"
+    },
+    {
+      "name": "Summit Shaper",
+      "lang": "en-us"
+    },
+    {
+      "name": "Rompemontañas",
+      "lang": "es-es"
+    },
+    {
+      "name": "Tranche-sommets",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Summit Shaper",
+      "lang": "id-id"
+    },
+    {
+      "name": "斬山の刃",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "참봉의 칼날",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Cortador de Montanhas",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Кромсатель пиков",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Summit Shaper",
+      "lang": "th-th"
+    },
+    {
+      "name": "Kiếm Chước Phong",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "斫峰之刃",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "斫峰之刃",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Moosgrüner Fels",
+      "lang": "de-de"
+    },
+    {
+      "name": "Primordial Jade Cutter",
+      "lang": "en-us"
+    },
+    {
+      "name": "Cortador de Jade Primordial",
+      "lang": "es-es"
+    },
+    {
+      "name": "Coupeur de jade primordial",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Primordial Jade Cutter",
+      "lang": "id-id"
+    },
+    {
+      "name": "磐岩結緑",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "반암결록",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Cortador de Jade Primordial",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Драгоценный омут",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Primordial Jade Cutter",
+      "lang": "th-th"
+    },
+    {
+      "name": "Bàn Nham Kết Lục",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "磐岩结绿",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "磐岩結綠",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Widerschein des Nebelsplitters",
+      "lang": "de-de"
+    },
+    {
+      "name": "Mistsplitter Reforged",
+      "lang": "en-us"
+    },
+    {
+      "name": "Reflejo de las Tinieblas",
+      "lang": "es-es"
+    },
+    {
+      "name": "Reflet de tranche-brume",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Mistsplitter Reforged",
+      "lang": "id-id"
+    },
+    {
+      "name": "霧切の廻光",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "안개를 가르는 회광",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Cortadora da Neblina Reforjada",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Рассекающий туман",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Mistsplitter Reforged",
+      "lang": "th-th"
+    },
+    {
+      "name": "Ánh Sáng Đêm Sương Mù",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "雾切之回光",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "霧切之回光",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Haran Geppaku Futsu",
+      "lang": "de-de"
+    },
+    {
+      "name": "Haran Geppaku Futsu",
+      "lang": "en-us"
+    },
+    {
+      "name": "Luna Ondulante de Futsu",
+      "lang": "es-es"
+    },
+    {
+      "name": "Lune ondulante de Futsu",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Haran Geppaku Futsu",
+      "lang": "id-id"
+    },
+    {
+      "name": "波乱月白経津",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "하란 월백의 후츠",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Maremoto da Lua de Futsu",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Харан гэппаку фуцу",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Haran Geppaku Futsu",
+      "lang": "th-th"
+    },
+    {
+      "name": "Haran Geppaku Futsu",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "波乱月白经津",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "波亂月白經津",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Übungsgroßschwert",
+      "lang": "de-de"
+    },
+    {
+      "name": "Waster Greatsword",
+      "lang": "en-us"
+    },
+    {
+      "name": "Gran Espada del Guerrero",
+      "lang": "es-es"
+    },
+    {
+      "name": "Épée d'entraînement",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Waster Greatsword",
+      "lang": "id-id"
+    },
+    {
+      "name": "訓練用大剣",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "훈련용 대검",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Espadão do Julgamento",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Двуручный меч богатыря",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Waster Greatsword",
+      "lang": "th-th"
+    },
+    {
+      "name": "Kiếm Huấn Luyện",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "训练大剑",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "訓練大劍",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Söldnerzweihänder",
+      "lang": "de-de"
+    },
+    {
+      "name": "Old Merc's Pal",
+      "lang": "en-us"
+    },
+    {
+      "name": "Espada del Mercenario",
+      "lang": "es-es"
+    },
+    {
+      "name": "Lame du mercenaire",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Old Merc's Pal",
+      "lang": "id-id"
+    },
+    {
+      "name": "傭兵の重剣",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "용병 중검",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Espada do Mercenário",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Лучший друг наёмника",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Old Merc's Pal",
+      "lang": "th-th"
+    },
+    {
+      "name": "Kiếm Dụng Binh",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "佣兵重剑",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "傭兵重劍",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Eiserner Schatten",
+      "lang": "de-de"
+    },
+    {
+      "name": "Ferrous Shadow",
+      "lang": "en-us"
+    },
+    {
+      "name": "Sombra Férrea",
+      "lang": "es-es"
+    },
+    {
+      "name": "Ombre ferreuse",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Ferrous Shadow",
+      "lang": "id-id"
+    },
+    {
+      "name": "鉄影段平",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "강철의 그림자",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Sombra de Ferro",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Металлическая тень",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Ferrous Shadow",
+      "lang": "th-th"
+    },
+    {
+      "name": "Kiếm Thiết Ảnh",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "铁影阔剑",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "鐵影闊劍",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Drachenblutschwert",
+      "lang": "de-de"
+    },
+    {
+      "name": "Bloodtainted Greatsword",
+      "lang": "en-us"
+    },
+    {
+      "name": "Gran Espada Sangrienta",
+      "lang": "es-es"
+    },
+    {
+      "name": "Épée sanglante",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Bloodtainted Greatsword",
+      "lang": "id-id"
+    },
+    {
+      "name": "龍血を浴びた剣",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "드래곤 블러드 소드",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Espadão Sangrento",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Меч драконьей крови",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Bloodtainted Greatsword",
+      "lang": "th-th"
+    },
+    {
+      "name": "Kiếm Huyết Rồng",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "沐浴龙血的剑",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "沐浴龍血的劍",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Weißes Eisengroßschwert",
+      "lang": "de-de"
+    },
+    {
+      "name": "White Iron Greatsword",
+      "lang": "en-us"
+    },
+    {
+      "name": "Espada de Hierro Blanco",
+      "lang": "es-es"
+    },
+    {
+      "name": "Grande épée en fer blanc",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "White Iron Greatsword",
+      "lang": "id-id"
+    },
+    {
+      "name": "白鉄の大剣",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "백철 대검",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Espadão de Ferro Branco",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Меч из белого железа",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "White Iron Greatsword",
+      "lang": "th-th"
+    },
+    {
+      "name": "Kiếm Bạch Thiết",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "白铁大剑",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "白鐵大劍",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Quarzgroßschwert",
+      "lang": "de-de"
+    },
+    {
+      "name": "Quartz",
+      "lang": "en-us"
+    },
+    {
+      "name": "Espada de Cuarzo",
+      "lang": "es-es"
+    },
+    {
+      "name": "Grande épée en quartz",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Quartz",
+      "lang": "id-id"
+    },
+    {
+      "name": "石英大剣",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "석영대검",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Quartzo",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Кварц",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Quartz",
+      "lang": "th-th"
+    },
+    {
+      "name": "Kiếm Thạch Anh",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "石英大剑",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "石英大劍",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Schlagfestes Argument",
+      "lang": "de-de"
+    },
+    {
+      "name": "Debate Club",
+      "lang": "en-us"
+    },
+    {
+      "name": "Garrote del Debate",
+      "lang": "es-es"
+    },
+    {
+      "name": "Épée de la raison",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Debate Club",
+      "lang": "id-id"
+    },
+    {
+      "name": "理屈責め",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "훌륭한 대화수단",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Porrete da Razão",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Дубина переговоров",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Debate Club",
+      "lang": "th-th"
+    },
+    {
+      "name": "Gậy Thu Phục",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "以理服人",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "以理服人",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Himmelsflug-Großschwert",
+      "lang": "de-de"
+    },
+    {
+      "name": "Skyrider Greatsword",
+      "lang": "en-us"
+    },
+    {
+      "name": "Gran Espada Surcacielos",
+      "lang": "es-es"
+    },
+    {
+      "name": "Grande épée céleste",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Skyrider Greatsword",
+      "lang": "id-id"
+    },
+    {
+      "name": "飛天大御剣",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "비천대어검",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Espadão do Cavaleiro do Céu",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Большой меч небесного всадника",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Skyrider Greatsword",
+      "lang": "th-th"
+    },
+    {
+      "name": "Đại Kiếm Phi Thiên",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "飞天大御剑",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "飛天大御劍",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Favonius-Großschwert",
+      "lang": "de-de"
+    },
+    {
+      "name": "Favonius Greatsword",
+      "lang": "en-us"
+    },
+    {
+      "name": "Gran Espada de Favonius",
+      "lang": "es-es"
+    },
+    {
+      "name": "Espadon de Favonius",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Favonius Greatsword",
+      "lang": "id-id"
+    },
+    {
+      "name": "西風大剣",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "페보니우스 대검",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Espadão de Favonius",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Двуручный меч Фавония",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Favonius Greatsword",
+      "lang": "th-th"
+    },
+    {
+      "name": "Đại Kiếm Tây Phong",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "西风大剑",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "西風大劍",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Glocke",
+      "lang": "de-de"
+    },
+    {
+      "name": "The Bell",
+      "lang": "en-us"
+    },
+    {
+      "name": "Espada del Tiempo",
+      "lang": "es-es"
+    },
+    {
+      "name": "Épée-horloge",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "The Bell",
+      "lang": "id-id"
+    },
+    {
+      "name": "鐘の剣",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "시간의 검",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "O Sino",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Меч-колокол",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "The Bell",
+      "lang": "th-th"
+    },
+    {
+      "name": "Kiếm Chuông",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "钟剑",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "鐘劍",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Opfergroßschwert",
+      "lang": "de-de"
+    },
+    {
+      "name": "Sacrificial Greatsword",
+      "lang": "en-us"
+    },
+    {
+      "name": "Gran Espada de Sacrificio",
+      "lang": "es-es"
+    },
+    {
+      "name": "Espadon rituel",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Sacrificial Greatsword",
+      "lang": "id-id"
+    },
+    {
+      "name": "祭礼の大剣",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "제례 대검",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Espadão do Sacrifício",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Церемониальный двуручный меч",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Sacrificial Greatsword",
+      "lang": "th-th"
+    },
+    {
+      "name": "Đại Kiếm Tế Lễ",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "祭礼大剑",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "祭禮大劍",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Königliches Großschwert",
+      "lang": "de-de"
+    },
+    {
+      "name": "Royal Greatsword",
+      "lang": "en-us"
+    },
+    {
+      "name": "Gran Espada Real",
+      "lang": "es-es"
+    },
+    {
+      "name": "Espadon royal",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Royal Greatsword",
+      "lang": "id-id"
+    },
+    {
+      "name": "旧貴族大剣",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "왕실의 대검",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Espadão Real",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Королевский двуручный меч",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Royal Greatsword",
+      "lang": "th-th"
+    },
+    {
+      "name": "Đại Kiếm Tông Thất",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "宗室大剑",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "宗室大劍",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Regenschnitter",
+      "lang": "de-de"
+    },
+    {
+      "name": "Rainslasher",
+      "lang": "en-us"
+    },
+    {
+      "name": "Segadora de la Lluvia",
+      "lang": "es-es"
+    },
+    {
+      "name": "Fluorescence",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Rainslasher",
+      "lang": "id-id"
+    },
+    {
+      "name": "雨裁",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "빗물 베기",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Segadeira da Chuva",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Дождерез",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Rainslasher",
+      "lang": "th-th"
+    },
+    {
+      "name": "Vũ Tài",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "雨裁",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "雨裁",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Guhua-Prototyp",
+      "lang": "de-de"
+    },
+    {
+      "name": "Prototype Archaic",
+      "lang": "en-us"
+    },
+    {
+      "name": "Prototipo Arcaico",
+      "lang": "es-es"
+    },
+    {
+      "name": "Espadon (prototype)",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Prototype Archaic",
+      "lang": "id-id"
+    },
+    {
+      "name": "古華·試作",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "고화 프로토타입",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Protótipo Arcaico",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Прототип: Архаичный",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Prototype Archaic",
+      "lang": "th-th"
+    },
+    {
+      "name": "Mẫu Cổ Hoa",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "试作古华",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "試作古華",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Weißer Schatten",
+      "lang": "de-de"
+    },
+    {
+      "name": "Whiteblind",
+      "lang": "en-us"
+    },
+    {
+      "name": "Sombra Blanca",
+      "lang": "es-es"
+    },
+    {
+      "name": "Ombre immaculée",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Whiteblind",
+      "lang": "id-id"
+    },
+    {
+      "name": "白影の剣",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "백영검",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Sombra Branca",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Белая тень",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Whiteblind",
+      "lang": "th-th"
+    },
+    {
+      "name": "Kiếm Bạch Ảnh",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "白影剑",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "白影劍",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Schwarzstein-Schneide",
+      "lang": "de-de"
+    },
+    {
+      "name": "Blackcliff Slasher",
+      "lang": "en-us"
+    },
+    {
+      "name": "Gran Hoja del Peñasco Oscuro",
+      "lang": "es-es"
+    },
+    {
+      "name": "Trancheuse de Rochenoire",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Blackcliff Slasher",
+      "lang": "id-id"
+    },
+    {
+      "name": "黒岩の斬刀",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "흑암참도",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Foice do Penhasco Obscuro",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Черногорская бритва",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Blackcliff Slasher",
+      "lang": "th-th"
+    },
+    {
+      "name": "Hắc Nham Trảm Đao",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "黑岩斩刀",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "黑岩斬刀",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Knochenschwert",
+      "lang": "de-de"
+    },
+    {
+      "name": "Serpent Spine",
+      "lang": "en-us"
+    },
+    {
+      "name": "Médula de la Serpiente Marina",
+      "lang": "es-es"
+    },
+    {
+      "name": "Ossature du dragon",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Serpent Spine",
+      "lang": "id-id"
+    },
+    {
+      "name": "螭龍の剣",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "이무기 검",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Espinha Dorsal da Serpente",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Меч драконьей кости",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Serpent Spine",
+      "lang": "th-th"
+    },
+    {
+      "name": "Kiếm Li Cốt",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "螭骨剑",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "螭骨劍",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Antikes Millelithenschwert",
+      "lang": "de-de"
+    },
+    {
+      "name": "Lithic Blade",
+      "lang": "en-us"
+    },
+    {
+      "name": "Espada Lítica",
+      "lang": "es-es"
+    },
+    {
+      "name": "Épée antique des Millelithes",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Lithic Blade",
+      "lang": "id-id"
+    },
+    {
+      "name": "千岩古剣",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "천암고검",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Espada Antiga de Millelith",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Каменный меч",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Lithic Blade",
+      "lang": "th-th"
+    },
+    {
+      "name": "Thiên Nham Cổ Kiếm",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "千岩古剑",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "千岩古劍",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Unter Schnee begrabenes Sternsilber",
+      "lang": "de-de"
+    },
+    {
+      "name": "Snow-Tombed Starsilver",
+      "lang": "en-us"
+    },
+    {
+      "name": "Argento Estelar de las Nieves",
+      "lang": "es-es"
+    },
+    {
+      "name": "Tombe-neige en argétoile",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Snow-Tombed Starsilver",
+      "lang": "id-id"
+    },
+    {
+      "name": "雪葬の星銀",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "설장의 성은",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Estrela de Prata Enterrada na Neve",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Заснеженное звёздное серебро",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Snow-Tombed Starsilver",
+      "lang": "th-th"
+    },
+    {
+      "name": "Tuyết Vùi Tinh Ngân",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "雪葬的星银",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "雪葬的星銀",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Luxuriöser Seekönig",
+      "lang": "de-de"
+    },
+    {
+      "name": "Luxurious Sea-Lord",
+      "lang": "en-us"
+    },
+    {
+      "name": "Rey de los Mares",
+      "lang": "es-es"
+    },
+    {
+      "name": "Illustre seigneur des mers",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Luxurious Sea-Lord",
+      "lang": "id-id"
+    },
+    {
+      "name": "銜玉の海皇",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "진주를 문 해황",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Lorde do Mar Luxuoso",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Благодатный владыка вод",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Luxurious Sea-Lord",
+      "lang": "th-th"
+    },
+    {
+      "name": "Vua Biển Hàng Hiệu",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "衔珠海皇",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "銜珠海皇",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Katsuragikiri Nagamasa",
+      "lang": "de-de"
+    },
+    {
+      "name": "Katsuragikiri Nagamasa",
+      "lang": "en-us"
+    },
+    {
+      "name": "Asesinato de Katsuragi",
+      "lang": "es-es"
+    },
+    {
+      "name": "Espadon de Nagamasa",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Katsuragikiri Nagamasa",
+      "lang": "id-id"
+    },
+    {
+      "name": "桂木斬長正",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "카츠라기를 벤 나가마사",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Espada Grande de Katsuragi",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Кацурагикири Нагамаса",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Katsuragikiri Nagamasa",
+      "lang": "th-th"
+    },
+    {
+      "name": "Trường Đao Katsuragi",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "桂木斩长正",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "桂木斬長正",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Akuoumaru",
+      "lang": "de-de"
+    },
+    {
+      "name": "Akuoumaru",
+      "lang": "en-us"
+    },
+    {
+      "name": "Rey del Mal",
+      "lang": "es-es"
+    },
+    {
+      "name": "Akuoumaru",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Akuoumaru",
+      "lang": "id-id"
+    },
+    {
+      "name": "惡王丸",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "아쿠오마루",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Akuoumaru",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Акуомару",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Akuoumaru",
+      "lang": "th-th"
+    },
+    {
+      "name": "Akuoumaru",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "恶王丸",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "惡王丸",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Stolz des Himmels",
+      "lang": "de-de"
+    },
+    {
+      "name": "Skyward Pride",
+      "lang": "en-us"
+    },
+    {
+      "name": "Orgullo Celestial",
+      "lang": "es-es"
+    },
+    {
+      "name": "Fierté de la Voûte d'Azur",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Skyward Pride",
+      "lang": "id-id"
+    },
+    {
+      "name": "天空の傲",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "천공의 긍지",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Orgulho Celestial",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Небесное величие",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Skyward Pride",
+      "lang": "th-th"
+    },
+    {
+      "name": "Thiên Không Kiêu Ngạo",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "天空之傲",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "天空之傲",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Wolfsgrab",
+      "lang": "de-de"
+    },
+    {
+      "name": "Wolf's Gravestone",
+      "lang": "en-us"
+    },
+    {
+      "name": "Lápida del Lobo",
+      "lang": "es-es"
+    },
+    {
+      "name": "Mort-du-loup",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Wolf's Gravestone",
+      "lang": "id-id"
+    },
+    {
+      "name": "狼の末路",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "늑대의 말로",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Túmulo do Lobo",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Волчья погибель",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Wolf's Gravestone",
+      "lang": "th-th"
+    },
+    {
+      "name": "Đường Cùng Của Sói",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "狼的末路",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "狼的末路",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Kiefernklang",
+      "lang": "de-de"
+    },
+    {
+      "name": "Song of Broken Pines",
+      "lang": "en-us"
+    },
+    {
+      "name": "Oda de los Pinos",
+      "lang": "es-es"
+    },
+    {
+      "name": "Ode au chant du vent",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Song of Broken Pines",
+      "lang": "id-id"
+    },
+    {
+      "name": "松韻の響く頃",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "송뢰가 울릴 무렵",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Canção dos Pinhos",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Песнь разбитых сосен",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Song of Broken Pines",
+      "lang": "th-th"
+    },
+    {
+      "name": "Tiếng Gió Trong Rừng Thông",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "松籁响起之时",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "松籟響起之時",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Grobes Schwert",
+      "lang": "de-de"
+    },
+    {
+      "name": "The Unforged",
+      "lang": "en-us"
+    },
+    {
+      "name": "Espada de la Desidia",
+      "lang": "es-es"
+    },
+    {
+      "name": "Lame brute",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "The Unforged",
+      "lang": "id-id"
+    },
+    {
+      "name": "無工の剣",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "무공의 검",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Espada Áspera",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Некованый",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "The Unforged",
+      "lang": "th-th"
+    },
+    {
+      "name": "Kiếm Vô Công",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "无工之剑",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "無工之劍",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Rothorn-Steinbrecher",
+      "lang": "de-de"
+    },
+    {
+      "name": "Redhorn Stonethresher",
+      "lang": "en-us"
+    },
+    {
+      "name": "Espadón Cornirrojo",
+      "lang": "es-es"
+    },
+    {
+      "name": "Brise-pierre de corne rouge",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Redhorn Stonethresher",
+      "lang": "id-id"
+    },
+    {
+      "name": "赤角石塵滅砕",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "쇄석의 붉은 뿔",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Chifres Vermelhos Destruidores de Pedras",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Краснорогий камнеруб",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Redhorn Stonethresher",
+      "lang": "th-th"
+    },
+    {
+      "name": "Xích Giác Phá Thạch Đao",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "赤角石溃杵",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "赤角石潰杵",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Anfängerlanze",
+      "lang": "de-de"
+    },
+    {
+      "name": "Beginner's Protector",
+      "lang": "en-us"
+    },
+    {
+      "name": "Lanza del Principiante",
+      "lang": "es-es"
+    },
+    {
+      "name": "Lance du débutant",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Beginner's Protector",
+      "lang": "id-id"
+    },
+    {
+      "name": "新米の長槍",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "초보자의 장창",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Protetor de Iniciante",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Копьё новичка",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Beginner's Protector",
+      "lang": "th-th"
+    },
+    {
+      "name": "Thương Tân Thủ",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "新手长枪",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "新手長槍",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Eisenlanze",
+      "lang": "de-de"
+    },
+    {
+      "name": "Iron Point",
+      "lang": "en-us"
+    },
+    {
+      "name": "Punta de Hierro",
+      "lang": "es-es"
+    },
+    {
+      "name": "Pointe de fer",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Iron Point",
+      "lang": "id-id"
+    },
+    {
+      "name": "鉄尖槍",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "철촉창",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Ponta de Ferro",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Железный наконечник",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Iron Point",
+      "lang": "th-th"
+    },
+    {
+      "name": "Thương Sắt",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "铁尖枪",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "鐵尖槍",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Weiße Quaste",
+      "lang": "de-de"
+    },
+    {
+      "name": "White Tassel",
+      "lang": "en-us"
+    },
+    {
+      "name": "Borla Blanca",
+      "lang": "es-es"
+    },
+    {
+      "name": "Pampille blanche",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "White Tassel",
+      "lang": "id-id"
+    },
+    {
+      "name": "白纓槍",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "백술창",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Borla Branca",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Белая кисть",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "White Tassel",
+      "lang": "th-th"
+    },
+    {
+      "name": "Thương Bạch Anh",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "白缨枪",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "白纓槍",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Hellebarde",
+      "lang": "de-de"
+    },
+    {
+      "name": "Halberd",
+      "lang": "en-us"
+    },
+    {
+      "name": "Alabarda",
+      "lang": "es-es"
+    },
+    {
+      "name": "Hallebarde",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Halberd",
+      "lang": "id-id"
+    },
+    {
+      "name": "鉾槍",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "미늘창",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Alabarda",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Алебарда Миллелита",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Halberd",
+      "lang": "th-th"
+    },
+    {
+      "name": "Thuẫn Kích",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "钺矛",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "鉞矛",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Schwarze Quaste",
+      "lang": "de-de"
+    },
+    {
+      "name": "Black Tassel",
+      "lang": "en-us"
+    },
+    {
+      "name": "Borla Negra",
+      "lang": "es-es"
+    },
+    {
+      "name": "Pampille noire",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Black Tassel",
+      "lang": "id-id"
+    },
+    {
+      "name": "黒纓槍",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "흑술창",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Borla Preta",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Чёрная кисть",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Black Tassel",
+      "lang": "th-th"
+    },
+    {
+      "name": "Hắc Anh Thương",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "黑缨枪",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "黑纓槍",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Fahnenmast",
+      "lang": "de-de"
+    },
+    {
+      "name": "The Flagstaff",
+      "lang": "en-us"
+    },
+    {
+      "name": "Asta de Bandera",
+      "lang": "es-es"
+    },
+    {
+      "name": "La hampe",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "The Flagstaff",
+      "lang": "id-id"
+    },
+    {
+      "name": "「旗竿」",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "「깃대」",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Mastro da Bandeira",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Флагшток",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "The Flagstaff",
+      "lang": "th-th"
+    },
+    {
+      "name": "Cột Cờ",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "「旗杆」",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "「旗桿」",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Drachenschreck",
+      "lang": "de-de"
+    },
+    {
+      "name": "Dragon's Bane",
+      "lang": "en-us"
+    },
+    {
+      "name": "Perdición del Dragón",
+      "lang": "es-es"
+    },
+    {
+      "name": "Fléau du dragon",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Dragon's Bane",
+      "lang": "id-id"
+    },
+    {
+      "name": "匣中滅龍",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "용학살창",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Perdição do Dragão",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Гроза драконов",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Dragon's Bane",
+      "lang": "th-th"
+    },
+    {
+      "name": "Tai Ương Của Rồng",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "匣里灭辰",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "匣裡滅辰",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Sternsichel-Prototyp",
+      "lang": "de-de"
+    },
+    {
+      "name": "Prototype Starglitter",
+      "lang": "en-us"
+    },
+    {
+      "name": "Prototipo Estelar",
+      "lang": "es-es"
+    },
+    {
+      "name": "Guisarme stellaire (prototype)",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Prototype Starglitter",
+      "lang": "id-id"
+    },
+    {
+      "name": "星鎌·試作",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "별의 낫 프로토타입",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Protótipo Estelar",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Прототип: Звёздный блеск",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Prototype Starglitter",
+      "lang": "th-th"
+    },
+    {
+      "name": "Mẫu Tinh Liêm",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "试作星镰",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "試作星鐮",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Mondpike",
+      "lang": "de-de"
+    },
+    {
+      "name": "Crescent Pike",
+      "lang": "en-us"
+    },
+    {
+      "name": "Pica Luna Creciente",
+      "lang": "es-es"
+    },
+    {
+      "name": "Pique du croissant de lune",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Crescent Pike",
+      "lang": "id-id"
+    },
+    {
+      "name": "流月の針",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "유월창",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Pique Crescente",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Пика полумесяца",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Crescent Pike",
+      "lang": "th-th"
+    },
+    {
+      "name": "Lưu Nguyệt Châm",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "流月针",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "流月針",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Schwarzsteinlanze",
+      "lang": "de-de"
+    },
+    {
+      "name": "Blackcliff Pole",
+      "lang": "en-us"
+    },
+    {
+      "name": "Lanza del Peñasco Oscuro",
+      "lang": "es-es"
+    },
+    {
+      "name": "Lance de Rochenoire",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Blackcliff Pole",
+      "lang": "id-id"
+    },
+    {
+      "name": "黒岩の突槍",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "흑암창",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Lança do Penhasco Obscuro",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Черногорская пика",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Blackcliff Pole",
+      "lang": "th-th"
+    },
+    {
+      "name": "Thương Hắc Nham",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "黑岩刺枪",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "黑岩刺槍",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Duelllanze",
+      "lang": "de-de"
+    },
+    {
+      "name": "Deathmatch",
+      "lang": "en-us"
+    },
+    {
+      "name": "Lanza del Duelo",
+      "lang": "es-es"
+    },
+    {
+      "name": "Scion de la victoire",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Deathmatch",
+      "lang": "id-id"
+    },
+    {
+      "name": "死闘の槍",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "결투의 창",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Lança do Duelo",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Смертельный бой",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Deathmatch",
+      "lang": "th-th"
+    },
+    {
+      "name": "Thương Quyết Chiến",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "决斗之枪",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "決鬥之槍",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Millelithenlanze",
+      "lang": "de-de"
+    },
+    {
+      "name": "Lithic Spear",
+      "lang": "en-us"
+    },
+    {
+      "name": "Lanza Lítica",
+      "lang": "es-es"
+    },
+    {
+      "name": "Lance des Millelithes",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Lithic Spear",
+      "lang": "id-id"
+    },
+    {
+      "name": "千岩長槍",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "천암장창",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Lança de Millelith",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Каменное копьё",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Lithic Spear",
+      "lang": "th-th"
+    },
+    {
+      "name": "Thương Thiên Nham",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "千岩长枪",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "千岩長槍",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Favonius-Lanze",
+      "lang": "de-de"
+    },
+    {
+      "name": "Favonius Lance",
+      "lang": "en-us"
+    },
+    {
+      "name": "Lanza de Favonius",
+      "lang": "es-es"
+    },
+    {
+      "name": "Lance de Favonius",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Favonius Lance",
+      "lang": "id-id"
+    },
+    {
+      "name": "西風長槍",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "페보니우스 장창",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Lança de Favonius",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Копьё Фавония",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Favonius Lance",
+      "lang": "th-th"
+    },
+    {
+      "name": "Thương Tây Phong",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "西风长枪",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "西風長槍",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Königlicher Jagdspeer",
+      "lang": "de-de"
+    },
+    {
+      "name": "Royal Spear",
+      "lang": "en-us"
+    },
+    {
+      "name": "Lanza de Caza Real",
+      "lang": "es-es"
+    },
+    {
+      "name": "Lance de chasse royale",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Royal Spear",
+      "lang": "id-id"
+    },
+    {
+      "name": "旧貴族猟槍",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "왕실의 장창",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Lança de Caça Real",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Королевское копьё",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Royal Spear",
+      "lang": "th-th"
+    },
+    {
+      "name": "Thương Săn Tông Thất",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "宗室猎枪",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "宗室獵槍",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Drachengratspeer",
+      "lang": "de-de"
+    },
+    {
+      "name": "Dragonspine Spear",
+      "lang": "en-us"
+    },
+    {
+      "name": "Lanza de Espinadragón",
+      "lang": "es-es"
+    },
+    {
+      "name": "Lance Dosdragon",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Dragonspine Spear",
+      "lang": "id-id"
+    },
+    {
+      "name": "ドラゴンスピア",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "용의 척추",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Lança da Espinha do Dragão",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Копьё Драконьего хребта",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Dragonspine Spear",
+      "lang": "th-th"
+    },
+    {
+      "name": "Thương Long Tích",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "龙脊长枪",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "龍脊長槍",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Kitain-Kreuzlanze",
+      "lang": "de-de"
+    },
+    {
+      "name": "Kitain Cross Spear",
+      "lang": "en-us"
+    },
+    {
+      "name": "Cruz de Kitain",
+      "lang": "es-es"
+    },
+    {
+      "name": "Lance en croix de Kitain",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Kitain Cross Spear",
+      "lang": "id-id"
+    },
+    {
+      "name": "喜多院十文字槍",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "키타인 십자창",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Lança Cruzada de Kitain",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Крест-копьё Китаин",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Kitain Cross Spear",
+      "lang": "th-th"
+    },
+    {
+      "name": "Giáo Thập Tự Kitain",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "喜多院十文字",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "喜多院十文字",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "„Der Fang“",
+      "lang": "de-de"
+    },
+    {
+      "name": "\"The Catch\"",
+      "lang": "en-us"
+    },
+    {
+      "name": "La Captura",
+      "lang": "es-es"
+    },
+    {
+      "name": "« La prise »",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "\"The Catch\"",
+      "lang": "id-id"
+    },
+    {
+      "name": "「漁獲」",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "「어획」",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "\"A Fisgada\"",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "«Улов»",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "\"The Catch\"",
+      "lang": "th-th"
+    },
+    {
+      "name": "Lao Xiên Cá",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "「渔获」",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "「漁獲」",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Wellenbrecherflosse",
+      "lang": "de-de"
+    },
+    {
+      "name": "Wavebreaker's Fin",
+      "lang": "en-us"
+    },
+    {
+      "name": "Aleta Cortaolas",
+      "lang": "es-es"
+    },
+    {
+      "name": "Aileron de brise-vagues",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Wavebreaker's Fin",
+      "lang": "id-id"
+    },
+    {
+      "name": "斬波のひれ長",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "파도 베는 지느러미",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Barbatana do Quebra Ondas",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Режущий волны плавник",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Wavebreaker's Fin",
+      "lang": "th-th"
+    },
+    {
+      "name": "Vây Cá Chẻ Sóng",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "断浪长鳍",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "斷浪長鰭",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Homa-Stab",
+      "lang": "de-de"
+    },
+    {
+      "name": "Staff of Homa",
+      "lang": "en-us"
+    },
+    {
+      "name": "Báculo de Homa",
+      "lang": "es-es"
+    },
+    {
+      "name": "Bâton de Homa",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Staff of Homa",
+      "lang": "id-id"
+    },
+    {
+      "name": "護摩の杖",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "호마의 지팡이",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Báculo de Homa",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Посох Хомы",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Staff of Homa",
+      "lang": "th-th"
+    },
+    {
+      "name": "Trượng Hộ Ma",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "护摩之杖",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "護摩之杖",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Himmelsgrat",
+      "lang": "de-de"
+    },
+    {
+      "name": "Skyward Spine",
+      "lang": "en-us"
+    },
+    {
+      "name": "Púa Celestial",
+      "lang": "es-es"
+    },
+    {
+      "name": "Berge de la Voûte d'Azur",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Skyward Spine",
+      "lang": "id-id"
+    },
+    {
+      "name": "天空の脊",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "천공의 마루",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Espinha Celestial",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Небесная ось",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Skyward Spine",
+      "lang": "th-th"
+    },
+    {
+      "name": "Xương Sống Thiên Không",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "天空之脊",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "天空之脊",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Regenbogenstecher",
+      "lang": "de-de"
+    },
+    {
+      "name": "Vortex Vanquisher",
+      "lang": "en-us"
+    },
+    {
+      "name": "Lanza Perforanubes",
+      "lang": "es-es"
+    },
+    {
+      "name": "Perceur prismatique",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Vortex Vanquisher",
+      "lang": "id-id"
+    },
+    {
+      "name": "破天の槍",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "관홍의 창",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Perfuradora Prismática",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Покоритель вихря",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Vortex Vanquisher",
+      "lang": "th-th"
+    },
+    {
+      "name": "Giáo Nịnh Thần",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "贯虹之槊",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "貫虹之槊",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Urzeitlicher Jadespeer",
+      "lang": "de-de"
+    },
+    {
+      "name": "Primordial Jade Winged-Spear",
+      "lang": "en-us"
+    },
+    {
+      "name": "Halcón de Jade",
+      "lang": "es-es"
+    },
+    {
+      "name": "Lance de jade ailée",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Primordial Jade Winged-Spear",
+      "lang": "id-id"
+    },
+    {
+      "name": "和璞鳶",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "화박연",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Lança de Jade Primitiva",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Нефритовый коршун",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Primordial Jade Winged-Spear",
+      "lang": "th-th"
+    },
+    {
+      "name": "Hòa Phác Diên",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "和璞鸢",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "和璞鳶",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Ende des Unheils",
+      "lang": "de-de"
+    },
+    {
+      "name": "Calamity Queller",
+      "lang": "en-us"
+    },
+    {
+      "name": "Pacificadora del Desastre",
+      "lang": "es-es"
+    },
+    {
+      "name": "Étouffeur de calamités",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Calamity Queller",
+      "lang": "id-id"
+    },
+    {
+      "name": "息災",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "식재",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Subjugadora de Calamidades",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Усмиритель бед",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Calamity Queller",
+      "lang": "th-th"
+    },
+    {
+      "name": "Hủy Diệt",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "息灾",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "息災",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Grasschnittstrahl",
+      "lang": "de-de"
+    },
+    {
+      "name": "Engulfing Lightning",
+      "lang": "en-us"
+    },
+    {
+      "name": "Luz del Segador",
+      "lang": "es-es"
+    },
+    {
+      "name": "Lumière du faucheur",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Engulfing Lightning",
+      "lang": "id-id"
+    },
+    {
+      "name": "草薙の稲光",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "예초의 번개",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Luz do Cortador de Grama",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Сияющая жатва",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Engulfing Lightning",
+      "lang": "th-th"
+    },
+    {
+      "name": "Đoạn Thảo Trường Đao",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "薙草之稻光",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "薙草之稻光",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Aufzeichnungen eines Lehrlings",
+      "lang": "de-de"
+    },
+    {
+      "name": "Apprentice's Notes",
+      "lang": "en-us"
+    },
+    {
+      "name": "Apuntes del Aprendiz",
+      "lang": "es-es"
+    },
+    {
+      "name": "Notes de l'apprenti",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Apprentice's Notes",
+      "lang": "id-id"
+    },
+    {
+      "name": "生徒ノート",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "학도의 노트",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Anotações do Aprendiz",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Записи ученика",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Apprentice's Notes",
+      "lang": "th-th"
+    },
+    {
+      "name": "Nhật Ký Học Sinh",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "学徒笔记",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "學徒筆記",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Taschenzauberbuch",
+      "lang": "de-de"
+    },
+    {
+      "name": "Pocket Grimoire",
+      "lang": "en-us"
+    },
+    {
+      "name": "Grimorio de Bolsillo",
+      "lang": "es-es"
+    },
+    {
+      "name": "Grimoire de poche",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Pocket Grimoire",
+      "lang": "id-id"
+    },
+    {
+      "name": "ポケット魔導書",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "포켓 주술서",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Grimório de Bolso",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Карманный гримуар",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Pocket Grimoire",
+      "lang": "th-th"
+    },
+    {
+      "name": "Số Tay Ma Pháp",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "口袋魔导书",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "口袋魔導書",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Magieführer",
+      "lang": "de-de"
+    },
+    {
+      "name": "Magic Guide",
+      "lang": "en-us"
+    },
+    {
+      "name": "Guía Mágica",
+      "lang": "es-es"
+    },
+    {
+      "name": "Guide de magie",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Magic Guide",
+      "lang": "id-id"
+    },
+    {
+      "name": "魔導緒論",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "마도 서론",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Guia de Magia",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Руководство по магии",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Magic Guide",
+      "lang": "th-th"
+    },
+    {
+      "name": "Tóm Tắt Ma Pháp",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "魔导绪论",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "魔導緒論",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Von den Heldentaten der Drachenbezwinger",
+      "lang": "de-de"
+    },
+    {
+      "name": "Thrilling Tales of Dragon Slayers",
+      "lang": "en-us"
+    },
+    {
+      "name": "Cuentos de Cazadores de Dragones",
+      "lang": "es-es"
+    },
+    {
+      "name": "Histoire des chasseurs de dragon",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Thrilling Tales of Dragon Slayers",
+      "lang": "id-id"
+    },
+    {
+      "name": "龍殺しの英傑譚",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "드래곤 슬레이어 영웅담",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Histórias Extraordinárias de Caçadores de Dragões",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Эпос о драконоборцах",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Thrilling Tales of Dragon Slayers",
+      "lang": "th-th"
+    },
+    {
+      "name": "Câu Chuyện Diệt Rồng",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "讨龙英杰谭",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "討龍英傑譚",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Geschichten einer anderen Welt",
+      "lang": "de-de"
+    },
+    {
+      "name": "Otherworldly Story",
+      "lang": "en-us"
+    },
+    {
+      "name": "Historias de Otros Mundos",
+      "lang": "es-es"
+    },
+    {
+      "name": "Conte d'un autre monde",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Otherworldly Story",
+      "lang": "id-id"
+    },
+    {
+      "name": "異世界旅行記",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "이세계 여행기",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Histórias de Outros Mundos",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Потусторонняя история",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Otherworldly Story",
+      "lang": "th-th"
+    },
+    {
+      "name": "Tiểu Thuyết Dị Giới",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "异世界行记",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "異世界行記",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Jadekugel",
+      "lang": "de-de"
+    },
+    {
+      "name": "Emerald Orb",
+      "lang": "en-us"
+    },
+    {
+      "name": "Orbe Esmeralda",
+      "lang": "es-es"
+    },
+    {
+      "name": "Orbe jadien",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Emerald Orb",
+      "lang": "id-id"
+    },
+    {
+      "name": "翡玉法珠",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "비취 오브",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Orbe de Esmeralda",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Изумрудный шар",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Emerald Orb",
+      "lang": "th-th"
+    },
+    {
+      "name": "Quả Cầu Ngọc",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "翡玉法球",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "翡玉法球",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Zwillingsnephrit",
+      "lang": "de-de"
+    },
+    {
+      "name": "Twin Nephrite",
+      "lang": "en-us"
+    },
+    {
+      "name": "Nefrita Gemela",
+      "lang": "es-es"
+    },
+    {
+      "name": "Néphrite jumelle",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Twin Nephrite",
+      "lang": "id-id"
+    },
+    {
+      "name": "特級の宝玉",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "1급 보옥",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Nefrita Gêmea",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Парный нефрит",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Twin Nephrite",
+      "lang": "th-th"
+    },
+    {
+      "name": "Ngọc Sinh Đôi",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "甲级宝珏",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "甲級寶玨",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Bernsteinkatalysator",
+      "lang": "de-de"
+    },
+    {
+      "name": "Amber Bead",
+      "lang": "en-us"
+    },
+    {
+      "name": "Catalizador de Ámbar",
+      "lang": "es-es"
+    },
+    {
+      "name": "Catalyseur en ambre",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Amber Bead",
+      "lang": "id-id"
+    },
+    {
+      "name": "琥珀の玥",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "호박월",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Catalisador de Âmbar",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Янтарная жемчужина",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Amber Bead",
+      "lang": "th-th"
+    },
+    {
+      "name": "Hổ Phách Nguyệt",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "琥珀玥",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "琥珀玥",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Favonius-Kodex",
+      "lang": "de-de"
+    },
+    {
+      "name": "Favonius Codex",
+      "lang": "en-us"
+    },
+    {
+      "name": "Códice de Favonius",
+      "lang": "es-es"
+    },
+    {
+      "name": "Code de Favonius",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Favonius Codex",
+      "lang": "id-id"
+    },
+    {
+      "name": "西風秘典",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "페보니우스 비전",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Codex de Favonius",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Кодекс Фавония",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Favonius Codex",
+      "lang": "th-th"
+    },
+    {
+      "name": "Tây Phong Mật Điển",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "西风秘典",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "西風秘典",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Landstreichernoten",
+      "lang": "de-de"
+    },
+    {
+      "name": "The Widsith",
+      "lang": "en-us"
+    },
+    {
+      "name": "Sinfonía de los Merodeadores",
+      "lang": "es-es"
+    },
+    {
+      "name": "Mouvement vagabond",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "The Widsith",
+      "lang": "id-id"
+    },
+    {
+      "name": "流浪楽章",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "음유시인의 악장",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Sinfonia dos Indolentes",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Песнь странника",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "The Widsith",
+      "lang": "th-th"
+    },
+    {
+      "name": "Chương Nhạc Lang Thang",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "流浪乐章",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "流浪樂章",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Opferrituale",
+      "lang": "de-de"
+    },
+    {
+      "name": "Sacrificial Fragments",
+      "lang": "en-us"
+    },
+    {
+      "name": "Memorias de Sacrificios",
+      "lang": "es-es"
+    },
+    {
+      "name": "Mémoires de rituels",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Sacrificial Fragments",
+      "lang": "id-id"
+    },
+    {
+      "name": "祭礼の断片",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "제례의 악장",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Memórias de Sacrifício",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Церемониальные мемуары",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Sacrificial Fragments",
+      "lang": "th-th"
+    },
+    {
+      "name": "Mảnh Chương Tế Lễ",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "祭礼残章",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "祭禮殘章",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Königliches Zauberbuch",
+      "lang": "de-de"
+    },
+    {
+      "name": "Royal Grimoire",
+      "lang": "en-us"
+    },
+    {
+      "name": "Grimorio Real",
+      "lang": "es-es"
+    },
+    {
+      "name": "Grimoire royal",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Royal Grimoire",
+      "lang": "id-id"
+    },
+    {
+      "name": "旧貴族秘法録",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "왕실의 비전록",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Grimório Real",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Королевский гримуар",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Royal Grimoire",
+      "lang": "th-th"
+    },
+    {
+      "name": "Mật Pháp Tông Thất",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "宗室秘法录",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "宗室秘法錄",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Sonne und Mond",
+      "lang": "de-de"
+    },
+    {
+      "name": "Solar Pearl",
+      "lang": "en-us"
+    },
+    {
+      "name": "Perla Solar",
+      "lang": "es-es"
+    },
+    {
+      "name": "Perle solaire",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Solar Pearl",
+      "lang": "id-id"
+    },
+    {
+      "name": "匣中日月",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "일월의 정수",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Pérola Solar",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Солнечная жемчужина",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Solar Pearl",
+      "lang": "th-th"
+    },
+    {
+      "name": "Nhật Nguyệt Hạp",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "匣里日月",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "匣裡日月",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Bernstein-Prototyp",
+      "lang": "de-de"
+    },
+    {
+      "name": "Prototype Amber",
+      "lang": "en-us"
+    },
+    {
+      "name": "Prototipo Ámbar",
+      "lang": "es-es"
+    },
+    {
+      "name": "Malice (prototype)",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Prototype Amber",
+      "lang": "id-id"
+    },
+    {
+      "name": "金珀·試作",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "황금 호박 프로토타입",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Protótipo Âmbar",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Прототип: Янтарь",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Prototype Amber",
+      "lang": "th-th"
+    },
+    {
+      "name": "Mẫu Kim Phách",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "试作金珀",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "試作金珀",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Illustrationen von Landen und Wassern",
+      "lang": "de-de"
+    },
+    {
+      "name": "Mappa Mare",
+      "lang": "en-us"
+    },
+    {
+      "name": "Carta Náutica",
+      "lang": "es-es"
+    },
+    {
+      "name": "Atlas des terres et des mers",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Mappa Mare",
+      "lang": "id-id"
+    },
+    {
+      "name": "万国諸海の図譜",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "만국 항해용해도",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Mappa Mare",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Морской атлас",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Mappa Mare",
+      "lang": "th-th"
+    },
+    {
+      "name": "Hải Đồ Vạn Quốc",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "万国诸海图谱",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "萬國諸海圖譜",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Schwarzstein-Achat",
+      "lang": "de-de"
+    },
+    {
+      "name": "Blackcliff Agate",
+      "lang": "en-us"
+    },
+    {
+      "name": "Ágata del Peñasco Oscuro",
+      "lang": "es-es"
+    },
+    {
+      "name": "Agate de Rochenoire",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Blackcliff Amulet",
+      "lang": "id-id"
+    },
+    {
+      "name": "黒岩の緋玉",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "흑암 홍옥",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Ágata do Penhasco Obscuro",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Черногорский агат",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Blackcliff Agate",
+      "lang": "th-th"
+    },
+    {
+      "name": "Hắc Nham Phỉ Ngọc",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "黑岩绯玉",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "黑岩緋玉",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Herzensblick",
+      "lang": "de-de"
+    },
+    {
+      "name": "Eye of Perception",
+      "lang": "en-us"
+    },
+    {
+      "name": "Ojo de la Perspicacia",
+      "lang": "es-es"
+    },
+    {
+      "name": "Œil de la perception",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Eye of Perception",
+      "lang": "id-id"
+    },
+    {
+      "name": "昭心",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "소심",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Olho da Percepção",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Око сознания",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Eye of Perception",
+      "lang": "th-th"
+    },
+    {
+      "name": "Chiêu Tâm",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "昭心",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "昭心",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Wein und Gesang in den Gassen",
+      "lang": "de-de"
+    },
+    {
+      "name": "Wine and Song",
+      "lang": "en-us"
+    },
+    {
+      "name": "Vino y Poesía",
+      "lang": "es-es"
+    },
+    {
+      "name": "Vins et chants",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Wine and Song",
+      "lang": "id-id"
+    },
+    {
+      "name": "ダークアレイの酒と詩",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "뒷골목의 술과 시",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Vinho e Música",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Вино и песни",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Wine and Song",
+      "lang": "th-th"
+    },
+    {
+      "name": "Rượu Và Thơ Nơi Hẻm Tối",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "暗巷的酒与诗",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "暗巷的酒與詩",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Permafrostfrucht",
+      "lang": "de-de"
+    },
+    {
+      "name": "Frostbearer",
+      "lang": "en-us"
+    },
+    {
+      "name": "Frío Eterno",
+      "lang": "es-es"
+    },
+    {
+      "name": "Fruit du permafrost",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Frostbearer",
+      "lang": "id-id"
+    },
+    {
+      "name": "冬忍びの実",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "인동의 열매",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Fruto do Sabugueiro",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Плод вечной мерзлоты",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Frostbearer",
+      "lang": "th-th"
+    },
+    {
+      "name": "Trái Chịu Lạnh",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "忍冬之果",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "忍冬之果",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Dodoco-Geschichten",
+      "lang": "de-de"
+    },
+    {
+      "name": "Dodoco Tales",
+      "lang": "en-us"
+    },
+    {
+      "name": "Cuentos de Dodoco",
+      "lang": "es-es"
+    },
+    {
+      "name": "Contes de Dodoco",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Dodoco Tales",
+      "lang": "id-id"
+    },
+    {
+      "name": "ドドコの物語",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "도도코 이야기집",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Contos de Dodoco",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Истории Додоко",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Dodoco Tales",
+      "lang": "th-th"
+    },
+    {
+      "name": "Tuyển tập các câu chuyện về Dodoco",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "嘟嘟可故事集",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "嘟嘟可故事集",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Hakushin-Ring",
+      "lang": "de-de"
+    },
+    {
+      "name": "Hakushin Ring",
+      "lang": "en-us"
+    },
+    {
+      "name": "Anillo de Hakushin",
+      "lang": "es-es"
+    },
+    {
+      "name": "Anneau des Hakushin",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Hakushin Ring",
+      "lang": "id-id"
+    },
+    {
+      "name": "白辰の輪",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "하쿠신의 고리",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Anel de Hakushin",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Кольцо Хакусин",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Hakushin Ring",
+      "lang": "th-th"
+    },
+    {
+      "name": "Vòng Bạch Thần",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "白辰之环",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "白辰之環",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Auge des Gelöbnisses",
+      "lang": "de-de"
+    },
+    {
+      "name": "Oathsworn Eye",
+      "lang": "en-us"
+    },
+    {
+      "name": "Ojo del Juramento",
+      "lang": "es-es"
+    },
+    {
+      "name": "Œil d'assermentation",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Oathsworn Eye",
+      "lang": "id-id"
+    },
+    {
+      "name": "誓いの明瞳",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "맹세의 눈동자",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Olho do Juramento",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Око клятвы",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Oathsworn Eye",
+      "lang": "th-th"
+    },
+    {
+      "name": "Con Ngươi Tuyên Thệ",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "证誓之明瞳",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "證誓之明瞳",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Himmelsatlas",
+      "lang": "de-de"
+    },
+    {
+      "name": "Skyward Atlas",
+      "lang": "en-us"
+    },
+    {
+      "name": "Pergamino Celestial",
+      "lang": "es-es"
+    },
+    {
+      "name": "Atlas de la Voûte d'Azur",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Skyward Atlas",
+      "lang": "id-id"
+    },
+    {
+      "name": "天空の巻",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "천공의 두루마리",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Atlas Celestial",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Небесный атлас",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Skyward Atlas",
+      "lang": "th-th"
+    },
+    {
+      "name": "Quyển Thiên Không",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "天空之卷",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "天空之卷",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Gebete der Vier Winde",
+      "lang": "de-de"
+    },
+    {
+      "name": "Lost Prayer to the Sacred Winds",
+      "lang": "en-us"
+    },
+    {
+      "name": "Oración Perdida a los Vientos Sagrados",
+      "lang": "es-es"
+    },
+    {
+      "name": "L'origine des Quatre Vents",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Lost Prayer to the Sacred Winds",
+      "lang": "id-id"
+    },
+    {
+      "name": "四風原典",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "사풍 원서",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Oração Perdida aos Ventos Sagrados",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Молитва святым ветрам",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Lost Prayer to the Sacred Winds",
+      "lang": "th-th"
+    },
+    {
+      "name": "Điển Tích Tây Phong",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "四风原典",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "四風原典",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Ketten des Diesseits",
+      "lang": "de-de"
+    },
+    {
+      "name": "Memory of Dust",
+      "lang": "en-us"
+    },
+    {
+      "name": "Candado Terrenal",
+      "lang": "es-es"
+    },
+    {
+      "name": "Chaînes mortelles",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Memory of Dust",
+      "lang": "id-id"
+    },
+    {
+      "name": "浮世の錠",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "속세의 자물쇠",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Memória da Poeira",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Память о пыли",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Memory of Dust",
+      "lang": "th-th"
+    },
+    {
+      "name": "Khóa Trần Thế",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "尘世之锁",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "塵世之鎖",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Ewiger Mondschein",
+      "lang": "de-de"
+    },
+    {
+      "name": "Everlasting Moonglow",
+      "lang": "en-us"
+    },
+    {
+      "name": "Luna Inalterable",
+      "lang": "es-es"
+    },
+    {
+      "name": "Lueur de la lune éternelle",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Everlasting Moonglow",
+      "lang": "id-id"
+    },
+    {
+      "name": "不滅の月華",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "불멸의 달빛",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Fumetsu Gekka",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Вечное лунное сияние",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Everlasting Moonglow",
+      "lang": "th-th"
+    },
+    {
+      "name": "Vầng Trăng Bất Diệt",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "不灭月华",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "不滅月華",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Kaguras Wahrheit",
+      "lang": "de-de"
+    },
+    {
+      "name": "Kagura's Verity",
+      "lang": "en-us"
+    },
+    {
+      "name": "Axioma de la Kagura",
+      "lang": "es-es"
+    },
+    {
+      "name": "Vérité de Kagura",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Kagura's Verity",
+      "lang": "id-id"
+    },
+    {
+      "name": "神楽の真意",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "카구라의 진의",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Prova de Kagura",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Истина кагура",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Kagura's Verity",
+      "lang": "th-th"
+    },
+    {
+      "name": "Chân Ý Của Kagura",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "神乐之真意",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "神樂之真意",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Jagdbogen",
+      "lang": "de-de"
+    },
+    {
+      "name": "Hunter's Bow",
+      "lang": "en-us"
+    },
+    {
+      "name": "Arco del Cazador",
+      "lang": "es-es"
+    },
+    {
+      "name": "Arc de chasse",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Hunter's Bow",
+      "lang": "id-id"
+    },
+    {
+      "name": "狩猟弓",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "사냥활",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Arco do Caçador",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Лук охотника",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Hunter's Bow",
+      "lang": "th-th"
+    },
+    {
+      "name": "Cung Săn Bắn",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "猎弓",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "獵弓",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Alter Jagdbogen",
+      "lang": "de-de"
+    },
+    {
+      "name": "Seasoned Hunter's Bow",
+      "lang": "en-us"
+    },
+    {
+      "name": "Arco del Cazador Estacional",
+      "lang": "es-es"
+    },
+    {
+      "name": "Arc de chasse aguerri",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Seasoned Hunter's Bow",
+      "lang": "id-id"
+    },
+    {
+      "name": "歴戦の狩猟弓",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "노련의 사냥활",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Arco do Caçador Experiente",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Лук опытного охотника",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Seasoned Hunter's Bow",
+      "lang": "th-th"
+    },
+    {
+      "name": "Cung Săn Bắn Tôi Luyện",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "历练的猎弓",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "歷練的獵弓",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Rabenbogen",
+      "lang": "de-de"
+    },
+    {
+      "name": "Raven Bow",
+      "lang": "en-us"
+    },
+    {
+      "name": "Arco de Cuervo",
+      "lang": "es-es"
+    },
+    {
+      "name": "Arc du corbeau",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Raven Bow",
+      "lang": "id-id"
+    },
+    {
+      "name": "鴉羽の弓",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "까마귀깃 활",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Arco de Corvo",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Лук ворона",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Raven Bow",
+      "lang": "th-th"
+    },
+    {
+      "name": "Cung Lông Vịt",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "鸦羽弓",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "鴉羽弓",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Eid des Scharfschützen",
+      "lang": "de-de"
+    },
+    {
+      "name": "Sharpshooter's Oath",
+      "lang": "en-us"
+    },
+    {
+      "name": "Juramento del Arquero",
+      "lang": "es-es"
+    },
+    {
+      "name": "Serment de l'archer",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Sharpshooter's Oath",
+      "lang": "id-id"
+    },
+    {
+      "name": "シャープシューターの誓い",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "신궁의 서약",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Juramento de Sagitário",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Клятва стрелка",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Sharpshooter's Oath",
+      "lang": "th-th"
+    },
+    {
+      "name": "Lời Thề Xạ Thủ Thần",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "神射手之誓",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "神射手之誓",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Reflexbogen",
+      "lang": "de-de"
+    },
+    {
+      "name": "Recurve Bow",
+      "lang": "en-us"
+    },
+    {
+      "name": "Arco Recurvo",
+      "lang": "es-es"
+    },
+    {
+      "name": "Arc courbé",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Recurve Bow",
+      "lang": "id-id"
+    },
+    {
+      "name": "リカーブボウ",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "곡궁",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Arco Recurvado",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Изогнутый лук",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Recurve Bow",
+      "lang": "th-th"
+    },
+    {
+      "name": "Cung Phản Khúc",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "反曲弓",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "反曲弓",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Steinschleuder",
+      "lang": "de-de"
+    },
+    {
+      "name": "Slingshot",
+      "lang": "en-us"
+    },
+    {
+      "name": "Tirachinas",
+      "lang": "es-es"
+    },
+    {
+      "name": "Lance-pierres",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Slingshot",
+      "lang": "id-id"
+    },
+    {
+      "name": "弾弓",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "탄궁",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Estilingue",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Рогатка",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Slingshot",
+      "lang": "th-th"
+    },
+    {
+      "name": "Nỏ Kéo",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "弹弓",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "彈弓",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Überbringer",
+      "lang": "de-de"
+    },
+    {
+      "name": "Messenger",
+      "lang": "en-us"
+    },
+    {
+      "name": "Mensajero",
+      "lang": "es-es"
+    },
+    {
+      "name": "Messager",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Messenger",
+      "lang": "id-id"
+    },
+    {
+      "name": "文使い",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "전령",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Mensageiro",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Посыльный",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Messenger",
+      "lang": "th-th"
+    },
+    {
+      "name": "Tín Sứ",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "信使",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "信使",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Ebenholzbogen",
+      "lang": "de-de"
+    },
+    {
+      "name": "Ebony Bow",
+      "lang": "en-us"
+    },
+    {
+      "name": "Arco de Ébano",
+      "lang": "es-es"
+    },
+    {
+      "name": "Arc en ébène",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Ebony Bow",
+      "lang": "id-id"
+    },
+    {
+      "name": "黒檀の弓",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "흑단궁",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Arco de Ébano",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Эбеновый лук",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Ebony Bow",
+      "lang": "th-th"
+    },
+    {
+      "name": "Cung Hắc Đàn",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "黑檀弓",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "黑檀弓",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Favonius-Jagdbogen",
+      "lang": "de-de"
+    },
+    {
+      "name": "Favonius Warbow",
+      "lang": "en-us"
+    },
+    {
+      "name": "Arco de Favonius",
+      "lang": "es-es"
+    },
+    {
+      "name": "Arc de chasse de Favonius",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Favonius Warbow",
+      "lang": "id-id"
+    },
+    {
+      "name": "西風猟弓",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "페보니우스 활",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Arco de Guerra de Favonius",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Боевой лук Фавония",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Favonius Warbow",
+      "lang": "th-th"
+    },
+    {
+      "name": "Cung Tây Phong",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "西风猎弓",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "西風獵弓",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Der Sehnenlose",
+      "lang": "de-de"
+    },
+    {
+      "name": "The Stringless",
+      "lang": "en-us"
+    },
+    {
+      "name": "Último Acorde",
+      "lang": "es-es"
+    },
+    {
+      "name": "Dernière corde",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "The Stringless",
+      "lang": "id-id"
+    },
+    {
+      "name": "絶弦",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "절현",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Último Acorde",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Бесструнный",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "The Stringless",
+      "lang": "th-th"
+    },
+    {
+      "name": "Tuyệt Huyền",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "绝弦",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "絕弦",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Opferbogen",
+      "lang": "de-de"
+    },
+    {
+      "name": "Sacrificial Bow",
+      "lang": "en-us"
+    },
+    {
+      "name": "Arco del Sacrificio",
+      "lang": "es-es"
+    },
+    {
+      "name": "Arc rituel",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Sacrificial Bow",
+      "lang": "id-id"
+    },
+    {
+      "name": "祭礼の弓",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "제례활",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Arco do Sacrifício",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Церемониальный лук",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Sacrificial Bow",
+      "lang": "th-th"
+    },
+    {
+      "name": "Cung Tế Lễ",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "祭礼弓",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "祭禮弓",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Königlicher Langbogen",
+      "lang": "de-de"
+    },
+    {
+      "name": "Royal Bow",
+      "lang": "en-us"
+    },
+    {
+      "name": "Arco Real",
+      "lang": "es-es"
+    },
+    {
+      "name": "Arc royal",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Royal Bow",
+      "lang": "id-id"
+    },
+    {
+      "name": "旧貴族長弓",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "왕실의 장궁",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Arco Real",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Королевский лук",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Royal Bow",
+      "lang": "th-th"
+    },
+    {
+      "name": "Trường Cung Tông Thất",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "宗室长弓",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "宗室長弓",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Rostiger Bogen",
+      "lang": "de-de"
+    },
+    {
+      "name": "Rust",
+      "lang": "en-us"
+    },
+    {
+      "name": "Herrumbre",
+      "lang": "es-es"
+    },
+    {
+      "name": "Arc rouillé",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Rust",
+      "lang": "id-id"
+    },
+    {
+      "name": "弓蔵",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "녹슨 활",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Arco Enferrujado",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Ржавый лук",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Rust",
+      "lang": "th-th"
+    },
+    {
+      "name": "Cung Rỉ Sét",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "弓藏",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "弓藏",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Mondschein-Prototyp",
+      "lang": "de-de"
+    },
+    {
+      "name": "Prototype Crescent",
+      "lang": "en-us"
+    },
+    {
+      "name": "Prototipo Luz de Luna",
+      "lang": "es-es"
+    },
+    {
+      "name": "Lune paisible (prototype)",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Prototype Crescent",
+      "lang": "id-id"
+    },
+    {
+      "name": "澹月·試作",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "담월 프로토타입",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Protótipo da Luz Lunar Pálida",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Прототип: Полумесяц",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Prototype Crescent",
+      "lang": "th-th"
+    },
+    {
+      "name": "Mẫu Đạm Nguyệt",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "试作澹月",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "試作澹月",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Compoundbogen",
+      "lang": "de-de"
+    },
+    {
+      "name": "Compound Bow",
+      "lang": "en-us"
+    },
+    {
+      "name": "Arco Compuesto",
+      "lang": "es-es"
+    },
+    {
+      "name": "Arc à poulies",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Compound Bow",
+      "lang": "id-id"
+    },
+    {
+      "name": "リングボウ",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "강철궁",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Arco Composto",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Составной лук",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Compound Bow",
+      "lang": "th-th"
+    },
+    {
+      "name": "Cung Thép",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "钢轮弓",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "鋼輪弓",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Schwarzstein-Kriegsbogen",
+      "lang": "de-de"
+    },
+    {
+      "name": "Blackcliff Warbow",
+      "lang": "en-us"
+    },
+    {
+      "name": "Arco del Peñasco Oscuro",
+      "lang": "es-es"
+    },
+    {
+      "name": "Arc de guerre de Rochenoire",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Blackcliff Warbow",
+      "lang": "id-id"
+    },
+    {
+      "name": "黒岩の戦弓",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "흑암 배틀 보우",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Arco do Penhasco Obscuro",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Черногорский боевой лук",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Blackcliff Warbow",
+      "lang": "th-th"
+    },
+    {
+      "name": "Cung Hắc Nham",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "黑岩战弓",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "黑岩戰弓",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Grasgrüner Jagdbogen",
+      "lang": "de-de"
+    },
+    {
+      "name": "The Viridescent Hunt",
+      "lang": "en-us"
+    },
+    {
+      "name": "Arco de la Cazadora Esmeralda",
+      "lang": "es-es"
+    },
+    {
+      "name": "Arc de chasse verdoyant",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "The Viridescent Hunt",
+      "lang": "id-id"
+    },
+    {
+      "name": "蒼翠の狩猟弓",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "청록의 사냥활",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Arco Esmeralda do Caçador",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Зелёный лук",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "The Viridescent Hunt",
+      "lang": "th-th"
+    },
+    {
+      "name": "Cung Sắc Xanh",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "苍翠猎弓",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "蒼翠獵弓",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Gassenjäger",
+      "lang": "de-de"
+    },
+    {
+      "name": "Alley Hunter",
+      "lang": "en-us"
+    },
+    {
+      "name": "Cazador del Callejón",
+      "lang": "es-es"
+    },
+    {
+      "name": "Traqueur des impasses",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Alley Hunter",
+      "lang": "id-id"
+    },
+    {
+      "name": "ダークアレイの狩人",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "뒷골목 사냥꾼",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Caçador do Beco",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Охотник во тьме",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Alley Hunter",
+      "lang": "th-th"
+    },
+    {
+      "name": "Thợ Săn Hẻm Tối",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "暗巷猎手",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "暗巷獵手",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Mitternachtswalzer",
+      "lang": "de-de"
+    },
+    {
+      "name": "Mitternachts Waltz",
+      "lang": "en-us"
+    },
+    {
+      "name": "Vals Nocturno",
+      "lang": "es-es"
+    },
+    {
+      "name": "Valse nocturne",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Mitternachts Waltz",
+      "lang": "id-id"
+    },
+    {
+      "name": "幽夜のワルツ",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "유야의 왈츠",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Valsa do Crepúsculo",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Вальс Нирваны Ночи",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Mitternachts Waltz",
+      "lang": "th-th"
+    },
+    {
+      "name": "Điệu Van Ban Đêm",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "幽夜华尔兹",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "幽夜華爾滋",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Windblumenode",
+      "lang": "de-de"
+    },
+    {
+      "name": "Windblume Ode",
+      "lang": "en-us"
+    },
+    {
+      "name": "Oda a las Flores de Viento",
+      "lang": "es-es"
+    },
+    {
+      "name": "Ode aux alizées",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Windblume Ode",
+      "lang": "id-id"
+    },
+    {
+      "name": "風花の頌歌",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "바람 꽃의 노래",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Ode à Brisa Florescente",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Ода анемонии",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Windblume Ode",
+      "lang": "th-th"
+    },
+    {
+      "name": "Bài Ca Hoa Gió",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "风花之颂",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "風花之頌",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Hamayumi",
+      "lang": "de-de"
+    },
+    {
+      "name": "Hamayumi",
+      "lang": "en-us"
+    },
+    {
+      "name": "Masacrademonios",
+      "lang": "es-es"
+    },
+    {
+      "name": "Arc d'exorcisme",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Hamayumi",
+      "lang": "id-id"
+    },
+    {
+      "name": "破魔の弓",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "파마궁",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Arco Quebra-Demônios",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Хамаюми",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Hamayumi",
+      "lang": "th-th"
+    },
+    {
+      "name": "Cung Trừ Ma",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "破魔之弓",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "破魔之弓",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Raubtier",
+      "lang": "de-de"
+    },
+    {
+      "name": "Predator",
+      "lang": "en-us"
+    },
+    {
+      "name": "Depredador",
+      "lang": "es-es"
+    },
+    {
+      "name": "Predator",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Predator",
+      "lang": "id-id"
+    },
+    {
+      "name": "プレデター",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "포식자",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Predador",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Хищник",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Predator",
+      "lang": "th-th"
+    },
+    {
+      "name": "Kẻ Săn Mồi",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "掠食者",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "掠食者",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Mouun-Mond",
+      "lang": "de-de"
+    },
+    {
+      "name": "Mouun's Moon",
+      "lang": "en-us"
+    },
+    {
+      "name": "Luna de Mouun",
+      "lang": "es-es"
+    },
+    {
+      "name": "Lune de Mouun",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Mouun's Moon",
+      "lang": "id-id"
+    },
+    {
+      "name": "曚雲の月",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "모운의 달",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Lua de Mouun",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Луна Моун",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Mouun's Moon",
+      "lang": "th-th"
+    },
+    {
+      "name": "Ánh Trăng Mouun",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "曚云之月",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "曚雲之月",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Himmelsflügel",
+      "lang": "de-de"
+    },
+    {
+      "name": "Skyward Harp",
+      "lang": "en-us"
+    },
+    {
+      "name": "Alas Celestiales",
+      "lang": "es-es"
+    },
+    {
+      "name": "Ailes de la Voûte d'Azur",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Skyward Harp",
+      "lang": "id-id"
+    },
+    {
+      "name": "天空の翼",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "천공의 날개",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Harpa Celestial",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Небесное крыло",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Skyward Harp",
+      "lang": "th-th"
+    },
+    {
+      "name": "Cánh Thiên Không",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "天空之翼",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "天空之翼",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Amos’ Bogen",
+      "lang": "de-de"
+    },
+    {
+      "name": "Amos' Bow",
+      "lang": "en-us"
+    },
+    {
+      "name": "Arco de Amos",
+      "lang": "es-es"
+    },
+    {
+      "name": "Arc d'Amos",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Amos' Bow",
+      "lang": "id-id"
+    },
+    {
+      "name": "アモスの弓",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "아모스의 활",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Arco de Amos",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Лук Амоса",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Amos' Bow",
+      "lang": "th-th"
+    },
+    {
+      "name": "Cung Amos",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "阿莫斯之弓",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "阿莫斯之弓",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Letzter Seufzer",
+      "lang": "de-de"
+    },
+    {
+      "name": "Elegy for the End",
+      "lang": "en-us"
+    },
+    {
+      "name": "Elegía del Fin",
+      "lang": "es-es"
+    },
+    {
+      "name": "Ultime soupir",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Elegy for the End",
+      "lang": "id-id"
+    },
+    {
+      "name": "終焉を嘆く詩",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "종말 탄식의 노래",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Elegia do Suspiro Final",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Элегия погибели",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Elegy for the End",
+      "lang": "th-th"
+    },
+    {
+      "name": "Tiếng Thở Dài Vô Tận",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "终末嗟叹之诗",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "終末嗟嘆之詩",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Polarstern",
+      "lang": "de-de"
+    },
+    {
+      "name": "Polar Star",
+      "lang": "en-us"
+    },
+    {
+      "name": "Estrella Invernal",
+      "lang": "es-es"
+    },
+    {
+      "name": "Étoile polaire",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Polar Star",
+      "lang": "id-id"
+    },
+    {
+      "name": "冬極の白星",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "극지의 별",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Estrela Invernal",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Полярная звезда",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Polar Star",
+      "lang": "th-th"
+    },
+    {
+      "name": "Ngôi Sao Cực Đông",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "冬极白星",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "冬極白星",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Donnerpuls",
+      "lang": "de-de"
+    },
+    {
+      "name": "Thundering Pulse",
+      "lang": "en-us"
+    },
+    {
+      "name": "Agitador del Relámpago",
+      "lang": "es-es"
+    },
+    {
+      "name": "Pulsation du tonnerre",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Thundering Pulse",
+      "lang": "id-id"
+    },
+    {
+      "name": "飛雷の鳴弦",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "비뢰의 고동",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Agitação Trovejante",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Громовой пульс",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Thundering Pulse",
+      "lang": "th-th"
+    },
+    {
+      "name": "Sấm Sét Rung Động",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "飞雷之弦振",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "飛雷之弦振",
+      "lang": "zh-tw"
+    }
+  ]
+]

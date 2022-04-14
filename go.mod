@@ -11,6 +11,7 @@ require (
 	github.com/samber/lo v1.12.0
 	github.com/spf13/cobra v1.4.0
 	golang.org/x/exp v0.0.0-20220407100705-7b9b53b0aca4
+	golang.org/x/text v0.3.7
 )
 
 require (

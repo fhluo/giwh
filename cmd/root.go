@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"github.com/fhluo/giwh/clients"
 	"github.com/fhluo/giwh/config"
+	"github.com/fhluo/giwh/i18n"
 	"github.com/fhluo/giwh/stat"
 	"github.com/spf13/cobra"
 	"log"
@@ -42,6 +43,10 @@ var rootCmd = &cobra.Command{
 
 		stat.Stat(items)
 	},
+}
+
+func init() {
+	rootCmd.PersistentFlags().StringVarP(&i18n.Language, "lang", "l", "", "set language")
 }
 
 func Execute() {
