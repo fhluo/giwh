@@ -2,6 +2,7 @@ package wh
 
 import (
 	"bytes"
+	"encoding/csv"
 	"errors"
 	"fmt"
 	"github.com/BurntSushi/toml"
@@ -14,22 +15,41 @@ import (
 	"log"
 	"os"
 	"path/filepath"
+	"reflect"
 	"sort"
 	"strconv"
 	"time"
 )
 
 type RawItem struct {
-	UID      string `json:"uid" toml:"uid"`
-	WishType string `json:"gacha_type" toml:"gacha_type"`
-	ItemID   string `json:"item_id" toml:"item_id"`
-	Count    string `json:"count" toml:"count"`
-	Time     string `json:"time" toml:"time"`
-	Name     string `json:"name" toml:"name"`
-	Lang     string `json:"lang" toml:"lang"`
-	ItemType string `json:"item_type" toml:"item_type"`
-	Rarity   string `json:"rank_type" toml:"rank_type"`
-	ID       string `json:"id" toml:"id"`
+	UID      string `json:"uid" toml:"uid" csv:"uid"`
+	WishType string `json:"gacha_type" toml:"gacha_type" csv:"gacha_type"`
+	ItemID   string `json:"item_id" toml:"item_id" csv:"item_id"`
+	Count    string `json:"count" toml:"count" csv:"count"`
+	Time     string `json:"time" toml:"time" csv:"time"`
+	Name     string `json:"name" toml:"name" csv:"name"`
+	Lang     string `json:"lang" toml:"lang" csv:"lang"`
+	ItemType string `json:"item_type" toml:"item_type" csv:"item_type"`
+	Rarity   string `json:"rank_type" toml:"rank_type" csv:"rank_type"`
+	ID       string `json:"id" toml:"id" csv:"id"`
+}
+
+func (r *RawItem) ToCSVHeader() []string {
+	t := reflect.Indirect(reflect.ValueOf(r)).Type()
+	result := make([]string, t.NumField())
+	for i := 0; i < t.NumField(); i++ {
+		result[i] = t.Field(i).Tag.Get("csv")
+	}
+	return result
+}
+
+func (r *RawItem) ToCSVRecord() []string {
+	v := reflect.Indirect(reflect.ValueOf(r))
+	result := make([]string, v.NumField())
+	for i := 0; i < v.NumField(); i++ {
+		result[i] = v.Field(i).String()
+	}
+	return result
 }
 
 type Item struct {
@@ -164,6 +184,18 @@ func (wh WishHistory) FilterByUIDAndWishType(uid string, wishTypes ...WishType) 
 	})
 }
 
+func (wh WishHistory) ToCSVRecords() [][]string {
+	if len(wh) == 0 {
+		return nil
+	}
+
+	items := make([][]string, len(wh))
+	for i := range wh {
+		items[i] = wh[i].ToCSVRecord()
+	}
+	return items
+}
+
 func (wh WishHistory) Save(filename string) error {
 	sort.Sort(sort.Reverse(wh))
 
@@ -189,6 +221,19 @@ func (wh WishHistory) Save(filename string) error {
 		if err != nil {
 			return err
 		}
+	case ".csv":
+		buf := new(bytes.Buffer)
+		w := csv.NewWriter(buf)
+
+		if err = w.Write((&RawItem{}).ToCSVHeader()); err != nil {
+			return err
+		}
+
+		if err = w.WriteAll(wh.ToCSVRecords()); err != nil {
+			return err
+		}
+
+		data = buf.Bytes()
 	default:
 		return fmt.Errorf("format %s is not supported", filepath.Ext(filename))
 	}
