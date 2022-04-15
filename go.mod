@@ -8,9 +8,9 @@ require (
 	github.com/google/go-querystring v1.1.0
 	github.com/hashicorp/go-multierror v1.1.1
 	github.com/json-iterator/go v1.1.12
-	github.com/samber/lo v1.12.0
+	github.com/samber/lo v1.13.0
 	github.com/spf13/cobra v1.4.0
-	golang.org/x/exp v0.0.0-20220407100705-7b9b53b0aca4
+	golang.org/x/exp v0.0.0-20220414153411-bcd21879b8fd
 	golang.org/x/text v0.3.7
 )
 
