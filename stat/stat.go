@@ -95,14 +95,14 @@ func Stat(items wh.WishHistory) {
 	drawLine(50)
 	show(
 		items.FilterByWishType(wh.CharacterEventWish, wh.CharacterEventWish2),
-		"Character Event Wish and Character Event Wish-2", 10, 90,
+		wh.CharacterEventWish.GetSharedWishName(), 10, 90,
 	)
 
 	drawLine(50)
-	show(items.FilterByWishType(wh.WeaponEventWish), "Weapon Event Wish", 10, 80)
+	show(items.FilterByWishType(wh.WeaponEventWish), wh.WeaponEventWish.GetSharedWishName(), 10, 80)
 
 	drawLine(50)
-	show(items.FilterByWishType(wh.StandardWish), "Standard Wish", 10, 90)
+	show(items.FilterByWishType(wh.StandardWish), wh.StandardWish.GetSharedWishName(), 10, 90)
 
 	drawLine(50)
 }

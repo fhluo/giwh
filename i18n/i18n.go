@@ -8,13 +8,46 @@ import (
 	"log"
 )
 
-//go:embed data/items.json
-var itemsData []byte
+var (
+	//go:embed data/items.json
+	itemsData []byte
+	//go:embed data/wishes.json
+	wishesData []byte
+	//go:embed data/shared_wishes.json
+	sharedWishesData []byte
+
+	Language string
+)
+
+var (
+	items []map[string]string
+
+	itemLanguages = []string{
+		"en-us", "de-de", "es-es", "fr-fr", "id-id", "ja-jp", "ko-kr",
+		"pt-pt", "ru-ru", "th-th", "vi-vn", "zh-cn", "zh-tw",
+	}
+	itemLangMatcher = language.NewMatcher(
+		lo.Map(itemLanguages, func(lang string, _ int) language.Tag {
+			return language.Make(lang)
+		}),
+	)
+)
+
+var (
+	wishes       map[string]map[string]string
+	sharedWishes map[string]map[string]string
+)
 
 func init() {
+	initItems()
+	initWishes()
+	initSharedWishes()
+}
+
+func initItems() {
 	var result [][]Item
-	err := jsoniter.Unmarshal(itemsData, &result)
-	if err != nil {
+
+	if err := jsoniter.Unmarshal(itemsData, &result); err != nil {
 		log.Fatalln(err)
 	}
 
@@ -28,20 +61,37 @@ func init() {
 	}
 }
 
-var (
-	Language string
-
-	items         []map[string]string
-	itemLanguages = []string{
-		"en-us", "de-de", "es-es", "fr-fr", "id-id", "ja-jp", "ko-kr",
-		"pt-pt", "ru-ru", "th-th", "vi-vn", "zh-cn", "zh-tw",
+func initWishes() {
+	var result []Wish
+	if err := jsoniter.Unmarshal(wishesData, &result); err != nil {
+		log.Fatalln(err)
 	}
-	itemLangMatcher = language.NewMatcher(
-		lo.Map(itemLanguages, func(lang string, _ int) language.Tag {
-			return language.Make(lang)
-		}),
-	)
-)
+
+	wishes = make(map[string]map[string]string)
+
+	for _, wish := range result {
+		if _, ok := wishes[wish.Lang]; !ok {
+			wishes[wish.Lang] = make(map[string]string)
+		}
+		wishes[wish.Lang][wish.Type] = wish.Name
+	}
+}
+
+func initSharedWishes() {
+	var result []Wish
+	if err := jsoniter.Unmarshal(sharedWishesData, &result); err != nil {
+		log.Fatalln(err)
+	}
+
+	sharedWishes = make(map[string]map[string]string)
+
+	for _, wish := range result {
+		if _, ok := sharedWishes[wish.Lang]; !ok {
+			sharedWishes[wish.Lang] = make(map[string]string)
+		}
+		sharedWishes[wish.Lang][wish.Type] = wish.Name
+	}
+}
 
 type Item struct {
 	Name string `json:"name"`
@@ -62,4 +112,32 @@ func (item Item) GetName() string {
 		}
 	}
 	return item.Name
+}
+
+func GetItemName(name string, lang string) string {
+	return Item{Name: name, Lang: lang}.GetName()
+}
+
+type Wish struct {
+	Type string `json:"type"`
+	Name string `json:"name"`
+	Lang string `json:"lang"`
+}
+
+func GetWishName(wishType string) string {
+	if _, ok := wishes[Language]; ok {
+		return wishes[Language][wishType]
+	} else {
+		_, index := language.MatchStrings(itemLangMatcher, Language)
+		return wishes[itemLanguages[index]][wishType]
+	}
+}
+
+func GetSharedWishName(wishType string) string {
+	if _, ok := sharedWishes[Language]; ok {
+		return sharedWishes[Language][wishType]
+	} else {
+		_, index := language.MatchStrings(itemLangMatcher, Language)
+		return sharedWishes[itemLanguages[index]][wishType]
+	}
 }

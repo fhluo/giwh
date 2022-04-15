@@ -95,7 +95,7 @@ func (item Item) String() string {
 	if i18n.Language == "" {
 		return item.Name
 	} else {
-		return i18n.Item{Name: item.Name, Lang: item.Lang}.GetName()
+		return i18n.GetItemName(item.Name, item.Lang)
 	}
 }
 

@@ -163,23 +163,15 @@ func FetchAllWishHistory(baseURL string, items wh.WishHistory) (wh.WishHistory, 
 		visit[item.ID()] = true
 	}
 
-	wishes := []wh.WishType{wh.CharacterEventWish, wh.WeaponEventWish, wh.StandardWish, wh.BeginnersWish}
-	descriptions := map[wh.WishType]string{
-		wh.CharacterEventWish: wh.CharacterEventWish.String() + " and " + wh.CharacterEventWish2.String(),
-		wh.WeaponEventWish:    wh.WeaponEventWish.String(),
-		wh.StandardWish:       wh.StandardWish.String(),
-		wh.BeginnersWish:      wh.BeginnersWish.String(),
-	}
-
-	for i, wish := range wishes {
-		fmt.Printf("Fetching the wish history of %s.\n", descriptions[wish])
+	for i, wish := range wh.SharedWishes {
+		fmt.Printf("Fetching the wish history of %s.\n", wish.GetSharedWishName())
 		r, err := New(baseURL, wish, visit).FetchALL()
 		if err != nil {
 			return nil, err
 		}
 
 		items = append(items, r...)
-		if i != len(wishes)-1 {
+		if i != len(wh.SharedWishes)-1 {
 			time.Sleep(DefaultInterval)
 		}
 	}

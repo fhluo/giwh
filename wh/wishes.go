@@ -1,5 +1,10 @@
 package wh
 
+import (
+	"github.com/fhluo/giwh/i18n"
+	"strconv"
+)
+
 type WishType int
 
 const (
@@ -11,17 +16,14 @@ const (
 )
 
 var (
-	Wishes = []WishType{BeginnersWish, StandardWish, CharacterEventWish, WeaponEventWish, CharacterEventWish2}
-
-	wishes = map[WishType]string{
-		BeginnersWish:       "Beginners' Wish",
-		StandardWish:        "Standard Wish",
-		CharacterEventWish:  "Character Event Wish",
-		WeaponEventWish:     "Weapon Event Wish",
-		CharacterEventWish2: "Character Event Wish-2",
-	}
+	Wishes       = []WishType{BeginnersWish, StandardWish, CharacterEventWish, WeaponEventWish, CharacterEventWish2}
+	SharedWishes = []WishType{CharacterEventWish, WeaponEventWish, StandardWish, BeginnersWish}
 )
 
 func (t WishType) String() string {
-	return wishes[t]
+	return i18n.GetWishName(strconv.Itoa(int(t)))
+}
+
+func (t WishType) GetSharedWishName() string {
+	return i18n.GetSharedWishName(strconv.Itoa(int(t)))
 }
