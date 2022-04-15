@@ -2,15 +2,21 @@
 
 Genshin Impact Wish History Exporter
 
-English | [简体中文](readme_zh-Hans.md)
+[简体中文](readme_zh-Hans.md)
 
-GIWH is a command line tool to help you export your wish history from Genshin Impact.
+## Features
 
-Note:
+- Get the wish history through the API and save it to `%LocalAppData%\giwh\wish_history.json`.
+- Update the wish history.
+- Show the progress of getting the next 4-Star and 5-Star.
+- Show the number of pulls used to acquire a 5-Star character or weapon.
+- Export the wish history in json, toml, csv or xlsx format.
+- Import the wish history in json or toml format.
+
+### Note
 
 - Due to the limitation of the query API, only the last six months of wish history can be fetched.
 - There may be a delay of about 1 hour in fetching new records.
-- Wish history is saved in `%LocalAppData%\giwh\wish_history.json`.
 
 ## Usage
 
