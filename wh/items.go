@@ -10,6 +10,7 @@ import (
 	"github.com/fhluo/giwh/i18n"
 	jsoniter "github.com/json-iterator/go"
 	"github.com/samber/lo"
+	"github.com/xuri/excelize/v2"
 	"golang.org/x/exp/slices"
 	"io/fs"
 	"log"
@@ -22,16 +23,16 @@ import (
 )
 
 type RawItem struct {
-	UID      string `json:"uid" toml:"uid" csv:"uid"`
-	WishType string `json:"gacha_type" toml:"gacha_type" csv:"gacha_type"`
-	ItemID   string `json:"item_id" toml:"item_id" csv:"item_id"`
-	Count    string `json:"count" toml:"count" csv:"count"`
-	Time     string `json:"time" toml:"time" csv:"time"`
-	Name     string `json:"name" toml:"name" csv:"name"`
-	Lang     string `json:"lang" toml:"lang" csv:"lang"`
-	ItemType string `json:"item_type" toml:"item_type" csv:"item_type"`
-	Rarity   string `json:"rank_type" toml:"rank_type" csv:"rank_type"`
-	ID       string `json:"id" toml:"id" csv:"id"`
+	UID      string `json:"uid" toml:"uid" csv:"UID"`
+	WishType string `json:"gacha_type" toml:"gacha_type" csv:"Wish Type"`
+	ItemID   string `json:"item_id" toml:"item_id" csv:"Item ID"`
+	Count    string `json:"count" toml:"count" csv:"Count"`
+	Time     string `json:"time" toml:"time" csv:"Time"`
+	Name     string `json:"name" toml:"name" csv:"Name"`
+	Lang     string `json:"lang" toml:"lang" csv:"Language"`
+	ItemType string `json:"item_type" toml:"item_type" csv:"Item Type"`
+	Rarity   string `json:"rank_type" toml:"rank_type" csv:"Rarity"`
+	ID       string `json:"id" toml:"id" csv:"ID"`
 }
 
 func (r *RawItem) ToCSVHeader() []string {
@@ -234,6 +235,40 @@ func (wh WishHistory) Save(filename string) error {
 		}
 
 		data = buf.Bytes()
+	case ".xlsx":
+		f := excelize.NewFile()
+
+		f.SetSheetName("Sheet1", SharedWishes[0].GetSharedWishName())
+
+		for _, wish := range SharedWishes[1:] {
+			f.NewSheet(wish.GetSharedWishName())
+		}
+
+		for _, wish := range SharedWishes {
+			name := wish.GetSharedWishName()
+			header := (&RawItem{}).ToCSVHeader()
+			for i := range header {
+				if err = f.SetCellValue(name, fmt.Sprintf("%c%d", 'A'+i, 1), header[i]); err != nil {
+					return err
+				}
+			}
+
+			var records [][]string
+			if wish == CharacterEventWish {
+				records = wh.FilterByWishType(wish, CharacterEventWish2).ToCSVRecords()
+			} else {
+				records = wh.FilterByWishType(wish).ToCSVRecords()
+			}
+
+			for i, record := range records {
+				for j, value := range record {
+					if err = f.SetCellValue(name, fmt.Sprintf("%c%d", 'A'+j, 2+i), value); err != nil {
+						return err
+					}
+				}
+			}
+		}
+		return f.SaveAs(filename)
 	default:
 		return fmt.Errorf("format %s is not supported", filepath.Ext(filename))
 	}

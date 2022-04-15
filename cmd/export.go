@@ -13,8 +13,6 @@ var exportCmd = &cobra.Command{
 	Short: "Export wish history",
 	Args:  cobra.ExactArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
-		defer fmt.Println()
-
 		items := config.WishHistory.Unique()
 
 		switch {
