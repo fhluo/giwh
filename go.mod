@@ -8,7 +8,7 @@ require (
 	github.com/google/go-querystring v1.1.0
 	github.com/hashicorp/go-multierror v1.1.1
 	github.com/json-iterator/go v1.1.12
-	github.com/samber/lo v1.13.0
+	github.com/samber/lo v1.15.0
 	github.com/spf13/cobra v1.4.0
 	github.com/xuri/excelize/v2 v2.6.0
 	golang.org/x/exp v0.0.0-20220414153411-bcd21879b8fd
@@ -31,6 +31,6 @@ require (
 	github.com/xuri/efp v0.0.0-20220407160117-ad0f7a785be8 // indirect
 	github.com/xuri/nfp v0.0.0-20220409054826-5e722a1d9e22 // indirect
 	golang.org/x/crypto v0.0.0-20220411220226-7b82a4e95df4 // indirect
-	golang.org/x/net v0.0.0-20220412020605-290c469a71a5 // indirect
-	golang.org/x/sys v0.0.0-20220412211240-33da011f77ad // indirect
+	golang.org/x/net v0.0.0-20220421235706-1d1ef9303861 // indirect
+	golang.org/x/sys v0.0.0-20220422013727-9388b58f7150 // indirect
 )
