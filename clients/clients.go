@@ -4,7 +4,7 @@ import (
 	"errors"
 	"github.com/fhluo/giwh/fetcher"
 	"github.com/fhluo/giwh/internal/config"
-	"github.com/fhluo/giwh/util"
+	"github.com/fhluo/giwh/pkg/util"
 	"github.com/hashicorp/go-multierror"
 	"net/url"
 	"os"

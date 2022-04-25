@@ -1,7 +1,7 @@
 package cmd
 
 import (
-	"github.com/fhluo/giwh/util"
+	"github.com/fhluo/giwh/pkg/util"
 	"github.com/fhluo/giwh/wh"
 	"github.com/spf13/cobra"
 )
