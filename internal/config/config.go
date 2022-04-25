@@ -24,8 +24,6 @@ var (
 	WishHistory wh.WishHistory
 
 	config *Config
-
-	logger = log.New(os.Stderr, "", 0)
 )
 
 func init() {
@@ -37,13 +35,13 @@ func init() {
 		if errors.Is(err, fs.ErrNotExist) {
 			config = new(Config)
 		} else {
-			logger.Fatalf("fail to open config file: %s\n", err)
+			log.Fatalf("fail to open config file: %s\n", err)
 		}
 	}
 
 	WishHistory, err = wh.LoadWishHistoryIfExits(WishHistoryPath)
 	if err != nil {
-		logger.Fatalln(err)
+		log.Fatalln(err)
 	}
 }
 

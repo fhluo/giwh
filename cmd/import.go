@@ -15,13 +15,13 @@ var importCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		filenames, err := util.ExpandPaths(args...)
 		if err != nil {
-			logger.Fatalln(err)
+			log.Fatalln(err)
 		}
 
 		for _, filename := range filenames {
 			items, err := wh.LoadWishHistory(filename)
 			if err != nil {
-				logger.Fatalln(err)
+				log.Fatalln(err)
 			}
 			config.WishHistory = append(config.WishHistory, items...)
 		}

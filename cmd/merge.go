@@ -4,6 +4,7 @@ import (
 	"github.com/fhluo/giwh/pkg/util"
 	"github.com/fhluo/giwh/wh"
 	"github.com/spf13/cobra"
+	"log"
 )
 
 var mergeCmd = &cobra.Command{
@@ -13,7 +14,7 @@ var mergeCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		filenames, err := util.ExpandPaths(args...)
 		if err != nil {
-			logger.Fatalln(err)
+			log.Fatalln(err)
 		}
 
 		var result wh.WishHistory
@@ -21,13 +22,13 @@ var mergeCmd = &cobra.Command{
 		for _, filename := range filenames {
 			items, err := wh.LoadWishHistory(filename)
 			if err != nil {
-				logger.Fatalln(err)
+				log.Fatalln(err)
 			}
 			result = append(result, items...)
 		}
 
 		if err = result.Unique().Save(outputFilename); err != nil {
-			logger.Fatalln(err)
+			log.Fatalln(err)
 		}
 	},
 }
@@ -38,6 +39,6 @@ func init() {
 	rootCmd.AddCommand(mergeCmd)
 	mergeCmd.Flags().StringVarP(&outputFilename, "output", "o", "", "specify output filename")
 	if err := mergeCmd.MarkFlagRequired("output"); err != nil {
-		logger.Fatalln(err)
+		log.Fatalln(err)
 	}
 }

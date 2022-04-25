@@ -9,10 +9,7 @@ import (
 	"github.com/fhluo/giwh/stat"
 	"github.com/spf13/cobra"
 	"log"
-	"os"
 )
-
-var logger = log.New(os.Stderr, "", 0)
 
 var rootCmd = &cobra.Command{
 	Use:   "giwh",
@@ -22,15 +19,15 @@ var rootCmd = &cobra.Command{
 		client, err := clients.RecentlyUsed()
 		if err != nil {
 			if errors.Is(err, clients.ErrNotFound) {
-				logger.Fatalln("Please open the wish history page in the game.")
+				log.Fatalln("Please open the wish history page in the game.")
 			} else {
-				logger.Fatalln(err)
+				log.Fatalln(err)
 			}
 		}
 
 		uid, err := client.GetUID()
 		if err != nil {
-			logger.Fatalln(err)
+			log.Fatalln(err)
 		}
 
 		items := config.WishHistory.FilterByUID(uid)
@@ -54,12 +51,12 @@ func Execute() {
 		i18n.Language = config.GetLanguage()
 	}
 	if err := rootCmd.Execute(); err != nil {
-		logger.Fatalln(err)
+		log.Fatalln(err)
 	}
 	if rootCmd.PersistentFlags().Changed("lang") {
 		config.SetLanguage(i18n.Language)
 		if err := config.Save(); err != nil {
-			logger.Fatalln(err)
+			log.Fatalln(err)
 		}
 	}
 }

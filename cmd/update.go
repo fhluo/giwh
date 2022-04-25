@@ -7,6 +7,7 @@ import (
 	"github.com/fhluo/giwh/fetcher"
 	"github.com/fhluo/giwh/internal/config"
 	"github.com/spf13/cobra"
+	"log"
 )
 
 var updateCmd = &cobra.Command{
@@ -16,21 +17,21 @@ var updateCmd = &cobra.Command{
 		client, err := clients.RecentlyUsed()
 		if err != nil {
 			if errors.Is(err, clients.ErrNotFound) {
-				logger.Fatalln("Please open the wish history page in the game.")
+				log.Fatalln("Please open the wish history page in the game.")
 			} else {
-				logger.Fatalln(err)
+				log.Fatalln(err)
 			}
 		}
 
 		authInfo, err := client.GetAuthInfo()
 		if err != nil {
-			logger.Fatalln(err)
+			log.Fatalln(err)
 		}
 
 		items := config.WishHistory.FilterByUID(authInfo.UID)
 		result, err := fetcher.FetchAllWishHistory(authInfo.BaseURL, items)
 		if err != nil {
-			logger.Fatalln(err)
+			log.Fatalln(err)
 		}
 
 		count := len(result) - len(items)
@@ -41,7 +42,7 @@ var updateCmd = &cobra.Command{
 
 		config.WishHistory = append(config.WishHistory, result...)
 		if err := config.SaveWishHistory(); err != nil {
-			logger.Fatalln(err)
+			log.Fatalln(err)
 		}
 
 		fmt.Printf("%d items fetched.\n", count)

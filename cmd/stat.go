@@ -4,6 +4,7 @@ import (
 	"github.com/fhluo/giwh/stat"
 	"github.com/fhluo/giwh/wh"
 	"github.com/spf13/cobra"
+	"log"
 )
 
 var statCmd = &cobra.Command{
@@ -13,7 +14,7 @@ var statCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		items, err := wh.LoadWishHistory(args[0])
 		if err != nil {
-			logger.Fatalln(err)
+			log.Fatalln(err)
 		}
 
 		stat.Stat(items)
