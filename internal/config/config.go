@@ -23,7 +23,12 @@ var (
 
 	WishHistory wh.WishHistory
 
-	config *Config
+	config         *Config
+	GetAuthInfo    = config.GetAuthInfo
+	UpdateAuthInfo = config.UpdateAuthInfo
+	GetLanguage    = func() string { return config.Language }
+	SetLanguage    = func(lang string) { config.Language = lang }
+	Save           = func() error { return config.Save() }
 )
 
 func init() {
@@ -80,10 +85,6 @@ func (config *Config) GetAuthInfo(uid string) (fetcher.AuthInfo, bool) {
 	})
 }
 
-func GetAuthInfo(uid string) (fetcher.AuthInfo, bool) {
-	return config.GetAuthInfo(uid)
-}
-
 func (config *Config) UpdateAuthInfo(authInfo fetcher.AuthInfo) {
 	i := slices.IndexFunc(config.AuthInfos, func(info fetcher.AuthInfo) bool {
 		return info.UID == authInfo.UID
@@ -93,10 +94,6 @@ func (config *Config) UpdateAuthInfo(authInfo fetcher.AuthInfo) {
 	} else {
 		config.AuthInfos[i] = authInfo
 	}
-}
-
-func UpdateAuthInfo(authInfo fetcher.AuthInfo) {
-	config.UpdateAuthInfo(authInfo)
 }
 
 func (config *Config) Save() error {
@@ -111,16 +108,4 @@ func (config *Config) Save() error {
 	}
 
 	return os.WriteFile(Path, data, 0666)
-}
-
-func GetLanguage() string {
-	return config.Language
-}
-
-func SetLanguage(lang string) {
-	config.Language = lang
-}
-
-func Save() error {
-	return config.Save()
 }
