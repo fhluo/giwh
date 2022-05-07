@@ -3,9 +3,9 @@ package cmd
 import (
 	"errors"
 	"fmt"
-	"github.com/fhluo/giwh/clients"
 	"github.com/fhluo/giwh/i18n"
 	"github.com/fhluo/giwh/internal/config"
+	"github.com/fhluo/giwh/pkg/clients"
 	"github.com/fhluo/giwh/stat"
 	"github.com/spf13/cobra"
 	"log"
@@ -18,7 +18,7 @@ var rootCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		client, err := clients.RecentlyUsed()
 		if err != nil {
-			if errors.Is(err, clients.ErrNotFound) {
+			if errors.Is(err, clients.ErrURLNotFound) {
 				log.Fatalln("Please open the wish history page in the game.")
 			} else {
 				log.Fatalln(err)

@@ -2,8 +2,6 @@ package clients
 
 import (
 	"errors"
-	"github.com/fhluo/giwh/fetcher"
-	"github.com/fhluo/giwh/internal/config"
 	"github.com/fhluo/giwh/pkg/util"
 	"github.com/hashicorp/go-multierror"
 	"net/url"
@@ -12,9 +10,11 @@ import (
 	"regexp"
 )
 
-var ErrNotFound = errors.New("not found")
-
 var (
+	ErrURLNotFound    = errors.New("URL not found")
+	ErrClientNotFound = errors.New("client not found")
+	ErrUIDNotFound    = errors.New("UID not found")
+
 	CN = Client{
 		PersistentDataPath: filepath.Join(os.Getenv("USERPROFILE"), `\AppData\LocalLow\miHoYo\原神`),
 		QueryLinkHostName:  "webstatic.mihoyo.com",
@@ -39,7 +39,7 @@ func RecentlyUsed() (client Client, err error) {
 	case Global.OutputLogPath():
 		client = Global
 	default:
-		err = ErrNotFound
+		err = ErrClientNotFound
 	}
 	return
 }
@@ -66,7 +66,7 @@ func (client Client) GetUID() (string, error) {
 
 	r := regexp.MustCompile(`\d{9}`).Find(data)
 	if r == nil {
-		return "", ErrNotFound
+		return "", ErrUIDNotFound
 	}
 
 	return string(r), nil
@@ -97,40 +97,19 @@ func (client Client) FindURLFromOutputLog(f func(u *url.URL) bool) (*url.URL, er
 		return nil, errs
 	}
 
-	return nil, ErrNotFound
+	return nil, ErrURLNotFound
 }
 
-func (client Client) GetAuthInfo() (authInfo fetcher.AuthInfo, err error) {
-	var u *url.URL
-	u, err = client.FindURLFromOutputLog(func(u *url.URL) bool {
+func (client Client) FindQueryLinkWithAuthKey() (*url.URL, error) {
+	return client.FindURLFromOutputLog(func(u *url.URL) bool {
 		return u.Query().Has("authkey") && u.Hostname() == client.QueryLinkHostName
 	})
-	if err != nil && !errors.Is(err, ErrNotFound) {
+}
+
+func (client Client) GetBaseURL() (baseURL string, err error) {
+	u, err := client.FindQueryLinkWithAuthKey()
+	if err != nil {
 		return
 	}
-
-	uid, err_ := client.GetUID()
-	if err_ != nil {
-		err = err_
-		return
-	}
-
-	if errors.Is(err, ErrNotFound) {
-		var ok bool
-		authInfo, ok = config.GetAuthInfo(uid)
-		if ok {
-			return authInfo, nil
-		} else {
-			return
-		}
-	}
-
-	authInfo = fetcher.AuthInfo{
-		UID:     uid,
-		BaseURL: client.APIGetWishHistory + "?" + u.RawQuery,
-	}
-
-	config.UpdateAuthInfo(authInfo)
-	_ = config.Save()
-	return
+	return client.APIGetWishHistory + "?" + u.RawQuery, nil
 }

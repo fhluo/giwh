@@ -3,9 +3,9 @@ package cmd
 import (
 	"errors"
 	"fmt"
-	"github.com/fhluo/giwh/clients"
 	"github.com/fhluo/giwh/fetcher"
 	"github.com/fhluo/giwh/internal/config"
+	"github.com/fhluo/giwh/pkg/clients"
 	"github.com/spf13/cobra"
 	"log"
 )
@@ -16,20 +16,38 @@ var updateCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		client, err := clients.RecentlyUsed()
 		if err != nil {
-			if errors.Is(err, clients.ErrNotFound) {
+			if errors.Is(err, clients.ErrURLNotFound) {
 				log.Fatalln("Please open the wish history page in the game.")
 			} else {
 				log.Fatalln(err)
 			}
 		}
 
-		authInfo, err := client.GetAuthInfo()
+		uid, err := client.GetUID()
 		if err != nil {
 			log.Fatalln(err)
 		}
 
-		items := config.WishHistory.FilterByUID(authInfo.UID)
-		result, err := fetcher.FetchAllWishHistory(authInfo.BaseURL, items)
+		baseURL, err := client.GetBaseURL()
+		if err != nil {
+			if errors.Is(err, clients.ErrURLNotFound) {
+				authInfo, ok := config.GetAuthInfo(uid)
+				if ok {
+					uid = authInfo.UID
+					baseURL = authInfo.BaseURL
+				} else {
+					log.Fatalln(err)
+				}
+			} else {
+				log.Fatalln(err)
+			}
+		}
+
+		config.UpdateAuthInfo(fetcher.AuthInfo{UID: uid, BaseURL: baseURL})
+		_ = config.Save()
+
+		items := config.WishHistory.FilterByUID(uid)
+		result, err := fetcher.FetchAllWishHistory(baseURL, items)
 		if err != nil {
 			log.Fatalln(err)
 		}
