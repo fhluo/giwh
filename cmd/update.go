@@ -3,9 +3,9 @@ package cmd
 import (
 	"errors"
 	"fmt"
-	"github.com/fhluo/giwh/fetcher"
 	"github.com/fhluo/giwh/internal/config"
 	"github.com/fhluo/giwh/pkg/clients"
+	"github.com/fhluo/giwh/pkg/fetcher"
 	"github.com/spf13/cobra"
 	"log"
 )
