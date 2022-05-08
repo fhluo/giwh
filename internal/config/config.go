@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"errors"
 	"github.com/BurntSushi/toml"
-	"github.com/fhluo/giwh/fetcher"
+	"github.com/fhluo/giwh/pkg/fetcher"
 	"github.com/fhluo/giwh/wh"
 	"github.com/samber/lo"
 	"golang.org/x/exp/slices"
@@ -23,7 +23,7 @@ var (
 
 	WishHistory wh.WishHistory
 
-	config         *Config
+	config         = mustLoadConfig()
 	GetAuthInfo    = config.GetAuthInfo
 	UpdateAuthInfo = config.UpdateAuthInfo
 	GetLanguage    = func() string { return config.Language }
@@ -36,18 +36,22 @@ func init() {
 
 	var err error
 
-	if config, err = Load(Path); err != nil {
+	WishHistory, err = wh.LoadWishHistoryIfExits(WishHistoryPath)
+	if err != nil {
+		log.Fatalln(err)
+	}
+}
+
+func mustLoadConfig() *Config {
+	config, err := Load(Path)
+	if err != nil {
 		if errors.Is(err, fs.ErrNotExist) {
 			config = new(Config)
 		} else {
 			log.Fatalf("fail to open config file: %s\n", err)
 		}
 	}
-
-	WishHistory, err = wh.LoadWishHistoryIfExits(WishHistoryPath)
-	if err != nil {
-		log.Fatalln(err)
-	}
+	return config
 }
 
 func SaveWishHistory() error {
