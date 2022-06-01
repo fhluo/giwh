@@ -3,8 +3,8 @@ package cmd
 import (
 	"fmt"
 	"github.com/fhluo/giwh/internal/config"
+	"github.com/fhluo/giwh/pkg/util"
 	"github.com/fhluo/giwh/wh"
-	"github.com/samber/lo"
 	"github.com/spf13/cobra"
 	"log"
 )
@@ -18,13 +18,13 @@ var exportCmd = &cobra.Command{
 
 		switch {
 		case cmd.Flags().Changed("uid") && cmd.Flags().Changed("wish"):
-			items = items.FilterByUIDAndWishType(uid, lo.Map(wishes, func(t int, _ int) wh.WishType {
+			items = items.FilterByUIDAndWishType(uid, util.Map(wishes, func(t int) wh.WishType {
 				return wh.WishType(t)
 			})...)
 		case cmd.Flags().Changed("uid"):
 			items = items.FilterByUID(uid)
 		case cmd.Flags().Changed("wish"):
-			items = items.FilterByWishType(lo.Map(wishes, func(t int, _ int) wh.WishType {
+			items = items.FilterByWishType(util.Map(wishes, func(t int) wh.WishType {
 				return wh.WishType(t)
 			})...)
 		}

@@ -2,8 +2,8 @@ package i18n
 
 import (
 	_ "embed"
+	"github.com/fhluo/giwh/pkg/util"
 	jsoniter "github.com/json-iterator/go"
-	"github.com/samber/lo"
 	"golang.org/x/text/language"
 	"log"
 )
@@ -27,7 +27,7 @@ var (
 		"pt-pt", "ru-ru", "th-th", "vi-vn", "zh-cn", "zh-tw",
 	}
 	itemLangMatcher = language.NewMatcher(
-		lo.Map(itemLanguages, func(lang string, _ int) language.Tag {
+		util.Map(itemLanguages, func(lang string) language.Tag {
 			return language.Make(lang)
 		}),
 	)

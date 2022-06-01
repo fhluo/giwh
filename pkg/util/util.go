@@ -3,7 +3,6 @@ package util
 import (
 	"fmt"
 	"github.com/hashicorp/go-multierror"
-	"github.com/samber/lo"
 	"os"
 	"path/filepath"
 	"sort"
@@ -51,20 +50,63 @@ func SortFiles(names ...string) ([]string, error) {
 		sort.Slice(infos, func(i, j int) bool {
 			return infos[i].time.After(infos[j].time)
 		})
-		return lo.Map(infos, func(i *info, _ int) string {
+
+		return Map(infos, func(i *info) string {
 			return i.name
 		}), nil
 	}
 }
 
-func ExpandPaths(paths ...string) ([]string, error) {
-	var errs error
+func ExpandPaths(paths ...string) (result []string, errs error) {
+	result = make([]string, 0, len(paths))
 
-	return lo.FlatMap(paths, func(path string, _ int) []string {
+	for _, path := range paths {
 		matches, err := filepath.Glob(path)
 		if err != nil {
 			errs = multierror.Append(errs, err)
 		}
-		return matches
-	}), errs
+		result = append(result, matches...)
+	}
+
+	return result, errs
+}
+
+func Map[T, T_ any](items []T, f func(T) T_) []T_ {
+	result := make([]T_, 0, len(items))
+	for _, item := range items {
+		result = append(result, f(item))
+	}
+	return result
+}
+
+func Filter[T any](items []T, f func(T) bool) (result []T) {
+	for _, item := range items {
+		if f(item) {
+			result = append(result, item)
+		}
+	}
+	return result
+}
+
+func Find[T any](items []T, f func(T) bool) (r T, b bool) {
+	for _, item := range items {
+		if f(item) {
+			return item, true
+		}
+	}
+	return r, false
+}
+
+func Unique[T any, K comparable](items []T, f func(T) K) []T {
+	exists := make(map[K]bool)
+	result := make([]T, 0, len(items))
+
+	for _, item := range items {
+		if key := f(item); !exists[key] {
+			exists[key] = true
+			result = append(result, item)
+		}
+	}
+
+	return result
 }

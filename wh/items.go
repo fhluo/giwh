@@ -8,8 +8,8 @@ import (
 	"github.com/BurntSushi/toml"
 	"github.com/fatih/color"
 	"github.com/fhluo/giwh/i18n"
+	"github.com/fhluo/giwh/pkg/util"
 	jsoniter "github.com/json-iterator/go"
-	"github.com/samber/lo"
 	"github.com/xuri/excelize/v2"
 	"golang.org/x/exp/slices"
 	"io/fs"
@@ -152,7 +152,7 @@ func (wh WishHistory) Equal(items2 WishHistory) bool {
 }
 
 func (wh WishHistory) Unique() WishHistory {
-	return lo.UniqBy(wh, func(item Item) int64 {
+	return util.Unique(wh, func(item Item) int64 {
 		return item.ID()
 	})
 }
@@ -162,26 +162,26 @@ func (wh WishHistory) Count() int {
 }
 
 func (wh WishHistory) FilterByUID(uid string) WishHistory {
-	return lo.Filter(wh, func(item Item, _ int) bool {
+	return util.Filter(wh, func(item Item) bool {
 		return item.UID == uid
 	})
 }
 
 func (wh WishHistory) FilterByWishType(wishTypes ...WishType) WishHistory {
-	return lo.Filter(wh, func(item Item, _ int) bool {
-		return lo.Contains(wishTypes, item.WishType())
+	return util.Filter(wh, func(item Item) bool {
+		return slices.Contains(wishTypes, item.WishType())
 	})
 }
 
 func (wh WishHistory) FilterByRarity(rarities ...Rarity) WishHistory {
-	return lo.Filter(wh, func(item Item, _ int) bool {
-		return lo.Contains(rarities, item.Rarity())
+	return util.Filter(wh, func(item Item) bool {
+		return slices.Contains(rarities, item.Rarity())
 	})
 }
 
 func (wh WishHistory) FilterByUIDAndWishType(uid string, wishTypes ...WishType) WishHistory {
-	return lo.Filter(wh, func(item Item, _ int) bool {
-		return item.UID == uid && lo.Contains(wishTypes, item.WishType())
+	return util.Filter(wh, func(item Item) bool {
+		return item.UID == uid && slices.Contains(wishTypes, item.WishType())
 	})
 }
 

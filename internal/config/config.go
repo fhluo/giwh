@@ -5,8 +5,8 @@ import (
 	"errors"
 	"github.com/BurntSushi/toml"
 	"github.com/fhluo/giwh/pkg/fetcher"
+	"github.com/fhluo/giwh/pkg/util"
 	"github.com/fhluo/giwh/wh"
-	"github.com/samber/lo"
 	"golang.org/x/exp/slices"
 	"io/fs"
 	"log"
@@ -84,7 +84,7 @@ func Load(filename string) (*Config, error) {
 }
 
 func (config *Config) GetAuthInfo(uid string) (fetcher.AuthInfo, bool) {
-	return lo.Find(config.AuthInfos, func(authInfo fetcher.AuthInfo) bool {
+	return util.Find(config.AuthInfos, func(authInfo fetcher.AuthInfo) bool {
 		return authInfo.UID == uid
 	})
 }

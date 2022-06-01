@@ -3,10 +3,10 @@ package fetcher
 import (
 	"fmt"
 	"github.com/fatih/color"
+	"github.com/fhluo/giwh/pkg/util"
 	"github.com/fhluo/giwh/wh"
 	"github.com/google/go-querystring/query"
 	jsoniter "github.com/json-iterator/go"
-	"github.com/samber/lo"
 	"io"
 	"log"
 	"net/http"
@@ -146,7 +146,7 @@ func (f *Fetcher) FetchALL() (wh.WishHistory, error) {
 			break
 		}
 
-		fmt.Println(strings.Join(lo.Map(items, func(item wh.Item, _ int) string {
+		fmt.Println(strings.Join(util.Map(items, func(item wh.Item) string {
 			return item.ColoredString()
 		}), color.HiBlackString(", ")))
 

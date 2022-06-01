@@ -3,8 +3,8 @@ package stat
 import (
 	"fmt"
 	"github.com/fatih/color"
+	"github.com/fhluo/giwh/pkg/util"
 	"github.com/fhluo/giwh/wh"
-	"github.com/samber/lo"
 	"sort"
 	"strings"
 )
@@ -41,11 +41,11 @@ func stat(items wh.WishHistory) (infos []info, fourStar int, fiveStar int) {
 
 func show5stars(infos []info) {
 	fmt.Println(strings.Join(
-		lo.Map(
-			lo.Filter(infos, func(i info, _ int) bool {
+		util.Map(
+			util.Filter(infos, func(i info) bool {
 				return i.Rarity() == wh.FiveStar
 			}),
-			func(i info, _ int) string {
+			func(i info) string {
 				return i.String()
 			},
 		),
