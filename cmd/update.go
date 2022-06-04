@@ -14,7 +14,7 @@ var updateCmd = &cobra.Command{
 	Use:   "update",
 	Short: "Update wish history",
 	Run: func(cmd *cobra.Command, args []string) {
-		client, err := clients.RecentlyUsed()
+		client, err := clients.Default()
 		if err != nil {
 			if errors.Is(err, clients.ErrURLNotFound) {
 				log.Fatalln("Please open the wish history page in the game.")

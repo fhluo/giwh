@@ -2,7 +2,6 @@ package clients
 
 import (
 	"errors"
-	"github.com/fhluo/giwh/pkg/util"
 	"github.com/hashicorp/go-multierror"
 	"net/url"
 	"os"
@@ -10,37 +9,71 @@ import (
 	"regexp"
 )
 
+const (
+	CN = 1 << iota
+	OS
+)
+
 var (
 	ErrURLNotFound    = errors.New("URL not found")
 	ErrClientNotFound = errors.New("client not found")
 	ErrUIDNotFound    = errors.New("UID not found")
 
-	CN = Client{
+	CNClient = Client{
 		PersistentDataPath: filepath.Join(os.Getenv("USERPROFILE"), `\AppData\LocalLow\miHoYo\原神`),
 		QueryLinkHostName:  "webstatic.mihoyo.com",
 		APIGetWishHistory:  "https://hk4e-api.mihoyo.com/event/gacha_info/api/getGachaLog",
 	}
-	Global = Client{
+	OSClient = Client{
 		PersistentDataPath: filepath.Join(os.Getenv("USERPROFILE"), `\AppData\LocalLow\miHoYo\Genshin Impact`),
 		QueryLinkHostName:  "webstatic-sea.hoyoverse.com",
 		APIGetWishHistory:  "https://hk4e-api-os.hoyoverse.com/event/gacha_info/api/getGachaLog",
 	}
 )
 
-func RecentlyUsed() (client Client, err error) {
-	result, err := util.FindLatest(CN.OutputLogPath(), Global.OutputLogPath())
-	if err != nil {
-		return
+func DetectVersions() int {
+	var versions int
+
+	if _, err := os.Stat(CNClient.PersistentDataPath); err == nil {
+		versions |= CN
 	}
 
-	switch result {
-	case CN.OutputLogPath():
-		client = CN
-	case Global.OutputLogPath():
-		client = Global
+	if _, err := os.Stat(CNClient.PersistentDataPath); err == nil {
+		versions |= OS
+	}
+
+	return versions
+}
+
+func Default() (client Client, err error) {
+	versions := DetectVersions()
+	switch versions {
+	case CN:
+		client = CNClient
+
+	case OS:
+		client = OSClient
+
+	case CN | OS:
+		log1, err := os.Stat(CNClient.OutputLogPath())
+		if err != nil {
+			return client, err
+		}
+		log2, err := os.Stat(OSClient.OutputLogPath())
+		if err != nil {
+			return client, err
+		}
+
+		if log1.ModTime().After(log2.ModTime()) {
+			client = CNClient
+		} else {
+			client = OSClient
+		}
+
 	default:
 		err = ErrClientNotFound
 	}
+
 	return
 }
 
