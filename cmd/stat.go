@@ -1,7 +1,7 @@
 package cmd
 
 import (
-	"github.com/fhluo/giwh/stat"
+	"github.com/fhluo/giwh/pkg/stat"
 	"github.com/fhluo/giwh/wh"
 	"github.com/spf13/cobra"
 	"log"
