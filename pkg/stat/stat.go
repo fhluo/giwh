@@ -4,7 +4,7 @@ import (
 	_ "embed"
 	"fmt"
 	"github.com/fatih/color"
-	"github.com/fhluo/giwh/wh"
+	"github.com/fhluo/giwh/pkg/wish"
 	"log"
 	"os"
 	"sort"
@@ -34,10 +34,10 @@ type Info struct {
 	Count5    int
 	First     string
 	Last      string
-	Items5    wh.WishHistory
+	Items5    wish.History
 }
 
-func stat(name string, pity4, pity5 int, items wh.WishHistory) Info {
+func stat(name string, pity4, pity5 int, items wish.History) Info {
 	sort.Sort(items)
 
 	var (
@@ -47,11 +47,11 @@ func stat(name string, pity4, pity5 int, items wh.WishHistory) Info {
 	)
 	for i := range items {
 		switch items[i].Rarity() {
-		case wh.FourStar:
+		case wish.FourStar:
 			progress[items[i].ID()] = progress4 + 1
 			progress4 = 0
 			progress5++
-		case wh.FiveStar:
+		case wish.FiveStar:
 			progress[items[i].ID()] = progress5 + 1
 			progress4++
 			progress5 = 0
@@ -69,8 +69,8 @@ func stat(name string, pity4, pity5 int, items wh.WishHistory) Info {
 		Progress4: progress4,
 		Progress5: progress5,
 		Count:     items.Count(),
-		Count5:    items.FilterByRarity(wh.FiveStar).Count(),
-		Items5:    items.FilterByRarity(wh.FiveStar),
+		Count5:    items.FilterByRarity(wish.FiveStar).Count(),
+		Items5:    items.FilterByRarity(wish.FiveStar),
 	}
 
 	if info.Count > 0 {
@@ -81,7 +81,7 @@ func stat(name string, pity4, pity5 int, items wh.WishHistory) Info {
 	return info
 }
 
-func Stat(items wh.WishHistory) {
+func Stat(items wish.History) {
 	items = items.Unique()
 
 	err := template.Must(template.New("").Funcs(template.FuncMap{
@@ -92,9 +92,9 @@ func Stat(items wh.WishHistory) {
 		"white":   color.WhiteString,
 		"yellow":  color.YellowString,
 	}).Parse(tmpl)).Execute(os.Stdout, []Info{
-		stat(wh.CharacterEventWish.GetSharedWishName(), 10, 90, items.FilterByWishType(wh.CharacterEventWish, wh.CharacterEventWish2)),
-		stat(wh.WeaponEventWish.GetSharedWishName(), 10, 80, items.FilterByWishType(wh.WeaponEventWish)),
-		stat(wh.StandardWish.GetSharedWishName(), 10, 90, items.FilterByWishType(wh.StandardWish)),
+		stat(wish.CharacterEventWish.GetSharedWishName(), 10, 90, items.FilterByWishType(wish.CharacterEventWish, wish.CharacterEventWish2)),
+		stat(wish.WeaponEventWish.GetSharedWishName(), 10, 80, items.FilterByWishType(wish.WeaponEventWish)),
+		stat(wish.StandardWish.GetSharedWishName(), 10, 90, items.FilterByWishType(wish.StandardWish)),
 	})
 	if err != nil {
 		log.Fatalln(err)

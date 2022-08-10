@@ -6,7 +6,7 @@ import (
 	"github.com/BurntSushi/toml"
 	"github.com/fhluo/giwh/pkg/fetcher"
 	"github.com/fhluo/giwh/pkg/util"
-	"github.com/fhluo/giwh/wh"
+	"github.com/fhluo/giwh/pkg/wish"
 	"golang.org/x/exp/slices"
 	"io/fs"
 	"log"
@@ -21,7 +21,7 @@ var (
 	WishHistoryPath       = filepath.Join(Dir, "wish_history.json")
 	WishHistoryBackupPath = filepath.Join(Dir, "wish_history_backup.json")
 
-	WishHistory wh.WishHistory
+	WishHistory wish.History
 
 	config         = mustLoadConfig()
 	GetAuthInfo    = config.GetAuthInfo
@@ -36,7 +36,7 @@ func init() {
 
 	var err error
 
-	WishHistory, err = wh.LoadWishHistoryIfExits(WishHistoryPath)
+	WishHistory, err = wish.LoadWishHistoryIfExits(WishHistoryPath)
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -55,7 +55,7 @@ func mustLoadConfig() *Config {
 }
 
 func SaveWishHistory() error {
-	items, err := wh.LoadWishHistoryIfExits(WishHistoryPath)
+	items, err := wish.LoadWishHistoryIfExits(WishHistoryPath)
 	if err != nil {
 		return err
 	}

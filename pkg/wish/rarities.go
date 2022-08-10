@@ -1,4 +1,4 @@
-package wh
+package wish
 
 type Rarity int
 

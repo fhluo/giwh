@@ -3,9 +3,9 @@ package cmd
 import (
 	"errors"
 	"fmt"
-	"github.com/fhluo/giwh/i18n"
 	"github.com/fhluo/giwh/internal/config"
 	"github.com/fhluo/giwh/pkg/clients"
+	"github.com/fhluo/giwh/pkg/i18n"
 	"github.com/fhluo/giwh/pkg/stat"
 	"github.com/spf13/cobra"
 	"log"

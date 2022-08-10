@@ -1,4 +1,4 @@
-package wh
+package wish
 
 import (
 	"bytes"
@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"github.com/BurntSushi/toml"
 	"github.com/fatih/color"
-	"github.com/fhluo/giwh/i18n"
+	"github.com/fhluo/giwh/pkg/i18n"
 	"github.com/fhluo/giwh/pkg/util"
 	jsoniter "github.com/json-iterator/go"
 	"github.com/xuri/excelize/v2"
@@ -58,7 +58,7 @@ type Item struct {
 
 	id       *int64
 	rarity   *Rarity
-	wishType *WishType
+	wishType *Type
 	time     *time.Time
 }
 
@@ -87,13 +87,13 @@ func (item Item) Rarity() Rarity {
 	return *item.rarity
 }
 
-func (item Item) WishType() WishType {
+func (item Item) WishType() Type {
 	if item.wishType == nil {
 		i, err := strconv.Atoi(item.RawItem.WishType)
 		if err != nil {
 			log.Fatalln(err)
 		}
-		t := WishType(i)
+		t := Type(i)
 		item.wishType = &t
 	}
 
@@ -131,74 +131,74 @@ func (item Item) ColoredString() string {
 	}
 }
 
-type WishHistory []Item
+type History []Item
 
-func (wh WishHistory) Len() int {
-	return len(wh)
+func (h History) Len() int {
+	return len(h)
 }
 
-func (wh WishHistory) Less(i, j int) bool {
-	return wh[i].ID() < wh[j].ID()
+func (h History) Less(i, j int) bool {
+	return h[i].ID() < h[j].ID()
 }
 
-func (wh WishHistory) Swap(i, j int) {
-	wh[i], wh[j] = wh[j], wh[i]
+func (h History) Swap(i, j int) {
+	h[i], h[j] = h[j], h[i]
 }
 
-func (wh WishHistory) Equal(items2 WishHistory) bool {
-	return slices.EqualFunc(wh, items2, func(item1, item2 Item) bool {
+func (h History) Equal(items2 History) bool {
+	return slices.EqualFunc(h, items2, func(item1, item2 Item) bool {
 		return item1.ID() == item2.ID()
 	})
 }
 
-func (wh WishHistory) Unique() WishHistory {
-	return util.Unique(wh, func(item Item) int64 {
+func (h History) Unique() History {
+	return util.Unique(h, func(item Item) int64 {
 		return item.ID()
 	})
 }
 
-func (wh WishHistory) Count() int {
-	return len(wh)
+func (h History) Count() int {
+	return len(h)
 }
 
-func (wh WishHistory) FilterByUID(uid string) WishHistory {
-	return util.Filter(wh, func(item Item) bool {
+func (h History) FilterByUID(uid string) History {
+	return util.Filter(h, func(item Item) bool {
 		return item.UID == uid
 	})
 }
 
-func (wh WishHistory) FilterByWishType(wishTypes ...WishType) WishHistory {
-	return util.Filter(wh, func(item Item) bool {
+func (h History) FilterByWishType(wishTypes ...Type) History {
+	return util.Filter(h, func(item Item) bool {
 		return slices.Contains(wishTypes, item.WishType())
 	})
 }
 
-func (wh WishHistory) FilterByRarity(rarities ...Rarity) WishHistory {
-	return util.Filter(wh, func(item Item) bool {
+func (h History) FilterByRarity(rarities ...Rarity) History {
+	return util.Filter(h, func(item Item) bool {
 		return slices.Contains(rarities, item.Rarity())
 	})
 }
 
-func (wh WishHistory) FilterByUIDAndWishType(uid string, wishTypes ...WishType) WishHistory {
-	return util.Filter(wh, func(item Item) bool {
+func (h History) FilterByUIDAndWishType(uid string, wishTypes ...Type) History {
+	return util.Filter(h, func(item Item) bool {
 		return item.UID == uid && slices.Contains(wishTypes, item.WishType())
 	})
 }
 
-func (wh WishHistory) ToCSVRecords() [][]string {
-	if len(wh) == 0 {
+func (h History) ToCSVRecords() [][]string {
+	if len(h) == 0 {
 		return nil
 	}
 
-	items := make([][]string, len(wh))
-	for i := range wh {
-		items[i] = wh[i].ToCSVRecord()
+	items := make([][]string, len(h))
+	for i := range h {
+		items[i] = h[i].ToCSVRecord()
 	}
 	return items
 }
 
-func (wh WishHistory) Save(filename string) error {
-	sort.Sort(sort.Reverse(wh))
+func (h History) Save(filename string) error {
+	sort.Sort(sort.Reverse(h))
 
 	var (
 		data []byte
@@ -207,7 +207,7 @@ func (wh WishHistory) Save(filename string) error {
 
 	switch filepath.Ext(filename) {
 	case ".json":
-		data, err = jsoniter.MarshalIndent(wh, "", "  ")
+		data, err = jsoniter.MarshalIndent(h, "", "  ")
 		if err != nil {
 			return err
 		}
@@ -216,7 +216,7 @@ func (wh WishHistory) Save(filename string) error {
 		e := toml.NewEncoder(buf)
 		e.Indent = ""
 
-		err = e.Encode(map[string]interface{}{"list": wh})
+		err = e.Encode(map[string]interface{}{"list": h})
 		data = buf.Bytes()
 
 		if err != nil {
@@ -230,7 +230,7 @@ func (wh WishHistory) Save(filename string) error {
 			return err
 		}
 
-		if err = w.WriteAll(wh.ToCSVRecords()); err != nil {
+		if err = w.WriteAll(h.ToCSVRecords()); err != nil {
 			return err
 		}
 
@@ -238,13 +238,13 @@ func (wh WishHistory) Save(filename string) error {
 	case ".xlsx":
 		f := excelize.NewFile()
 
-		f.SetSheetName("Sheet1", SharedWishes[0].GetSharedWishName())
+		f.SetSheetName("Sheet1", SharedTypes[0].GetSharedWishName())
 
-		for _, wish := range SharedWishes[1:] {
+		for _, wish := range SharedTypes[1:] {
 			f.NewSheet(wish.GetSharedWishName())
 		}
 
-		for _, wish := range SharedWishes {
+		for _, wish := range SharedTypes {
 			name := wish.GetSharedWishName()
 			header := (&RawItem{}).ToCSVHeader()
 			for i := range header {
@@ -255,9 +255,9 @@ func (wh WishHistory) Save(filename string) error {
 
 			var records [][]string
 			if wish == CharacterEventWish {
-				records = wh.FilterByWishType(wish, CharacterEventWish2).ToCSVRecords()
+				records = h.FilterByWishType(wish, CharacterEventWish2).ToCSVRecords()
 			} else {
-				records = wh.FilterByWishType(wish).ToCSVRecords()
+				records = h.FilterByWishType(wish).ToCSVRecords()
 			}
 
 			for i, record := range records {
@@ -276,7 +276,7 @@ func (wh WishHistory) Save(filename string) error {
 	return os.WriteFile(filename, data, 0666)
 }
 
-func LoadWishHistory(filename string) (WishHistory, error) {
+func LoadWishHistory(filename string) (History, error) {
 	data, err := os.ReadFile(filename)
 	if err != nil {
 		return nil, err
@@ -284,11 +284,11 @@ func LoadWishHistory(filename string) (WishHistory, error) {
 
 	switch filepath.Ext(filename) {
 	case ".json":
-		var items WishHistory
+		var items History
 		return items, jsoniter.Unmarshal(data, &items)
 	case ".toml":
 		var result struct {
-			List WishHistory `toml:"list"`
+			List History `toml:"list"`
 		}
 		return result.List, toml.Unmarshal(data, &result)
 	default:
@@ -296,7 +296,7 @@ func LoadWishHistory(filename string) (WishHistory, error) {
 	}
 }
 
-func LoadWishHistoryIfExits(filename string) (WishHistory, error) {
+func LoadWishHistoryIfExits(filename string) (History, error) {
 	_, err := os.Stat(filename)
 	if err != nil {
 		if !errors.Is(err, fs.ErrNotExist) {

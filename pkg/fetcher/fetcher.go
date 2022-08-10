@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"github.com/fatih/color"
 	"github.com/fhluo/giwh/pkg/util"
-	"github.com/fhluo/giwh/wh"
+	"github.com/fhluo/giwh/pkg/wish"
 	"github.com/google/go-querystring/query"
 	jsoniter "github.com/json-iterator/go"
 	"io"
@@ -57,7 +57,7 @@ type Fetcher struct {
 	*QP
 }
 
-func New(baseURL string, wishType wh.WishType, visit map[int64]bool) *Fetcher {
+func New(baseURL string, wishType wish.Type, visit map[int64]bool) *Fetcher {
 	if visit == nil {
 		visit = make(map[int64]bool)
 	}
@@ -78,7 +78,7 @@ func (f *Fetcher) URL() string {
 	return u.String()
 }
 
-func (f *Fetcher) Fetch() (items wh.WishHistory, err error) {
+func (f *Fetcher) Fetch() (items wish.History, err error) {
 
 	resp, err := http.Get(f.URL())
 	if err != nil {
@@ -108,7 +108,7 @@ func (f *Fetcher) Fetch() (items wh.WishHistory, err error) {
 	return
 }
 
-func (f *Fetcher) FetchNext() (wh.WishHistory, error) {
+func (f *Fetcher) FetchNext() (wish.History, error) {
 	items, err := f.Fetch()
 	if err != nil {
 		return nil, err
@@ -133,8 +133,8 @@ func (f *Fetcher) FetchNext() (wh.WishHistory, error) {
 	return items, nil
 }
 
-func (f *Fetcher) FetchALL() (wh.WishHistory, error) {
-	var result wh.WishHistory
+func (f *Fetcher) FetchALL() (wish.History, error) {
+	var result wish.History
 
 	for {
 		items, err := f.FetchNext()
@@ -146,7 +146,7 @@ func (f *Fetcher) FetchALL() (wh.WishHistory, error) {
 			break
 		}
 
-		fmt.Println(strings.Join(util.Map(items, func(item wh.Item) string {
+		fmt.Println(strings.Join(util.Map(items, func(item wish.Item) string {
 			return item.ColoredString()
 		}), color.HiBlackString(", ")))
 
@@ -157,21 +157,21 @@ func (f *Fetcher) FetchALL() (wh.WishHistory, error) {
 	return result, nil
 }
 
-func FetchAllWishHistory(baseURL string, items wh.WishHistory) (wh.WishHistory, error) {
+func FetchAllWishHistory(baseURL string, items wish.History) (wish.History, error) {
 	visit := make(map[int64]bool)
 	for _, item := range items {
 		visit[item.ID()] = true
 	}
 
-	for i, wish := range wh.SharedWishes {
-		fmt.Printf("Fetching the wish history of %s.\n", wish.GetSharedWishName())
-		r, err := New(baseURL, wish, visit).FetchALL()
+	for i, type_ := range wish.SharedTypes {
+		fmt.Printf("Fetching the wish history of %s.\n", type_.GetSharedWishName())
+		r, err := New(baseURL, type_, visit).FetchALL()
 		if err != nil {
 			return nil, err
 		}
 
 		items = append(items, r...)
-		if i != len(wh.SharedWishes)-1 {
+		if i != len(wish.SharedTypes)-1 {
 			time.Sleep(DefaultInterval)
 		}
 	}
