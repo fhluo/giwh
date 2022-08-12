@@ -1,16 +1,11 @@
 package wish
 
 import (
-	"bytes"
-	"encoding/csv"
 	"errors"
 	"fmt"
-	"github.com/BurntSushi/toml"
 	"github.com/fatih/color"
 	"github.com/fhluo/giwh/pkg/i18n"
 	"github.com/fhluo/giwh/pkg/util"
-	jsoniter "github.com/json-iterator/go"
-	"github.com/xuri/excelize/v2"
 	"golang.org/x/exp/slices"
 	"io/fs"
 	"log"
@@ -19,6 +14,7 @@ import (
 	"reflect"
 	"sort"
 	"strconv"
+	"strings"
 	"time"
 )
 
@@ -200,99 +196,22 @@ func (h History) ToCSVRecords() [][]string {
 func (h History) Save(filename string) error {
 	sort.Sort(sort.Reverse(h))
 
-	var (
-		data []byte
-		err  error
-	)
+	ext := strings.ToLower(filepath.Ext(filename))
 
-	switch filepath.Ext(filename) {
-	case ".json":
-		data, err = jsoniter.MarshalIndent(h, "", "  ")
-		if err != nil {
-			return err
-		}
-	case ".toml":
-		buf := new(bytes.Buffer)
-		e := toml.NewEncoder(buf)
-		e.Indent = ""
-
-		err = e.Encode(map[string]interface{}{"list": h})
-		data = buf.Bytes()
-
-		if err != nil {
-			return err
-		}
-	case ".csv":
-		buf := new(bytes.Buffer)
-		w := csv.NewWriter(buf)
-
-		if err = w.Write((&RawItem{}).ToCSVHeader()); err != nil {
-			return err
-		}
-
-		if err = w.WriteAll(h.ToCSVRecords()); err != nil {
-			return err
-		}
-
-		data = buf.Bytes()
-	case ".xlsx":
-		f := excelize.NewFile()
-
-		f.SetSheetName("Sheet1", SharedTypes[0].GetSharedWishName())
-
-		for _, wish := range SharedTypes[1:] {
-			f.NewSheet(wish.GetSharedWishName())
-		}
-
-		for _, wish := range SharedTypes {
-			name := wish.GetSharedWishName()
-			header := (&RawItem{}).ToCSVHeader()
-			for i := range header {
-				if err = f.SetCellValue(name, fmt.Sprintf("%c%d", 'A'+i, 1), header[i]); err != nil {
-					return err
-				}
-			}
-
-			var records [][]string
-			if wish == CharacterEventWish {
-				records = h.FilterByWishType(wish, CharacterEventWish2).ToCSVRecords()
-			} else {
-				records = h.FilterByWishType(wish).ToCSVRecords()
-			}
-
-			for i, record := range records {
-				for j, value := range record {
-					if err = f.SetCellValue(name, fmt.Sprintf("%c%d", 'A'+j, 2+i), value); err != nil {
-						return err
-					}
-				}
-			}
-		}
-		return f.SaveAs(filename)
-	default:
-		return fmt.Errorf("format %s is not supported", filepath.Ext(filename))
+	if e, ok := exporters[ext]; ok {
+		return e.Export(h, filename)
+	} else {
+		return fmt.Errorf("format %s is not supported", ext)
 	}
-
-	return os.WriteFile(filename, data, 0666)
 }
 
 func LoadWishHistory(filename string) (History, error) {
-	data, err := os.ReadFile(filename)
-	if err != nil {
-		return nil, err
-	}
+	ext := strings.ToLower(filepath.Ext(filename))
 
-	switch filepath.Ext(filename) {
-	case ".json":
-		var items History
-		return items, jsoniter.Unmarshal(data, &items)
-	case ".toml":
-		var result struct {
-			List History `toml:"list"`
-		}
-		return result.List, toml.Unmarshal(data, &result)
-	default:
-		return nil, fmt.Errorf("format %s is not supported", filepath.Ext(filename))
+	if i, ok := importers[ext]; ok {
+		return i.Import(filename)
+	} else {
+		return nil, fmt.Errorf("format %s is not supported", ext)
 	}
 }
 
