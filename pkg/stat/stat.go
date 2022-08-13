@@ -34,10 +34,10 @@ type Info struct {
 	Count5    int
 	First     string
 	Last      string
-	Items5    wish.History
+	Items5    wish.Items
 }
 
-func stat(name string, pity4, pity5 int, items wish.History) Info {
+func stat(name string, pity4, pity5 int, items wish.Items) Info {
 	sort.Sort(items)
 
 	var (
@@ -81,7 +81,7 @@ func stat(name string, pity4, pity5 int, items wish.History) Info {
 	return info
 }
 
-func Stat(items wish.History) {
+func Stat(items wish.Items) {
 	items = items.Unique()
 
 	err := template.Must(template.New("").Funcs(template.FuncMap{

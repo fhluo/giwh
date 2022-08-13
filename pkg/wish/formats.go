@@ -11,7 +11,7 @@ import (
 )
 
 type Importer interface {
-	Import(filename string) (History, error)
+	Import(filename string) (Items, error)
 }
 
 var importers = map[string]Importer{
@@ -24,7 +24,7 @@ func RegisterImporter(ext string, i Importer) {
 }
 
 type Exporter interface {
-	Export(h History, filename string) error
+	Export(items Items, filename string) error
 }
 
 var exporters = map[string]Exporter{
@@ -40,20 +40,20 @@ func RegisterExporter(ext string, e Exporter) {
 
 type JSONImporter struct{}
 
-func (i JSONImporter) Import(filename string) (History, error) {
+func (i JSONImporter) Import(filename string) (Items, error) {
 	data, err := os.ReadFile(filename)
 	if err != nil {
 		return nil, err
 	}
 
-	var items History
+	var items Items
 	return items, jsoniter.Unmarshal(data, &items)
 }
 
 type JSONExporter struct{}
 
-func (e JSONExporter) Export(h History, filename string) error {
-	data, err := jsoniter.MarshalIndent(h, "", "  ")
+func (e JSONExporter) Export(items Items, filename string) error {
+	data, err := jsoniter.MarshalIndent(items, "", "  ")
 	if err != nil {
 		return err
 	}
@@ -62,26 +62,26 @@ func (e JSONExporter) Export(h History, filename string) error {
 
 type TOMLImporter struct{}
 
-func (i TOMLImporter) Import(filename string) (History, error) {
+func (i TOMLImporter) Import(filename string) (Items, error) {
 	data, err := os.ReadFile(filename)
 	if err != nil {
 		return nil, err
 	}
 
 	var result struct {
-		List History `toml:"list"`
+		List Items `toml:"list"`
 	}
 	return result.List, toml.Unmarshal(data, &result)
 }
 
 type TOMLExporter struct{}
 
-func (e TOMLExporter) Export(h History, filename string) error {
+func (e TOMLExporter) Export(items Items, filename string) error {
 	buf := new(bytes.Buffer)
 	encoder := toml.NewEncoder(buf)
 	encoder.Indent = ""
 
-	err := encoder.Encode(map[string]interface{}{"list": h})
+	err := encoder.Encode(map[string]interface{}{"list": items})
 	if err != nil {
 		return err
 	}
@@ -91,7 +91,7 @@ func (e TOMLExporter) Export(h History, filename string) error {
 
 type CSVExporter struct{}
 
-func (e CSVExporter) Export(h History, filename string) error {
+func (e CSVExporter) Export(items Items, filename string) error {
 	buf := new(bytes.Buffer)
 	w := csv.NewWriter(buf)
 
@@ -99,7 +99,7 @@ func (e CSVExporter) Export(h History, filename string) error {
 		return err
 	}
 
-	if err := w.WriteAll(h.ToCSVRecords()); err != nil {
+	if err := w.WriteAll(items.ToCSVRecords()); err != nil {
 		return err
 	}
 
@@ -108,7 +108,7 @@ func (e CSVExporter) Export(h History, filename string) error {
 
 type XLSXExporter struct{}
 
-func (e XLSXExporter) Export(h History, filename string) error {
+func (e XLSXExporter) Export(items Items, filename string) error {
 	var err error
 
 	f := excelize.NewFile()
@@ -130,9 +130,9 @@ func (e XLSXExporter) Export(h History, filename string) error {
 
 		var records [][]string
 		if wish == CharacterEventWish {
-			records = h.FilterByWishType(wish, CharacterEventWish2).ToCSVRecords()
+			records = items.FilterByWishType(wish, CharacterEventWish2).ToCSVRecords()
 		} else {
-			records = h.FilterByWishType(wish).ToCSVRecords()
+			records = items.FilterByWishType(wish).ToCSVRecords()
 		}
 
 		for i, record := range records {

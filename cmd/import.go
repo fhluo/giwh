@@ -19,7 +19,7 @@ var importCmd = &cobra.Command{
 		}
 
 		for _, filename := range filenames {
-			items, err := wish.LoadWishHistory(filename)
+			items, err := wish.LoadItems(filename)
 			if err != nil {
 				log.Fatalln(err)
 			}

@@ -78,7 +78,7 @@ func (f *Fetcher) URL() string {
 	return u.String()
 }
 
-func (f *Fetcher) Fetch() (items wish.History, err error) {
+func (f *Fetcher) Fetch() (items wish.Items, err error) {
 
 	resp, err := http.Get(f.URL())
 	if err != nil {
@@ -108,7 +108,7 @@ func (f *Fetcher) Fetch() (items wish.History, err error) {
 	return
 }
 
-func (f *Fetcher) FetchNext() (wish.History, error) {
+func (f *Fetcher) FetchNext() (wish.Items, error) {
 	items, err := f.Fetch()
 	if err != nil {
 		return nil, err
@@ -133,8 +133,8 @@ func (f *Fetcher) FetchNext() (wish.History, error) {
 	return items, nil
 }
 
-func (f *Fetcher) FetchALL() (wish.History, error) {
-	var result wish.History
+func (f *Fetcher) FetchALL() (wish.Items, error) {
+	var result wish.Items
 
 	for {
 		items, err := f.FetchNext()
@@ -157,7 +157,7 @@ func (f *Fetcher) FetchALL() (wish.History, error) {
 	return result, nil
 }
 
-func FetchAllWishHistory(baseURL string, items wish.History) (wish.History, error) {
+func FetchAllWishHistory(baseURL string, items wish.Items) (wish.Items, error) {
 	visit := make(map[int64]bool)
 	for _, item := range items {
 		visit[item.ID()] = true

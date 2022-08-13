@@ -21,7 +21,7 @@ var (
 	WishHistoryPath       = filepath.Join(Dir, "wish_history.json")
 	WishHistoryBackupPath = filepath.Join(Dir, "wish_history_backup.json")
 
-	WishHistory wish.History
+	WishHistory wish.Items
 
 	config         = mustLoadConfig()
 	GetAuthInfo    = config.GetAuthInfo
@@ -36,7 +36,7 @@ func init() {
 
 	var err error
 
-	WishHistory, err = wish.LoadWishHistoryIfExits(WishHistoryPath)
+	WishHistory, err = wish.LoadItemsIfExits(WishHistoryPath)
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -55,7 +55,7 @@ func mustLoadConfig() *Config {
 }
 
 func SaveWishHistory() error {
-	items, err := wish.LoadWishHistoryIfExits(WishHistoryPath)
+	items, err := wish.LoadItemsIfExits(WishHistoryPath)
 	if err != nil {
 		return err
 	}

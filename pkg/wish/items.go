@@ -127,85 +127,85 @@ func (item Item) ColoredString() string {
 	}
 }
 
-type History []Item
+type Items []Item
 
-func (h History) Len() int {
-	return len(h)
+func (items Items) Len() int {
+	return len(items)
 }
 
-func (h History) Less(i, j int) bool {
-	return h[i].ID() < h[j].ID()
+func (items Items) Less(i, j int) bool {
+	return items[i].ID() < items[j].ID()
 }
 
-func (h History) Swap(i, j int) {
-	h[i], h[j] = h[j], h[i]
+func (items Items) Swap(i, j int) {
+	items[i], items[j] = items[j], items[i]
 }
 
-func (h History) Equal(items2 History) bool {
-	return slices.EqualFunc(h, items2, func(item1, item2 Item) bool {
+func (items Items) Equal(items2 Items) bool {
+	return slices.EqualFunc(items, items2, func(item1, item2 Item) bool {
 		return item1.ID() == item2.ID()
 	})
 }
 
-func (h History) Unique() History {
-	return util.Unique(h, func(item Item) int64 {
+func (items Items) Unique() Items {
+	return util.Unique(items, func(item Item) int64 {
 		return item.ID()
 	})
 }
 
-func (h History) Count() int {
-	return len(h)
+func (items Items) Count() int {
+	return len(items)
 }
 
-func (h History) FilterByUID(uid string) History {
-	return util.Filter(h, func(item Item) bool {
+func (items Items) FilterByUID(uid string) Items {
+	return util.Filter(items, func(item Item) bool {
 		return item.UID == uid
 	})
 }
 
-func (h History) FilterByWishType(wishTypes ...Type) History {
-	return util.Filter(h, func(item Item) bool {
+func (items Items) FilterByWishType(wishTypes ...Type) Items {
+	return util.Filter(items, func(item Item) bool {
 		return slices.Contains(wishTypes, item.WishType())
 	})
 }
 
-func (h History) FilterByRarity(rarities ...Rarity) History {
-	return util.Filter(h, func(item Item) bool {
+func (items Items) FilterByRarity(rarities ...Rarity) Items {
+	return util.Filter(items, func(item Item) bool {
 		return slices.Contains(rarities, item.Rarity())
 	})
 }
 
-func (h History) FilterByUIDAndWishType(uid string, wishTypes ...Type) History {
-	return util.Filter(h, func(item Item) bool {
+func (items Items) FilterByUIDAndWishType(uid string, wishTypes ...Type) Items {
+	return util.Filter(items, func(item Item) bool {
 		return item.UID == uid && slices.Contains(wishTypes, item.WishType())
 	})
 }
 
-func (h History) ToCSVRecords() [][]string {
-	if len(h) == 0 {
+func (items Items) ToCSVRecords() [][]string {
+	if len(items) == 0 {
 		return nil
 	}
 
-	items := make([][]string, len(h))
-	for i := range h {
-		items[i] = h[i].ToCSVRecord()
+	result := make([][]string, len(items))
+	for i := range items {
+		result[i] = items[i].ToCSVRecord()
 	}
-	return items
+	return result
 }
 
-func (h History) Save(filename string) error {
-	sort.Sort(sort.Reverse(h))
+func (items Items) Save(filename string) error {
+	sort.Sort(sort.Reverse(items))
 
 	ext := strings.ToLower(filepath.Ext(filename))
 
 	if e, ok := exporters[ext]; ok {
-		return e.Export(h, filename)
+		return e.Export(items, filename)
 	} else {
 		return fmt.Errorf("format %s is not supported", ext)
 	}
 }
 
-func LoadWishHistory(filename string) (History, error) {
+func LoadItems(filename string) (Items, error) {
 	ext := strings.ToLower(filepath.Ext(filename))
 
 	if i, ok := importers[ext]; ok {
@@ -215,7 +215,7 @@ func LoadWishHistory(filename string) (History, error) {
 	}
 }
 
-func LoadWishHistoryIfExits(filename string) (History, error) {
+func LoadItemsIfExits(filename string) (Items, error) {
 	_, err := os.Stat(filename)
 	if err != nil {
 		if !errors.Is(err, fs.ErrNotExist) {
@@ -224,5 +224,5 @@ func LoadWishHistoryIfExits(filename string) (History, error) {
 		return nil, nil
 	}
 
-	return LoadWishHistory(filename)
+	return LoadItems(filename)
 }
