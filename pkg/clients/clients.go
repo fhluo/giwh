@@ -38,7 +38,7 @@ func DetectVersions() int {
 		versions |= CN
 	}
 
-	if _, err := os.Stat(CNClient.PersistentDataPath); err == nil {
+	if _, err := os.Stat(OSClient.PersistentDataPath); err == nil {
 		versions |= OS
 	}
 
