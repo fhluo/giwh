@@ -2,11 +2,13 @@ package clients
 
 import (
 	"errors"
+	"fmt"
 	"github.com/hashicorp/go-multierror"
 	"net/url"
 	"os"
 	"path/filepath"
 	"regexp"
+	"strings"
 )
 
 const (
@@ -77,6 +79,12 @@ func Default() (client Client, err error) {
 	return
 }
 
+var DataPathRE = regexp.MustCompile(`.:.*?/(YuanShen_Data|GenshinImpact_Data)/`)
+
+func FindDataPath(outputLog []byte) string {
+	return string(DataPathRE.Find(outputLog))
+}
+
 type Client struct {
 	PersistentDataPath string
 	QueryLinkHostName  string
@@ -103,6 +111,44 @@ func (client Client) GetUID() (string, error) {
 	}
 
 	return string(r), nil
+}
+
+func (client Client) FindURLFromCacheData(f func(u *url.URL) bool) (*url.URL, error) {
+	data, err := os.ReadFile(client.OutputLogPath())
+	if err != nil {
+		return nil, err
+	}
+
+	path := FindDataPath(data)
+	if len(path) == 0 {
+		return nil, fmt.Errorf("failed to find data path from output_log.txt")
+	}
+
+	data, err = os.ReadFile(filepath.Join(path, `webCaches\Cache\Cache_Data\data_2`))
+	if err != nil {
+		return nil, err
+	}
+
+	matches := regexp.MustCompile(`https://[^\s\0]+`).FindAll(data, -1)
+
+	var errs error
+	for i := len(matches) - 1; i >= 0; i-- {
+		u, err := url.Parse(string(matches[i]))
+		if err != nil {
+			errs = multierror.Append(errs, err)
+			continue
+		}
+
+		if f(u) {
+			return u, nil
+		}
+	}
+
+	if errs != nil {
+		return nil, errs
+	}
+
+	return nil, ErrURLNotFound
 }
 
 func (client Client) FindURLFromOutputLog(f func(u *url.URL) bool) (*url.URL, error) {
@@ -134,8 +180,8 @@ func (client Client) FindURLFromOutputLog(f func(u *url.URL) bool) (*url.URL, er
 }
 
 func (client Client) FindQueryLinkWithAuthKey() (*url.URL, error) {
-	return client.FindURLFromOutputLog(func(u *url.URL) bool {
-		return u.Query().Has("authkey") && u.Hostname() == client.QueryLinkHostName
+	return client.FindURLFromCacheData(func(u *url.URL) bool {
+		return u.Query().Has("authkey") && u.Hostname() == client.QueryLinkHostName && strings.HasSuffix(u.Path, "index.html")
 	})
 }
 
