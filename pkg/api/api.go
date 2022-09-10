@@ -3,12 +3,10 @@ package api
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/fhluo/giwh/pkg/wish"
 	"github.com/google/go-querystring/query"
 	"io"
 	"net/http"
 	"net/url"
-	"strconv"
 	"time"
 )
 
@@ -34,9 +32,9 @@ type Data struct {
 }
 
 type Result struct {
-	RetCode int    `json:"retcode"`
+	*Data   `json:"data"`
 	Message string `json:"message"`
-	Data    `json:"data"`
+	RetCode int    `json:"retcode"`
 }
 
 func GetWishHistory(url string) ([]Item, error) {
@@ -97,7 +95,7 @@ func (q Query) Encode() string {
 	return values.Encode()
 }
 
-type API struct {
+type Context struct {
 	url      *url.URL
 	items    []Item
 	interval time.Duration
@@ -105,75 +103,84 @@ type API struct {
 	query Query
 }
 
-func New(baseURL string, baseQuery BaseQuery, wishType wish.Type) (*API, error) {
+func New(baseURL string, baseQuery BaseQuery) (*Context, error) {
 	u, err := url.Parse(baseURL)
 	if err != nil {
 		return nil, err
 	}
-	return &API{
+	return &Context{
 		url: u,
 		query: Query{
 			BaseQuery: baseQuery,
-			WishType:  strconv.Itoa(int(wishType)),
 			Size:      "5",
-			BeginID:   "",
-			EndID:     "0",
 		},
 		interval: DefaultInterval,
 	}, nil
 }
 
-func (api *API) Init(wishType wish.Type) {
-	api.query.WishType = strconv.Itoa(int(wishType))
-	api.query.EndID = "0"
-	api.items = nil
+func (ctx *Context) WishType(wishType string) *Context {
+	ctx.query.WishType = wishType
+	ctx.query.BeginID = ""
+	ctx.query.EndID = ""
+	ctx.items = nil
+	return ctx
 }
 
-func (api *API) URL() string {
-	api.url.RawQuery = api.query.Encode()
-	return api.url.String()
+func (ctx *Context) URL() string {
+	ctx.url.RawQuery = ctx.query.Encode()
+	return ctx.url.String()
 }
 
-func (api *API) wait() {
-	time.Sleep(api.interval)
+func (ctx *Context) wait() {
+	time.Sleep(ctx.interval)
 }
 
-func (api *API) nextPage() {
-	if len(api.items) == 0 {
+func (ctx *Context) nextPage() {
+	if len(ctx.items) == 0 {
 		return
 	}
-	api.query.EndID = api.items[len(api.items)-1].ID
+	ctx.query.EndID = ctx.items[len(ctx.items)-1].ID
 }
 
-func (api *API) fetch() error {
-	items, err := GetWishHistory(api.URL())
+func (ctx *Context) fetch() error {
+	items, err := GetWishHistory(ctx.URL())
 	if err != nil {
 		return err
 	}
 	if len(items) == 0 {
 		return Stop
 	}
-	api.items = append(api.items, items...)
+	ctx.items = append(ctx.items, items...)
 
-	api.nextPage()
-	api.wait()
+	ctx.nextPage()
+	ctx.wait()
 	return nil
 }
 
-func (api *API) Next() (Item, error) {
-	if len(api.items) == 0 {
-		err := api.fetch()
+func (ctx *Context) Next() (Item, error) {
+	if len(ctx.items) == 0 {
+		err := ctx.fetch()
 		if err != nil {
 			return Item{}, err
 		}
 	}
 
-	item := api.items[0]
+	item := ctx.items[0]
 
-	api.items = api.items[1:]
+	ctx.items = ctx.items[1:]
 	return item, nil
 }
 
-func (api *API) FetchALL() ([]Item, error) {
-	return Collect[Item](api)
+func (ctx *Context) Begin(id string) *Context {
+	ctx.query.BeginID = id
+	return ctx
+}
+
+func (ctx *Context) End(id string) *Context {
+	ctx.query.EndID = id
+	return ctx
+}
+
+func (ctx *Context) FetchALL() ([]Item, error) {
+	return Collect[Item](ctx)
 }
