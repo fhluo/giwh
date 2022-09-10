@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/fhluo/giwh/pkg/wish"
+	"github.com/google/go-querystring/query"
 	"io"
 	"net/http"
 	"net/url"
@@ -46,45 +47,63 @@ const (
 	DefaultInterval = 500 * time.Millisecond
 )
 
+type BaseQuery struct {
+	AuthKeyVer string `url:"authkey_ver"`
+	AuthKey    string `url:"authkey"`
+	Lang       string `url:"lang"`
+}
+
+type Query struct {
+	BaseQuery
+
+	WishType string `url:"gacha_type"`
+	Size     string `url:"size"`
+	BeginID  string `url:"begin_id,omitempty"`
+	EndID    string `url:"end_id,omitempty"`
+}
+
+func (q Query) Encode() string {
+	values, err := query.Values(q)
+	if err != nil {
+		panic(err)
+	}
+	return values.Encode()
+}
+
 type API struct {
 	url      *url.URL
 	items    []Item
 	interval time.Duration
-	stopID   string
 
-	wishType int    `url:"gacha_type"`
-	page     int    `url:"page"`
-	size     int    `url:"size"`
-	endID    string `url:"end_id"`
+	query Query
 }
 
-func New(rawURL string, wishType wish.Type) (*API, error) {
-	u, err := url.Parse(rawURL)
+func New(baseURL string, baseQuery BaseQuery, wishType wish.Type) (*API, error) {
+	u, err := url.Parse(baseURL)
 	if err != nil {
 		return nil, err
 	}
 	return &API{
-		url:      u,
-		wishType: int(wishType),
-		page:     1,
-		size:     5,
-		endID:    "0",
+		url: u,
+		query: Query{
+			BaseQuery: baseQuery,
+			WishType:  strconv.Itoa(int(wishType)),
+			Size:      "5",
+			BeginID:   "",
+			EndID:     "0",
+		},
 		interval: DefaultInterval,
 	}, nil
 }
 
 func (api *API) Init(wishType wish.Type) {
-	api.wishType = int(wishType)
-	api.page = 1
-	api.endID = "0"
+	api.query.WishType = strconv.Itoa(int(wishType))
+	api.query.EndID = "0"
 	api.items = nil
 }
 
 func (api *API) URL() string {
-	api.url.Query().Set("gacha_type", strconv.Itoa(api.wishType))
-	api.url.Query().Set("page", strconv.Itoa(api.page))
-	api.url.Query().Set("size", strconv.Itoa(api.size))
-	api.url.Query().Set("end_id", api.endID)
+	api.url.RawQuery = api.query.Encode()
 	return api.url.String()
 }
 
@@ -96,8 +115,7 @@ func (api *API) nextPage() {
 	if len(api.items) == 0 {
 		return
 	}
-	api.page++
-	api.endID = api.items[len(api.items)-1].ID
+	api.query.EndID = api.items[len(api.items)-1].ID
 }
 
 func (api *API) fetch() error {
@@ -124,9 +142,6 @@ func (api *API) Next() (Item, error) {
 	}
 
 	item := api.items[0]
-	if item.ID == api.stopID {
-		return item, Stop
-	}
 
 	api.items = api.items[1:]
 	return item, nil
@@ -134,12 +149,4 @@ func (api *API) Next() (Item, error) {
 
 func (api *API) FetchALL() ([]Item, error) {
 	return Collect[Item](api)
-}
-
-func (api *API) FetchUntil(id string) ([]Item, error) {
-	api.stopID = id
-	defer func() {
-		api.stopID = ""
-	}()
-	return api.FetchALL()
 }

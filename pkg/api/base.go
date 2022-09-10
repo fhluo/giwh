@@ -1,13 +1,12 @@
-package auth
+package api
 
 import (
-	"fmt"
+	"errors"
 	"github.com/samber/lo"
 	"net/url"
 	"os"
 	"path/filepath"
 	"regexp"
-	"strings"
 )
 
 type Region struct {
@@ -29,6 +28,11 @@ var (
 	}
 )
 
+var (
+	ErrDataPathNotFound = errors.New("data path could not be found from output_log.txt")
+	ErrURLNotFound      = errors.New("urls containing the following query parameters could not be found: authkey_ver, authkey and lang")
+)
+
 var dataPathRE = regexp.MustCompile(`.:.*?[/|\\](YuanShen_Data|GenshinImpact_Data)`)
 
 func findDataPath(outputLog []byte) string {
@@ -43,13 +47,13 @@ func (r Region) GetCacheDataPath() (string, error) {
 
 	path := findDataPath(data)
 	if path == "" {
-		return "", fmt.Errorf("failed to find data path from output_log.txt")
+		return "", ErrDataPathNotFound
 	}
 
 	return filepath.Join(path, `webCaches\Cache\Cache_Data\data_2`), nil
 }
 
-var urlRE = regexp.MustCompile(`https?://[-a-zA-Z0-9./=&?_%]+`)
+var urlRE = regexp.MustCompile(`https?://[-a-zA-Z0-9.:/=&?_%+]+`)
 
 func findAllURLs(data []byte) []string {
 	return lo.Map(urlRE.FindAll(data, -1), func(url []byte, _ int) string {
@@ -68,42 +72,45 @@ func (r Region) GetURLsFromCacheData() ([]string, error) {
 	return findAllURLs(data), nil
 }
 
-func (r Region) GetAPIURL() (string, error) {
+func (r Region) GetValidURLs() ([]*url.URL, error) {
 	urls, err := r.GetURLsFromCacheData()
 	if err != nil {
-		return "", err
+		return nil, err
 	}
 
-	apiURL, _, ok := lo.FindLastIndexOf(urls, func(rawURL string) bool {
+	result := lo.FilterMap(urls, func(rawURL string, _ int) (*url.URL, bool) {
 		u, err := url.Parse(rawURL)
 		if err != nil {
-			return false
+			return nil, false
 		}
-
-		return strings.HasSuffix(u.Path, "api/getGachaLog")
+		return u, u.Query().Has("authkey_ver") && u.Query().Has("authkey") && u.Query().Has("lang")
 	})
 
-	if ok {
-		return apiURL, nil
+	if len(result) == 0 {
+		return nil, ErrURLNotFound
 	}
+	return result, nil
+}
 
-	rawURL, _, ok := lo.FindLastIndexOf(urls, func(rawURL string) bool {
-		u, err := url.Parse(rawURL)
-		if err != nil {
-			return false
-		}
-
-		if u.Query().Has("authkey") {
-			return true
-		}
-
-		return false
-	})
-
-	u, err := url.Parse(rawURL)
+func (r Region) GetAPIBase() (baseURL string, baseQuery BaseQuery, err error) {
+	urls, err := r.GetValidURLs()
 	if err != nil {
-		return "", err
+		return
 	}
 
-	return r.APIBaseURL + "?" + u.RawQuery, nil
+	url_, _, ok := lo.FindLastIndexOf(urls, func(u *url.URL) bool {
+		return lo.Contains([]string{
+			"/event/gacha_info/api/getGachaLog", "/hk4e/event/e20190909gacha/index.html", "genshin/event/e20190909gacha/index.html",
+		}, u.Path)
+	})
+	if !ok {
+		url_ = urls[len(urls)-1]
+	}
+
+	baseURL = r.APIBaseURL
+	baseQuery.AuthKeyVer = url_.Query().Get("authkey_ver")
+	baseQuery.AuthKey = url_.Query().Get("authkey")
+	baseQuery.Lang = url_.Query().Get("lang")
+
+	return
 }
