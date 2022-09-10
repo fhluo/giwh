@@ -7,6 +7,7 @@ import (
 	"io"
 	"net/http"
 	"net/url"
+	"strconv"
 	"time"
 )
 
@@ -118,11 +119,18 @@ func New(baseURL string, baseQuery BaseQuery) (*Context, error) {
 	}, nil
 }
 
+func (ctx *Context) Interval(interval time.Duration) *Context {
+	ctx.interval = interval
+	return ctx
+}
+
+func (ctx *Context) Size(size int) *Context {
+	ctx.query.Size = strconv.Itoa(size)
+	return ctx
+}
+
 func (ctx *Context) WishType(wishType string) *Context {
 	ctx.query.WishType = wishType
-	ctx.query.BeginID = ""
-	ctx.query.EndID = ""
-	ctx.items = nil
 	return ctx
 }
 
@@ -135,13 +143,6 @@ func (ctx *Context) wait() {
 	time.Sleep(ctx.interval)
 }
 
-func (ctx *Context) nextPage() {
-	if len(ctx.items) == 0 {
-		return
-	}
-	ctx.query.EndID = ctx.items[len(ctx.items)-1].ID
-}
-
 func (ctx *Context) fetch() error {
 	items, err := GetWishHistory(ctx.URL())
 	if err != nil {
@@ -152,9 +153,37 @@ func (ctx *Context) fetch() error {
 	}
 	ctx.items = append(ctx.items, items...)
 
-	ctx.nextPage()
+	if ctx.query.BeginID != "" {
+		ctx.query.BeginID = ctx.items[0].ID
+	} else {
+		ctx.query.EndID = ctx.items[len(ctx.items)-1].ID
+	}
+
 	ctx.wait()
 	return nil
+}
+
+func (ctx *Context) GetUID() (string, error) {
+	item, err := ctx.Peek()
+	if err != nil {
+		return "", err
+	}
+	return item.UID, nil
+}
+
+func (ctx *Context) Peek() (Item, error) {
+	if len(ctx.items) == 0 {
+		err := ctx.fetch()
+		if err != nil {
+			return Item{}, err
+		}
+	}
+
+	if ctx.query.BeginID != "" {
+		return ctx.items[len(ctx.items)-1], nil
+	} else {
+		return ctx.items[0], nil
+	}
 }
 
 func (ctx *Context) Next() (Item, error) {
@@ -165,18 +194,32 @@ func (ctx *Context) Next() (Item, error) {
 		}
 	}
 
-	item := ctx.items[0]
+	var item Item
+	if ctx.query.BeginID != "" {
+		item = ctx.items[len(ctx.items)-1]
+		ctx.items = ctx.items[:len(ctx.items)-1]
+	} else {
+		item = ctx.items[0]
+		ctx.items = ctx.items[1:]
+	}
 
-	ctx.items = ctx.items[1:]
 	return item, nil
 }
 
+func (ctx *Context) reset() {
+	ctx.query.BeginID = ""
+	ctx.query.EndID = ""
+	ctx.items = nil
+}
+
 func (ctx *Context) Begin(id string) *Context {
+	ctx.reset()
 	ctx.query.BeginID = id
 	return ctx
 }
 
 func (ctx *Context) End(id string) *Context {
+	ctx.reset()
 	ctx.query.EndID = id
 	return ctx
 }
