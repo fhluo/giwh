@@ -14,16 +14,16 @@ var repo []Item
 
 func init() {
 	repo = make([]Item, 100)
-	for i := 99; i >= 0; i-- {
+	for i := 0; i < 100; i++ {
 		repo[i].WishType = "200"
-		repo[i].ID = strconv.Itoa(10000 + i)
+		repo[i].UID = "10001"
+		repo[i].ID = strconv.Itoa(10000 + (100 - i))
 	}
 }
 
 func handler() http.Handler {
 	gin.SetMode(gin.ReleaseMode)
 	r := gin.New()
-	r.Use(gin.Logger(), gin.Recovery())
 
 	r.GET("/event/gacha_info/api/getGachaLog", func(c *gin.Context) {
 		if c.Query("authkey_ver") == "" || c.Query("authkey") == "" {
@@ -110,4 +110,48 @@ func TestGetWishHistory(t *testing.T) {
 	items, err = GetWishHistory(server.URL + "/event/gacha_info/api/getGachaLog?authkey_ver=1&authkey=x&lang=y")
 	assert.Equal(t, []Item{}, items)
 	assert.Nil(t, err)
+}
+
+func TestContext_FetchALL(t *testing.T) {
+	server := httptest.NewServer(handler())
+	defer server.Close()
+
+	ctx, err := New(server.URL+"/event/gacha_info/api/getGachaLog", BaseQuery{AuthKeyVer: "1", AuthKey: "x", Lang: "y"})
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	items, err := ctx.Interval(0).WishType("200").Size(10).FetchALL()
+	if err != nil {
+		t.Fatal(err)
+	}
+	assert.Equal(t, repo, items)
+
+	items, err = ctx.Begin(repo[10].ID).FetchALL()
+	if err != nil {
+		t.Fatal(err)
+	}
+	assert.Equal(t, lo.Reverse(repo[:10]), items)
+
+	items, err = ctx.End(repo[9].ID).FetchALL()
+	if err != nil {
+		t.Fatal(err)
+	}
+	assert.Equal(t, repo[10:], items)
+}
+
+func TestContext_GetUID(t *testing.T) {
+	server := httptest.NewServer(handler())
+	defer server.Close()
+
+	ctx, err := New(server.URL+"/event/gacha_info/api/getGachaLog", BaseQuery{AuthKeyVer: "1", AuthKey: "x", Lang: "y"})
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	uid, err := ctx.WishType("200").GetUID()
+	if err != nil {
+		t.Fatal(err)
+	}
+	assert.Equal(t, "10001", uid)
 }
