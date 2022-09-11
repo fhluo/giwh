@@ -1,53 +1,104 @@
 package cmd
 
 import (
-	"errors"
 	"fmt"
 	"github.com/fhluo/giwh/internal/config"
-	"github.com/fhluo/giwh/pkg/clients"
-	"github.com/fhluo/giwh/pkg/fetcher"
+	"github.com/fhluo/giwh/pkg/api"
+	"github.com/fhluo/giwh/pkg/wish"
+	"github.com/samber/lo"
 	"github.com/spf13/cobra"
 	"log"
+	"os"
+	"sort"
+	"strconv"
 )
+
+func Default() api.Region {
+	if _, err := os.Stat(api.CN.OutputLogPath); err == nil {
+		return api.CN
+	}
+
+	if _, err := os.Stat(api.OS.OutputLogPath); err == nil {
+		return api.OS
+	}
+
+	return api.OS
+}
+
+func conv(item *api.Item) wish.Item {
+	return wish.Item{
+		RawItem: &wish.RawItem{
+			UID:      item.UID,
+			WishType: item.WishType,
+			ItemID:   item.ItemID,
+			Count:    item.Count,
+			Time:     item.Time,
+			Name:     item.Name,
+			Lang:     item.Lang,
+			ItemType: item.ItemType,
+			Rarity:   item.Rarity,
+			ID:       item.ID,
+		},
+	}
+}
+
+func FetchAllWishHistory(ctx *api.Context, items wish.Items) (wish.Items, error) {
+	visit := make(map[int64]bool)
+	for _, item := range items {
+		visit[item.ID()] = true
+	}
+	sort.Sort(sort.Reverse(items))
+
+	for _, type_ := range wish.SharedTypes {
+		fmt.Printf("Fetching the wish history of %s.\n", type_.GetSharedWishName())
+
+		x := items.FilterByWishType(type_)
+		if len(x) != 0 {
+			result, err := ctx.WishType(strconv.Itoa(type_)).Size(10).Begin(x[0].RawItem.ID).FetchAll()
+			if err != nil {
+				return nil, err
+			}
+
+			items = append(lo.Map(lo.Reverse(result), func(item *api.Item, _ int) wish.Item {
+				return conv(item)
+			}), items...)
+		} else {
+			result, err := ctx.WishType(strconv.Itoa(type_)).Size(10).End("0").FetchAll()
+			if err != nil {
+				return nil, err
+			}
+
+			items = append(items, lo.Map(result, func(item *api.Item, _ int) wish.Item {
+				return conv(item)
+			})...)
+		}
+
+	}
+
+	return items, nil
+}
 
 var updateCmd = &cobra.Command{
 	Use:   "update",
 	Short: "Update wish history",
 	Run: func(cmd *cobra.Command, args []string) {
-		client, err := clients.Default()
-		if err != nil {
-			if errors.Is(err, clients.ErrURLNotFound) {
-				log.Fatalln("Please open the wish history page in the game.")
-			} else {
-				log.Fatalln(err)
-			}
-		}
-
-		uid, err := client.GetUID()
+		base, err := Default().GetAPIBase()
 		if err != nil {
 			log.Fatalln(err)
 		}
 
-		baseURL, err := client.GetBaseURL()
+		ctx, err := api.New(base)
 		if err != nil {
-			if errors.Is(err, clients.ErrURLNotFound) {
-				authInfo, ok := config.GetAuthInfo(uid)
-				if ok {
-					uid = authInfo.UID
-					baseURL = authInfo.BaseURL
-				} else {
-					log.Fatalln(err)
-				}
-			} else {
-				log.Fatalln(err)
-			}
+			log.Fatalln(err)
 		}
 
-		config.UpdateAuthInfo(fetcher.AuthInfo{UID: uid, BaseURL: baseURL})
-		_ = config.Save()
+		uid, err := ctx.GetUID()
+		if err != nil {
+			log.Fatalln(err)
+		}
 
 		items := config.WishHistory.FilterByUID(uid)
-		result, err := fetcher.FetchAllWishHistory(baseURL, items)
+		result, err := FetchAllWishHistory(ctx, items)
 		if err != nil {
 			log.Fatalln(err)
 		}

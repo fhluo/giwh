@@ -4,10 +4,7 @@ import (
 	"bytes"
 	"errors"
 	"github.com/BurntSushi/toml"
-	"github.com/fhluo/giwh/pkg/fetcher"
-	"github.com/fhluo/giwh/pkg/util"
 	"github.com/fhluo/giwh/pkg/wish"
-	"golang.org/x/exp/slices"
 	"io/fs"
 	"log"
 	"os"
@@ -23,12 +20,10 @@ var (
 
 	WishHistory wish.Items
 
-	config         = mustLoadConfig()
-	GetAuthInfo    = config.GetAuthInfo
-	UpdateAuthInfo = config.UpdateAuthInfo
-	GetLanguage    = func() string { return config.Language }
-	SetLanguage    = func(lang string) { config.Language = lang }
-	Save           = func() error { return config.Save() }
+	config      = mustLoadConfig()
+	GetLanguage = func() string { return config.Language }
+	SetLanguage = func(lang string) { config.Language = lang }
+	Save        = func() error { return config.Save() }
 )
 
 func init() {
@@ -69,8 +64,7 @@ func SaveWishHistory() error {
 }
 
 type Config struct {
-	Language  string             `toml:"language"`
-	AuthInfos []fetcher.AuthInfo `toml:"auth_infos"`
+	Language string `toml:"language"`
 }
 
 func Load(filename string) (*Config, error) {
@@ -81,23 +75,6 @@ func Load(filename string) (*Config, error) {
 
 	cfg := new(Config)
 	return cfg, toml.Unmarshal(data, cfg)
-}
-
-func (config *Config) GetAuthInfo(uid string) (fetcher.AuthInfo, bool) {
-	return util.Find(config.AuthInfos, func(authInfo fetcher.AuthInfo) bool {
-		return authInfo.UID == uid
-	})
-}
-
-func (config *Config) UpdateAuthInfo(authInfo fetcher.AuthInfo) {
-	i := slices.IndexFunc(config.AuthInfos, func(info fetcher.AuthInfo) bool {
-		return info.UID == authInfo.UID
-	})
-	if i < 0 {
-		config.AuthInfos = append(config.AuthInfos, authInfo)
-	} else {
-		config.AuthInfos[i] = authInfo
-	}
 }
 
 func (config *Config) Save() error {
