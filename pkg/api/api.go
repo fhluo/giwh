@@ -73,14 +73,10 @@ const (
 	DefaultInterval = 500 * time.Millisecond
 )
 
-type BaseQuery struct {
+type Query struct {
 	AuthKeyVer string `url:"authkey_ver"`
 	AuthKey    string `url:"authkey"`
 	Lang       string `url:"lang"`
-}
-
-type Query struct {
-	BaseQuery
 
 	WishType string `url:"gacha_type"`
 	Size     string `url:"size"`
@@ -105,16 +101,18 @@ type Context struct {
 	handleNext []func(item *Item)
 }
 
-func New(baseURL string, baseQuery BaseQuery) (*Context, error) {
-	u, err := url.Parse(baseURL)
+func New(base Base) (*Context, error) {
+	u, err := url.Parse(base.URL)
 	if err != nil {
 		return nil, err
 	}
 	return &Context{
 		url: u,
 		query: Query{
-			BaseQuery: baseQuery,
-			Size:      "5",
+			AuthKeyVer: base.Query.AuthKeyVer,
+			AuthKey:    base.Query.AuthKey,
+			Lang:       base.Query.Lang,
+			Size:       "5",
 		},
 		interval: DefaultInterval,
 	}, nil

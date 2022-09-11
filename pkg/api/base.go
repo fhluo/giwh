@@ -92,25 +92,36 @@ func (r Region) GetValidURLs() ([]*url.URL, error) {
 	return result, nil
 }
 
-func (r Region) GetAPIBase() (baseURL string, baseQuery BaseQuery, err error) {
+type BaseQuery struct {
+	AuthKeyVer string
+	AuthKey    string
+	Lang       string
+}
+
+type Base struct {
+	URL   string
+	Query BaseQuery
+}
+
+func (r Region) GetAPIBase() (base Base, err error) {
 	urls, err := r.GetValidURLs()
 	if err != nil {
 		return
 	}
 
-	url_, _, ok := lo.FindLastIndexOf(urls, func(u *url.URL) bool {
+	result, _, ok := lo.FindLastIndexOf(urls, func(u *url.URL) bool {
 		return lo.Contains([]string{
 			"/event/gacha_info/api/getGachaLog", "/hk4e/event/e20190909gacha/index.html", "genshin/event/e20190909gacha/index.html",
 		}, u.Path)
 	})
 	if !ok {
-		url_ = urls[len(urls)-1]
+		result = urls[len(urls)-1]
 	}
 
-	baseURL = r.APIBaseURL
-	baseQuery.AuthKeyVer = url_.Query().Get("authkey_ver")
-	baseQuery.AuthKey = url_.Query().Get("authkey")
-	baseQuery.Lang = url_.Query().Get("lang")
+	base.URL = r.APIBaseURL
+	base.Query.AuthKeyVer = result.Query().Get("authkey_ver")
+	base.Query.AuthKey = result.Query().Get("authkey")
+	base.Query.Lang = result.Query().Get("lang")
 
 	return
 }

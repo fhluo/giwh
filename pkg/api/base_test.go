@@ -178,11 +178,11 @@ func TestRegion_GetAPIBase(t *testing.T) {
 	}
 
 	test := newTestRegion(dir.OutputLogPath(), "https://example.com/event/gacha_info/api/getGachaLog")
-	_, baseQuery, err := test.GetAPIBase()
+	base, err := test.GetAPIBase()
 	if err != nil {
 		t.Fatal(err)
 	}
-	assert.Equal(t, baseQuery, BaseQuery{
+	assert.Equal(t, base.Query, BaseQuery{
 		AuthKeyVer: "1",
 		AuthKey:    "y",
 		Lang:       "zh-cn",
@@ -193,11 +193,11 @@ func TestRegion_GetAPIBase(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	_, baseQuery, err = test.GetAPIBase()
+	base, err = test.GetAPIBase()
 	if err != nil {
 		t.Fatal(err)
 	}
-	assert.Equal(t, baseQuery, BaseQuery{
+	assert.Equal(t, base.Query, BaseQuery{
 		AuthKeyVer: "1",
 		AuthKey:    "y",
 		Lang:       "zh-cn",

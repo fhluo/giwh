@@ -118,7 +118,10 @@ func TestContext_FetchALL(t *testing.T) {
 	server := httptest.NewServer(handler())
 	defer server.Close()
 
-	ctx, err := New(server.URL+"/event/gacha_info/api/getGachaLog", BaseQuery{AuthKeyVer: "1", AuthKey: "x", Lang: "y"})
+	ctx, err := New(Base{
+		URL:   server.URL + "/event/gacha_info/api/getGachaLog",
+		Query: BaseQuery{AuthKeyVer: "1", AuthKey: "x", Lang: "y"},
+	})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -147,7 +150,10 @@ func TestContext_GetUID(t *testing.T) {
 	server := httptest.NewServer(handler())
 	defer server.Close()
 
-	ctx, err := New(server.URL+"/event/gacha_info/api/getGachaLog", BaseQuery{AuthKeyVer: "1", AuthKey: "x", Lang: "y"})
+	ctx, err := New(Base{
+		URL:   server.URL + "/event/gacha_info/api/getGachaLog",
+		Query: BaseQuery{AuthKeyVer: "1", AuthKey: "x", Lang: "y"},
+	})
 	if err != nil {
 		t.Fatal(err)
 	}
