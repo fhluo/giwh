@@ -18,7 +18,7 @@ func init() {
 		repo[i] = &Item{
 			ID:       strconv.Itoa(10000 + (100 - i)),
 			UID:      "10001",
-			WishType: "200",
+			WishType: StandardWish,
 		}
 	}
 }
@@ -127,7 +127,7 @@ func TestContext_FetchALL(t *testing.T) {
 	}
 	ctx.SetInterval(0)
 
-	items, err := ctx.WishType("200").Size(10).FetchAll()
+	items, err := ctx.WishType(StandardWish).Size(10).FetchAll()
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -158,7 +158,7 @@ func TestContext_GetUID(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	uid, err := ctx.WishType("200").GetUID()
+	uid, err := ctx.WishType(StandardWish).GetUID()
 	if err != nil {
 		t.Fatal(err)
 	}

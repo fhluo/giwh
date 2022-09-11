@@ -202,6 +202,13 @@ func (ctx *Context) Next() (*Item, error) {
 	return item, nil
 }
 
+const (
+	BeginnersWish      = "100" // Beginners' Wish (Novice Wish)
+	StandardWish       = "200" // Standard Wish (Permanent Wish)
+	CharacterEventWish = "301" // Character Event Wish and Character Event Wish-2
+	WeaponEventWish    = "302" // Weapon Event Wish
+)
+
 func (ctx *Context) WishType(wishType string) *Context {
 	ctx.query.WishType = wishType
 	return ctx
