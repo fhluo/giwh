@@ -25,23 +25,6 @@ func Default() api.Region {
 	return api.OS
 }
 
-func conv(item *api.Item) wish.Item {
-	return wish.Item{
-		RawItem: &wish.RawItem{
-			UID:      item.UID,
-			WishType: item.WishType,
-			ItemID:   item.ItemID,
-			Count:    item.Count,
-			Time:     item.Time,
-			Name:     item.Name,
-			Lang:     item.Lang,
-			ItemType: item.ItemType,
-			Rarity:   item.Rarity,
-			ID:       item.ID,
-		},
-	}
-}
-
 func FetchAllWishHistory(ctx *api.Context, items wish.Items) (wish.Items, error) {
 	visit := make(map[int64]bool)
 	for _, item := range items {
@@ -54,13 +37,13 @@ func FetchAllWishHistory(ctx *api.Context, items wish.Items) (wish.Items, error)
 
 		x := items.FilterByWishType(type_)
 		if len(x) != 0 {
-			result, err := ctx.WishType(strconv.Itoa(type_)).Size(10).Begin(x[0].RawItem.ID).FetchAll()
+			result, err := ctx.WishType(strconv.Itoa(type_)).Size(10).Begin(x[0].Item.ID).FetchAll()
 			if err != nil {
 				return nil, err
 			}
 
 			items = append(lo.Map(lo.Reverse(result), func(item *api.Item, _ int) wish.Item {
-				return conv(item)
+				return wish.Item{Item: item}
 			}), items...)
 		} else {
 			result, err := ctx.WishType(strconv.Itoa(type_)).Size(10).End("0").FetchAll()
@@ -69,7 +52,7 @@ func FetchAllWishHistory(ctx *api.Context, items wish.Items) (wish.Items, error)
 			}
 
 			items = append(items, lo.Map(result, func(item *api.Item, _ int) wish.Item {
-				return conv(item)
+				return wish.Item{Item: item}
 			})...)
 		}
 
