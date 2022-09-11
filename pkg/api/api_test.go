@@ -10,14 +10,16 @@ import (
 	"testing"
 )
 
-var repo []Item
+var repo []*Item
 
 func init() {
-	repo = make([]Item, 100)
+	repo = make([]*Item, 100)
 	for i := 0; i < 100; i++ {
-		repo[i].WishType = "200"
-		repo[i].UID = "10001"
-		repo[i].ID = strconv.Itoa(10000 + (100 - i))
+		repo[i] = &Item{
+			ID:       strconv.Itoa(10000 + (100 - i)),
+			UID:      "10001",
+			WishType: "200",
+		}
 	}
 }
 
@@ -50,17 +52,17 @@ func handler() http.Handler {
 			size = n
 		}
 
-		list := lo.Filter(repo, func(item Item, _ int) bool {
+		list := lo.Filter(repo, func(item *Item, _ int) bool {
 			return item.WishType == wishType
 		})
 
 		beginID := c.Query("begin_id")
 		endID := c.Query("end_id")
 
-		_, j, beginOK := lo.FindIndexOf(list, func(item Item) bool {
+		_, j, beginOK := lo.FindIndexOf(list, func(item *Item) bool {
 			return item.ID == beginID
 		})
-		_, i, endOK := lo.FindIndexOf(list, func(item Item) bool {
+		_, i, endOK := lo.FindIndexOf(list, func(item *Item) bool {
 			return item.ID == endID
 		})
 
@@ -108,7 +110,7 @@ func TestGetWishHistory(t *testing.T) {
 	assert.Equal(t, "language error", err.Error())
 
 	items, err = GetWishHistory(server.URL + "/event/gacha_info/api/getGachaLog?authkey_ver=1&authkey=x&lang=y")
-	assert.Equal(t, []Item{}, items)
+	assert.Equal(t, []*Item{}, items)
 	assert.Nil(t, err)
 }
 
@@ -120,20 +122,21 @@ func TestContext_FetchALL(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
+	ctx.SetInterval(0)
 
-	items, err := ctx.Interval(0).WishType("200").Size(10).FetchALL()
+	items, err := ctx.WishType("200").Size(10).FetchAll()
 	if err != nil {
 		t.Fatal(err)
 	}
 	assert.Equal(t, repo, items)
 
-	items, err = ctx.Begin(repo[10].ID).FetchALL()
+	items, err = ctx.Begin(repo[10].ID).FetchAll()
 	if err != nil {
 		t.Fatal(err)
 	}
 	assert.Equal(t, lo.Reverse(repo[:10]), items)
 
-	items, err = ctx.End(repo[9].ID).FetchALL()
+	items, err = ctx.End(repo[9].ID).FetchAll()
 	if err != nil {
 		t.Fatal(err)
 	}

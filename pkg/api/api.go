@@ -25,11 +25,11 @@ type Item struct {
 }
 
 type Data struct {
-	Page   string `json:"page"`
-	Size   string `json:"size"`
-	Total  string `json:"total"`
-	List   []Item `json:"list"`
-	Region string `json:"region"`
+	Page   string  `json:"page"`
+	Size   string  `json:"size"`
+	Total  string  `json:"total"`
+	List   []*Item `json:"list"`
+	Region string  `json:"region"`
 }
 
 type Result struct {
@@ -38,7 +38,7 @@ type Result struct {
 	RetCode int    `json:"retcode"`
 }
 
-func GetWishHistory(url string) ([]Item, error) {
+func GetWishHistory(url string) ([]*Item, error) {
 	resp, err := http.Get(url)
 	if err != nil {
 		return nil, err
@@ -98,10 +98,11 @@ func (q Query) Encode() string {
 
 type Context struct {
 	url      *url.URL
-	items    []Item
+	items    []*Item
 	interval time.Duration
 
-	query Query
+	query      Query
+	handleNext []func(item *Item)
 }
 
 func New(baseURL string, baseQuery BaseQuery) (*Context, error) {
@@ -119,19 +120,8 @@ func New(baseURL string, baseQuery BaseQuery) (*Context, error) {
 	}, nil
 }
 
-func (ctx *Context) Interval(interval time.Duration) *Context {
+func (ctx *Context) SetInterval(interval time.Duration) {
 	ctx.interval = interval
-	return ctx
-}
-
-func (ctx *Context) Size(size int) *Context {
-	ctx.query.Size = strconv.Itoa(size)
-	return ctx
-}
-
-func (ctx *Context) WishType(wishType string) *Context {
-	ctx.query.WishType = wishType
-	return ctx
 }
 
 func (ctx *Context) URL() string {
@@ -171,11 +161,11 @@ func (ctx *Context) GetUID() (string, error) {
 	return item.UID, nil
 }
 
-func (ctx *Context) Peek() (Item, error) {
+func (ctx *Context) Peek() (*Item, error) {
 	if len(ctx.items) == 0 {
 		err := ctx.fetch()
 		if err != nil {
-			return Item{}, err
+			return nil, err
 		}
 	}
 
@@ -186,15 +176,19 @@ func (ctx *Context) Peek() (Item, error) {
 	}
 }
 
-func (ctx *Context) Next() (Item, error) {
+func (ctx *Context) Use(handleNext ...func(item *Item)) {
+	ctx.handleNext = append(ctx.handleNext, handleNext...)
+}
+
+func (ctx *Context) Next() (*Item, error) {
 	if len(ctx.items) == 0 {
 		err := ctx.fetch()
 		if err != nil {
-			return Item{}, err
+			return nil, err
 		}
 	}
 
-	var item Item
+	var item *Item
 	if ctx.query.BeginID != "" {
 		item = ctx.items[len(ctx.items)-1]
 		ctx.items = ctx.items[:len(ctx.items)-1]
@@ -203,7 +197,21 @@ func (ctx *Context) Next() (Item, error) {
 		ctx.items = ctx.items[1:]
 	}
 
+	for i := range ctx.handleNext {
+		ctx.handleNext[i](item)
+	}
+
 	return item, nil
+}
+
+func (ctx *Context) WishType(wishType string) *Context {
+	ctx.query.WishType = wishType
+	return ctx
+}
+
+func (ctx *Context) Size(size int) *Context {
+	ctx.query.Size = strconv.Itoa(size)
+	return ctx
 }
 
 func (ctx *Context) reset() {
@@ -224,6 +232,6 @@ func (ctx *Context) End(id string) *Context {
 	return ctx
 }
 
-func (ctx *Context) FetchALL() ([]Item, error) {
-	return Collect[Item](ctx)
+func (ctx *Context) FetchAll() ([]*Item, error) {
+	return Collect[*Item](ctx)
 }
