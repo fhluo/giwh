@@ -203,10 +203,17 @@ func (ctx *Context) Next() (*Item, error) {
 }
 
 const (
-	BeginnersWish      = "100" // Beginners' Wish (Novice Wish)
-	StandardWish       = "200" // Standard Wish (Permanent Wish)
-	CharacterEventWish = "301" // Character Event Wish and Character Event Wish-2
-	WeaponEventWish    = "302" // Weapon Event Wish
+	BeginnersWish       = "100" // Beginners' Wish (Novice Wish)
+	StandardWish        = "200" // Standard Wish (Permanent Wish)
+	CharacterEventWish  = "301" // Character Event Wish
+	WeaponEventWish     = "302" // Weapon Event Wish
+	CharacterEventWish2 = "400" // Character Event Wish-2
+
+	OneStar   = "1"
+	TwoStar   = "2"
+	ThreeStar = "3"
+	FourStar  = "4"
+	FiveStar  = "5"
 )
 
 func (ctx *Context) WishType(wishType string) *Context {

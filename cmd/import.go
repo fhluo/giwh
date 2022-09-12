@@ -2,8 +2,9 @@ package cmd
 
 import (
 	"github.com/fhluo/giwh/internal/config"
+	"github.com/fhluo/giwh/pkg/pipeline"
+	"github.com/fhluo/giwh/pkg/repository"
 	"github.com/fhluo/giwh/pkg/util"
-	"github.com/fhluo/giwh/pkg/wish"
 	"github.com/spf13/cobra"
 	"log"
 )
@@ -19,11 +20,16 @@ var importCmd = &cobra.Command{
 		}
 
 		for _, filename := range filenames {
-			items, err := wish.LoadItems(filename)
+			items, err := repository.Load(filename)
 			if err != nil {
 				log.Fatalln(err)
 			}
-			config.WishHistory = append(config.WishHistory, items...)
+			elements, err := pipeline.ItemsTo(items, pipeline.NewElement)
+			if err != nil {
+				log.Fatalln(err)
+			}
+
+			config.WishHistory = config.WishHistory.Append(elements)
 		}
 
 		if err := config.SaveWishHistory(); err != nil {

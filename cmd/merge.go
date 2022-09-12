@@ -1,8 +1,10 @@
 package cmd
 
 import (
+	"github.com/fhluo/giwh/pkg/api"
+	"github.com/fhluo/giwh/pkg/pipeline"
+	"github.com/fhluo/giwh/pkg/repository"
 	"github.com/fhluo/giwh/pkg/util"
-	"github.com/fhluo/giwh/pkg/wish"
 	"github.com/spf13/cobra"
 	"log"
 )
@@ -17,17 +19,22 @@ var mergeCmd = &cobra.Command{
 			log.Fatalln(err)
 		}
 
-		var result wish.Items
+		var result []*api.Item
 
 		for _, filename := range filenames {
-			items, err := wish.LoadItems(filename)
+			items, err := repository.Load(filename)
 			if err != nil {
 				log.Fatalln(err)
 			}
 			result = append(result, items...)
 		}
 
-		if err = result.Unique().Save(outputFilename); err != nil {
+		p, err := pipeline.New(result)
+		if err != nil {
+			log.Fatalln(err)
+		}
+
+		if err = repository.Save(outputFilename, p.Unique().SortedByIDDescending().Items()); err != nil {
 			log.Fatalln(err)
 		}
 	},

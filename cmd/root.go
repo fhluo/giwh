@@ -13,11 +13,11 @@ var rootCmd = &cobra.Command{
 	Short: "Genshin Impact Wish History Exporter",
 	Args:  cobra.NoArgs,
 	Run: func(cmd *cobra.Command, args []string) {
-		if len(config.WishHistory) == 0 {
+		if len(config.WishHistory.Elements()) == 0 {
 			return
 		}
 
-		stat.Stat(config.WishHistory.FilterByUID(config.WishHistory[0].UID))
+		stat.Stat(config.WishHistory.FilterByUID(config.WishHistory.Elements()[0].UID).Items())
 	},
 }
 

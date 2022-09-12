@@ -1,16 +1,13 @@
 package wish
 
 import (
-	"errors"
 	"fmt"
 	"github.com/fatih/color"
 	"github.com/fhluo/giwh/pkg/api"
 	"github.com/fhluo/giwh/pkg/i18n"
 	"github.com/fhluo/giwh/pkg/util"
 	"golang.org/x/exp/slices"
-	"io/fs"
 	"log"
-	"os"
 	"path/filepath"
 	"sort"
 	"strconv"
@@ -160,26 +157,4 @@ func (items Items) Save(filename string) error {
 	} else {
 		return fmt.Errorf("format %s is not supported", ext)
 	}
-}
-
-func LoadItems(filename string) (Items, error) {
-	ext := strings.ToLower(filepath.Ext(filename))
-
-	if i, ok := importers[ext]; ok {
-		return i.Import(filename)
-	} else {
-		return nil, fmt.Errorf("format %s is not supported", ext)
-	}
-}
-
-func LoadItemsIfExits(filename string) (Items, error) {
-	_, err := os.Stat(filename)
-	if err != nil {
-		if !errors.Is(err, fs.ErrNotExist) {
-			return nil, err
-		}
-		return nil, nil
-	}
-
-	return LoadItems(filename)
 }

@@ -1,8 +1,8 @@
 package cmd
 
 import (
+	"github.com/fhluo/giwh/pkg/repository"
 	"github.com/fhluo/giwh/pkg/stat"
-	"github.com/fhluo/giwh/pkg/wish"
 	"github.com/spf13/cobra"
 	"log"
 )
@@ -12,7 +12,7 @@ var statCmd = &cobra.Command{
 	Short: "Show stats",
 	Args:  cobra.ExactArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
-		items, err := wish.LoadItems(args[0])
+		items, err := repository.Load(args[0])
 		if err != nil {
 			log.Fatalln(err)
 		}

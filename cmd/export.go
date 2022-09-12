@@ -3,10 +3,11 @@ package cmd
 import (
 	"fmt"
 	"github.com/fhluo/giwh/internal/config"
-	"github.com/fhluo/giwh/pkg/util"
-	"github.com/fhluo/giwh/pkg/wish"
+	"github.com/fhluo/giwh/pkg/repository"
+	"github.com/samber/lo"
 	"github.com/spf13/cobra"
 	"log"
+	"strconv"
 )
 
 var exportCmd = &cobra.Command{
@@ -14,29 +15,29 @@ var exportCmd = &cobra.Command{
 	Short: "Export wish history",
 	Args:  cobra.ExactArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
-		items := config.WishHistory.Unique()
+		p := config.WishHistory.Unique()
 
 		switch {
 		case cmd.Flags().Changed("uid") && cmd.Flags().Changed("wish"):
-			items = items.FilterByUIDAndWishType(uid, util.Map(wishes, func(t int) wish.Type {
-				return wish.Type(t)
+			p = p.FilterByUID(uid).FilterByWishType(lo.Map(wishes, func(t int, _ int) string {
+				return strconv.Itoa(t)
 			})...)
 		case cmd.Flags().Changed("uid"):
-			items = items.FilterByUID(uid)
+			p = p.FilterByUID(uid)
 		case cmd.Flags().Changed("wish"):
-			items = items.FilterByWishType(util.Map(wishes, func(t int) wish.Type {
-				return wish.Type(t)
+			p = p.FilterByWishType(lo.Map(wishes, func(t int, _ int) string {
+				return strconv.Itoa(t)
 			})...)
 		}
 
-		if len(items) == 0 {
+		if len(p.Elements()) == 0 {
 			log.Fatalln("No such wish history.")
 		}
 
-		if err := items.Save(args[0]); err != nil {
+		if err := repository.Save(args[0], p.Items()); err != nil {
 			log.Fatalln(err)
 		} else {
-			fmt.Printf("%d items exported.\n", len(items))
+			fmt.Printf("%d items exported.\n", len(p.Elements()))
 		}
 	},
 }

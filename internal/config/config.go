@@ -4,7 +4,8 @@ import (
 	"bytes"
 	"errors"
 	"github.com/BurntSushi/toml"
-	"github.com/fhluo/giwh/pkg/wish"
+	"github.com/fhluo/giwh/pkg/pipeline"
+	"github.com/fhluo/giwh/pkg/repository"
 	"io/fs"
 	"log"
 	"os"
@@ -18,7 +19,7 @@ var (
 	WishHistoryPath       = filepath.Join(Dir, "wish_history.json")
 	WishHistoryBackupPath = filepath.Join(Dir, "wish_history_backup.json")
 
-	WishHistory wish.Items
+	WishHistory pipeline.Pipeline
 
 	config      = mustLoadConfig()
 	GetLanguage = func() string { return config.Language }
@@ -29,9 +30,12 @@ var (
 func init() {
 	_ = os.MkdirAll(Dir, 0666)
 
-	var err error
+	items, err := repository.LoadIfExits(WishHistoryPath)
+	if err != nil {
+		log.Fatalln(err)
+	}
 
-	WishHistory, err = wish.LoadItemsIfExits(WishHistoryPath)
+	WishHistory, err = pipeline.New(items)
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -50,17 +54,18 @@ func mustLoadConfig() *Config {
 }
 
 func SaveWishHistory() error {
-	items, err := wish.LoadItemsIfExits(WishHistoryPath)
+	items, err := repository.LoadIfExits(WishHistoryPath)
 	if err != nil {
 		return err
 	}
 
-	if items.Equal(WishHistory) {
+	if pipeline.ItemsEqual(items, WishHistory.Items()) {
 		return nil
 	}
 
 	_ = os.Rename(WishHistoryPath, WishHistoryBackupPath)
-	return WishHistory.Unique().Save(WishHistoryPath)
+
+	return repository.Save(WishHistoryPath, WishHistory.Unique().SortedByIDDescending().Items())
 }
 
 type Config struct {
