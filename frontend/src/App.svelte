@@ -3,7 +3,7 @@
 </script>
 
 <main>
-  <p>Hello, world!</p>
+    <p>Hello, world!</p>
 </main>
 
 <style>
