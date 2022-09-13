@@ -37,13 +37,13 @@ type Info struct {
 	Items5    []*api.Item
 }
 
-func stat(name string, pity4, pity5 int, p pipeline.Pipeline) Info {
+func stat(wishType string, p pipeline.Pipeline) Info {
 	var (
 		progress  = make(map[int64]int)
 		progress4 int
 		progress5 int
 	)
-	p.Traverse(func(e *pipeline.Element) bool {
+	p.Traverse(func(e *pipeline.Element) {
 		switch e.Rarity {
 		case api.FourStar:
 			progress[e.ID] = progress4 + 1
@@ -57,24 +57,23 @@ func stat(name string, pity4, pity5 int, p pipeline.Pipeline) Info {
 			progress4++
 			progress5++
 		}
-		return true
 	})
 
 	info := Info{
-		Name:      name,
-		Pity4:     pity4,
-		Pity5:     pity5,
+		Name:      wishType,
+		Pity4:     api.Pity4Star(wishType),
+		Pity5:     api.Pity5Star(wishType),
 		Progress:  progress,
 		Progress4: progress4,
 		Progress5: progress5,
-		Count:     len(p.Elements()),
-		Count5:    len(p.FilterByRarity(api.FiveStar).Elements()),
+		Count:     p.Count(),
+		Count5:    p.Count5Star(),
 		Items5:    p.FilterByRarity(api.FiveStar).Items(),
 	}
 
-	if info.Count > 0 {
-		info.First = p.Elements()[0].Time.Format("2006/01/02")
-		info.Last = p.Elements()[len(p.Elements())-1].Time.Format("2006/01/02")
+	if p.Count() > 0 {
+		info.First = p.First().Time.Format("2006/01/02")
+		info.Last = p.Last().Time.Format("2006/01/02")
 	}
 
 	return info
@@ -85,7 +84,7 @@ func Stat(items []*api.Item) {
 	if err != nil {
 		log.Fatalln(err)
 	}
-	p = p.Unique()
+	p.SortByIDAscending()
 
 	err = template.Must(template.New("").Funcs(template.FuncMap{
 		"gray":    gray,
@@ -95,9 +94,9 @@ func Stat(items []*api.Item) {
 		"white":   color.WhiteString,
 		"yellow":  color.YellowString,
 	}).Parse(tmpl)).Execute(os.Stdout, []Info{
-		stat(api.CharacterEventWish, 10, 90, p.FilterByWishType(api.CharacterEventWish, api.CharacterEventWish2).SortedByIDAscending()),
-		stat(api.WeaponEventWish, 10, 80, p.FilterByWishType(api.WeaponEventWish).SortedByIDAscending()),
-		stat(api.StandardWish, 10, 90, p.FilterByWishType(api.StandardWish).SortedByIDAscending()),
+		stat(api.CharacterEventWish, p.FilterByWishType(api.CharacterEventWish, api.CharacterEventWish2)),
+		stat(api.WeaponEventWish, p.FilterByWishType(api.WeaponEventWish)),
+		stat(api.StandardWish, p.FilterByWishType(api.StandardWish)),
 	})
 	if err != nil {
 		log.Fatalln(err)

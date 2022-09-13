@@ -216,6 +216,39 @@ const (
 	FiveStar  = "5"
 )
 
+var (
+	WishTypes = []string{
+		CharacterEventWish,
+		CharacterEventWish2,
+		WeaponEventWish,
+		StandardWish,
+		BeginnersWish,
+	}
+	SharedWishTypes = []string{
+		CharacterEventWish,
+		WeaponEventWish,
+		StandardWish,
+		BeginnersWish,
+	}
+)
+
+func Pity4Star(_ string) int {
+	return 10
+}
+
+func Pity5Star(wishType string) int {
+	switch wishType {
+	case CharacterEventWish:
+		return 90
+	case WeaponEventWish:
+		return 80
+	case StandardWish:
+		return 90
+	default:
+		return 90
+	}
+}
+
 func (ctx *Context) WishType(wishType string) *Context {
 	ctx.query.WishType = wishType
 	return ctx
