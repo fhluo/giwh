@@ -194,6 +194,35 @@ func (p Pipeline) FilterByWishType(wishTypes ...string) Pipeline {
 	}
 }
 
+func (p Pipeline) FilterBySharedWishType(wishTypes ...string) Pipeline {
+	switch len(wishTypes) {
+	case 0:
+		return Pipeline{}
+	case 1:
+		return Pipeline{
+			elements: lo.Filter(p.elements, func(e *Element, _ int) bool {
+				switch wishTypes[0] {
+				case api.CharacterEventWish, api.CharacterEventWish2:
+					return e.WishType == api.CharacterEventWish || e.WishType == api.CharacterEventWish2
+				default:
+					return e.WishType == wishTypes[0]
+				}
+			}),
+		}
+	default:
+		return Pipeline{
+			elements: lo.Filter(p.elements, func(e *Element, _ int) bool {
+				switch e.WishType {
+				case api.CharacterEventWish, api.CharacterEventWish2:
+					return lo.Contains(wishTypes, api.CharacterEventWish) || lo.Contains(wishTypes, api.CharacterEventWish2)
+				default:
+					return lo.Contains(wishTypes, e.WishType)
+				}
+			}),
+		}
+	}
+}
+
 func (p Pipeline) FilterByRarity(rarities ...string) Pipeline {
 	switch len(rarities) {
 	case 0:
