@@ -1,4 +1,4 @@
-package util
+package cmd
 
 import (
 	"github.com/stretchr/testify/assert"

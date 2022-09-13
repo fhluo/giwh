@@ -3,7 +3,6 @@ package cmd
 import (
 	"github.com/fhluo/giwh/internal/config"
 	"github.com/fhluo/giwh/pkg/i18n"
-	"github.com/fhluo/giwh/pkg/stat"
 	"github.com/spf13/cobra"
 	"log"
 )
@@ -17,7 +16,7 @@ var rootCmd = &cobra.Command{
 			return
 		}
 
-		stat.Stat(config.WishHistory.FilterByUID(config.WishHistory.Elements()[0].UID).Items())
+		Stat(config.WishHistory.FilterByUID(config.WishHistory.Elements()[0].UID).Items())
 	},
 }
 

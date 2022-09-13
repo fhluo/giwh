@@ -12,7 +12,7 @@ require (
 	github.com/samber/lo v1.28.0
 	github.com/spf13/cobra v1.5.0
 	github.com/stretchr/testify v1.8.0
-	github.com/wailsapp/wails/v2 v2.0.0-beta.44.2
+	github.com/wailsapp/wails/v2 v2.0.0-rc.1.1
 	golang.org/x/exp v0.0.0-20220907003533-145caa8ea1d0
 	golang.org/x/net v0.0.0-20220909164309-bea034e7d591
 	golang.org/x/text v0.3.7

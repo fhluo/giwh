@@ -4,7 +4,6 @@ import (
 	"github.com/fhluo/giwh/pkg/api"
 	"github.com/fhluo/giwh/pkg/pipeline"
 	"github.com/fhluo/giwh/pkg/repository"
-	"github.com/fhluo/giwh/pkg/util"
 	"github.com/spf13/cobra"
 	"log"
 )
@@ -14,7 +13,7 @@ var mergeCmd = &cobra.Command{
 	Short: "Merge wish histories",
 	Args:  cobra.MinimumNArgs(2),
 	Run: func(cmd *cobra.Command, args []string) {
-		filenames, err := util.ExpandPaths(args...)
+		filenames, err := ExpandPaths(args...)
 		if err != nil {
 			log.Fatalln(err)
 		}

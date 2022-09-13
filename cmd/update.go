@@ -28,7 +28,7 @@ func FetchAllWishHistory(ctx *api.Context, p pipeline.Pipeline) (pipeline.Pipeli
 	for _, item := range p.Elements() {
 		visit[item.ID] = true
 	}
-	p = p.SortedByIDDescending()
+	p.SortByIDDescending()
 
 	for _, type_ := range []string{api.CharacterEventWish, api.WeaponEventWish, api.StandardWish, api.BeginnersWish} {
 		fmt.Printf("Fetching the wish history of %s.\n", type_)

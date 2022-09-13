@@ -4,7 +4,6 @@ import (
 	"github.com/fhluo/giwh/internal/config"
 	"github.com/fhluo/giwh/pkg/pipeline"
 	"github.com/fhluo/giwh/pkg/repository"
-	"github.com/fhluo/giwh/pkg/util"
 	"github.com/spf13/cobra"
 	"log"
 )
@@ -14,7 +13,7 @@ var importCmd = &cobra.Command{
 	Short: "Import wish history",
 	Args:  cobra.MinimumNArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
-		filenames, err := util.ExpandPaths(args...)
+		filenames, err := ExpandPaths(args...)
 		if err != nil {
 			log.Fatalln(err)
 		}
