@@ -33,7 +33,8 @@ var mergeCmd = &cobra.Command{
 			log.Fatalln(err)
 		}
 
-		if err = repository.Save(outputFilename, p.Unique().SortedByIDDescending().Items()); err != nil {
+		p.SortByIDDescending()
+		if err = repository.Save(outputFilename, p.Unique().Items()); err != nil {
 			log.Fatalln(err)
 		}
 	},

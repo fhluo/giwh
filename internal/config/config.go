@@ -65,7 +65,8 @@ func SaveWishHistory() error {
 
 	_ = os.Rename(WishHistoryPath, WishHistoryBackupPath)
 
-	return repository.Save(WishHistoryPath, WishHistory.Unique().SortedByIDDescending().Items())
+	WishHistory.SortByIDDescending()
+	return repository.Save(WishHistoryPath, WishHistory.Unique().Items())
 }
 
 type Config struct {
