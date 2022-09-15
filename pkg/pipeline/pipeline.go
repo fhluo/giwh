@@ -135,6 +135,32 @@ func (p Pipeline) IDDescending() bool {
 	return true
 }
 
+func (p Pipeline) GroupByUID() map[string]Pipeline {
+	result := lo.GroupBy(p.elements, func(element *Element) string {
+		return element.UID
+	})
+
+	pipelines := make(map[string]Pipeline)
+	for k, v := range result {
+		pipelines[k] = Pipeline{elements: v}
+	}
+
+	return pipelines
+}
+
+func (p Pipeline) GroupByWishType() map[string]Pipeline {
+	result := lo.GroupBy(p.elements, func(element *Element) string {
+		return element.WishType
+	})
+
+	pipelines := make(map[string]Pipeline)
+	for k, v := range result {
+		pipelines[k] = Pipeline{elements: v}
+	}
+
+	return pipelines
+}
+
 func (p Pipeline) SortByIDAscending() {
 	switch {
 	case p.IDAscending():
@@ -240,6 +266,16 @@ func (p Pipeline) FilterByRarity(rarities ...string) Pipeline {
 			}),
 		}
 	}
+}
+
+func (p Pipeline) GetIndex(f func(element *Element) bool) []int {
+	var result []int
+	for i, element := range p.elements {
+		if f(element) {
+			result = append(result, i)
+		}
+	}
+	return result
 }
 
 func (p Pipeline) Progress() map[string]map[string]int {

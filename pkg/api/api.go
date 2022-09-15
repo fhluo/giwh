@@ -232,6 +232,26 @@ var (
 	}
 )
 
+func Pity(rarity string, wishType string) int {
+	switch rarity {
+	case FiveStar:
+		switch wishType {
+		case CharacterEventWish:
+			return 90
+		case WeaponEventWish:
+			return 80
+		case StandardWish:
+			return 90
+		default:
+			return 90
+		}
+	case FourStar:
+		return 10
+	default:
+		return 1
+	}
+}
+
 func Pity4Star(_ string) int {
 	return 10
 }

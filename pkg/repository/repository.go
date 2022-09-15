@@ -8,6 +8,12 @@ import (
 	"os"
 )
 
+type Repository interface {
+	GetUIDs() []string
+	GetProgress(uid string, wishType string, rarity string) int
+	GetPulls(uid string, wishType string, id int64) int
+}
+
 func Load(filename string) ([]*api.Item, error) {
 	data, err := os.ReadFile(filename)
 	if err != nil {

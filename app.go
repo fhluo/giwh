@@ -4,15 +4,23 @@ import (
 	"github.com/fhluo/giwh/internal/config"
 	"github.com/fhluo/giwh/pkg/api"
 	"github.com/fhluo/giwh/pkg/i18n"
+	"github.com/fhluo/giwh/pkg/repository"
+	"github.com/fhluo/giwh/pkg/repository/primitive"
 	"golang.org/x/net/context"
+	"log"
 )
 
 type App struct {
 	ctx context.Context
+	repository.Repository
 }
 
 func NewApp() *App {
-	return &App{}
+	r, err := primitive.New(config.WishHistoryPath)
+	if err != nil {
+		log.Fatalln(err)
+	}
+	return &App{Repository: r}
 }
 
 func (a *App) startup(ctx context.Context) {
@@ -22,33 +30,14 @@ func (a *App) startup(ctx context.Context) {
 	}
 }
 
-type Progress struct {
-	Rarity string `json:"rarity"`
-	Count  int    `json:"count"`
+func (a *App) GetSharedWishName(wishType string) string {
+	return i18n.GetSharedWishName(wishType)
 }
 
-type StatResult struct {
-	WishType   string     `json:"wishType"`
-	Progresses []Progress `json:"progresses"`
+func (a *App) GetPity(rarity string, wishType string) int {
+	return api.Pity(rarity, wishType)
 }
 
 func (a *App) GetSharedWishTypes() []string {
 	return api.SharedWishTypes
-}
-
-func (a *App) Stat() []StatResult {
-	progress := config.WishHistory.Progress()
-
-	results := make([]StatResult, 0, len(api.SharedWishTypes))
-	for _, wishType := range api.SharedWishTypes {
-		results = append(results, StatResult{
-			WishType: i18n.GetSharedWishName(wishType),
-			Progresses: []Progress{
-				{api.FiveStar, progress[wishType][api.FiveStar]},
-				{api.FourStar, progress[wishType][api.FiveStar]},
-			},
-		})
-	}
-
-	return results
 }
