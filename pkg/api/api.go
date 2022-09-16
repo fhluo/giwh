@@ -7,36 +7,8 @@ import (
 	"io"
 	"net/http"
 	"net/url"
-	"strconv"
 	"time"
 )
-
-type Item struct {
-	UID      string `json:"uid"`
-	WishType string `json:"gacha_type"`
-	ItemID   string `json:"item_id"`
-	Count    string `json:"count"`
-	Time     string `json:"time"`
-	Name     string `json:"name"`
-	Lang     string `json:"lang"`
-	ItemType string `json:"item_type"`
-	Rarity   string `json:"rank_type"`
-	ID       string `json:"id"`
-}
-
-type Data struct {
-	Page   string  `json:"page"`
-	Size   string  `json:"size"`
-	Total  string  `json:"total"`
-	List   []*Item `json:"list"`
-	Region string  `json:"region"`
-}
-
-type Result struct {
-	*Data   `json:"data"`
-	Message string `json:"message"`
-	RetCode int    `json:"retcode"`
-}
 
 func GetWishHistory(url string) ([]*Item, error) {
 	resp, err := http.Get(url)
@@ -66,7 +38,7 @@ func GetWishHistory(url string) ([]*Item, error) {
 		return nil, fmt.Errorf(result.Message)
 	}
 
-	return result.List, nil
+	return result.Data.List, nil
 }
 
 const (
@@ -78,10 +50,10 @@ type Query struct {
 	AuthKey    string `url:"authkey"`
 	Lang       string `url:"lang"`
 
-	WishType string `url:"gacha_type"`
-	Size     string `url:"size"`
-	BeginID  string `url:"begin_id,omitempty"`
-	EndID    string `url:"end_id,omitempty"`
+	WishType WishType `url:"gacha_type"`
+	Size     int      `url:"size"`
+	BeginID  int64    `url:"begin_id,omitempty"`
+	EndID    int64    `url:"end_id,omitempty"`
 }
 
 func (q Query) Encode() string {
@@ -112,7 +84,7 @@ func New(base Base) (*Context, error) {
 			AuthKeyVer: base.Query.AuthKeyVer,
 			AuthKey:    base.Query.AuthKey,
 			Lang:       base.Query.Lang,
-			Size:       "5",
+			Size:       5,
 		},
 		interval: DefaultInterval,
 	}, nil
@@ -141,7 +113,7 @@ func (ctx *Context) fetch() error {
 	}
 	ctx.items = append(ctx.items, items...)
 
-	if ctx.query.BeginID != "" {
+	if ctx.query.BeginID > 0 {
 		ctx.query.BeginID = ctx.items[0].ID
 	} else {
 		ctx.query.EndID = ctx.items[len(ctx.items)-1].ID
@@ -151,10 +123,10 @@ func (ctx *Context) fetch() error {
 	return nil
 }
 
-func (ctx *Context) GetUID() (string, error) {
+func (ctx *Context) GetUID() (int, error) {
 	item, err := ctx.Peek()
 	if err != nil {
-		return "", err
+		return 0, err
 	}
 	return item.UID, nil
 }
@@ -167,7 +139,7 @@ func (ctx *Context) Peek() (*Item, error) {
 		}
 	}
 
-	if ctx.query.BeginID != "" {
+	if ctx.query.BeginID > 0 {
 		return ctx.items[len(ctx.items)-1], nil
 	} else {
 		return ctx.items[0], nil
@@ -187,7 +159,7 @@ func (ctx *Context) Next() (*Item, error) {
 	}
 
 	var item *Item
-	if ctx.query.BeginID != "" {
+	if ctx.query.BeginID > 0 {
 		item = ctx.items[len(ctx.items)-1]
 		ctx.items = ctx.items[:len(ctx.items)-1]
 	} else {
@@ -202,96 +174,29 @@ func (ctx *Context) Next() (*Item, error) {
 	return item, nil
 }
 
-const (
-	BeginnersWish       = "100" // Beginners' Wish (Novice Wish)
-	StandardWish        = "200" // Standard Wish (Permanent Wish)
-	CharacterEventWish  = "301" // Character Event Wish
-	WeaponEventWish     = "302" // Weapon Event Wish
-	CharacterEventWish2 = "400" // Character Event Wish-2
-
-	OneStar   = "1"
-	TwoStar   = "2"
-	ThreeStar = "3"
-	FourStar  = "4"
-	FiveStar  = "5"
-)
-
-var (
-	WishTypes = []string{
-		CharacterEventWish,
-		CharacterEventWish2,
-		WeaponEventWish,
-		StandardWish,
-		BeginnersWish,
-	}
-	SharedWishTypes = []string{
-		CharacterEventWish,
-		WeaponEventWish,
-		StandardWish,
-		BeginnersWish,
-	}
-)
-
-func Pity(rarity string, wishType string) int {
-	switch rarity {
-	case FiveStar:
-		switch wishType {
-		case CharacterEventWish:
-			return 90
-		case WeaponEventWish:
-			return 80
-		case StandardWish:
-			return 90
-		default:
-			return 90
-		}
-	case FourStar:
-		return 10
-	default:
-		return 1
-	}
-}
-
-func Pity4Star(_ string) int {
-	return 10
-}
-
-func Pity5Star(wishType string) int {
-	switch wishType {
-	case CharacterEventWish:
-		return 90
-	case WeaponEventWish:
-		return 80
-	case StandardWish:
-		return 90
-	default:
-		return 90
-	}
-}
-
-func (ctx *Context) WishType(wishType string) *Context {
+func (ctx *Context) WishType(wishType WishType) *Context {
 	ctx.query.WishType = wishType
 	return ctx
 }
 
 func (ctx *Context) Size(size int) *Context {
-	ctx.query.Size = strconv.Itoa(size)
+	ctx.query.Size = size
 	return ctx
 }
 
 func (ctx *Context) reset() {
-	ctx.query.BeginID = ""
-	ctx.query.EndID = ""
+	ctx.query.BeginID = 0
+	ctx.query.EndID = 0
 	ctx.items = nil
 }
 
-func (ctx *Context) Begin(id string) *Context {
+func (ctx *Context) Begin(id int64) *Context {
 	ctx.reset()
 	ctx.query.BeginID = id
 	return ctx
 }
 
-func (ctx *Context) End(id string) *Context {
+func (ctx *Context) End(id int64) *Context {
 	ctx.reset()
 	ctx.query.EndID = id
 	return ctx

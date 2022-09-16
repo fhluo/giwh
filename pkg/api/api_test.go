@@ -16,8 +16,8 @@ func init() {
 	repo = make([]*Item, 100)
 	for i := 0; i < 100; i++ {
 		repo[i] = &Item{
-			ID:       strconv.Itoa(10000 + (100 - i)),
-			UID:      "10001",
+			ID:       int64(10000 + (100 - i)),
+			UID:      10001,
 			WishType: StandardWish,
 		}
 	}
@@ -53,11 +53,11 @@ func handler() http.Handler {
 		}
 
 		list := lo.Filter(repo, func(item *Item, _ int) bool {
-			return item.WishType == wishType
+			return item.WishType.Str() == wishType
 		})
 
-		beginID := c.Query("begin_id")
-		endID := c.Query("end_id")
+		beginID, _ := strconv.ParseInt(c.Query("begin_id"), 10, 64)
+		endID, _ := strconv.ParseInt(c.Query("end_id"), 10, 64)
 
 		_, j, beginOK := lo.FindIndexOf(list, func(item *Item) bool {
 			return item.ID == beginID
@@ -83,9 +83,9 @@ func handler() http.Handler {
 
 		c.JSON(http.StatusOK, Result{
 			Data: &Data{
-				Page:  "0",
-				Size:  strconv.Itoa(size),
-				Total: "0",
+				Page:  0,
+				Size:  size,
+				Total: 0,
 				List:  list,
 			},
 			Message: "OK",
@@ -162,5 +162,5 @@ func TestContext_GetUID(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	assert.Equal(t, "10001", uid)
+	assert.Equal(t, 10001, uid)
 }
