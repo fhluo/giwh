@@ -2,7 +2,6 @@ package cmd
 
 import (
 	"github.com/fhluo/giwh/internal/config"
-	"github.com/fhluo/giwh/pkg/pipeline"
 	"github.com/fhluo/giwh/pkg/repository"
 	"github.com/spf13/cobra"
 	"log"
@@ -23,12 +22,8 @@ var importCmd = &cobra.Command{
 			if err != nil {
 				log.Fatalln(err)
 			}
-			elements, err := pipeline.ItemsTo(items, pipeline.NewElement)
-			if err != nil {
-				log.Fatalln(err)
-			}
 
-			config.WishHistory = config.WishHistory.Append(elements)
+			config.WishHistory = config.WishHistory.Append(items)
 		}
 
 		if err := config.SaveWishHistory(); err != nil {

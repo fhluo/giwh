@@ -30,14 +30,14 @@ var exportCmd = &cobra.Command{
 			})...)
 		}
 
-		if len(p.Elements()) == 0 {
+		if len(p.Items()) == 0 {
 			log.Fatalln("No such wish history.")
 		}
 
 		if err := repository.Save(args[0], p.Items()); err != nil {
 			log.Fatalln(err)
 		} else {
-			fmt.Printf("%d items exported.\n", len(p.Elements()))
+			fmt.Printf("%d items exported.\n", len(p.Items()))
 		}
 	},
 }

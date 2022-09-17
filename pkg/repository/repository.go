@@ -8,10 +8,16 @@ import (
 	"os"
 )
 
+type Item struct {
+	ID   int64  `json:"id"`
+	Name string `json:"name"`
+}
+
 type Repository interface {
-	GetUIDs() []string
-	GetProgress(uid string, wishType string, rarity string) int
-	GetPulls(uid string, wishType string, id int64) int
+	GetUIDs() []int
+	GetProgress(uid int, wishType api.SharedWishType, rarity api.Rarity) int
+	GetPulls(uid int, wishType api.SharedWishType, id int64) int
+	GetItems(uid int, wishType api.SharedWishType, rarity api.Rarity) []Item
 }
 
 func Load(filename string) ([]*api.Item, error) {

@@ -5,7 +5,6 @@ import (
 	"github.com/fhluo/giwh/internal/config"
 	"github.com/fhluo/giwh/pkg/api"
 	"github.com/fhluo/giwh/pkg/pipeline"
-	"github.com/samber/lo"
 	"github.com/spf13/cobra"
 	"log"
 	"os"
@@ -25,39 +24,29 @@ func Default() api.Region {
 
 func FetchAllWishHistory(ctx *api.Context, p pipeline.Pipeline) (pipeline.Pipeline, error) {
 	visit := make(map[int64]bool)
-	for _, item := range p.Elements() {
+	for _, item := range p.Items() {
 		visit[item.ID] = true
 	}
 	p.SortByIDDescending()
 
-	for _, type_ := range []string{api.CharacterEventWish, api.WeaponEventWish, api.StandardWish, api.BeginnersWish} {
-		fmt.Printf("Fetching the wish history of %s.\n", type_)
+	for _, wishType := range api.SharedWishTypes {
+		fmt.Printf("Fetching the wish history of %s.\n", wishType)
 
-		x := p.FilterByWishType(type_).Items()
+		x := p.FilterBySharedWishType(wishType).Items()
 		if len(x) != 0 {
-			result, err := ctx.WishType(type_).Size(10).Begin(x[0].ID).FetchAll()
+			result, err := ctx.WishType(wishType).Size(10).Begin(x[0].ID).FetchAll()
 			if err != nil {
 				return p, err
 			}
 
-			r, err := pipeline.ItemsTo(lo.Reverse(result), pipeline.NewElement)
-			if err != nil {
-				return p, err
-			}
-
-			p = p.Append(r)
+			p = p.Append(result)
 		} else {
-			result, err := ctx.WishType(type_).Size(10).End("0").FetchAll()
+			result, err := ctx.WishType(wishType).Size(10).End(0).FetchAll()
 			if err != nil {
 				return p, err
 			}
 
-			r, err := pipeline.ItemsTo(lo.Reverse(result), pipeline.NewElement)
-			if err != nil {
-				return p, err
-			}
-
-			p = p.Append(r)
+			p = p.Append(result)
 		}
 
 	}
@@ -89,7 +78,7 @@ var updateCmd = &cobra.Command{
 			log.Fatalln(err)
 		}
 
-		count := len(result.Elements()) - len(config.WishHistory.Elements())
+		count := len(result.Items()) - len(config.WishHistory.Items())
 		if count == 0 {
 			fmt.Println("No items fetched. Your wish history is up to date.")
 			return

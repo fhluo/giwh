@@ -1,9 +1,9 @@
 <script lang="ts">
     import {GetSharedWishTypes, GetUIDs} from "../wailsjs/go/main/App";
-    import {GetPity, GetProgress, GetSharedWishName} from "../wailsjs/go/main/App.js";
+    import {GetItems, GetPity, GetProgress, GetPulls, GetSharedWishName} from "../wailsjs/go/main/App.js";
 
-    let uid = ""
-    let rarities = ["4", "5"]
+    let uid = 0
+    let rarities = [4, 5]
 </script>
 
 <main>
@@ -33,15 +33,18 @@
                         </div>
                     {/each}
                 </div>
-                <!--            <div class="flex flex-row flex-wrap space-x-3 ml-5">-->
-                <!--                {#each items as {name, pulls}, i}-->
-                <!--                    <div class="font-bold bg-yellow-300 rounded-lg px-4 py-2 my-3">{name}<span-->
-                <!--                            class="text-sm text-gray-500">({pulls})</span></div>-->
-                <!--                {/each}-->
-                <!--            </div>-->
+                {#await GetItems(uid, wishType, "5") then items}
+                    <div class="flex flex-row flex-wrap space-x-3 ml-5">
+                        {#each items as {id, name}, i}
+                            {#await GetPulls(uid, wishType, id) then pulls}
+                                <div class="font-bold bg-yellow-300 rounded-lg px-4 py-2 my-3">{name}<span
+                                        class="text-sm text-gray-500">({pulls})</span></div>
+                            {/await}
+                        {/each}
+                    </div>
+                {/await}
             {/each}
         {/await}
-        <!--        <button class="btn w-20 justify-self-center self-center my-3" on:click={stat}>更新</button>-->
     </div>
 </main>
 

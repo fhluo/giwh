@@ -40,6 +40,10 @@ const (
 	SWeaponEventWish    SharedWishType = 302 // Weapon Event Wish
 )
 
+func (w SharedWishType) Str() string {
+	return strconv.Itoa(int(w))
+}
+
 func (w SharedWishType) Pity(rarity Rarity) int {
 	switch rarity {
 	case Star5:
@@ -76,19 +80,6 @@ const (
 
 func (r Rarity) Str() string {
 	return strconv.Itoa(int(r))
-}
-
-type RawItem struct {
-	UID      string `json:"uid"`
-	WishType string `json:"gacha_type"`
-	ItemID   string `json:"item_id"`
-	Count    string `json:"count"`
-	Time     string `json:"time"`
-	Name     string `json:"name"`
-	Lang     string `json:"lang"`
-	ItemType string `json:"item_type"`
-	Rarity   string `json:"rank_type"`
-	ID       string `json:"id"`
 }
 
 type Time struct {

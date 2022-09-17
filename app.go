@@ -30,14 +30,14 @@ func (a *App) startup(ctx context.Context) {
 	}
 }
 
-func (a *App) GetSharedWishName(wishType string) string {
-	return i18n.GetSharedWishName(wishType)
+func (a *App) GetSharedWishName(wishType api.SharedWishType) string {
+	return i18n.GetSharedWishName(wishType.Str())
 }
 
-func (a *App) GetPity(rarity string, wishType string) int {
-	return api.Pity(rarity, wishType)
+func (a *App) GetPity(rarity api.Rarity, wishType api.SharedWishType) int {
+	return wishType.Pity(rarity)
 }
 
-func (a *App) GetSharedWishTypes() []string {
+func (a *App) GetSharedWishTypes() []api.SharedWishType {
 	return api.SharedWishTypes
 }

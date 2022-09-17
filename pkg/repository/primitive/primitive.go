@@ -1,6 +1,8 @@
 package primitive
 
 import (
+	"fmt"
+	"github.com/fhluo/giwh/pkg/api"
 	"github.com/fhluo/giwh/pkg/pipeline"
 	"github.com/fhluo/giwh/pkg/repository"
 	"github.com/samber/lo"
@@ -8,7 +10,7 @@ import (
 
 type Repository struct {
 	pipeline.Pipeline
-	index map[string]map[string]pipeline.Pipeline
+	index map[int]map[api.SharedWishType]pipeline.Pipeline
 }
 
 func New(filename string) (repository.Repository, error) {
@@ -19,49 +21,62 @@ func New(filename string) (repository.Repository, error) {
 
 	r := new(Repository)
 
-	r.Pipeline, err = pipeline.New(items)
-	if err != nil {
-		return nil, err
-	}
+	r.Pipeline = pipeline.New(items)
 
-	r.index = make(map[string]map[string]pipeline.Pipeline)
+	r.index = make(map[int]map[api.SharedWishType]pipeline.Pipeline)
 	for uid, p := range r.GroupByUID() {
-		r.index[uid] = p.GroupByWishType()
+		r.index[uid] = p.GroupBySharedWishType()
 	}
 
 	return r, nil
 }
 
-func (r *Repository) GetUIDs() []string {
+func (r *Repository) GetUIDs() []int {
 	r.SortByIDDescending()
-	return lo.Uniq(lo.Map(r.Elements(), func(element *pipeline.Element, _ int) string {
-		return element.UID
+	return lo.Uniq(lo.Map(r.Items(), func(item *api.Item, _ int) int {
+		return item.UID
 	}))
 }
 
-func (r *Repository) GetProgress(uid string, wishType string, rarity string) int {
+func (r *Repository) GetProgress(uid int, wishType api.SharedWishType, rarity api.Rarity) int {
 	p := r.index[uid][wishType]
 	p.SortByIDDescending()
 
-	_, i, _ := lo.FindIndexOf(p.Elements(), func(element *pipeline.Element) bool {
-		return element.Rarity == rarity
+	_, i, _ := lo.FindIndexOf(p.Items(), func(item *api.Item) bool {
+		return item.Rarity == rarity
 	})
 	return i
 }
 
-func (r *Repository) GetPulls(uid string, wishType string, id int64) int {
+func (r *Repository) GetItems(uid int, wishType api.SharedWishType, rarity api.Rarity) []repository.Item {
 	p := r.index[uid][wishType]
 	p.SortByIDAscending()
 
-	target, i, ok := lo.FindIndexOf(p.Elements(), func(element *pipeline.Element) bool {
-		return element.ID == id
+	items := lo.Map(p.FilterByRarity(rarity).Items(), func(item *api.Item, _ int) repository.Item {
+		return repository.Item{
+			ID:   item.ID,
+			Name: item.Name,
+		}
+	})
+
+	fmt.Println(items)
+
+	return items
+}
+
+func (r *Repository) GetPulls(uid int, wishType api.SharedWishType, id int64) int {
+	p := r.index[uid][wishType]
+	p.SortByIDAscending()
+
+	target, i, ok := lo.FindIndexOf(p.Items(), func(item *api.Item) bool {
+		return item.ID == id
 	})
 	if !ok {
 		return -1
 	}
 
-	_, j, ok := lo.FindIndexOf(p.Elements(), func(element *pipeline.Element) bool {
-		return element.ID < target.ID && element.Rarity == target.Rarity
+	_, j, ok := lo.FindIndexOf(p.Items(), func(item *api.Item) bool {
+		return item.ID < target.ID && item.Rarity == target.Rarity
 	})
 	if !ok {
 		return -1

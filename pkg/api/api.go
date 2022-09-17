@@ -50,10 +50,10 @@ type Query struct {
 	AuthKey    string `url:"authkey"`
 	Lang       string `url:"lang"`
 
-	WishType WishType `url:"gacha_type"`
-	Size     int      `url:"size"`
-	BeginID  int64    `url:"begin_id,omitempty"`
-	EndID    int64    `url:"end_id,omitempty"`
+	WishType SharedWishType `url:"gacha_type"`
+	Size     int            `url:"size"`
+	BeginID  int64          `url:"begin_id,omitempty"`
+	EndID    int64          `url:"end_id,omitempty"`
 }
 
 func (q Query) Encode() string {
@@ -174,7 +174,7 @@ func (ctx *Context) Next() (*Item, error) {
 	return item, nil
 }
 
-func (ctx *Context) WishType(wishType WishType) *Context {
+func (ctx *Context) WishType(wishType SharedWishType) *Context {
 	ctx.query.WishType = wishType
 	return ctx
 }

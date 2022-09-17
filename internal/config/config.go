@@ -35,7 +35,7 @@ func init() {
 		log.Fatalln(err)
 	}
 
-	WishHistory, err = pipeline.New(items)
+	WishHistory = pipeline.New(items)
 	if err != nil {
 		log.Fatalln(err)
 	}

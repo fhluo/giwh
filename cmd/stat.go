@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"github.com/fatih/color"
 	"github.com/fhluo/giwh/pkg/api"
+	"github.com/fhluo/giwh/pkg/i18n"
 	"github.com/fhluo/giwh/pkg/pipeline"
 	"github.com/fhluo/giwh/pkg/repository"
 	"github.com/samber/lo"
@@ -69,25 +70,22 @@ type Info struct {
 }
 
 func Stat(items []*api.Item) {
-	p, err := pipeline.New(items)
-	if err != nil {
-		log.Fatalln(err)
-	}
+	p := pipeline.New(items)
 	progress := p.Progress()
 	pulls := p.Pulls()
 
-	err = tmpl.Execute(os.Stdout, lo.Map(api.SharedWishTypes, func(wishType string, _ int) Info {
+	err := tmpl.Execute(os.Stdout, lo.Map(api.SharedWishTypes, func(wishType api.SharedWishType, _ int) Info {
 		current := p.FilterBySharedWishType(wishType)
 		info := Info{
-			Name:      wishType,
-			Pity4:     api.Pity4Star(wishType),
-			Pity5:     api.Pity5Star(wishType),
+			Name:      i18n.GetSharedWishName(wishType.Str()),
+			Pity4:     wishType.Pity(api.Star4),
+			Pity5:     wishType.Pity(api.Star5),
 			Progress:  pulls[wishType],
-			Progress4: progress[wishType][api.FourStar],
-			Progress5: progress[wishType][api.FiveStar],
+			Progress4: progress[wishType][api.Star4],
+			Progress5: progress[wishType][api.Star5],
 			Count:     current.Count(),
 			Count5:    current.Count5Star(),
-			Items5:    current.FilterByRarity(api.FiveStar).Items(),
+			Items5:    current.FilterByRarity(api.Star5).Items(),
 		}
 
 		if info.Count > 0 {
