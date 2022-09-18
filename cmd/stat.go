@@ -56,36 +56,34 @@ var (
 )
 
 type Info struct {
-	Name      string
-	Pity4     int
-	Pity5     int
-	Progress  map[int64]int
-	Progress4 int
-	Progress5 int
-	Count     int
-	Count5    int
-	First     string
-	Last      string
-	Items5    []*api.Item
+	Name     string
+	Pity4    int
+	Pity5    int
+	Pulls    map[int64]int
+	Progress int
+	Count    int
+	Count5   int
+	First    string
+	Last     string
+	Items5   []*api.Item
 }
 
 func Stat(items []*api.Item) {
-	p := pipeline.New(items)
-	progress := p.Progress()
-	pulls := p.Pulls()
+	p := pipeline.Items(items)
 
 	err := tmpl.Execute(os.Stdout, lo.Map(api.SharedWishTypes, func(wishType api.SharedWishType, _ int) Info {
 		current := p.FilterBySharedWishType(wishType)
+		fiveStars := current.FilterByRarity(api.Star5)
+
 		info := Info{
-			Name:      i18n.GetSharedWishName(wishType.Str()),
-			Pity4:     wishType.Pity(api.Star4),
-			Pity5:     wishType.Pity(api.Star5),
-			Progress:  pulls[wishType],
-			Progress4: progress[wishType][api.Star4],
-			Progress5: progress[wishType][api.Star5],
-			Count:     current.Count(),
-			Count5:    current.Count5Star(),
-			Items5:    current.FilterByRarity(api.Star5).Items(),
+			Name:     i18n.GetSharedWishName(wishType.Str()),
+			Pity4:    wishType.Pity(api.Star4),
+			Pity5:    wishType.Pity(api.Star5),
+			Pulls:    current.Pulls5Stars(),
+			Progress: current.Progress5Star(),
+			Count:    current.Len(),
+			Count5:   fiveStars.Len(),
+			Items5:   fiveStars,
 		}
 
 		if info.Count > 0 {

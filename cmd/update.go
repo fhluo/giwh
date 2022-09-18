@@ -22,9 +22,9 @@ func Default() api.Region {
 	return api.OS
 }
 
-func FetchAllWishHistory(ctx *api.Context, p pipeline.Pipeline) (pipeline.Pipeline, error) {
+func FetchAllWishHistory(ctx *api.Context, p pipeline.Items) (pipeline.Items, error) {
 	visit := make(map[int64]bool)
-	for _, item := range p.Items() {
+	for _, item := range p {
 		visit[item.ID] = true
 	}
 	p.SortByIDDescending()
@@ -32,21 +32,21 @@ func FetchAllWishHistory(ctx *api.Context, p pipeline.Pipeline) (pipeline.Pipeli
 	for _, wishType := range api.SharedWishTypes {
 		fmt.Printf("Fetching the wish history of %s.\n", wishType)
 
-		x := p.FilterBySharedWishType(wishType).Items()
+		x := p.FilterBySharedWishType(wishType)
 		if len(x) != 0 {
 			result, err := ctx.WishType(wishType).Size(10).Begin(x[0].ID).FetchAll()
 			if err != nil {
 				return p, err
 			}
 
-			p = p.Append(result)
+			p = p.Append(result...)
 		} else {
 			result, err := ctx.WishType(wishType).Size(10).End(0).FetchAll()
 			if err != nil {
 				return p, err
 			}
 
-			p = p.Append(result)
+			p = p.Append(result...)
 		}
 
 	}
@@ -78,7 +78,7 @@ var updateCmd = &cobra.Command{
 			log.Fatalln(err)
 		}
 
-		count := len(result.Items()) - len(config.WishHistory.Items())
+		count := len(result) - len(config.WishHistory)
 		if count == 0 {
 			fmt.Println("No items fetched. Your wish history is up to date.")
 			return

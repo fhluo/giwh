@@ -1,13 +1,13 @@
 <script lang="ts">
     import {GetSharedWishTypes, GetUIDs} from "../wailsjs/go/main/App";
-    import {GetItems, GetPity, GetProgress, GetPulls, GetSharedWishName} from "../wailsjs/go/main/App.js";
+    import {Get5Stars, GetPity, GetProgress, GetSharedWishName} from "../wailsjs/go/main/App.js";
 
     let uid = 0
     let rarities = [4, 5]
 </script>
 
 <main>
-    <div class="flex flex-col mx-auto">
+    <div class="flex flex-col mx-5 my-5">
         {#await GetUIDs() then uidList}
             <select class="select select-bordered" bind:value={uid}>
                 {#each uidList as uid, _}
@@ -24,7 +24,7 @@
                     {#each rarities as rarity, _}
                         <div class="ml-5">
                             <span>{rarity} star</span>
-                            {#await GetProgress(uid, wishType, rarity) then progress}
+                            {#await GetProgress(uid, wishType) then progress}
                                 {#await GetPity(rarity, wishType) then pity}
                                     <progress class="progress w-56" value="{progress}" max="{pity}"></progress>
                                 {/await}
@@ -33,13 +33,11 @@
                         </div>
                     {/each}
                 </div>
-                {#await GetItems(uid, wishType, "5") then items}
+                {#await Get5Stars(uid, wishType) then items}
                     <div class="flex flex-row flex-wrap space-x-3 ml-5">
-                        {#each items as {id, name}, i}
-                            {#await GetPulls(uid, wishType, id) then pulls}
-                                <div class="font-bold bg-yellow-300 rounded-lg px-4 py-2 my-3">{name}<span
-                                        class="text-sm text-gray-500">({pulls})</span></div>
-                            {/await}
+                        {#each items as {id, name, pulls}, i}
+                            <div class="font-bold bg-yellow-300 rounded-lg px-4 py-2 my-3">{name}<span
+                                    class="text-sm text-gray-500">({pulls})</span></div>
                         {/each}
                     </div>
                 {/await}

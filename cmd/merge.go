@@ -28,10 +28,10 @@ var mergeCmd = &cobra.Command{
 			result = append(result, items...)
 		}
 
-		p := pipeline.New(result)
+		p := pipeline.Items(result)
 
 		p.SortByIDDescending()
-		if err = repository.Save(outputFilename, p.Unique().Items()); err != nil {
+		if err = repository.Save(outputFilename, p.Unique()); err != nil {
 			log.Fatalln(err)
 		}
 	},

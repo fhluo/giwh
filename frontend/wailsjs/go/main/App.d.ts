@@ -3,13 +3,11 @@
 import {api} from '../models';
 import {repository} from '../models';
 
-export function GetItems(arg1:number,arg2:api.SharedWishType,arg3:api.Rarity):Promise<Array<repository.Item>>;
+export function Get5Stars(arg1:number,arg2:api.SharedWishType):Promise<Array<repository.Item>>;
 
 export function GetPity(arg1:api.Rarity,arg2:api.SharedWishType):Promise<number>;
 
-export function GetProgress(arg1:number,arg2:api.SharedWishType,arg3:api.Rarity):Promise<number>;
-
-export function GetPulls(arg1:number,arg2:api.SharedWishType,arg3:number):Promise<number>;
+export function GetProgress(arg1:number,arg2:api.SharedWishType):Promise<number>;
 
 export function GetSharedWishName(arg1:api.SharedWishType):Promise<string>;
 

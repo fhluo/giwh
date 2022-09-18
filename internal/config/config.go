@@ -19,7 +19,7 @@ var (
 	WishHistoryPath       = filepath.Join(Dir, "wish_history.json")
 	WishHistoryBackupPath = filepath.Join(Dir, "wish_history_backup.json")
 
-	WishHistory pipeline.Pipeline
+	WishHistory pipeline.Items
 
 	config      = mustLoadConfig()
 	GetLanguage = func() string { return config.Language }
@@ -30,12 +30,8 @@ var (
 func init() {
 	_ = os.MkdirAll(Dir, 0666)
 
-	items, err := repository.LoadIfExits(WishHistoryPath)
-	if err != nil {
-		log.Fatalln(err)
-	}
-
-	WishHistory = pipeline.New(items)
+	var err error
+	WishHistory, err = repository.LoadIfExits(WishHistoryPath)
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -59,14 +55,14 @@ func SaveWishHistory() error {
 		return err
 	}
 
-	if pipeline.ItemsEqual(items, WishHistory.Items()) {
+	if WishHistory.Equal(items) {
 		return nil
 	}
 
 	_ = os.Rename(WishHistoryPath, WishHistoryBackupPath)
 
 	WishHistory.SortByIDDescending()
-	return repository.Save(WishHistoryPath, WishHistory.Unique().Items())
+	return repository.Save(WishHistoryPath, WishHistory.Unique())
 }
 
 type Config struct {

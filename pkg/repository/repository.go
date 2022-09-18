@@ -9,15 +9,14 @@ import (
 )
 
 type Item struct {
-	ID   int64  `json:"id"`
-	Name string `json:"name"`
+	*api.Item
+	Pulls int `json:"pulls"`
 }
 
 type Repository interface {
 	GetUIDs() []int
-	GetProgress(uid int, wishType api.SharedWishType, rarity api.Rarity) int
-	GetPulls(uid int, wishType api.SharedWishType, id int64) int
-	GetItems(uid int, wishType api.SharedWishType, rarity api.Rarity) []Item
+	GetProgress(uid int, wishType api.SharedWishType) int
+	Get5Stars(uid int, wishType api.SharedWishType) []Item
 }
 
 func Load(filename string) ([]*api.Item, error) {
