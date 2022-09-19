@@ -16,7 +16,7 @@ type App struct {
 }
 
 func NewApp() *App {
-	r, err := primitive.New(config.WishHistoryPath)
+	r, err := primitive.Load(config.WishHistoryPath)
 	if err != nil {
 		log.Fatalln(err)
 	}

@@ -15,8 +15,10 @@ type Item struct {
 
 type Repository interface {
 	GetUIDs() []int
-	GetProgress(uid int, wishType api.SharedWishType) int
+	Get5StarProgress(uid int, wishType api.SharedWishType) int
+	Get4StarProgress(uid int, wishType api.SharedWishType) int
 	Get5Stars(uid int, wishType api.SharedWishType) []Item
+	Get4Stars(uid int, wishType api.SharedWishType) []Item
 }
 
 func Load(filename string) ([]*api.Item, error) {

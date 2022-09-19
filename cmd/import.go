@@ -23,7 +23,7 @@ var importCmd = &cobra.Command{
 				log.Fatalln(err)
 			}
 
-			config.WishHistory = config.WishHistory.Append(items)
+			config.WishHistory = config.WishHistory.Append(items...)
 		}
 
 		if err := config.SaveWishHistory(); err != nil {

@@ -12,14 +12,13 @@ type Repository struct {
 	index map[int]map[api.SharedWishType]pipeline.Items
 }
 
-func New(filename string) (repository.Repository, error) {
+func Load(filename string) (repository.Repository, error) {
 	items, err := repository.Load(filename)
 	if err != nil {
 		return nil, err
 	}
 
 	r := new(Repository)
-
 	r.Items = items
 
 	r.index = make(map[int]map[api.SharedWishType]pipeline.Items)
@@ -37,8 +36,12 @@ func (r *Repository) GetUIDs() []int {
 	}))
 }
 
-func (r *Repository) GetProgress(uid int, wishType api.SharedWishType) int {
+func (r *Repository) Get5StarProgress(uid int, wishType api.SharedWishType) int {
 	return r.index[uid][wishType].Progress5Star()
+}
+
+func (r *Repository) Get4StarProgress(uid int, wishType api.SharedWishType) int {
+	return r.index[uid][wishType].Progress4Star()
 }
 
 func (r *Repository) Get5Stars(uid int, wishType api.SharedWishType) []repository.Item {
@@ -46,6 +49,18 @@ func (r *Repository) Get5Stars(uid int, wishType api.SharedWishType) []repositor
 	pulls := items.Pulls5Stars()
 
 	return lo.Map(items.FilterByRarity(api.Star5), func(item *api.Item, _ int) repository.Item {
+		return repository.Item{
+			Item:  item,
+			Pulls: pulls[item.ID],
+		}
+	})
+}
+
+func (r *Repository) Get4Stars(uid int, wishType api.SharedWishType) []repository.Item {
+	items := r.index[uid][wishType]
+	pulls := items.Pulls4Stars()
+
+	return lo.Map(items.FilterByRarity(api.Star4), func(item *api.Item, _ int) repository.Item {
 		return repository.Item{
 			Item:  item,
 			Pulls: pulls[item.ID],
