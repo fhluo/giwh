@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+progress {
+    -webkit-appearance: none;
+}
+
+::-webkit-progress-bar {
+    @apply bg-amber-100 rounded
+}
+
+::-webkit-progress-value {
+    @apply bg-amber-500 rounded
+}
