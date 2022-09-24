@@ -12,9 +12,9 @@ require (
 	github.com/samber/lo v1.28.2
 	github.com/spf13/cobra v1.5.0
 	github.com/stretchr/testify v1.8.0
-	github.com/wailsapp/wails/v2 v2.0.0-rc.1.1
-	golang.org/x/exp v0.0.0-20220916125017-b168a2c6b86b
-	golang.org/x/net v0.0.0-20220909164309-bea034e7d591
+	github.com/wailsapp/wails/v2 v2.0.0
+	golang.org/x/exp v0.0.0-20220921164117-439092de6870
+	golang.org/x/net v0.0.0-20220923203811-8be639271d50
 	golang.org/x/text v0.3.7
 )
 
@@ -53,8 +53,8 @@ require (
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
 	github.com/valyala/fasttemplate v1.2.1 // indirect
 	github.com/wailsapp/mimetype v1.4.1 // indirect
-	golang.org/x/crypto v0.0.0-20220829220503-c86fa9a7ed90 // indirect
-	golang.org/x/sys v0.0.0-20220915200043-7b5979e65e41 // indirect
+	golang.org/x/crypto v0.0.0-20220924013350-4ba4fb4dd9e7 // indirect
+	golang.org/x/sys v0.0.0-20220919091848-fb04ddd9f9c8 // indirect
 	google.golang.org/protobuf v1.28.1 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
