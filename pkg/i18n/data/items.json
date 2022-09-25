@@ -2431,6 +2431,114 @@
   ],
   [
     {
+      "name": "Shikanoin Heizou",
+      "lang": "de-de"
+    },
+    {
+      "name": "Shikanoin Heizou",
+      "lang": "en-us"
+    },
+    {
+      "name": "Shikanoin Heizou",
+      "lang": "es-es"
+    },
+    {
+      "name": "Shikanoin Heizou",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Shikanoin Heizou",
+      "lang": "id-id"
+    },
+    {
+      "name": "鹿野院平蔵",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "시카노인 헤이조",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Shikanoin Heizou",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Хэйдзо",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Shikanoin Heizou",
+      "lang": "th-th"
+    },
+    {
+      "name": "Shikanoin Heizou",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "鹿野院平藏",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "鹿野院平藏",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Yelan",
+      "lang": "de-de"
+    },
+    {
+      "name": "Yelan",
+      "lang": "en-us"
+    },
+    {
+      "name": "Yelan",
+      "lang": "es-es"
+    },
+    {
+      "name": "Yelan",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Yelan",
+      "lang": "id-id"
+    },
+    {
+      "name": "夜蘭",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "야란",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Yelan",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Е Лань",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Yelan",
+      "lang": "th-th"
+    },
+    {
+      "name": "Yelan",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "夜兰",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "夜蘭",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
       "name": "Aloy",
       "lang": "de-de"
     },
@@ -2593,6 +2701,60 @@
   ],
   [
     {
+      "name": "Kuki Shinobu",
+      "lang": "de-de"
+    },
+    {
+      "name": "Kuki Shinobu",
+      "lang": "en-us"
+    },
+    {
+      "name": "Kuki Shinobu",
+      "lang": "es-es"
+    },
+    {
+      "name": "Kuki Shinobu",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Kuki Shinobu",
+      "lang": "id-id"
+    },
+    {
+      "name": "久岐忍",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "쿠키 시노부",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Kuki Shinobu",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Синобу",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Kuki Shinobu",
+      "lang": "th-th"
+    },
+    {
+      "name": "Kuki Shinobu",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "久岐忍",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "久岐忍",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
       "name": "Kamisato Ayato",
       "lang": "de-de"
     },
@@ -2642,6 +2804,168 @@
     },
     {
       "name": "神里綾人",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Collei",
+      "lang": "de-de"
+    },
+    {
+      "name": "Collei",
+      "lang": "en-us"
+    },
+    {
+      "name": "Collei",
+      "lang": "es-es"
+    },
+    {
+      "name": "Collei",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Collei",
+      "lang": "id-id"
+    },
+    {
+      "name": "コレイ",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "콜레이",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Collei",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Коллеи",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Collei",
+      "lang": "th-th"
+    },
+    {
+      "name": "Collei",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "柯莱",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "柯萊",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Dori",
+      "lang": "de-de"
+    },
+    {
+      "name": "Dori",
+      "lang": "en-us"
+    },
+    {
+      "name": "Dori",
+      "lang": "es-es"
+    },
+    {
+      "name": "Dori",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Dori",
+      "lang": "id-id"
+    },
+    {
+      "name": "ドリー",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "도리",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Dori",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Дори",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Dori",
+      "lang": "th-th"
+    },
+    {
+      "name": "Dori",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "多莉",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "多莉",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Tighnari",
+      "lang": "de-de"
+    },
+    {
+      "name": "Tighnari",
+      "lang": "en-us"
+    },
+    {
+      "name": "Tignari",
+      "lang": "es-es"
+    },
+    {
+      "name": "Tighnari",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Tighnari",
+      "lang": "id-id"
+    },
+    {
+      "name": "ティナリ",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "타이나리",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Tighnari",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Тигнари",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Tighnari",
+      "lang": "th-th"
+    },
+    {
+      "name": "Tighnari",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "提纳里",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "提納里",
       "lang": "zh-tw"
     }
   ],
@@ -3835,6 +4159,276 @@
   ],
   [
     {
+      "name": "Kagotsurube Isshin",
+      "lang": "de-de"
+    },
+    {
+      "name": "Kagotsurube Isshin",
+      "lang": "en-us"
+    },
+    {
+      "name": "Kagotsurube Isshin",
+      "lang": "es-es"
+    },
+    {
+      "name": "Kagotsurube Isshin",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Kagotsurube Isshin",
+      "lang": "id-id"
+    },
+    {
+      "name": "籠釣瓶一心",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "카고츠루베 잇신",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Kagotsurube Isshin",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Кагоцурубэ Иссин",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Kagotsurube Isshin",
+      "lang": "th-th"
+    },
+    {
+      "name": "Kagotsurube Isshin",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "笼钓瓶一心",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "籠釣瓶一心",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Stammklinge",
+      "lang": "de-de"
+    },
+    {
+      "name": "Sapwood Blade",
+      "lang": "en-us"
+    },
+    {
+      "name": "Espada de Madera",
+      "lang": "es-es"
+    },
+    {
+      "name": "Lame d'aubier",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Sapwood Blade",
+      "lang": "id-id"
+    },
+    {
+      "name": "原木刀",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "원목 검",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Espada de Madeira",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Деревянный клинок",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Sapwood Blade",
+      "lang": "th-th"
+    },
+    {
+      "name": "Kiếm Gỗ",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "原木刀",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "原木刀",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Berühmtes Schwert der „Isshin-Schule“",
+      "lang": "de-de"
+    },
+    {
+      "name": "Prized Isshin Blade",
+      "lang": "en-us"
+    },
+    {
+      "name": "Espada Egregia de Isshin",
+      "lang": "es-es"
+    },
+    {
+      "name": "Chef d'œuvre Isshin",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Prized Isshin Blade",
+      "lang": "id-id"
+    },
+    {
+      "name": "「一心伝」名刀",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "「잇신의 기술」 명검",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Espada Famosa da \"Arte Isshin\"",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Легендарный клинок Иссин",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "ดาบเลื่องชื่อ \"Isshin Art\"",
+      "lang": "th-th"
+    },
+    {
+      "name": "Danh Đao \"Trường Phái Isshin\"",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "「一心传」名刀",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "「一心傳」名刀",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Berühmtes Schwert der „Isshin-Schule“",
+      "lang": "de-de"
+    },
+    {
+      "name": "Prized Isshin Blade",
+      "lang": "en-us"
+    },
+    {
+      "name": "Espada Egregia de Isshin",
+      "lang": "es-es"
+    },
+    {
+      "name": "Chef d'œuvre Isshin",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Prized Isshin Blade",
+      "lang": "id-id"
+    },
+    {
+      "name": "「一心伝」名刀",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "「잇신의 기술」 명검",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Espada Famosa da \"Arte Isshin\"",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Легендарный клинок Иссин",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "ดาบเลื่องชื่อ \"Isshin Art\"",
+      "lang": "th-th"
+    },
+    {
+      "name": "Danh Đao \"Trường Phái Isshin\"",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "「一心传」名刀",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "「一心傳」名刀",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Berühmtes Schwert der „Isshin-Schule“",
+      "lang": "de-de"
+    },
+    {
+      "name": "Prized Isshin Blade",
+      "lang": "en-us"
+    },
+    {
+      "name": "Espada Egregia de Isshin",
+      "lang": "es-es"
+    },
+    {
+      "name": "Chef d'œuvre Isshin",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Prized Isshin Blade",
+      "lang": "id-id"
+    },
+    {
+      "name": "「一心伝」名刀",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "「잇신의 기술」 명검",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Espada Famosa da \"Arte Isshin\"",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Легендарный клинок Иссин",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "ดาบเลื่องชื่อ \"Isshin Art\"",
+      "lang": "th-th"
+    },
+    {
+      "name": "Danh Đao \"Trường Phái Isshin\"",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "「一心传」名刀",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "「一心傳」名刀",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
       "name": "Windfalke",
       "lang": "de-de"
     },
@@ -4565,7 +5159,7 @@
       "lang": "ko-kr"
     },
     {
-      "name": "Porrete da Razão",
+      "name": "Pacifista",
       "lang": "pt-pt"
     },
     {
@@ -4673,7 +5267,7 @@
       "lang": "ko-kr"
     },
     {
-      "name": "Espadão de Favonius",
+      "name": "Grande Espada de Favonius",
       "lang": "pt-pt"
     },
     {
@@ -5396,6 +5990,60 @@
     },
     {
       "name": "惡王丸",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Waldkönigsschwert",
+      "lang": "de-de"
+    },
+    {
+      "name": "Forest Regalia",
+      "lang": "en-us"
+    },
+    {
+      "name": "Espada Real del Bosque",
+      "lang": "es-es"
+    },
+    {
+      "name": "Apparat de la forêt",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Forest Regalia",
+      "lang": "id-id"
+    },
+    {
+      "name": "森林のレガリア",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "숲의 리게일리어",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Espada Real da Floresta",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Регалия леса",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Forest Regalia",
+      "lang": "th-th"
+    },
+    {
+      "name": "Vương Khí Rừng Sâu",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "森林王器",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "森林王器",
       "lang": "zh-tw"
     }
   ],
@@ -6638,6 +7286,60 @@
     },
     {
       "name": "斷浪長鰭",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Monddurchbohrer",
+      "lang": "de-de"
+    },
+    {
+      "name": "Moonpiercer",
+      "lang": "en-us"
+    },
+    {
+      "name": "Perforalunas",
+      "lang": "es-es"
+    },
+    {
+      "name": "Perce-lune",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Moonpiercer",
+      "lang": "id-id"
+    },
+    {
+      "name": "ムーンピアサー",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "달을 꿰뚫는 화살",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Perfurador de Luas",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Пронзающий луну",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Moonpiercer",
+      "lang": "th-th"
+    },
+    {
+      "name": "Quán Nguyệt Thương",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "贯月矢",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "貫月矢",
       "lang": "zh-tw"
     }
   ],
@@ -8155,6 +8857,60 @@
   ],
   [
     {
+      "name": "Vollmondfrucht",
+      "lang": "de-de"
+    },
+    {
+      "name": "Fruit of Fulfillment",
+      "lang": "en-us"
+    },
+    {
+      "name": "Fruto de la Culminación",
+      "lang": "es-es"
+    },
+    {
+      "name": "Le fruit de l'accomplissement",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Fruit of Fulfillment",
+      "lang": "id-id"
+    },
+    {
+      "name": "満悦の実",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "충만의 열매",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Fruto da Abundância",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Плод восполнения",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Fruit of Fulfillment",
+      "lang": "th-th"
+    },
+    {
+      "name": "Quả Mọng",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "盈满之实",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "盈滿之實",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
       "name": "Himmelsatlas",
       "lang": "de-de"
     },
@@ -8885,7 +9641,7 @@
       "lang": "ko-kr"
     },
     {
-      "name": "Arco de Guerra de Favonius",
+      "name": "Arco de Favonius",
       "lang": "pt-pt"
     },
     {
@@ -9397,6 +10153,60 @@
   ],
   [
     {
+      "name": "Ausklingende Dämmerung",
+      "lang": "de-de"
+    },
+    {
+      "name": "Fading Twilight",
+      "lang": "en-us"
+    },
+    {
+      "name": "Desvanecimiento del Crepúsculo",
+      "lang": "es-es"
+    },
+    {
+      "name": "Crépuscule couchant",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Fading Twilight",
+      "lang": "id-id"
+    },
+    {
+      "name": "落霞",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "노을",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Crepúsculo Desvanecido",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Гаснущие сумерки",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Fading Twilight",
+      "lang": "th-th"
+    },
+    {
+      "name": "Lạc Hà",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "落霞",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "落霞",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
       "name": "Mitternachtswalzer",
       "lang": "de-de"
     },
@@ -9667,6 +10477,114 @@
   ],
   [
     {
+      "name": "Gefolgsfrau des Königs",
+      "lang": "de-de"
+    },
+    {
+      "name": "King's Squire",
+      "lang": "en-us"
+    },
+    {
+      "name": "Vasalla del Rey",
+      "lang": "es-es"
+    },
+    {
+      "name": "Le valet du roi",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "King's Squire",
+      "lang": "id-id"
+    },
+    {
+      "name": "王の近侍",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "왕의 측근",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Vassalo do Rei",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Приближённый короля",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "King's Squire",
+      "lang": "th-th"
+    },
+    {
+      "name": "Cận Vệ Nhà Vua",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "王下近侍",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "王下近侍",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Schwertfischer",
+      "lang": "de-de"
+    },
+    {
+      "name": "End of the Line",
+      "lang": "en-us"
+    },
+    {
+      "name": "Fin de las Aguas",
+      "lang": "es-es"
+    },
+    {
+      "name": "Chalutier",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "End of the Line",
+      "lang": "id-id"
+    },
+    {
+      "name": "竭沢",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "메마른 연못",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Águas Secas",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Иссушитель",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "End of the Line",
+      "lang": "th-th"
+    },
+    {
+      "name": "Sông Cạn",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "竭泽",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "竭澤",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
       "name": "Himmelsflügel",
       "lang": "de-de"
     },
@@ -9883,6 +10801,60 @@
   ],
   [
     {
+      "name": "Aqua Simulacra",
+      "lang": "de-de"
+    },
+    {
+      "name": "Aqua Simulacra",
+      "lang": "en-us"
+    },
+    {
+      "name": "Aqua Simulacra",
+      "lang": "es-es"
+    },
+    {
+      "name": "Simulacre d'eau",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Aqua Simulacra",
+      "lang": "id-id"
+    },
+    {
+      "name": "若水",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "약수",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Aqua Simulacra",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Аква симулякрум",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Aqua Simulacra",
+      "lang": "th-th"
+    },
+    {
+      "name": "Nhược Thủy",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "若水",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "若水",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
       "name": "Donnerpuls",
       "lang": "de-de"
     },
@@ -9932,6 +10904,60 @@
     },
     {
       "name": "飛雷之弦振",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Pfad des Jägers",
+      "lang": "de-de"
+    },
+    {
+      "name": "Hunter's Path",
+      "lang": "en-us"
+    },
+    {
+      "name": "Senda de la Cazadora",
+      "lang": "es-es"
+    },
+    {
+      "name": "La voie du chasseur",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Hunter's Path",
+      "lang": "id-id"
+    },
+    {
+      "name": "狩人の道",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "사냥꾼의 길",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Caminho do Caçador",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Охотничья тропа",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Hunter's Path",
+      "lang": "th-th"
+    },
+    {
+      "name": "Con Đường Thợ Săn",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "猎人之径",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "獵人之徑",
       "lang": "zh-tw"
     }
   ]
