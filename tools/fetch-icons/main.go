@@ -12,7 +12,6 @@ import (
 	"path"
 	"path/filepath"
 	"regexp"
-	"strings"
 	"sync"
 )
 
@@ -31,14 +30,17 @@ type Entry struct {
 	FilterValues map[string]*FilterValue `json:"filter_values"`
 }
 
-var NonAlphanumeric = regexp.MustCompile(`\W`)
+var (
+	NonAlphanumeric = regexp.MustCompile(`\W`)
+	Special         = regexp.MustCompile(`['"]`)
+)
 
 func (entry *Entry) VarName() string {
 	return NonAlphanumeric.ReplaceAllString(entry.Name, "")
 }
 
 func (entry *Entry) Filename() string {
-	return strings.ReplaceAll(entry.Name, `"`, "") + path.Ext(entry.IconURL)
+	return Special.ReplaceAllString(entry.Name, "") + path.Ext(entry.IconURL)
 }
 
 type Data struct {
@@ -158,6 +160,20 @@ func DownloadCharactersIcons(pattern string, path string) {
 	DownloadAll(characters, path)
 
 	fmt.Println()
+
+	index := make(map[string]string)
+	for _, character := range characters {
+		index[character.Name] = character.Filename()
+	}
+	data, err := json.MarshalIndent(index, "", "  ")
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	err = os.WriteFile(filepath.Join(o, "characters.json"), data, 0666)
+	if err != nil {
+		log.Fatalln(err)
+	}
 }
 
 func DownloadWeaponsIcons(pattern string, path string) {
@@ -178,15 +194,32 @@ func DownloadWeaponsIcons(pattern string, path string) {
 	DownloadAll(weapons, path)
 
 	fmt.Println()
+
+	index := make(map[string]string)
+	for _, weapon := range weapons {
+		index[weapon.Name] = weapon.Filename()
+	}
+	data, err := json.MarshalIndent(index, "", "  ")
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	err = os.WriteFile(filepath.Join(o, "weapons.json"), data, 0666)
+	if err != nil {
+		log.Fatalln(err)
+	}
 }
 
-func main() {
-	var c, w, o string
+var c, w, o string
+
+func init() {
 	flag.StringVar(&c, "c", "", "")
 	flag.StringVar(&w, "w", "", "")
 	flag.StringVar(&o, "o", "", "")
 	flag.Parse()
+}
 
+func main() {
 	DownloadCharactersIcons(c, filepath.Join(o, "characters"))
 	DownloadWeaponsIcons(w, filepath.Join(o, "weapons"))
 }
