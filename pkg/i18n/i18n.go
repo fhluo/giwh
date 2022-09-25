@@ -114,6 +114,22 @@ func (item Item) GetName() string {
 	return item.Name
 }
 
+func (item Item) GetNameWithLang(lang string) string {
+	for i := range items {
+		for l, name := range items[i] {
+			if l == item.Lang && name == item.Name {
+				if r, ok := items[i][lang]; ok {
+					return r
+				} else {
+					_, index := language.MatchStrings(itemLangMatcher, lang, l)
+					return items[i][itemLanguages[index]]
+				}
+			}
+		}
+	}
+	return item.Name
+}
+
 func GetItemName(name string, lang string) string {
 	return Item{Name: name, Lang: lang}.GetName()
 }
