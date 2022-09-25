@@ -13,6 +13,7 @@ export namespace repository {
 	    time: any;
 	    uid: number;
 	    pulls: number;
+	    icon: string;
 	
 	    static createFrom(source: any = {}) {
 	        return new Item(source);
@@ -31,6 +32,7 @@ export namespace repository {
 	        this.time = this.convertValues(source["time"], null);
 	        this.uid = source["uid"];
 	        this.pulls = source["pulls"];
+	        this.icon = source["icon"];
 	    }
 	
 		convertValues(a: any, classs: any, asMap: boolean = false): any {
