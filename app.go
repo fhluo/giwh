@@ -30,6 +30,10 @@ func (a *App) startup(ctx context.Context) {
 	}
 }
 
+func (a *App) GetWishName(wishType api.WishType) string {
+	return i18n.GetWishName(wishType.Str())
+}
+
 func (a *App) GetSharedWishName(wishType api.SharedWishType) string {
 	return i18n.GetSharedWishName(wishType.Str())
 }

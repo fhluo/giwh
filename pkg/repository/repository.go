@@ -20,6 +20,7 @@ type Repository interface {
 	Get4StarProgress(uid int, wishType api.SharedWishType) int
 	Get5Stars(uid int, wishType api.SharedWishType) []Item
 	Get4Stars(uid int, wishType api.SharedWishType) []Item
+	AddItems(items []*api.Item)
 }
 
 func Load(filename string) ([]*api.Item, error) {

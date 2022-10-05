@@ -22,36 +22,38 @@ func Default() api.Region {
 	return api.OS
 }
 
-func FetchAllWishHistory(ctx *api.Context, p pipeline.Items) (pipeline.Items, error) {
+func FetchNewWishHistory(ctx *api.Context, items pipeline.Items) (pipeline.Items, error) {
 	visit := make(map[int64]bool)
-	for _, item := range p {
+	for _, item := range items {
 		visit[item.ID] = true
 	}
-	p.SortByIDDescending()
+	items.SortByIDDescending()
+
+	var newItems []*api.Item
 
 	for _, wishType := range api.SharedWishTypes {
 		fmt.Printf("Fetching the wish history of %s.\n", wishType)
 
-		x := p.FilterBySharedWishType(wishType)
+		x := items.FilterBySharedWishType(wishType)
 		if len(x) != 0 {
 			result, err := ctx.WishType(wishType).Size(10).Begin(x[0].ID).FetchAll()
 			if err != nil {
-				return p, err
+				return items, err
 			}
 
-			p = p.Append(result...)
+			newItems = append(newItems, result...)
 		} else {
 			result, err := ctx.WishType(wishType).Size(10).End(0).FetchAll()
 			if err != nil {
-				return p, err
+				return items, err
 			}
 
-			p = p.Append(result...)
+			newItems = append(newItems, result...)
 		}
 
 	}
 
-	return p, nil
+	return items, nil
 }
 
 var updateCmd = &cobra.Command{
@@ -73,19 +75,20 @@ var updateCmd = &cobra.Command{
 			log.Fatalln(err)
 		}
 
-		result, err := FetchAllWishHistory(ctx, config.WishHistory.FilterByUID(uid))
+		items := config.Repository.GetItems()
+		result, err := FetchNewWishHistory(ctx, items.FilterByUID(uid))
 		if err != nil {
 			log.Fatalln(err)
 		}
 
-		count := len(result) - len(config.WishHistory)
+		count := len(result) - len(items)
 		if count == 0 {
 			fmt.Println("No items fetched. Your wish history is up to date.")
 			return
 		}
 
-		config.WishHistory = result
-		if err := config.SaveWishHistory(); err != nil {
+		config.Repository.AddItems(result)
+		if err := config.Repository.Save(config.WishHistoryPath); err != nil {
 			log.Fatalln(err)
 		}
 

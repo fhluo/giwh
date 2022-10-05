@@ -22,11 +22,10 @@ var importCmd = &cobra.Command{
 			if err != nil {
 				log.Fatalln(err)
 			}
-
-			config.WishHistory = config.WishHistory.Append(items...)
+			config.Repository.AddItems(items)
 		}
 
-		if err := config.SaveWishHistory(); err != nil {
+		if err := config.Repository.Save(config.WishHistoryPath); err != nil {
 			log.Fatalln(err)
 		}
 	},

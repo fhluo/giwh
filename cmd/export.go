@@ -15,29 +15,29 @@ var exportCmd = &cobra.Command{
 	Short: "Export wish history",
 	Args:  cobra.ExactArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
-		p := config.WishHistory.Unique()
+		items := config.Repository.GetItems()
 
 		switch {
 		case cmd.Flags().Changed("uid") && cmd.Flags().Changed("wish"):
-			p = p.FilterByUID(uid).FilterBySharedWishType(lo.Map(wishes, func(i int, _ int) api.SharedWishType {
+			items = items.FilterByUID(uid).FilterBySharedWishType(lo.Map(wishes, func(i int, _ int) api.SharedWishType {
 				return api.SharedWishType(i)
 			})...)
 		case cmd.Flags().Changed("uid"):
-			p = p.FilterByUID(uid)
+			items = items.FilterByUID(uid)
 		case cmd.Flags().Changed("wish"):
-			p = p.FilterBySharedWishType(lo.Map(wishes, func(i int, _ int) api.SharedWishType {
+			items = items.FilterBySharedWishType(lo.Map(wishes, func(i int, _ int) api.SharedWishType {
 				return api.SharedWishType(i)
 			})...)
 		}
 
-		if p.Len() == 0 {
+		if items.Len() == 0 {
 			log.Fatalln("No such wish history.")
 		}
 
-		if err := repository.Save(args[0], p); err != nil {
+		if err := repository.Save(args[0], items); err != nil {
 			log.Fatalln(err)
 		} else {
-			fmt.Printf("%d items exported.\n", p.Len())
+			fmt.Printf("%d items exported.\n", items.Len())
 		}
 	},
 }

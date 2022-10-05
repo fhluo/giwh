@@ -3,6 +3,8 @@
 import {api} from '../models';
 import {repository} from '../models';
 
+export function AddItems(arg1:Array<api.Item>):Promise<void>;
+
 export function Get4StarProgress(arg1:number,arg2:api.SharedWishType):Promise<number>;
 
 export function Get4Stars(arg1:number,arg2:api.SharedWishType):Promise<Array<repository.Item>>;
@@ -18,3 +20,5 @@ export function GetSharedWishName(arg1:api.SharedWishType):Promise<string>;
 export function GetSharedWishTypes():Promise<Array<api.SharedWishType>>;
 
 export function GetUIDs():Promise<Array<number>>;
+
+export function GetWishName(arg1:api.WishType):Promise<string>;
