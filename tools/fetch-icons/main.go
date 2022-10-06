@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"flag"
 	"fmt"
+	"github.com/samber/lo"
 	"golang.org/x/exp/slices"
 	"io"
 	"log"
@@ -82,6 +83,14 @@ func LoadEntriesFromFiles(filenames ...string) ([]*Entry, error) {
 		entries = append(entries, r...)
 	}
 
+	entries = lo.Filter(entries, func(entry *Entry, _ int) bool {
+		return entry.IconURL != ""
+	})
+
+	entries = lo.UniqBy(entries, func(entry *Entry) string {
+		return entry.Name
+	})
+
 	slices.SortFunc(entries, func(a *Entry, b *Entry) bool {
 		return a.EntryPageID < b.EntryPageID
 	})
@@ -125,7 +134,6 @@ func DownloadAll(entries []*Entry, path string) {
 
 			dst := filepath.Join(path, entry.Filename())
 			if _, err := os.Stat(dst); err == nil {
-				fmt.Printf("File already exists: %s\n", dst)
 				return
 			}
 
@@ -152,7 +160,7 @@ func DownloadCharactersIcons(pattern string, path string) {
 	if err != nil {
 		log.Fatalln(err)
 	}
-	fmt.Printf("%d characters' icons:\n", len(characters))
+	fmt.Printf("%d characters' icons.\n", len(characters))
 
 	if err = os.MkdirAll(path, 0666); err != nil {
 		log.Fatalln(err)
@@ -186,7 +194,7 @@ func DownloadWeaponsIcons(pattern string, path string) {
 	if err != nil {
 		log.Fatalln(err)
 	}
-	fmt.Printf("%d weapons' icons:\n", len(weapons))
+	fmt.Printf("%d weapons' icons.\n", len(weapons))
 
 	if err = os.MkdirAll(path, 0666); err != nil {
 		log.Fatalln(err)
