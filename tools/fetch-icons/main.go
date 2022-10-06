@@ -150,12 +150,13 @@ func init() {
 	log.SetFlags(0)
 
 	flag.StringVar(&o, "o", "", "")
-	flag.Parse()
 }
 
 //go:generate go run . -o ../../assets/images
 
 func main() {
+	flag.Parse()
+
 	DownloadCharactersIcons(filepath.Join(o, "characters"))
 	DownloadWeaponsIcons(filepath.Join(o, "weapons"))
 }

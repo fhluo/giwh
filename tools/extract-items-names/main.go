@@ -1,8 +1,8 @@
 package main
 
 import (
-	"encoding/json"
 	"flag"
+	"github.com/goccy/go-json"
 	"github.com/samber/lo"
 	"golang.org/x/exp/maps"
 	"golang.org/x/exp/slices"
@@ -81,7 +81,6 @@ var src, dst string
 func init() {
 	flag.StringVar(&src, "i", "", "")
 	flag.StringVar(&dst, "o", "", "")
-	flag.Parse()
 }
 
 func GetNamesHashes() ([]int64, error) {
@@ -112,6 +111,8 @@ func GetNamesHashes() ([]int64, error) {
 }
 
 func main() {
+	flag.Parse()
+
 	hashes, err := GetNamesHashes()
 	if err != nil {
 		log.Fatalln(err)
