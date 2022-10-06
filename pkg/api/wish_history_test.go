@@ -29,7 +29,7 @@ func handler() http.Handler {
 
 	r.GET("/event/gacha_info/api/getGachaLog", func(c *gin.Context) {
 		if c.Query("authkey_ver") == "" || c.Query("authkey") == "" {
-			c.JSON(http.StatusOK, Result{
+			c.JSON(http.StatusOK, JSONResponse[*ItemList]{
 				Data:    nil,
 				Message: "authkey error",
 				RetCode: -100,
@@ -38,7 +38,7 @@ func handler() http.Handler {
 		}
 
 		if c.Query("lang") == "" {
-			c.JSON(http.StatusOK, Result{
+			c.JSON(http.StatusOK, JSONResponse[*ItemList]{
 				Data:    nil,
 				Message: "language error",
 				RetCode: -108,
@@ -81,8 +81,8 @@ func handler() http.Handler {
 			}
 		}
 
-		c.JSON(http.StatusOK, Result{
-			Data: &Data{
+		c.JSON(http.StatusOK, JSONResponse[*ItemList]{
+			Data: &ItemList{
 				Page:  0,
 				Size:  size,
 				Total: 0,

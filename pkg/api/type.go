@@ -1,7 +1,6 @@
 package api
 
 import (
-	"fmt"
 	"strconv"
 	"time"
 )
@@ -104,33 +103,8 @@ func (t *Time) UnmarshalJSON(data []byte) error {
 	return err
 }
 
-type Item struct {
-	Count    int      `json:"count,string"`
-	WishType WishType `json:"gacha_type,string"`
-	ID       int64    `json:"id,string"`
-	ItemID   string   `json:"item_id"`
-	ItemType string   `json:"item_type"`
-	Lang     string   `json:"lang"`
-	Name     string   `json:"name"`
-	Rarity   Rarity   `json:"rank_type,string"`
-	Time     Time     `json:"time"`
-	UID      int      `json:"uid,string"`
-}
-
-func (item *Item) String() string {
-	return fmt.Sprintf("Item{Name:%s Time:%v UID:%v ID:%v}", item.Name, item.Time.String(), item.UID, item.ID)
-}
-
-type Data struct {
-	List   []*Item `json:"list"`
-	Page   int     `json:"page,string"`
-	Region string  `json:"region"`
-	Size   int     `json:"size,string"`
-	Total  int     `json:"total,string"`
-}
-
-type Result struct {
-	Data    *Data  `json:"data"`
+type JSONResponse[T any] struct {
+	Data    T      `json:"data"`
 	Message string `json:"message"`
 	RetCode int    `json:"retcode"`
 }

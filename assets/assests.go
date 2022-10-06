@@ -1,4 +1,4 @@
-package repository
+package assets
 
 import (
 	_ "embed"
@@ -6,9 +6,9 @@ import (
 )
 
 var (
-	//go:embed  data/characters.json
+	//go:embed  images/characters.json
 	charactersData []byte
-	//go:embed  data/weapons.json
+	//go:embed  images/weapons.json
 	weaponsData []byte
 
 	Characters map[string]string

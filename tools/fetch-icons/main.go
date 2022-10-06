@@ -4,98 +4,31 @@ import (
 	"encoding/json"
 	"flag"
 	"fmt"
+	"github.com/fhluo/giwh/pkg/api"
 	"github.com/samber/lo"
 	"golang.org/x/exp/slices"
 	"io"
 	"log"
 	"net/http"
 	"os"
-	"path"
 	"path/filepath"
-	"regexp"
 	"sync"
 )
 
-func init() {
-	log.SetFlags(0)
-}
-
-type FilterValue struct {
-	Values []string `json:"values"`
-}
-type Entry struct {
-	EntryPageID  int                     `json:"entry_page_id,string"`
-	Name         string                  `json:"name"`
-	IconURL      string                  `json:"icon_url"`
-	DisplayField map[string]any          `json:"display_field"`
-	FilterValues map[string]*FilterValue `json:"filter_values"`
-}
-
-var (
-	NonAlphanumeric = regexp.MustCompile(`\W`)
-	Special         = regexp.MustCompile(`['"]`)
-)
-
-func (entry *Entry) VarName() string {
-	return NonAlphanumeric.ReplaceAllString(entry.Name, "")
-}
-
-func (entry *Entry) Filename() string {
-	return Special.ReplaceAllString(entry.Name, "") + path.Ext(entry.IconURL)
-}
-
-type Data struct {
-	List  []*Entry `json:"list"`
-	Total string   `json:"total"`
-}
-
-type Result struct {
-	RetCode int    `json:"retcode"`
-	Message string `json:"message"`
-	Data    *Data  `json:"data"`
-}
-
-func LoadEntries(filename string) ([]*Entry, error) {
-	data, err := os.ReadFile(filename)
-	if err != nil {
-		return nil, err
-	}
-
-	var result Result
-	if err = json.Unmarshal(data, &result); err != nil {
-		return nil, err
-	}
-
-	if result.RetCode != 0 {
-		return nil, fmt.Errorf(result.Message)
-	}
-
-	return result.Data.List, nil
-}
-
-func LoadEntriesFromFiles(filenames ...string) ([]*Entry, error) {
-	var entries []*Entry
-	for _, filename := range filenames {
-		r, err := LoadEntries(filename)
-		if err != nil {
-			return nil, err
-		}
-		entries = append(entries, r...)
-	}
-
-	entries = lo.Filter(entries, func(entry *Entry, _ int) bool {
+func clean(entries []*api.Entry) []*api.Entry {
+	entries = lo.Filter(entries, func(entry *api.Entry, _ int) bool {
 		return entry.IconURL != ""
 	})
 
-	entries = lo.UniqBy(entries, func(entry *Entry) string {
+	entries = lo.UniqBy(entries, func(entry *api.Entry) string {
 		return entry.Name
 	})
 
-	slices.SortFunc(entries, func(a *Entry, b *Entry) bool {
+	slices.SortFunc(entries, func(a *api.Entry, b *api.Entry) bool {
 		return a.EntryPageID < b.EntryPageID
 	})
 
-	return entries, nil
+	return entries
 }
 
 func Download(url string, dst string) error {
@@ -119,12 +52,12 @@ func Download(url string, dst string) error {
 	return os.WriteFile(dst, data, 0666)
 }
 
-func DownloadAll(entries []*Entry, path string) {
+func DownloadAll(entries []*api.Entry, path string) {
 	var wg sync.WaitGroup
 	wg.Add(len(entries))
 
 	for _, entry := range entries {
-		go func(entry *Entry) {
+		go func(entry *api.Entry) {
 			defer wg.Done()
 
 			if entry.IconURL == "" {
@@ -150,16 +83,13 @@ func DownloadAll(entries []*Entry, path string) {
 	wg.Wait()
 }
 
-func DownloadCharactersIcons(pattern string, path string) {
-	filenames, err := filepath.Glob(pattern)
+func DownloadCharactersIcons(path string) {
+	characters, err := api.GetAllEntries(api.CharactersMenu)
 	if err != nil {
 		log.Fatalln(err)
 	}
+	characters = clean(characters)
 
-	characters, err := LoadEntriesFromFiles(filenames...)
-	if err != nil {
-		log.Fatalln(err)
-	}
 	fmt.Printf("%d characters' icons.\n", len(characters))
 
 	if err = os.MkdirAll(path, 0666); err != nil {
@@ -184,17 +114,13 @@ func DownloadCharactersIcons(pattern string, path string) {
 	}
 }
 
-func DownloadWeaponsIcons(pattern string, path string) {
-	filenames, err := filepath.Glob(pattern)
-	if err != nil {
-		log.Fatalln(err)
-	}
-
-	weapons, err := LoadEntriesFromFiles(filenames...)
+func DownloadWeaponsIcons(path string) {
+	weapons, err := api.GetAllEntries(api.WeaponsMenu)
 	if err != nil {
 		log.Fatalln(err)
 	}
 	fmt.Printf("%d weapons' icons.\n", len(weapons))
+	weapons = clean(weapons)
 
 	if err = os.MkdirAll(path, 0666); err != nil {
 		log.Fatalln(err)
@@ -218,16 +144,18 @@ func DownloadWeaponsIcons(pattern string, path string) {
 	}
 }
 
-var c, w, o string
+var o string
 
 func init() {
-	flag.StringVar(&c, "c", "", "")
-	flag.StringVar(&w, "w", "", "")
+	log.SetFlags(0)
+
 	flag.StringVar(&o, "o", "", "")
 	flag.Parse()
 }
 
+//go:generate go run . -o ../../assets/images
+
 func main() {
-	DownloadCharactersIcons(c, filepath.Join(o, "characters"))
-	DownloadWeaponsIcons(w, filepath.Join(o, "weapons"))
+	DownloadCharactersIcons(filepath.Join(o, "characters"))
+	DownloadWeaponsIcons(filepath.Join(o, "weapons"))
 }

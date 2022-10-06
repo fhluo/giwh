@@ -10,6 +10,31 @@ import (
 	"time"
 )
 
+type Item struct {
+	Count    int      `json:"count,string"`
+	WishType WishType `json:"gacha_type,string"`
+	ID       int64    `json:"id,string"`
+	ItemID   string   `json:"item_id"`
+	ItemType string   `json:"item_type"`
+	Lang     string   `json:"lang"`
+	Name     string   `json:"name"`
+	Rarity   Rarity   `json:"rank_type,string"`
+	Time     Time     `json:"time"`
+	UID      int      `json:"uid,string"`
+}
+
+func (item *Item) String() string {
+	return fmt.Sprintf("Item{Name:%s Time:%v UID:%v ID:%v}", item.Name, item.Time.String(), item.UID, item.ID)
+}
+
+type ItemList struct {
+	List   []*Item `json:"list"`
+	Page   int     `json:"page,string"`
+	Region string  `json:"region"`
+	Size   int     `json:"size,string"`
+	Total  int     `json:"total,string"`
+}
+
 func GetWishHistory(url string) ([]*Item, error) {
 	resp, err := http.Get(url)
 	if err != nil {
@@ -28,17 +53,17 @@ func GetWishHistory(url string) ([]*Item, error) {
 	if err != nil {
 		return nil, err
 	}
-	var result Result
+	var r JSONResponse[*ItemList]
 
-	if err := json.Unmarshal(data, &result); err != nil {
+	if err := json.Unmarshal(data, &r); err != nil {
 		return nil, err
 	}
 
-	if result.RetCode != 0 {
-		return nil, fmt.Errorf(result.Message)
+	if r.RetCode != 0 {
+		return nil, fmt.Errorf(r.Message)
 	}
 
-	return result.Data.List, nil
+	return r.Data.List, nil
 }
 
 const (

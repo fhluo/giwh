@@ -15,13 +15,13 @@ func TestResult(t *testing.T) {
 	}
 	data = regexp.MustCompile(`\r\n`).ReplaceAll(data, []byte{'\n'})
 
-	var result Result
-	err = json.Unmarshal(data, &result)
+	var r JSONResponse[*ItemList]
+	err = json.Unmarshal(data, &r)
 	if err != nil {
 		t.Fatal(err)
 	}
 
-	b, err := json.MarshalIndent(result, "", "  ")
+	b, err := json.MarshalIndent(r, "", "  ")
 	if err != nil {
 		t.Fatal(err)
 	}
