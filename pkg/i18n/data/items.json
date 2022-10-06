@@ -2971,6 +2971,168 @@
   ],
   [
     {
+      "name": "Nilou",
+      "lang": "de-de"
+    },
+    {
+      "name": "Nilou",
+      "lang": "en-us"
+    },
+    {
+      "name": "Nilou",
+      "lang": "es-es"
+    },
+    {
+      "name": "Nilou",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Nilou",
+      "lang": "id-id"
+    },
+    {
+      "name": "ニィロウ",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "닐루",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Nilou",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Нилу",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Nilou",
+      "lang": "th-th"
+    },
+    {
+      "name": "Nilou",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "妮露",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "妮露",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Cyno",
+      "lang": "de-de"
+    },
+    {
+      "name": "Cyno",
+      "lang": "en-us"
+    },
+    {
+      "name": "Cyno",
+      "lang": "es-es"
+    },
+    {
+      "name": "Cyno",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Cyno",
+      "lang": "id-id"
+    },
+    {
+      "name": "セノ",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "사이노",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Cyno",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Сайно",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Cyno",
+      "lang": "th-th"
+    },
+    {
+      "name": "Cyno",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "赛诺",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "賽諾",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Candace",
+      "lang": "de-de"
+    },
+    {
+      "name": "Candace",
+      "lang": "en-us"
+    },
+    {
+      "name": "Candace",
+      "lang": "es-es"
+    },
+    {
+      "name": "Candace",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Candace",
+      "lang": "id-id"
+    },
+    {
+      "name": "キャンディス",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "캔디스",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Candace",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Кандакия",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Candace",
+      "lang": "th-th"
+    },
+    {
+      "name": "Candace",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "坎蒂丝",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "坎蒂絲",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
       "name": "Stumpfes Schwert",
       "lang": "de-de"
     },
@@ -4267,6 +4429,60 @@
   ],
   [
     {
+      "name": "Mondlicht von Xiphos",
+      "lang": "de-de"
+    },
+    {
+      "name": "Xiphos' Moonlight",
+      "lang": "en-us"
+    },
+    {
+      "name": "Luz Lunar de Xifos",
+      "lang": "es-es"
+    },
+    {
+      "name": "Clair de lune de Xiphos",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Xiphos' Moonlight",
+      "lang": "id-id"
+    },
+    {
+      "name": "サイフォスの月明かり",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "크시포스의 달빛",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Luz Lunar de Xiphos",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Лунное сияние ксифоса",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Xiphos' Moonlight",
+      "lang": "th-th"
+    },
+    {
+      "name": "Ánh Trăng Xiphos",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "西福斯的月光",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "西福斯的月光",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
       "name": "Berühmtes Schwert der „Isshin-Schule“",
       "lang": "de-de"
     },
@@ -4802,6 +5018,60 @@
     },
     {
       "name": "波亂月白經津",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Khaj-Nisut-Schlüssel",
+      "lang": "de-de"
+    },
+    {
+      "name": "Key of Khaj-Nisut",
+      "lang": "en-us"
+    },
+    {
+      "name": "Llave de la Coronación",
+      "lang": "es-es"
+    },
+    {
+      "name": "Clé de Khaj-Nisut",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Key of Khaj-Nisut",
+      "lang": "id-id"
+    },
+    {
+      "name": "聖顕の鍵",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "성현의 열쇠",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Chave de Hierofania",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Ключ Хадж-нисут",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Key of Khaj-Nisut",
+      "lang": "th-th"
+    },
+    {
+      "name": "Chìa Khóa Khaj-Nisut",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "圣显之钥",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "聖顯之鑰",
       "lang": "zh-tw"
     }
   ],
@@ -5936,6 +6206,60 @@
     },
     {
       "name": "桂木斬長正",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Makhaira-Aquamarin",
+      "lang": "de-de"
+    },
+    {
+      "name": "Makhaira Aquamarine",
+      "lang": "en-us"
+    },
+    {
+      "name": "Májaira Aguamarina",
+      "lang": "es-es"
+    },
+    {
+      "name": "Aigue-marine de Makhaira",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Makhaira Aquamarine",
+      "lang": "id-id"
+    },
+    {
+      "name": "マカイラの水色",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "물빛 마카이라",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Água-marinha de Mahara",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Аквамарин Махайры",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Makhaira Aquamarine",
+      "lang": "th-th"
+    },
+    {
+      "name": "Sắc Nước Makhaira",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "玛海菈的水色",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "瑪海菈的水色",
       "lang": "zh-tw"
     }
   ],
@@ -7345,6 +7669,60 @@
   ],
   [
     {
+      "name": "Spitze der klingenden Winde",
+      "lang": "de-de"
+    },
+    {
+      "name": "Missive Windspear",
+      "lang": "en-us"
+    },
+    {
+      "name": "Alabarda del Viento Epistolar",
+      "lang": "es-es"
+    },
+    {
+      "name": "Lance du vent saisonnier",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Missive Windspear",
+      "lang": "id-id"
+    },
+    {
+      "name": "風信の矛",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "날카로운 바람의 서신",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Lâmina do Vento Mensageiro",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Копьё послания ветров",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Missive Windspear",
+      "lang": "th-th"
+    },
+    {
+      "name": "Mũi Nhọn Của Gió",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "风信之锋",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "風信之鋒",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
       "name": "Homa-Stab",
       "lang": "de-de"
     },
@@ -7664,6 +8042,60 @@
     },
     {
       "name": "薙草之稻光",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Stab der roten Sande",
+      "lang": "de-de"
+    },
+    {
+      "name": "Staff of the Scarlet Sands",
+      "lang": "en-us"
+    },
+    {
+      "name": "Báculo de las Arenas Escarlatas",
+      "lang": "es-es"
+    },
+    {
+      "name": "Bâton des sables écarlates",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Staff of the Scarlet Sands",
+      "lang": "id-id"
+    },
+    {
+      "name": "赤砂の杖",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "적색 사막의 지팡이",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Báculo das Areias Escarlates",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Посох алых песков",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Staff of the Scarlet Sands",
+      "lang": "th-th"
+    },
+    {
+      "name": "Quyền Trượng Cát Đỏ",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "赤沙之杖",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "赤沙之杖",
       "lang": "zh-tw"
     }
   ],
@@ -8852,6 +9284,60 @@
     },
     {
       "name": "證誓之明瞳",
+      "lang": "zh-tw"
+    }
+  ],
+  [
+    {
+      "name": "Wandernder Abendstern",
+      "lang": "de-de"
+    },
+    {
+      "name": "Wandering Evenstar",
+      "lang": "en-us"
+    },
+    {
+      "name": "Estrella Errabunda",
+      "lang": "es-es"
+    },
+    {
+      "name": "Étoile du soir errante",
+      "lang": "fr-fr"
+    },
+    {
+      "name": "Wandering Evenstar",
+      "lang": "id-id"
+    },
+    {
+      "name": "彷徨える星",
+      "lang": "ja-jp"
+    },
+    {
+      "name": "방랑하는 저녁별",
+      "lang": "ko-kr"
+    },
+    {
+      "name": "Estrela Itinerante",
+      "lang": "pt-pt"
+    },
+    {
+      "name": "Скитающаяся звезда",
+      "lang": "ru-ru"
+    },
+    {
+      "name": "Wandering Evenstar",
+      "lang": "th-th"
+    },
+    {
+      "name": "Sao Đêm Rong Ruổi",
+      "lang": "vi-vn"
+    },
+    {
+      "name": "流浪的晚星",
+      "lang": "zh-cn"
+    },
+    {
+      "name": "流浪的晚星",
       "lang": "zh-tw"
     }
   ],
