@@ -22,6 +22,11 @@ jobs:
         with:
           node-version: 19
 
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 7.27.1
+
       - name: Install Wails
         run: go install github.com/wailsapp/wails/v2/cmd/wails@latest
 
