@@ -79,7 +79,7 @@ func Default() (client Client, err error) {
 	return
 }
 
-var DataPathRE = regexp.MustCompile(`.:.*?/(YuanShen_Data|GenshinImpact_Data)/`)
+var DataPathRE = regexp.MustCompile(`.:/.*?/(YuanShen_Data|GenshinImpact_Data)/`)
 
 func FindDataPath(outputLog []byte) string {
 	return string(DataPathRE.Find(outputLog))
