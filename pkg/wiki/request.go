@@ -3,6 +3,7 @@ package wiki
 import (
 	"bytes"
 	"github.com/bytedance/sonic"
+	"github.com/fhluo/giwh/i18n"
 	"io"
 	"net/http"
 	"net/url"
@@ -10,7 +11,7 @@ import (
 
 type Request struct {
 	URL      string
-	Language Language
+	Language i18n.Language
 	Client   *http.Client
 }
 

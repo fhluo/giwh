@@ -49,10 +49,10 @@ type GetEntryPageListPayload struct {
 	UseES    bool         `json:"use_es"`
 }
 
-func NewGetEntryPageListPayload(menu Menu, filters ...FilterValue) GetEntryPageListPayload {
+func NewGetEntryPageListPayload(menuID int, filters ...FilterValue) GetEntryPageListPayload {
 	return GetEntryPageListPayload{
 		Filters:  filters,
-		MenuID:   menu.ID,
+		MenuID:   menuID,
 		PageNum:  1,
 		PageSize: 30,
 		UseES:    true,
