@@ -10,5 +10,11 @@
   "author": {
     "name": "fhluo",
     "email": "20843637+fhluo@users.noreply.github.com"
+  },
+  "info": {
+    "productName": "GIWH",
+    "productVersion": "0.4.0",
+    "copyright": "Copyright © 2022 fhluo",
+    "comments": "Manage your Genshin Impact wish history"
   }
 }
