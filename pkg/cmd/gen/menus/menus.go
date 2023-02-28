@@ -4,7 +4,6 @@ import (
 	"bytes"
 	. "github.com/dave/jennifer/jen"
 	"github.com/fhluo/giwh/i18n"
-	"github.com/fhluo/giwh/pkg/naming"
 	"github.com/fhluo/giwh/pkg/wiki"
 	"github.com/samber/lo"
 	"github.com/spf13/cobra"
@@ -56,7 +55,7 @@ type Menus []wiki.Menu
 
 func (menus Menus) Defs() Code {
 	return Var().Defs(lo.Map(menus, func(menu wiki.Menu, _ int) Code {
-		return Id(naming.Var(menu.Name)).Op("=").Id("Menu").Values(Dict{
+		return Id(menu.VarName()).Op("=").Id("Menu").Values(Dict{
 			Id("ID"):   Lit(menu.ID),
 			Id("Name"): Lit(menu.Name),
 		})
@@ -67,7 +66,7 @@ func (menus Menus) Menus() Code {
 	return Var().Id("Menus").Op("=").Index().Id("Menu").Add(
 		Op("{").Line().Add(
 			lo.Map(menus, func(menu wiki.Menu, _ int) Code {
-				return Id(naming.Var(menu.Name)).Op(",").Line()
+				return Id(menu.VarName()).Op(",").Line()
 			})...,
 		).Op("}"),
 	).Line()
