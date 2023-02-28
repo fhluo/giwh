@@ -25,8 +25,8 @@ func NewApp() *App {
 
 func (a *App) startup(ctx context.Context) {
 	a.ctx = ctx
-	if config.GetLanguage() != "" {
-		i18n.Language = config.GetLanguage()
+	if config.Language.Get() != "" {
+		i18n.Language = config.Language.Get()
 	}
 }
 

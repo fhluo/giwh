@@ -1,14 +1,13 @@
 package config
 
 import (
-	"bytes"
-	"errors"
-	"github.com/BurntSushi/toml"
 	"github.com/fhluo/giwh/pkg/repository/primitive"
-	"io/fs"
+	"github.com/spf13/viper"
+	"golang.org/x/exp/slog"
 	"log"
 	"os"
 	"path/filepath"
+	"sync"
 )
 
 var (
@@ -19,14 +18,23 @@ var (
 
 	Repository *primitive.Repository
 
-	config      = mustLoadConfig()
-	GetLanguage = func() string { return config.Language }
-	SetLanguage = func(lang string) { config.Language = lang }
-	Save        = func() error { return config.Save() }
+	Language = NewItem("language", "en-US")
 )
 
 func init() {
 	_ = os.MkdirAll(Dir, 0666)
+
+	viper.AddConfigPath(Dir)
+	viper.SetConfigName("config")
+	viper.SetConfigType("toml")
+
+	if err := viper.ReadInConfig(); err != nil {
+		if _, ok := err.(viper.ConfigFileNotFoundError); ok {
+			if err = viper.WriteConfigAs(Path); err != nil {
+				slog.Warn("failed to write config", "path", Path)
+			}
+		}
+	}
 
 	var err error
 
@@ -36,42 +44,43 @@ func init() {
 	}
 }
 
-func mustLoadConfig() *Config {
-	config, err := Load(Path)
-	if err != nil {
-		if errors.Is(err, fs.ErrNotExist) {
-			config = new(Config)
+var mutex sync.Mutex
+
+type Item[T any] struct {
+	Key          string
+	DefaultValue T
+}
+
+func NewItem[T any](key string, defaultValue T) Item[T] {
+	viper.SetDefault(key, defaultValue)
+	return Item[T]{
+		Key:          key,
+		DefaultValue: defaultValue,
+	}
+}
+
+func (item Item[T]) Get() T {
+	mutex.Lock()
+	defer mutex.Unlock()
+
+	return viper.Get(item.Key).(T)
+}
+
+func (item Item[T]) Set(value T) {
+	mutex.Lock()
+	defer mutex.Unlock()
+
+	viper.Set(item.Key, value)
+}
+
+func Save() {
+	if err := viper.WriteConfig(); err != nil {
+		if _, ok := err.(viper.ConfigFileNotFoundError); !ok {
+			if err = viper.WriteConfigAs(Path); err != nil {
+				slog.Warn("failed to write config", "path", Path)
+			}
 		} else {
-			log.Fatalf("fail to open config file: %s\n", err)
+			slog.Error(err.Error(), nil)
 		}
 	}
-	return config
-}
-
-type Config struct {
-	Language string `toml:"language"`
-}
-
-func Load(filename string) (*Config, error) {
-	data, err := os.ReadFile(filename)
-	if err != nil {
-		return nil, err
-	}
-
-	cfg := new(Config)
-	return cfg, toml.Unmarshal(data, cfg)
-}
-
-func (config *Config) Save() error {
-	buf := new(bytes.Buffer)
-	e := toml.NewEncoder(buf)
-	e.Indent = ""
-
-	err := e.Encode(config)
-	data := buf.Bytes()
-	if err != nil {
-		return err
-	}
-
-	return os.WriteFile(Path, data, 0666)
 }

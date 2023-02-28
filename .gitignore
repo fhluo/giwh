@@ -1,9 +1,7 @@
-*.exe
+/build/bin/
+node_modules/
+/web/dist/
 
 .idea/
 
-node_modules/
-
-/web/dist/
-/tools/genshin-wiki-crawler/data/
-
+*.exe

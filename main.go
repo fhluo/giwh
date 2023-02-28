@@ -3,13 +3,16 @@ package main
 import (
 	"embed"
 	"github.com/samber/lo"
-	"github.com/wailsapp/wails/v2"
-	"github.com/wailsapp/wails/v2/pkg/options"
-	"github.com/wailsapp/wails/v2/pkg/options/assetserver"
 	"github.com/wailsapp/wails/v2/pkg/options/windows"
+	"golang.org/x/exp/slog"
 	"io/fs"
 	"log"
 	"net/http"
+	"os"
+
+	"github.com/wailsapp/wails/v2"
+	"github.com/wailsapp/wails/v2/pkg/options"
+	"github.com/wailsapp/wails/v2/pkg/options/assetserver"
 )
 
 var (
@@ -36,7 +39,9 @@ func main() {
 		},
 		BackgroundColour: &options.RGBA{R: 255, G: 255, B: 255, A: 255},
 		OnStartup:        app.startup,
-		Bind:             []interface{}{app},
+		Bind: []interface{}{
+			app,
+		},
 		Windows: &windows.Options{
 			WebviewIsTransparent: true,
 			WindowIsTranslucent:  true,
@@ -45,6 +50,7 @@ func main() {
 	})
 
 	if err != nil {
-		log.Println(err)
+		slog.Error(err.Error(), nil)
+		os.Exit(1)
 	}
 }

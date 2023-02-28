@@ -92,17 +92,26 @@ func (w Wiki) GetEntries(menuID int) ([]Entry, error) {
 	return entries, nil
 }
 
+type EntryIndex struct {
+	MenuID      int
+	EntryPageID int
+}
+
 // GetMenusEntries GetEntries returns all the entries of menus.
-func (w Wiki) GetMenusEntries(menuIDs ...int) (menusEntries map[int][]Entry, err error) {
-	menusEntries = make(map[int][]Entry)
+func (w Wiki) GetMenusEntries(menuIDs ...int) (map[EntryIndex]Entry, error) {
+	result := make(map[EntryIndex]Entry)
 	for _, menuID := range menuIDs {
-		menusEntries[menuID], err = w.GetEntries(menuID)
+		entries, err := w.GetEntries(menuID)
 		if err != nil {
-			return
+			return nil, err
+		}
+
+		for _, entry := range entries {
+			result[EntryIndex{MenuID: menuID, EntryPageID: entry.EntryPageID}] = entry
 		}
 	}
 
-	return menusEntries, nil
+	return result, nil
 }
 
 func (w Wiki) GetMenuFilters(payload GetMenuFiltersPayload) ([]Filter, error) {
