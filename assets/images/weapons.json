@@ -1,5 +1,4 @@
 {
-  "\"The Catch\"": "The Catch.png",
   "A Thousand Floating Dreams": "A Thousand Floating Dreams.png",
   "Akuoumaru": "Akuoumaru.png",
   "Alley Hunter": "Alley Hunter.png",
@@ -8,6 +7,7 @@
   "Apprentice's Notes": "Apprentices Notes.png",
   "Aqua Simulacra": "Aqua Simulacra.png",
   "Aquila Favonia": "Aquila Favonia.png",
+  "Beacon of the Reed Sea": "Beacon of the Reed Sea.png",
   "Beginner's Protector": "Beginners Protector.png",
   "Black Tassel": "Black Tassel.png",
   "Blackcliff Agate": "Blackcliff Agate.png",
@@ -62,12 +62,14 @@
   "Key of Khaj-Nisut": "Key of Khaj-Nisut.png",
   "King's Squire": "Kings Squire.png",
   "Kitain Cross Spear": "Kitain Cross Spear.png",
+  "Light of Foliar Incision": "Light of Foliar Incision.png",
   "Lion's Roar": "Lions Roar.png",
   "Lithic Blade": "Lithic Blade.png",
   "Lithic Spear": "Lithic Spear.png",
   "Lost Prayer to the Sacred Winds": "Lost Prayer to the Sacred Winds.png",
   "Luxurious Sea-Lord": "Luxurious Sea-Lord.png",
   "Magic Guide": "Magic Guide.png",
+  "Mailed Flower": "Mailed Flower.png",
   "Makhaira Aquamarine": "Makhaira Aquamarine.png",
   "Mappa Mare": "Mappa Mare.png",
   "Memory of Dust": "Memory of Dust.png",
@@ -134,7 +136,9 @@
   "The Widsith": "The Widsith.png",
   "Thrilling Tales of Dragon Slayers": "Thrilling Tales of Dragon Slayers.png",
   "Thundering Pulse": "Thundering Pulse.png",
+  "Toukabou Shigure": "Toukabou Shigure.png",
   "Traveler's Handy Sword": "Travelers Handy Sword.png",
+  "Tulaytullah's Remembrance": "Tulaytullahs Remembrance.png",
   "Twin Nephrite": "Twin Nephrite.png",
   "Vortex Vanquisher": "Vortex Vanquisher.png",
   "Wandering Evenstar": "Wandering Evenstar.png",
@@ -146,5 +150,6 @@
   "Windblume Ode": "Windblume Ode.png",
   "Wine and Song": "Wine and Song.png",
   "Wolf's Gravestone": "Wolfs Gravestone.png",
-  "Xiphos' Moonlight": "Xiphos Moonlight.png"
+  "Xiphos' Moonlight": "Xiphos Moonlight.png",
+  "\"The Catch\"": "The Catch.png"
 }
