@@ -15,6 +15,8 @@ var (
 	Weapons    map[string]string
 )
 
+//go:generate go run ../cmd/giwh-dev dl icons -o ./images
+
 func init() {
 	if err := json.Unmarshal(charactersData, &Characters); err != nil {
 		panic(err)

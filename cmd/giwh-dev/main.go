@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/fhluo/giwh/pkg/cmd/dl"
 	"github.com/fhluo/giwh/pkg/cmd/gen"
 	"github.com/spf13/cobra"
 	"golang.org/x/exp/slog"
@@ -17,6 +18,7 @@ func init() {
 	log.SetFlags(0)
 
 	rootCmd.AddCommand(gen.NewCmd())
+	rootCmd.AddCommand(dl.NewCmd())
 }
 
 func main() {

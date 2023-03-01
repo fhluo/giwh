@@ -1,12 +1,13 @@
-package main
+package icons
 
 import (
-	"encoding/json"
-	"flag"
 	"fmt"
 	"github.com/fhluo/giwh/pkg/api"
+	"github.com/goccy/go-json"
 	"github.com/samber/lo"
+	"github.com/spf13/cobra"
 	"golang.org/x/exp/slices"
+	"golang.org/x/exp/slog"
 	"io"
 	"log"
 	"net/http"
@@ -14,6 +15,23 @@ import (
 	"path/filepath"
 	"sync"
 )
+
+func NewCmd() *cobra.Command {
+	var outputDir string
+
+	cmd := &cobra.Command{
+		Use:   "icons",
+		Short: "Download icons",
+		Run: func(cmd *cobra.Command, args []string) {
+			DownloadCharactersIcons(outputDir)
+			DownloadWeaponsIcons(outputDir)
+		},
+	}
+
+	cmd.Flags().StringVarP(&outputDir, "output", "o", "images", "output directory")
+
+	return cmd
+}
 
 func clean(entries []*api.Entry) []*api.Entry {
 	entries = lo.Filter(entries, func(entry *api.Entry, _ int) bool {
@@ -61,7 +79,7 @@ func DownloadAll(entries []*api.Entry, path string) {
 			defer wg.Done()
 
 			if entry.IconURL == "" {
-				fmt.Printf("Icon not available: %s\n", entry.Name)
+				slog.Warn("Icon not available", "name", entry.Name)
 				return
 			}
 
@@ -76,7 +94,7 @@ func DownloadAll(entries []*api.Entry, path string) {
 				return
 			}
 
-			fmt.Printf("Downloaded: %s\n", dst)
+			slog.Info("Downloaded", "file", dst)
 		}(entry)
 	}
 
@@ -86,16 +104,18 @@ func DownloadAll(entries []*api.Entry, path string) {
 func DownloadCharactersIcons(path string) {
 	characters, err := api.GetAllEntries(api.CharactersMenu)
 	if err != nil {
-		log.Fatalln(err)
+		slog.Error(err.Error(), nil)
+		os.Exit(1)
 	}
 	characters = clean(characters)
 
-	fmt.Printf("%d characters' icons.\n", len(characters))
+	slog.Info("Download characters' icons", "length", len(characters))
 
-	if err = os.MkdirAll(path, 0666); err != nil {
-		log.Fatalln(err)
+	if err = os.MkdirAll(filepath.Join(path, "characters"), 0666); err != nil {
+		slog.Error(err.Error(), nil)
+		os.Exit(1)
 	}
-	DownloadAll(characters, path)
+	DownloadAll(characters, filepath.Join(path, "characters"))
 
 	fmt.Println()
 
@@ -105,27 +125,32 @@ func DownloadCharactersIcons(path string) {
 	}
 	data, err := json.MarshalIndent(index, "", "  ")
 	if err != nil {
-		log.Fatalln(err)
+		slog.Error(err.Error(), nil)
+		os.Exit(1)
 	}
 
-	err = os.WriteFile(filepath.Join(o, "characters.json"), data, 0666)
+	err = os.WriteFile(filepath.Join(path, "characters.json"), data, 0666)
 	if err != nil {
-		log.Fatalln(err)
+		slog.Error(err.Error(), nil)
+		os.Exit(1)
 	}
 }
 
 func DownloadWeaponsIcons(path string) {
 	weapons, err := api.GetAllEntries(api.WeaponsMenu)
 	if err != nil {
-		log.Fatalln(err)
+		slog.Error(err.Error(), nil)
+		os.Exit(1)
 	}
-	fmt.Printf("%d weapons' icons.\n", len(weapons))
+	slog.Info("Download weapons' icons", "length", len(weapons))
+
 	weapons = clean(weapons)
 
-	if err = os.MkdirAll(path, 0666); err != nil {
-		log.Fatalln(err)
+	if err = os.MkdirAll(filepath.Join(path, "weapons"), 0666); err != nil {
+		slog.Error(err.Error(), nil)
+		os.Exit(1)
 	}
-	DownloadAll(weapons, path)
+	DownloadAll(weapons, filepath.Join(path, "weapons"))
 
 	fmt.Println()
 
@@ -135,28 +160,13 @@ func DownloadWeaponsIcons(path string) {
 	}
 	data, err := json.MarshalIndent(index, "", "  ")
 	if err != nil {
-		log.Fatalln(err)
+		slog.Error(err.Error(), nil)
+		os.Exit(1)
 	}
 
-	err = os.WriteFile(filepath.Join(o, "weapons.json"), data, 0666)
+	err = os.WriteFile(filepath.Join(path, "weapons.json"), data, 0666)
 	if err != nil {
-		log.Fatalln(err)
+		slog.Error(err.Error(), nil)
+		os.Exit(1)
 	}
-}
-
-var o string
-
-func init() {
-	log.SetFlags(0)
-
-	flag.StringVar(&o, "o", "", "")
-}
-
-//go:generate go run . -o ../../assets/images
-
-func main() {
-	flag.Parse()
-
-	DownloadCharactersIcons(filepath.Join(o, "characters"))
-	DownloadWeaponsIcons(filepath.Join(o, "weapons"))
 }
