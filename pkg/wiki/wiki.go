@@ -55,18 +55,18 @@ func (w Wiki) GetLeafMenus() ([]Menu, error) {
 	return menus, nil
 }
 
-func (w Wiki) GetEntryPageList(payload GetEntryPageListPayload) ([]Entry, error) {
+func (w Wiki) GetEntryPageList(payload GetEntryPageListPayload) ([]Entry, int, error) {
 	resp, err := w.request("https://sg-wiki-api.hoyolab.com/hoyowiki/wapi/get_entry_page_list").JSONPost(payload)
 	if err != nil {
-		return nil, err
+		return nil, 0, err
 	}
 
 	data, err := GetJSONResponseData[*GetEntryPageListResponseData](resp)
 	if err != nil {
-		return nil, err
+		return nil, 0, err
 	}
 
-	return data.List, nil
+	return data.List, data.Total, nil
 }
 
 // GetEntries returns all the entries of a menu.
@@ -76,16 +76,21 @@ func (w Wiki) GetEntries(menuID int) ([]Entry, error) {
 	var entries []Entry
 
 	for {
-		result, err := w.GetEntryPageList(payload)
+		list, total, err := w.GetEntryPageList(payload)
 		if err != nil {
 			return nil, err
 		}
 
-		if len(result) == 0 {
+		if len(list) == 0 {
 			break
 		}
 
-		entries = append(entries, result...)
+		entries = append(entries, list...)
+
+		if total > 0 && len(entries) >= total {
+			break
+		}
+
 		payload.PageNum++
 	}
 

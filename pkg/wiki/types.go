@@ -4,6 +4,8 @@ import (
 	"encoding/json"
 	"github.com/samber/lo"
 	"net/url"
+	"path"
+	"regexp"
 	"strconv"
 )
 
@@ -46,6 +48,19 @@ type Entry struct {
 	IconURL      string         `json:"icon_url"`
 	DisplayField map[string]any `json:"display_field"`
 	FilterValues map[string]any `json:"filter_values"`
+}
+
+var (
+	NonAlphanumeric = regexp.MustCompile(`\W`)
+	Special         = regexp.MustCompile(`['"]`)
+)
+
+func (entry Entry) VarName() string {
+	return NonAlphanumeric.ReplaceAllString(entry.Name, "")
+}
+
+func (entry Entry) Filename() string {
+	return Special.ReplaceAllString(entry.Name, "") + path.Ext(entry.IconURL)
 }
 
 type GetMenuFiltersPayload struct {

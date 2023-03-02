@@ -2,7 +2,8 @@ package icons
 
 import (
 	"fmt"
-	"github.com/fhluo/giwh/pkg/api"
+	"github.com/fhluo/giwh/i18n"
+	"github.com/fhluo/giwh/pkg/wiki"
 	"github.com/goccy/go-json"
 	"github.com/samber/lo"
 	"github.com/spf13/cobra"
@@ -33,16 +34,16 @@ func NewCmd() *cobra.Command {
 	return cmd
 }
 
-func clean(entries []*api.Entry) []*api.Entry {
-	entries = lo.Filter(entries, func(entry *api.Entry, _ int) bool {
+func clean(entries []wiki.Entry) []wiki.Entry {
+	entries = lo.Filter(entries, func(entry wiki.Entry, _ int) bool {
 		return entry.IconURL != ""
 	})
 
-	entries = lo.UniqBy(entries, func(entry *api.Entry) string {
+	entries = lo.UniqBy(entries, func(entry wiki.Entry) string {
 		return entry.Name
 	})
 
-	slices.SortFunc(entries, func(a *api.Entry, b *api.Entry) bool {
+	slices.SortFunc(entries, func(a wiki.Entry, b wiki.Entry) bool {
 		return a.EntryPageID < b.EntryPageID
 	})
 
@@ -70,12 +71,12 @@ func Download(url string, dst string) error {
 	return os.WriteFile(dst, data, 0666)
 }
 
-func DownloadAll(entries []*api.Entry, path string) {
+func DownloadAll(entries []wiki.Entry, path string) {
 	var wg sync.WaitGroup
 	wg.Add(len(entries))
 
 	for _, entry := range entries {
-		go func(entry *api.Entry) {
+		go func(entry wiki.Entry) {
 			defer wg.Done()
 
 			if entry.IconURL == "" {
@@ -102,7 +103,8 @@ func DownloadAll(entries []*api.Entry, path string) {
 }
 
 func DownloadCharactersIcons(path string) {
-	characters, err := api.GetAllEntries(api.CharactersMenu)
+	enWiki := wiki.New(i18n.English)
+	characters, err := enWiki.GetEntries(wiki.CharacterArchive.ID)
 	if err != nil {
 		slog.Error(err.Error(), nil)
 		os.Exit(1)
@@ -137,7 +139,8 @@ func DownloadCharactersIcons(path string) {
 }
 
 func DownloadWeaponsIcons(path string) {
-	weapons, err := api.GetAllEntries(api.WeaponsMenu)
+	enWiki := wiki.New(i18n.English)
+	weapons, err := enWiki.GetEntries(wiki.Weapons.ID)
 	if err != nil {
 		slog.Error(err.Error(), nil)
 		os.Exit(1)
