@@ -231,5 +231,45 @@
     "Wolf's Gravestone": "Wolfsgrab",
     "Xiphos' Moonlight": "Mondlicht von Xiphos",
     "\"The Catch\"": "„Der Fang“"
-  }
+  },
+  "wishes": [
+    {
+      "key": "100",
+      "name": "Neulingsgebete"
+    },
+    {
+      "key": "200",
+      "name": "Standardgebet"
+    },
+    {
+      "key": "301",
+      "name": "Figurenaktionsgebet"
+    },
+    {
+      "key": "302",
+      "name": "Waffenaktionsgebet"
+    },
+    {
+      "key": "400",
+      "name": "Figurenaktionsgebet 2"
+    }
+  ],
+  "sharedWishes": [
+    {
+      "key": "100",
+      "name": "Neulingsgebete"
+    },
+    {
+      "key": "200",
+      "name": "Standardgebet"
+    },
+    {
+      "key": "301",
+      "name": "Figurenaktionsgebet und Figurenaktionsgebet 2"
+    },
+    {
+      "key": "302",
+      "name": "Waffenaktionsgebet"
+    }
+  ]
 }

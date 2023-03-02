@@ -231,5 +231,45 @@
     "Wolf's Gravestone": "Wolf's Gravestone",
     "Xiphos' Moonlight": "Xiphos' Moonlight",
     "\"The Catch\"": "\"The Catch\""
-  }
+  },
+  "wishes": [
+    {
+      "key": "100",
+      "name": "Permohonan Pemula"
+    },
+    {
+      "key": "200",
+      "name": "Permohonan Standar"
+    },
+    {
+      "key": "301",
+      "name": "Event Permohonan Karakter"
+    },
+    {
+      "key": "302",
+      "name": "Event Permohonan Senjata"
+    },
+    {
+      "key": "400",
+      "name": "Event Permohonan Karakter - 2"
+    }
+  ],
+  "sharedWishes": [
+    {
+      "key": "100",
+      "name": "Permohonan Pemula"
+    },
+    {
+      "key": "200",
+      "name": "Permohonan Standar"
+    },
+    {
+      "key": "301",
+      "name": "Event Permohonan Karakter dan Event Permohonan Karakter - 2"
+    },
+    {
+      "key": "302",
+      "name": "Event Permohonan Senjata"
+    }
+  ]
 }

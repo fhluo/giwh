@@ -4,6 +4,7 @@ import (
 	"github.com/fhluo/giwh/pkg/cmd/gen/lang"
 	"github.com/fhluo/giwh/pkg/cmd/gen/locales"
 	"github.com/fhluo/giwh/pkg/cmd/gen/menus"
+	"github.com/fhluo/giwh/pkg/cmd/gen/wishes"
 	"github.com/spf13/cobra"
 )
 
@@ -16,6 +17,7 @@ func NewCmd() *cobra.Command {
 	cmd.AddCommand(lang.NewCmd())
 	cmd.AddCommand(menus.NewCmd())
 	cmd.AddCommand(locales.NewCmd())
+	cmd.AddCommand(wishes.NewCmd())
 
 	return cmd
 }

@@ -231,5 +231,45 @@
     "Wolf's Gravestone": "Mort-du-loup",
     "Xiphos' Moonlight": "Clair de lune de Xiphos",
     "\"The Catch\"": "« La prise »"
-  }
+  },
+  "wishes": [
+    {
+      "key": "100",
+      "name": "Vœux des débutants"
+    },
+    {
+      "key": "200",
+      "name": "Vœux permanents"
+    },
+    {
+      "key": "301",
+      "name": "Vœux événements de personnage"
+    },
+    {
+      "key": "302",
+      "name": "Vœux événements d'arme"
+    },
+    {
+      "key": "400",
+      "name": "Vœux événements de personnage - 2"
+    }
+  ],
+  "sharedWishes": [
+    {
+      "key": "100",
+      "name": "Vœux des débutants"
+    },
+    {
+      "key": "200",
+      "name": "Vœux permanents"
+    },
+    {
+      "key": "301",
+      "name": "Vœux événements de personnage et Vœux événements de personnage - 2"
+    },
+    {
+      "key": "302",
+      "name": "Vœux événements d'arme"
+    }
+  ]
 }

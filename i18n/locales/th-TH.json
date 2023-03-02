@@ -148,6 +148,7 @@
     "Lost Prayer to the Sacred Winds": "Lost Prayer to the Sacred Winds",
     "Luxurious Sea-Lord": "Luxurious Sea-Lord",
     "Magic Guide": "Magic Guide",
+    "Mailed Flower": "Mailed Flower",
     "Makhaira Aquamarine": "Makhaira Aquamarine",
     "Mappa Mare": "Mappa Mare",
     "Memory of Dust": "Memory of Dust",
@@ -230,5 +231,45 @@
     "Wolf's Gravestone": "Wolf's Gravestone",
     "Xiphos' Moonlight": "Xiphos' Moonlight",
     "\"The Catch\"": "\"The Catch\""
-  }
+  },
+  "wishes": [
+    {
+      "key": "100",
+      "name": "ผู้เริ่มอธิษฐาน"
+    },
+    {
+      "key": "200",
+      "name": "อธิษฐานถาวร"
+    },
+    {
+      "key": "301",
+      "name": "กิจกรรมอธิษฐานตัวละคร"
+    },
+    {
+      "key": "302",
+      "name": "กิจกรรมอธิษฐานอาวุธ"
+    },
+    {
+      "key": "400",
+      "name": "กิจกรรมอธิษฐานตัวละคร - 2"
+    }
+  ],
+  "sharedWishes": [
+    {
+      "key": "100",
+      "name": "ผู้เริ่มอธิษฐาน"
+    },
+    {
+      "key": "200",
+      "name": "อธิษฐานถาวร"
+    },
+    {
+      "key": "301",
+      "name": "กิจกรรมอธิษฐานตัวละครและกิจกรรมอธิษฐานตัวละคร - 2"
+    },
+    {
+      "key": "302",
+      "name": "กิจกรรมอธิษฐานอาวุธ"
+    }
+  ]
 }

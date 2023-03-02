@@ -231,5 +231,45 @@
     "Wolf's Gravestone": "Wolf's Gravestone",
     "Xiphos' Moonlight": "Xiphos' Moonlight",
     "\"The Catch\"": "\"The Catch\""
-  }
+  },
+  "wishes": [
+    {
+      "key": "100",
+      "name": "Novice Wishes"
+    },
+    {
+      "key": "200",
+      "name": "Permanent Wish"
+    },
+    {
+      "key": "301",
+      "name": "Character Event Wish"
+    },
+    {
+      "key": "302",
+      "name": "Weapon Event Wish"
+    },
+    {
+      "key": "400",
+      "name": "Character Event Wish-2"
+    }
+  ],
+  "sharedWishes": [
+    {
+      "key": "100",
+      "name": "Novice Wishes"
+    },
+    {
+      "key": "200",
+      "name": "Permanent Wish"
+    },
+    {
+      "key": "301",
+      "name": "Character Event Wish and Character Event Wish-2"
+    },
+    {
+      "key": "302",
+      "name": "Weapon Event Wish"
+    }
+  ]
 }

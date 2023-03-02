@@ -231,5 +231,45 @@
     "Wolf's Gravestone": "Lápida del Lobo",
     "Xiphos' Moonlight": "Luz Lunar de Xifos",
     "\"The Catch\"": "La Captura"
-  }
+  },
+  "wishes": [
+    {
+      "key": "100",
+      "name": "Gachapón de principiante"
+    },
+    {
+      "key": "200",
+      "name": "Gachapón permanente"
+    },
+    {
+      "key": "301",
+      "name": "Gachapón promocional de personaje"
+    },
+    {
+      "key": "302",
+      "name": "Gachapón promocional de arma"
+    },
+    {
+      "key": "400",
+      "name": "Gachapón promocional de personaje 2"
+    }
+  ],
+  "sharedWishes": [
+    {
+      "key": "100",
+      "name": "Gachapón de principiante"
+    },
+    {
+      "key": "200",
+      "name": "Gachapón permanente"
+    },
+    {
+      "key": "301",
+      "name": "Gachapón promocional de personaje y gachapón promocional de personaje 2"
+    },
+    {
+      "key": "302",
+      "name": "Gachapón promocional de arma"
+    }
+  ]
 }

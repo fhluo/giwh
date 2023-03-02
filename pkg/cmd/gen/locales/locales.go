@@ -3,6 +3,7 @@ package locales
 import (
 	_ "embed"
 	"github.com/fhluo/giwh/i18n"
+	"github.com/fhluo/giwh/pkg/cmd/gen/wishes"
 	"github.com/fhluo/giwh/pkg/wiki"
 	"github.com/spf13/cobra"
 	"os"
@@ -40,6 +41,9 @@ func NewCmd() *cobra.Command {
 
 			for lang, entries := range results {
 				locale := i18n.NewLocale(lang)
+
+				locale.Wishes = wishes.Wishes[lang.Key]
+				locale.SharedWishes = wishes.SharedWishes[lang.Key]
 
 				for index, entry := range entries {
 					switch index.MenuID {

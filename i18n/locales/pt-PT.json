@@ -231,5 +231,45 @@
     "Wolf's Gravestone": "Túmulo do Lobo",
     "Xiphos' Moonlight": "Luz Lunar de Xiphos",
     "\"The Catch\"": "\"A Fisgada\""
-  }
+  },
+  "wishes": [
+    {
+      "key": "100",
+      "name": "Desejos de Novato"
+    },
+    {
+      "key": "200",
+      "name": "Desejo Comum"
+    },
+    {
+      "key": "301",
+      "name": "Oração do Evento do Personagem"
+    },
+    {
+      "key": "302",
+      "name": "Oração do Evento de Arma"
+    },
+    {
+      "key": "400",
+      "name": "Oração de Evento de Personagem - 2"
+    }
+  ],
+  "sharedWishes": [
+    {
+      "key": "100",
+      "name": "Desejos de Novato"
+    },
+    {
+      "key": "200",
+      "name": "Desejo Comum"
+    },
+    {
+      "key": "301",
+      "name": "Oração de Evento de Personagem e Oração de Evento de Personagem - 2"
+    },
+    {
+      "key": "302",
+      "name": "Oração do Evento de Arma"
+    }
+  ]
 }
