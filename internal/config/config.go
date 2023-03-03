@@ -1,6 +1,7 @@
 package config
 
 import (
+	"github.com/fhluo/giwh/i18n"
 	"github.com/fhluo/giwh/pkg/repository/primitive"
 	"github.com/spf13/viper"
 	"golang.org/x/exp/slog"
@@ -18,7 +19,7 @@ var (
 
 	Repository *primitive.Repository
 
-	Language = NewItem("language", "en-US")
+	Language = NewItem("language", i18n.Default().Tag().String())
 )
 
 func init() {
