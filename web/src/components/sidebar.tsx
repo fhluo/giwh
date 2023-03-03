@@ -1,35 +1,28 @@
-import {GetUIDs} from '../../wailsjs/go/main/App'
-import {useEffect, useState} from 'react'
 import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from './ui/select'
 import {Avatar} from './ui/avatar'
+import React from 'react'
 
 interface SidebarProps {
-    currentUID: number;
+    uid: string;
+    setUID: React.Dispatch<React.SetStateAction<string>>;
+    uidList: string[];
 }
 
-function Sidebar({currentUID}: SidebarProps) {
-    let [uidList, setUIDList] = useState([] as number[])
-
-    useEffect(() => {
-        GetUIDs().then(result => {
-            setUIDList(result)
-        })
-    })
-
+function Sidebar({uid, setUID, uidList}: SidebarProps) {
     return (
-        <div>
+        <div className="w-1/5">
             <div>
                 <Avatar>
 
                 </Avatar>
             </div>
             <div className="">
-                <Select>
-                    <SelectTrigger>
-                        <SelectValue placeholder="UID">{currentUID}</SelectValue>
+                <Select onValueChange={value => setUID(value)}>
+                    <SelectTrigger className="bg-white">
+                        <SelectValue placeholder="UID">{uid}</SelectValue>
                     </SelectTrigger>
                     <SelectContent>
-                        {uidList.map(uid => <SelectItem value={uid.toString()}>{uid}</SelectItem>)}
+                        {uidList.map(uid => <SelectItem value={uid} key={uid}>{uid}</SelectItem>)}
                     </SelectContent>
                 </Select>
             </div>

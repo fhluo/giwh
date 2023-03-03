@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.0.1",
+    "@radix-ui/react-scroll-area": "^1.0.2",
     "@radix-ui/react-select": "^1.2.0",
     "@radix-ui/react-tabs": "^1.0.2",
     "class-variance-authority": "^0.4.0",
@@ -21,7 +22,7 @@
     "tailwindcss-animate": "^1.0.5"
   },
   "devDependencies": {
-    "@types/node": "^18.14.2",
+    "@types/node": "^18.14.5",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
     "@vitejs/plugin-react-swc": "^3.2.0",
