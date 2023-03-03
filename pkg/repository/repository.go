@@ -10,8 +10,7 @@ import (
 
 type Item struct {
 	*api.Item
-	Pulls int    `json:"pulls"`
-	Icon  string `json:"icon"`
+	Pulls int `json:"pulls"`
 }
 
 type Repository interface {

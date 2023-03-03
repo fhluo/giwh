@@ -16,7 +16,7 @@ function Character({icon, name, pulls}: AvatarProps) {
             </div>
             {/*<div className="font-semibold text-gray-900 tracking-wide leading-relaxed">{name}</div>*/}
             <div
-                className="text-sm text-gray-700 border-t py-0.5 w-full text-center rounded-b-lg leading-relaxed tracking-wider">{pulls}</div>
+                className="bg-white/25 text-sm text-gray-700 border-t py-0.5 w-full text-center rounded-b-lg leading-relaxed tracking-wider">{pulls}</div>
         </div>
     )
 }

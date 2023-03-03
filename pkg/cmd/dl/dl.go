@@ -1,7 +1,7 @@
 package dl
 
 import (
-	"github.com/fhluo/giwh/pkg/cmd/dl/icons"
+	"github.com/fhluo/giwh/pkg/cmd/dl/assets"
 	"github.com/spf13/cobra"
 )
 
@@ -11,7 +11,7 @@ func NewCmd() *cobra.Command {
 		Short: "Download assets",
 	}
 
-	cmd.AddCommand(icons.NewCmd())
+	cmd.AddCommand(assets.NewCmd())
 
 	return cmd
 }
