@@ -5,9 +5,12 @@ import (
 	"github.com/fhluo/giwh/i18n"
 	"github.com/fhluo/giwh/pkg/cmd/gen/wishes"
 	"github.com/fhluo/giwh/pkg/wiki"
+	"github.com/hashicorp/go-multierror"
 	"github.com/spf13/cobra"
+	"golang.org/x/exp/slog"
 	"os"
 	"path/filepath"
+	"sync"
 )
 
 type Locale = i18n.Locale
@@ -24,15 +27,10 @@ func NewCmd() *cobra.Command {
 		RunE: func(cmd *cobra.Command, args []string) (err error) {
 			_ = os.MkdirAll(outputDir, 0666)
 
-			results := make(map[i18n.Language]map[wiki.EntryIndex]wiki.Entry)
-
-			for _, lang := range i18n.Languages {
-				w := wiki.New(lang)
-
-				results[lang], err = w.GetMenusEntries(wiki.CharacterArchive.ID, wiki.Weapons.ID)
-				if err != nil {
-					return err
-				}
+			results, err := GetAllEntries()
+			if err != nil {
+				slog.Error(err.Error(), nil)
+				os.Exit(1)
 			}
 
 			en := results[i18n.English]
@@ -49,8 +47,10 @@ func NewCmd() *cobra.Command {
 					switch index.MenuID {
 					case wiki.CharacterArchive.ID:
 						locale.Characters[en[index].Name] = entry.Name
+						locale.CharactersInverse[entry.Name] = en[index].Name
 					case wiki.Weapons.ID:
 						locale.Weapons[en[index].Name] = entry.Name
+						locale.WeaponsInverse[entry.Name] = en[index].Name
 					}
 				}
 
@@ -72,4 +72,37 @@ func NewCmd() *cobra.Command {
 	cmd.Flags().StringVarP(&packageName, "pkg", "p", "i18n", "package name")
 
 	return cmd
+}
+
+func GetAllEntries() (map[i18n.Language]map[wiki.EntryIndex]wiki.Entry, error) {
+	var (
+		mutex  sync.Mutex
+		wg     sync.WaitGroup
+		errors error
+	)
+	results := make(map[i18n.Language]map[wiki.EntryIndex]wiki.Entry)
+
+	wg.Add(len(i18n.Languages))
+
+	for _, lang := range i18n.Languages {
+		go func(lang i18n.Language) {
+			defer wg.Done()
+
+			w := wiki.New(lang)
+
+			menusEntries, err := w.GetMenusEntries(wiki.CharacterArchive.ID, wiki.Weapons.ID)
+
+			mutex.Lock()
+			defer mutex.Unlock()
+
+			results[lang] = menusEntries
+			if err != nil {
+				errors = multierror.Append(errors, err)
+			}
+		}(lang)
+	}
+
+	wg.Wait()
+
+	return results, errors
 }
