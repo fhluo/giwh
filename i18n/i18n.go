@@ -56,7 +56,10 @@ func Match(languages ...string) Language {
 	var tags []language.Tag
 
 	for _, lang := range languages {
-		tag := language.MustParse(lang)
+		tag, err := language.Parse(lang)
+		if err != nil {
+			return Default()
+		}
 		switch tag.String() {
 		case "zh-CN":
 			tags = append(tags, language.SimplifiedChinese)
