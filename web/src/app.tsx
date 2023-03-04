@@ -1,11 +1,17 @@
 import './app.css'
 import {useEffect, useState} from 'react'
 import {GetAssets, GetDefaultSharedWish, GetItems, GetLanguage, GetLocale} from '../wailsjs/go/main/App'
-import Sidebar from './components/sidebar'
 import {Tabs, TabsContent, TabsList, TabsTrigger} from './components/ui/tabs'
-import Item from './components/item'
 import {api} from '@/lib/models'
-import {ScrollArea} from './components/ui/scroll_area'
+import {ScrollArea} from './components/ui/scroll-area'
+import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from './components/ui/select'
+import {Avatar, AvatarFallback, AvatarImage} from './components/ui/avatar'
+import {Label} from './components/ui/label'
+import {Progress} from './components/ui/progress'
+import {cn} from '@/lib/utils'
+import {HoverCard, HoverCardContent, HoverCardTrigger} from './components/ui/hover-card'
+import {Button} from './components/ui/button'
+import {Loader2, RefreshCcw} from 'lucide-react'
 
 function App() {
     let [uidList, setUIDList] = useState([] as string[])
@@ -15,6 +21,7 @@ function App() {
 
     let [wishes, setWishes] = useState([] as api.Wish[])
     let [sharedWishes, setSharedWishes] = useState([] as api.Wish[])
+    let [currentSharedWishes, setCurrentSharedWishes] = useState([] as api.Wish[])
     let [currentWish, setCurrentWish] = useState('')
 
     let [locale, setLocale] = useState({} as api.Locale)
@@ -37,6 +44,7 @@ function App() {
         })
     }, [])
 
+
     const getLocale = async (lang: string): Promise<api.Locale> => {
         if (locales.has(lang)) {
             return locales.get(lang)!
@@ -45,7 +53,6 @@ function App() {
         setLocales(locales.set(lang, result))
         return result
     }
-
 
     useEffect(() => {
         getLocale(lang).then(result => {
@@ -72,8 +79,19 @@ function App() {
     useEffect(() => {
         setCurrentItems(items.filter(item => {
             return item.uid == uid
-        }).reverse())
+        }))
     }, [items, uid])
+
+    useEffect(() => {
+        let types = new Set(currentItems.map(item => item.gacha_type))
+        setCurrentSharedWishes(sharedWishes?.filter(wishType => types.has(wishType.key)))
+    }, [currentItems])
+
+    useEffect(() => {
+        if (currentSharedWishes?.length > 0) {
+            setCurrentWish(currentSharedWishes[0].key)
+        }
+    }, [currentSharedWishes])
 
     function getIcon(item: api.Item): string {
         const itemLocale = locales.get(item.lang)!
@@ -87,50 +105,155 @@ function App() {
     }
 
     return (
-        <div className="flex flex-row p-4 w-screen h-screen">
-            <Sidebar uid={uid} setUID={setUID} uidList={uidList}/>
-            <div className="flex flex-col px-5 w-4/5 h-full">
-                <Tabs defaultValue={currentWish} onValueChange={value => {
-                    let wishType = sharedWishes?.find(v => v.key.toString() == value)
-                    setCurrentWish(wishType!.key)
-                }} className="h-32 grow">
-                    <TabsList className="bg-slate-200">
-                        {
-                            sharedWishes?.map(wishType => {
-                                    return (
-                                        <TabsTrigger value={wishType.key.toString()}
-                                                     key={wishType.key}>{wishType.name}</TabsTrigger>
-                                    )
-                                }
-                            )
+        <div className="flex flex-col w-screen h-screen overflow-hidden">
+            <div className="w-full px-4 pt-4 flex flex-row items-center justify-center">
+                <div className="flex flex-col items-center mx-2">
+                    <Avatar className="w-20 h-20 ring-offset-2 ring-2 cursor-pointer ring-[#ac7d3f] border-[#e9e5dd]">
+                        <AvatarImage src={assets.characters ? assets.characters['Traveler'] : ''}
+                                     className="bg-[#ac7d3f]"/>
+                        <AvatarFallback>Traveler</AvatarFallback>
+                    </Avatar>
+                    <Select onValueChange={value => setUID(value)} defaultValue={uid}>
+                        <SelectTrigger className="border-0 focus:ring-0 focus:ring-offset-0 items-end w-fit">
+                            <SelectValue className="text-[#4d5562]">UID&nbsp;{uid}&nbsp;</SelectValue>
+                        </SelectTrigger>
+                        <SelectContent className="bg-[#e9e5dd] border-0">
+                            {uidList.map(uid => <SelectItem value={uid} key={uid}
+                                                            className="text-[#4d5562]">{uid}</SelectItem>)}
+                        </SelectContent>
+                    </Select>
+                </div>
+                <div className="flex flex-col space-y-3 mx-4">
+                    {locale.sharedWishes?.filter(wishType => wishType.key != api.NoviceWishes).map(wishType => {
+                        let pity = 90
+                        let width = 'w-[270px]'
+                        if (wishType.key == api.WeaponEventWish) {
+                            pity = 80
+                            width = 'w-[240px]'
                         }
-                    </TabsList>
+
+                        let currentWishItems = currentItems.filter(item => {
+                            return item.gacha_type == wishType.key || (
+                                wishType.key == api.CharacterEventWish && item.gacha_type == api.CharacterEventWish2
+                            )
+                        }).sort((a, b) => {
+                            if (a.id < b.id) {
+                                return 1
+                            } else if (a.id > b.id) {
+                                return -1
+                            } else {
+                                return 0
+                            }
+                        })
+
+                        let value = currentWishItems.findIndex(item => item.rank_type == api.FiveStar)
+
+                        return (
+                            <div className="grid grid-cols-3">
+                                <Label>{wishes?.find(w => w.key == wishType.key)!.name}</Label>
+                                <Progress value={100 * value / pity} max={pity}
+                                          className={cn('bg-slate-200', width, 'col-span-2')}></Progress>
+                            </div>
+                        )
+                    })}
+                </div>
+                <Button variant="subtle" className="bg-slate-200 rounded-full h-12 mx-4">
+                    {/*"animate-spin"*/}
+                    <RefreshCcw className={cn("mr-2 h-4 w-4")}/>
+                    Update
+                </Button>
+            </div>
+            <Tabs defaultValue={api.CharacterEventWishAndCharacterEventWish2} onValueChange={value => {
+                let wishType = sharedWishes?.find(v => v.key == value)
+                setCurrentWish(wishType!.key)
+            }} className="flex flex-col w-full h-full">
+                <TabsList className="bg-slate-200">
                     {
-                        sharedWishes?.map(wishType => {
-                            // console.log(items)
-                            return (
-                                <TabsContent value={wishType.key.toString()} className="bg-white/50" key={wishType.key}>
-                                    <ScrollArea>
+                        currentSharedWishes?.map(wishType => {
+                                return (
+                                    <TabsTrigger value={wishType.key} key={wishType.key}>
+                                        {wishes.find(w => w.key == wishType.key)!.name}
+                                    </TabsTrigger>
+                                )
+                            },
+                        )
+                    }
+                </TabsList>
+                {
+                    currentSharedWishes?.map(wishType => {
+                        let currentWishItems = currentItems?.filter(item => {
+                            return item.gacha_type == wishType.key || (
+                                wishType.key == api.CharacterEventWish && item.gacha_type == api.CharacterEventWish2
+                            )
+                        }).sort((a, b) => {
+                            if (a.id < b.id) {
+                                return -1
+                            } else if (a.id > b.id) {
+                                return 1
+                            } else {
+                                return 0
+                            }
+                        })
+
+                        // console.log(items)
+                        let items_ = currentWishItems.filter(item => {
+                            return item.rank_type == api.FiveStar
+                        })
+                        return (
+                            <TabsContent value={wishType.key.toString()}
+                                         className="w-full h-full border-0 p-0"
+                                         key={wishType.key}>
+                                <div className="w-full h-full flex flex-col">
+                                    <ScrollArea
+                                        className="h-72 grow px-6 py-2">
                                         <div
-                                            className="flex flex-row flex-wrap w-full gap-x-6 gap-y-6 transition duration-200">
+                                            className="flex flex-row flex-wrap items-center justify-center w-full gap-x-5 gap-y-5 transition duration-200 p-2">
                                             {
-                                                currentItems.filter(item => {
-                                                    return item.rank_type == api.FiveStar && (
-                                                        item.gacha_type == wishType.key || (
-                                                            wishType.key == api.CharacterEventWish && item.gacha_type == api.CharacterEventWish2
+                                                items_.map((item, index) => {
+                                                        // <Item item={item} pulls={0} key={item.id} } wishes={wishes}/>
+                                                        let icon = getIcon(item)
+
+                                                        let pulls = 0
+                                                        if (index == 0) {
+                                                            pulls = currentWishItems.indexOf(item) + 1
+                                                        } else {
+                                                            pulls = currentWishItems.indexOf(item) - currentWishItems.indexOf(items_[index - 1])
+                                                        }
+                                                        return (
+                                                            <HoverCard>
+                                                                <HoverCardTrigger
+                                                                    className=" flex bg-[#e9e5dd] flex-col w-fit items-center select-none transition duration-300 hover:ring-2 hover:ring-offset-2 shadow rounded-lg">
+                                                                    <div>
+                                                                        <div className="w-20">
+                                                                            <img alt={item.name}
+                                                                                 className={cn('pointer-events-none rounded-t-lg shadow-inner', 'bg-[#ac7d3f]')}
+                                                                                 src={icon}/>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div
+                                                                        className="w-20 text-sm text-[#4d5562] border-t text-center rounded-b-lg leading-normal tracking-wider">{pulls}</div>
+                                                                </HoverCardTrigger>
+                                                                <HoverCardContent
+                                                                    className="flex flex-col space-y-3 items-center text-sm text-[#4d5562] bg-[#e9e5dd] border-0 w-fit">
+                                                                    <Label className="font-semibold">{item.name}</Label>
+                                                                    <Label>{item.item_type}</Label>
+                                                                    <Label>{wishes?.find(wishType => wishType.key == item.gacha_type)!.name}</Label>
+                                                                    <Label>{item.time}</Label>
+                                                                </HoverCardContent>
+                                                            </HoverCard>
                                                         )
-                                                    )
-                                                }).map(item =>
-                                                    <Item item={item} pulls={0} key={item.id} icon={getIcon(item)}/>)
+                                                    },
+                                                )
                                             }
                                         </div>
                                     </ScrollArea>
-                                </TabsContent>
-                            )
-                        })
-                    }
-                </Tabs>
-            </div>
+                                </div>
+                            </TabsContent>
+                        )
+                    })
+                }
+            </Tabs>
+
         </div>
     )
 }
