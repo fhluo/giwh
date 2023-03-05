@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"fmt"
+	"github.com/fhluo/giwh/cmd/giwh"
 	"github.com/fhluo/giwh/internal/config"
 	"github.com/fhluo/giwh/pkg/api"
 	"github.com/fhluo/giwh/pkg/repository"
@@ -48,7 +49,7 @@ var (
 )
 
 func init() {
-	rootCmd.AddCommand(exportCmd)
+	main.rootCmd.AddCommand(exportCmd)
 
 	exportCmd.Flags().IntVarP(&uid, "uid", "u", 0, "specify uid")
 	exportCmd.Flags().IntSliceVarP(&wishes, "wishes", "w", nil, "specify wish types")

@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"github.com/fhluo/giwh/cmd/giwh"
 	"github.com/fhluo/giwh/internal/config"
 	"github.com/fhluo/giwh/pkg/repository"
 	"github.com/spf13/cobra"
@@ -32,5 +33,5 @@ var importCmd = &cobra.Command{
 }
 
 func init() {
-	rootCmd.AddCommand(importCmd)
+	main.rootCmd.AddCommand(importCmd)
 }

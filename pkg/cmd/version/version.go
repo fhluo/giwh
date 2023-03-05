@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"fmt"
+	"github.com/fhluo/giwh/cmd/giwh"
 	"github.com/spf13/cobra"
 	"runtime/debug"
 )
@@ -19,5 +20,5 @@ var versionCmd = &cobra.Command{
 }
 
 func init() {
-	rootCmd.AddCommand(versionCmd)
+	main.rootCmd.AddCommand(versionCmd)
 }

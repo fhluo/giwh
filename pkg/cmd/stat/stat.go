@@ -4,6 +4,7 @@ import (
 	_ "embed"
 	"fmt"
 	"github.com/fatih/color"
+	"github.com/fhluo/giwh/cmd/giwh"
 	"github.com/fhluo/giwh/pkg/api"
 	"github.com/fhluo/giwh/pkg/i18n"
 	"github.com/fhluo/giwh/pkg/pipeline"
@@ -31,7 +32,7 @@ var statCmd = &cobra.Command{
 }
 
 func init() {
-	rootCmd.AddCommand(statCmd)
+	main.rootCmd.AddCommand(statCmd)
 }
 
 func gray(format string, a ...any) string {

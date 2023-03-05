@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"github.com/fhluo/giwh/cmd/giwh"
 	"github.com/fhluo/giwh/pkg/api"
 	"github.com/fhluo/giwh/pkg/pipeline"
 	"github.com/fhluo/giwh/pkg/repository"
@@ -40,7 +41,7 @@ var mergeCmd = &cobra.Command{
 var outputFilename string
 
 func init() {
-	rootCmd.AddCommand(mergeCmd)
+	main.rootCmd.AddCommand(mergeCmd)
 	mergeCmd.Flags().StringVarP(&outputFilename, "output", "o", "", "specify output filename")
 	if err := mergeCmd.MarkFlagRequired("output"); err != nil {
 		log.Fatalln(err)
