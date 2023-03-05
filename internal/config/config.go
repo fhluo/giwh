@@ -2,10 +2,8 @@ package config
 
 import (
 	"github.com/fhluo/giwh/i18n"
-	"github.com/fhluo/giwh/pkg/repository/primitive"
 	"github.com/spf13/viper"
 	"golang.org/x/exp/slog"
-	"log"
 	"os"
 	"path/filepath"
 	"sync"
@@ -16,8 +14,6 @@ var (
 
 	Path            = filepath.Join(Dir, "config.toml")
 	WishHistoryPath = filepath.Join(Dir, "wish_history.json")
-
-	Repository *primitive.Repository
 
 	Language = NewItem("language", i18n.Default().Tag().String())
 )
@@ -35,13 +31,6 @@ func init() {
 				slog.Warn("failed to write config", "path", Path)
 			}
 		}
-	}
-
-	var err error
-
-	Repository, err = primitive.Load(WishHistoryPath)
-	if err != nil {
-		log.Fatalln(err)
 	}
 }
 

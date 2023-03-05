@@ -2,6 +2,7 @@ package main
 
 import (
 	"embed"
+	"github.com/fhluo/giwh/internal/config"
 	"github.com/samber/lo"
 	"github.com/wailsapp/wails/v2/pkg/options/windows"
 	"golang.org/x/exp/slog"
@@ -27,6 +28,8 @@ func init() {
 }
 
 func main() {
+	defer config.Save()
+
 	app := NewApp()
 
 	err := wails.Run(&options.App{
