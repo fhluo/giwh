@@ -24,7 +24,7 @@ func (a *App) startup(ctx context.Context) {
 }
 
 func (a *App) GetDefaultSharedWish() string {
-	return strconv.Itoa(wish.CharacterEventWishAndCharacterEventWish2.Key)
+	return strconv.Itoa(int(wish.CharacterEventWishAndCharacterEventWish2))
 }
 
 func (a *App) GetAssets() string {
