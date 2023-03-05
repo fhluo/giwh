@@ -39,7 +39,7 @@ type Query struct {
 	AuthKey    string `url:"authkey"`
 	Lang       string `url:"lang"`
 
-	WishType int   `url:"gacha_type"`
+	WishType Type  `url:"gacha_type"`
 	Size     int   `url:"size"`
 	BeginID  int64 `url:"begin_id,omitempty"`
 	EndID    int64 `url:"end_id,omitempty"`
@@ -81,7 +81,7 @@ func (ctx *Context) String() string {
 	return ctx.URL()
 }
 
-func (ctx *Context) WishType(wishType int) *Context {
+func (ctx *Context) WishType(wishType Type) *Context {
 	ctx.query.WishType = wishType
 	return ctx
 }

@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/fhluo/giwh/internal/config"
 	"github.com/fhluo/giwh/pkg/cmd/dl"
 	"github.com/fhluo/giwh/pkg/cmd/gen"
 	"github.com/spf13/cobra"
@@ -22,6 +23,8 @@ func init() {
 }
 
 func main() {
+	defer config.Save()
+
 	if err := rootCmd.Execute(); err != nil {
 		slog.Error(err.Error(), nil)
 		os.Exit(1)

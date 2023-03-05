@@ -6,6 +6,7 @@ require (
 	github.com/bytedance/sonic v1.8.3
 	github.com/dave/jennifer v1.6.0
 	github.com/dop251/goja v0.0.0-20230226152633-7c93113e17ac
+	github.com/fatih/color v1.13.0
 	github.com/gin-gonic/gin v1.9.0
 	github.com/goccy/go-json v0.10.0
 	github.com/google/go-querystring v1.1.0

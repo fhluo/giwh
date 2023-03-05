@@ -1,49 +1,52 @@
-package cmd
+package merge
 
 import (
-	"github.com/fhluo/giwh/cmd/giwh"
-	"github.com/fhluo/giwh/pkg/api"
-	"github.com/fhluo/giwh/pkg/pipeline"
-	"github.com/fhluo/giwh/pkg/repository"
+	"github.com/fhluo/giwh/pkg/cmd/util"
+	"github.com/fhluo/giwh/pkg/wish/pipeline"
+	"github.com/fhluo/giwh/pkg/wish/repository"
 	"github.com/spf13/cobra"
+	"golang.org/x/exp/slog"
 	"log"
+	"os"
 )
 
-var mergeCmd = &cobra.Command{
-	Use:   "merge",
-	Short: "Merge wish histories",
-	Args:  cobra.MinimumNArgs(2),
-	Run: func(cmd *cobra.Command, args []string) {
-		filenames, err := ExpandPaths(args...)
-		if err != nil {
-			log.Fatalln(err)
-		}
+func NewCmd() *cobra.Command {
+	var outputFilename string
 
-		var result []*api.Item
-
-		for _, filename := range filenames {
-			items, err := repository.Load(filename)
+	cmd := &cobra.Command{
+		Use:   "merge",
+		Short: "Merge wish histories",
+		Args:  cobra.MinimumNArgs(2),
+		RunE: func(cmd *cobra.Command, args []string) error {
+			filenames, err := util.ExpandPaths(args...)
 			if err != nil {
 				log.Fatalln(err)
 			}
-			result = append(result, items...)
-		}
 
-		p := pipeline.Items(result)
+			p := pipeline.New(nil)
 
-		p.SortByIDDescending()
-		if err = repository.Save(outputFilename, p.Unique()); err != nil {
-			log.Fatalln(err)
-		}
-	},
-}
+			for _, filename := range filenames {
+				items, err := repository.LoadItemsIfExits(filename)
+				if err != nil {
+					return err
+				}
+				p.Append(items...)
+			}
 
-var outputFilename string
+			p.SortByIDDescending()
+			if err = repository.SaveItems(outputFilename, p.Unique().Items()); err != nil {
+				return err
+			}
 
-func init() {
-	main.rootCmd.AddCommand(mergeCmd)
-	mergeCmd.Flags().StringVarP(&outputFilename, "output", "o", "", "specify output filename")
-	if err := mergeCmd.MarkFlagRequired("output"); err != nil {
-		log.Fatalln(err)
+			return nil
+		},
 	}
+
+	cmd.Flags().StringVarP(&outputFilename, "output", "o", "", "specify output filename")
+	if err := cmd.MarkFlagRequired("output"); err != nil {
+		slog.Error(err.Error(), nil)
+		os.Exit(1)
+	}
+
+	return cmd
 }

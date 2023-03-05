@@ -5,9 +5,9 @@
 {{magenta "4-Star:"}} {{white "%2d" .Progress4}} / {{hiBlack "%d" .Pity4}}
 {{yellow "5-Star:"}} {{white "%2d" .Progress5}} / {{hiBlack "%d" .Pity5}}
 
-{{$Progress := .Progress -}}
+{{$Pulls := .Pulls -}}
 {{range .Items5 -}}
-    {{.ColoredString}}{{index $Progress .ID | hiBlack "(%d) "}}
+    {{yellow .Name}}{{index $Pulls .ID | hiBlack "(%d) "}}
 {{- end}}
 
 {{if gt .Count 0}}{{hiBlack "%s ~ %s" .First .Last}}{{end}}

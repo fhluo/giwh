@@ -71,7 +71,7 @@ func UpdateItems(filename string, handlers ...func(item wish.Item)) ([]wish.Item
 	length := p.Len()
 
 	for _, sharedWish := range wish.SharedWishes {
-		ctx := wish.New(auths[len(auths)-1]).WishType(sharedWish.Key).Size(10)
+		ctx := wish.New(auths[len(auths)-1]).WishType(sharedWish).Size(10)
 
 		for {
 			items, err = ctx.Fetch()

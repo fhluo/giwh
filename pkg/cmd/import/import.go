@@ -1,37 +1,47 @@
-package cmd
+package _import
 
 import (
-	"github.com/fhluo/giwh/cmd/giwh"
 	"github.com/fhluo/giwh/internal/config"
-	"github.com/fhluo/giwh/pkg/repository"
+	"github.com/fhluo/giwh/pkg/cmd/util"
+	"github.com/fhluo/giwh/pkg/wish/pipeline"
+	"github.com/fhluo/giwh/pkg/wish/repository"
 	"github.com/spf13/cobra"
 	"log"
 )
 
-var importCmd = &cobra.Command{
-	Use:   "import",
-	Short: "Import wish history",
-	Args:  cobra.MinimumNArgs(1),
-	Run: func(cmd *cobra.Command, args []string) {
-		filenames, err := ExpandPaths(args...)
-		if err != nil {
-			log.Fatalln(err)
-		}
-
-		for _, filename := range filenames {
-			items, err := repository.Load(filename)
+func NewCmd() *cobra.Command {
+	cmd := &cobra.Command{
+		Use:   "import",
+		Short: "Import wish history",
+		Args:  cobra.MinimumNArgs(1),
+		RunE: func(cmd *cobra.Command, args []string) error {
+			filenames, err := util.ExpandPaths(args...)
 			if err != nil {
-				log.Fatalln(err)
+				return err
 			}
-			config.Repository.AddItems(items)
-		}
 
-		if err := config.Repository.Save(config.WishHistoryPath); err != nil {
-			log.Fatalln(err)
-		}
-	},
-}
+			items, err := repository.LoadItemsIfExits(config.WishHistoryPath)
+			if err != nil {
+				return err
+			}
 
-func init() {
-	main.rootCmd.AddCommand(importCmd)
+			p := pipeline.New(items)
+
+			for _, filename := range filenames {
+				items, err = repository.LoadItemsIfExits(filename)
+				if err != nil {
+					log.Fatalln(err)
+				}
+				p.Append(items...)
+			}
+
+			if err = repository.BackupAndSaveItems(config.WishHistoryPath, p.Items()); err != nil {
+				return err
+			}
+
+			return nil
+		},
+	}
+
+	return cmd
 }

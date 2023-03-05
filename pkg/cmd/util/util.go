@@ -1,4 +1,4 @@
-package cmd
+package util
 
 import (
 	"github.com/hashicorp/go-multierror"
