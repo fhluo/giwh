@@ -6,6 +6,7 @@ import (
 	"github.com/fhluo/giwh/pkg/cmd/gen/wishes"
 	"github.com/fhluo/giwh/pkg/wiki"
 	"github.com/hashicorp/go-multierror"
+	"github.com/samber/lo"
 	"github.com/spf13/cobra"
 	"golang.org/x/exp/slog"
 	"os"
@@ -40,8 +41,12 @@ func NewCmd() *cobra.Command {
 			for lang, entries := range results {
 				locale := i18n.NewLocale(lang)
 
-				locale.Wishes = wishes.Wishes[lang.Key]
-				locale.SharedWishes = wishes.SharedWishes[lang.Key]
+				locale.Wishes = lo.SliceToMap(wishes.Wishes[lang.Key], func(wishType i18n.WishType) (int, string) {
+					return wishType.Key, wishType.Name
+				})
+				locale.SharedWishes = lo.SliceToMap(wishes.SharedWishes[lang.Key], func(wishType i18n.WishType) (int, string) {
+					return wishType.Key, wishType.Name
+				})
 
 				for index, entry := range entries {
 					switch index.MenuID {

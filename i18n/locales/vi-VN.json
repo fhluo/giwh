@@ -460,44 +460,17 @@
     "Đại Kiếm Tông Thất": "Royal Greatsword",
     "Đại Kiếm Tế Lễ": "Sacrificial Greatsword"
   },
-  "wishes": [
-    {
-      "key": "100",
-      "name": "Cầu Nguyện Tân Thủ"
-    },
-    {
-      "key": "200",
-      "name": "Cầu Nguyện Thường"
-    },
-    {
-      "key": "301",
-      "name": "Cầu Nguyện Nhân Vật"
-    },
-    {
-      "key": "302",
-      "name": "Cầu Nguyện Vũ Khí"
-    },
-    {
-      "key": "400",
-      "name": "Cầu Nguyện Nhân Vật-2"
-    }
-  ],
-  "sharedWishes": [
-    {
-      "key": "100",
-      "name": "Cầu Nguyện Tân Thủ"
-    },
-    {
-      "key": "200",
-      "name": "Cầu Nguyện Thường"
-    },
-    {
-      "key": "301",
-      "name": "Cầu Nguyện Nhân Vật và Cầu Nguyện Nhân Vật-2"
-    },
-    {
-      "key": "302",
-      "name": "Cầu Nguyện Vũ Khí"
-    }
-  ]
+  "wishes": {
+    "100": "Cầu Nguyện Tân Thủ",
+    "200": "Cầu Nguyện Thường",
+    "301": "Cầu Nguyện Nhân Vật",
+    "302": "Cầu Nguyện Vũ Khí",
+    "400": "Cầu Nguyện Nhân Vật-2"
+  },
+  "sharedWishes": {
+    "100": "Cầu Nguyện Tân Thủ",
+    "200": "Cầu Nguyện Thường",
+    "301": "Cầu Nguyện Nhân Vật và Cầu Nguyện Nhân Vật-2",
+    "302": "Cầu Nguyện Vũ Khí"
+  }
 }

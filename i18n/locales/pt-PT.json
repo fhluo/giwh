@@ -460,44 +460,17 @@
     "Águas Secas": "End of the Line",
     "Último Acorde": "The Stringless"
   },
-  "wishes": [
-    {
-      "key": "100",
-      "name": "Desejos de Novato"
-    },
-    {
-      "key": "200",
-      "name": "Desejo Comum"
-    },
-    {
-      "key": "301",
-      "name": "Oração do Evento do Personagem"
-    },
-    {
-      "key": "302",
-      "name": "Oração do Evento de Arma"
-    },
-    {
-      "key": "400",
-      "name": "Oração de Evento de Personagem - 2"
-    }
-  ],
-  "sharedWishes": [
-    {
-      "key": "100",
-      "name": "Desejos de Novato"
-    },
-    {
-      "key": "200",
-      "name": "Desejo Comum"
-    },
-    {
-      "key": "301",
-      "name": "Oração de Evento de Personagem e Oração de Evento de Personagem - 2"
-    },
-    {
-      "key": "302",
-      "name": "Oração do Evento de Arma"
-    }
-  ]
+  "wishes": {
+    "100": "Desejos de Novato",
+    "200": "Desejo Comum",
+    "301": "Oração do Evento do Personagem",
+    "302": "Oração do Evento de Arma",
+    "400": "Oração de Evento de Personagem - 2"
+  },
+  "sharedWishes": {
+    "100": "Desejos de Novato",
+    "200": "Desejo Comum",
+    "301": "Oração de Evento de Personagem e Oração de Evento de Personagem - 2",
+    "302": "Oração do Evento de Arma"
+  }
 }

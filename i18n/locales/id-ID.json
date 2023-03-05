@@ -460,44 +460,17 @@
     "Xiphos' Moonlight": "Xiphos' Moonlight",
     "\"The Catch\"": "\"The Catch\""
   },
-  "wishes": [
-    {
-      "key": "100",
-      "name": "Permohonan Pemula"
-    },
-    {
-      "key": "200",
-      "name": "Permohonan Standar"
-    },
-    {
-      "key": "301",
-      "name": "Event Permohonan Karakter"
-    },
-    {
-      "key": "302",
-      "name": "Event Permohonan Senjata"
-    },
-    {
-      "key": "400",
-      "name": "Event Permohonan Karakter - 2"
-    }
-  ],
-  "sharedWishes": [
-    {
-      "key": "100",
-      "name": "Permohonan Pemula"
-    },
-    {
-      "key": "200",
-      "name": "Permohonan Standar"
-    },
-    {
-      "key": "301",
-      "name": "Event Permohonan Karakter dan Event Permohonan Karakter - 2"
-    },
-    {
-      "key": "302",
-      "name": "Event Permohonan Senjata"
-    }
-  ]
+  "wishes": {
+    "100": "Permohonan Pemula",
+    "200": "Permohonan Standar",
+    "301": "Event Permohonan Karakter",
+    "302": "Event Permohonan Senjata",
+    "400": "Event Permohonan Karakter - 2"
+  },
+  "sharedWishes": {
+    "100": "Permohonan Pemula",
+    "200": "Permohonan Standar",
+    "301": "Event Permohonan Karakter dan Event Permohonan Karakter - 2",
+    "302": "Event Permohonan Senjata"
+  }
 }

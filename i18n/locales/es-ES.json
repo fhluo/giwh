@@ -460,44 +460,17 @@
     "Ágata del Peñasco Oscuro": "Blackcliff Agate",
     "Último Acorde": "The Stringless"
   },
-  "wishes": [
-    {
-      "key": "100",
-      "name": "Gachapón de principiante"
-    },
-    {
-      "key": "200",
-      "name": "Gachapón permanente"
-    },
-    {
-      "key": "301",
-      "name": "Gachapón promocional de personaje"
-    },
-    {
-      "key": "302",
-      "name": "Gachapón promocional de arma"
-    },
-    {
-      "key": "400",
-      "name": "Gachapón promocional de personaje 2"
-    }
-  ],
-  "sharedWishes": [
-    {
-      "key": "100",
-      "name": "Gachapón de principiante"
-    },
-    {
-      "key": "200",
-      "name": "Gachapón permanente"
-    },
-    {
-      "key": "301",
-      "name": "Gachapón promocional de personaje y gachapón promocional de personaje 2"
-    },
-    {
-      "key": "302",
-      "name": "Gachapón promocional de arma"
-    }
-  ]
+  "wishes": {
+    "100": "Gachapón de principiante",
+    "200": "Gachapón permanente",
+    "301": "Gachapón promocional de personaje",
+    "302": "Gachapón promocional de arma",
+    "400": "Gachapón promocional de personaje 2"
+  },
+  "sharedWishes": {
+    "100": "Gachapón de principiante",
+    "200": "Gachapón permanente",
+    "301": "Gachapón promocional de personaje y gachapón promocional de personaje 2",
+    "302": "Gachapón promocional de arma"
+  }
 }

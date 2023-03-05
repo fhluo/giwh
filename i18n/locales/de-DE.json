@@ -460,44 +460,17 @@
     "Übungsgroßschwert": "Waster Greatsword",
     "„Der Fang“": "\"The Catch\""
   },
-  "wishes": [
-    {
-      "key": "100",
-      "name": "Neulingsgebete"
-    },
-    {
-      "key": "200",
-      "name": "Standardgebet"
-    },
-    {
-      "key": "301",
-      "name": "Figurenaktionsgebet"
-    },
-    {
-      "key": "302",
-      "name": "Waffenaktionsgebet"
-    },
-    {
-      "key": "400",
-      "name": "Figurenaktionsgebet 2"
-    }
-  ],
-  "sharedWishes": [
-    {
-      "key": "100",
-      "name": "Neulingsgebete"
-    },
-    {
-      "key": "200",
-      "name": "Standardgebet"
-    },
-    {
-      "key": "301",
-      "name": "Figurenaktionsgebet und Figurenaktionsgebet 2"
-    },
-    {
-      "key": "302",
-      "name": "Waffenaktionsgebet"
-    }
-  ]
+  "wishes": {
+    "100": "Neulingsgebete",
+    "200": "Standardgebet",
+    "301": "Figurenaktionsgebet",
+    "302": "Waffenaktionsgebet",
+    "400": "Figurenaktionsgebet 2"
+  },
+  "sharedWishes": {
+    "100": "Neulingsgebete",
+    "200": "Standardgebet",
+    "301": "Figurenaktionsgebet und Figurenaktionsgebet 2",
+    "302": "Waffenaktionsgebet"
+  }
 }

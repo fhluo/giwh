@@ -7,6 +7,7 @@ import (
 	"github.com/samber/lo"
 	"golang.org/x/sys/windows"
 	"golang.org/x/text/language"
+	"sync"
 )
 
 //go:generate go run ../cmd/giwh-dev gen lang
@@ -14,21 +15,33 @@ import (
 
 var (
 	//go:embed locales/*.json
-	locales embed.FS
+	localesFS embed.FS
 
 	tagToLang = make(map[string]Language)
-	Locales   = make(map[Language]Locale)
 )
 
 func init() {
 	for _, lang := range Languages {
 		tagToLang[lang.Tag().String()] = lang
-		Locales[lang] = lo.Must(ReadLocale(lang))
 	}
 }
 
+var (
+	once    sync.Once
+	locales = make(map[Language]Locale)
+)
+
+func Locales() map[Language]Locale {
+	once.Do(func() {
+		for _, lang := range Languages {
+			locales[lang] = lo.Must(ReadLocale(lang))
+		}
+	})
+	return locales
+}
+
 func ReadLocaleFile(lang Language) ([]byte, error) {
-	return locales.ReadFile(fmt.Sprintf("locales/%s.json", lang.Tag().String()))
+	return localesFS.ReadFile(fmt.Sprintf("locales/%s.json", lang.Tag().String()))
 }
 
 func ReadLocale(lang Language) (locale Locale, err error) {

@@ -460,44 +460,17 @@
     "Œil d'assermentation": "Oathsworn Eye",
     "Œil de la perception": "Eye of Perception"
   },
-  "wishes": [
-    {
-      "key": "100",
-      "name": "Vœux des débutants"
-    },
-    {
-      "key": "200",
-      "name": "Vœux permanents"
-    },
-    {
-      "key": "301",
-      "name": "Vœux événements de personnage"
-    },
-    {
-      "key": "302",
-      "name": "Vœux événements d'arme"
-    },
-    {
-      "key": "400",
-      "name": "Vœux événements de personnage - 2"
-    }
-  ],
-  "sharedWishes": [
-    {
-      "key": "100",
-      "name": "Vœux des débutants"
-    },
-    {
-      "key": "200",
-      "name": "Vœux permanents"
-    },
-    {
-      "key": "301",
-      "name": "Vœux événements de personnage et Vœux événements de personnage - 2"
-    },
-    {
-      "key": "302",
-      "name": "Vœux événements d'arme"
-    }
-  ]
+  "wishes": {
+    "100": "Vœux des débutants",
+    "200": "Vœux permanents",
+    "301": "Vœux événements de personnage",
+    "302": "Vœux événements d'arme",
+    "400": "Vœux événements de personnage - 2"
+  },
+  "sharedWishes": {
+    "100": "Vœux des débutants",
+    "200": "Vœux permanents",
+    "301": "Vœux événements de personnage et Vœux événements de personnage - 2",
+    "302": "Vœux événements d'arme"
+  }
 }
