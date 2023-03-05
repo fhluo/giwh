@@ -2,31 +2,15 @@
 
 package wish
 
-var (
-	NoviceWishes = Type{
-		Key:  100,
-		Name: "Novice Wishes",
-	}
-	PermanentWish = Type{
-		Key:  200,
-		Name: "Permanent Wish",
-	}
-	CharacterEventWish = Type{
-		Key:  301,
-		Name: "Character Event Wish",
-	}
-	CharacterEventWishAndCharacterEventWish2 = Type{
-		Key:  301,
-		Name: "Character Event Wish and Character Event Wish-2",
-	}
-	WeaponEventWish = Type{
-		Key:  302,
-		Name: "Weapon Event Wish",
-	}
-	CharacterEventWish2 = Type{
-		Key:  400,
-		Name: "Character Event Wish-2",
-	}
+type Type int
+
+const (
+	NoviceWishes                             Type = 100
+	PermanentWish                            Type = 200
+	CharacterEventWish                       Type = 301
+	CharacterEventWishAndCharacterEventWish2 Type = 301
+	WeaponEventWish                          Type = 302
+	CharacterEventWish2                      Type = 400
 )
 
 var Wishes = []Type{
