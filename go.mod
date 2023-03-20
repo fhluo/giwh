@@ -3,22 +3,22 @@ module github.com/fhluo/giwh
 go 1.20
 
 require (
-	github.com/bytedance/sonic v1.8.3
+	github.com/bytedance/sonic v1.8.5
 	github.com/dave/jennifer v1.6.0
 	github.com/dop251/goja v0.0.0-20230226152633-7c93113e17ac
 	github.com/fatih/color v1.13.0
 	github.com/gin-gonic/gin v1.9.0
-	github.com/goccy/go-json v0.10.0
+	github.com/goccy/go-json v0.10.2
 	github.com/google/go-querystring v1.1.0
 	github.com/hashicorp/go-multierror v1.1.1
 	github.com/json-iterator/go v1.1.12
 	github.com/mitchellh/mapstructure v1.5.0
-	github.com/samber/lo v1.37.0
+	github.com/samber/lo v1.38.0
 	github.com/spf13/cobra v1.6.1
 	github.com/spf13/viper v1.15.0
 	github.com/stretchr/testify v1.8.1
-	github.com/wailsapp/wails/v2 v2.4.0
-	golang.org/x/exp v0.0.0-20230310171629-522b1b587ee0
+	github.com/wailsapp/wails/v2 v2.4.1
+	golang.org/x/exp v0.0.0-20230315142452-642cacee5cc0
 	golang.org/x/net v0.8.0
 	golang.org/x/sys v0.6.0
 	golang.org/x/text v0.8.0
