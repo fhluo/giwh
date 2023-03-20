@@ -5,6 +5,7 @@ import (
 	"github.com/fhluo/giwh/i18n"
 	"github.com/fhluo/giwh/pkg/cmd/gen/wishes"
 	"github.com/fhluo/giwh/pkg/wiki"
+	"github.com/fhluo/giwh/pkg/wish"
 	"github.com/hashicorp/go-multierror"
 	"github.com/samber/lo"
 	"github.com/spf13/cobra"
@@ -41,11 +42,11 @@ func NewCmd() *cobra.Command {
 			for lang, entries := range results {
 				locale := i18n.NewLocale(lang)
 
-				locale.Wishes = lo.SliceToMap(wishes.Wishes[lang.Key], func(wishType i18n.WishType) (int, string) {
-					return wishType.Key, wishType.Name
+				locale.Wishes = lo.SliceToMap(wishes.Wishes[lang.Key], func(wishType i18n.WishType) (wish.Type, string) {
+					return wish.Type(wishType.Key), wishType.Name
 				})
-				locale.SharedWishes = lo.SliceToMap(wishes.SharedWishes[lang.Key], func(wishType i18n.WishType) (int, string) {
-					return wishType.Key, wishType.Name
+				locale.SharedWishes = lo.SliceToMap(wishes.SharedWishes[lang.Key], func(wishType i18n.WishType) (wish.Type, string) {
+					return wish.Type(wishType.Key), wishType.Name
 				})
 
 				for index, entry := range entries {

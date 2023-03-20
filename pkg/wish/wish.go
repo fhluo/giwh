@@ -39,10 +39,10 @@ type Query struct {
 	AuthKey    string `url:"authkey"`
 	Lang       string `url:"lang"`
 
-	WishType Type  `url:"gacha_type"`
-	Size     int   `url:"size"`
-	BeginID  int64 `url:"begin_id,omitempty"`
-	EndID    int64 `url:"end_id,omitempty"`
+	WishType Type   `url:"gacha_type"`
+	Size     int    `url:"size"`
+	BeginID  string `url:"begin_id,omitempty"`
+	EndID    string `url:"end_id,omitempty"`
 }
 
 func (q Query) Encode() string {
@@ -91,15 +91,15 @@ func (ctx *Context) Size(size int) *Context {
 	return ctx
 }
 
-func (ctx *Context) Begin(id int64) *Context {
+func (ctx *Context) Begin(id string) *Context {
 	ctx.query.BeginID = id
-	ctx.query.EndID = 0
+	ctx.query.EndID = ""
 	return ctx
 }
 
-func (ctx *Context) End(id int64) *Context {
+func (ctx *Context) End(id string) *Context {
 	ctx.query.EndID = id
-	ctx.query.BeginID = 0
+	ctx.query.BeginID = ""
 	return ctx
 }
 
@@ -113,7 +113,7 @@ func (ctx *Context) Fetch() (items []Item, err error) {
 		return
 	}
 
-	if ctx.query.BeginID > 0 {
+	if ctx.query.BeginID != "" {
 		ctx.query.BeginID = items[0].ID
 	} else {
 		ctx.query.EndID = items[len(items)-1].ID

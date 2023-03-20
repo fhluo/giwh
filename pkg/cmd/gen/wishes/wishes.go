@@ -12,7 +12,6 @@ import (
 	"golang.org/x/exp/slices"
 	"golang.org/x/exp/slog"
 	"os"
-	"strconv"
 )
 
 var (
@@ -34,13 +33,13 @@ func init() {
 		os.Exit(1)
 	}
 
-	err = mapstructure.WeakDecode(vm.Get("itemTypeMap").Export(), &SharedWishes)
+	err = mapstructure.Decode(vm.Get("itemTypeMap").Export(), &SharedWishes)
 	if err != nil {
 		log.Error(err.Error(), nil)
 		os.Exit(1)
 	}
 
-	err = mapstructure.WeakDecode(vm.Get("itemTypeNameMap").Export(), &Wishes)
+	err = mapstructure.Decode(vm.Get("itemTypeNameMap").Export(), &Wishes)
 	if err != nil {
 		log.Error(err.Error(), nil)
 		os.Exit(1)
@@ -74,7 +73,6 @@ func NewCmd() *cobra.Command {
 				return a.Key < b.Key
 			})
 
-			file.Type().Id("Type").Int().Line()
 			file.Add(TypesDefs(types))
 			file.Add(WishTypes("Wishes", Wishes[i18n.English.Key]))
 			file.Add(WishTypes("SharedWishes", SharedWishes[i18n.English.Key]))
@@ -107,7 +105,7 @@ func WishTypes(name string, types []i18n.WishType) Code {
 	return Var().Id(name).Op("=").Index().Id("Type").Add(
 		Op("{").Line().Add(
 			lo.Map(types, func(t i18n.WishType, _ int) Code {
-				return Id(t.VarName()).Op(",").Comment(strconv.Itoa(t.Key)).Line()
+				return Id(t.VarName()).Op(",").Comment(t.Key).Line()
 			})...,
 		).Op("}"),
 	).Line()

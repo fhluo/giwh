@@ -2,15 +2,13 @@
 
 package wish
 
-type Type int
-
 const (
-	NoviceWishes                             Type = 100
-	PermanentWish                            Type = 200
-	CharacterEventWish                       Type = 301
-	CharacterEventWishAndCharacterEventWish2 Type = 301
-	WeaponEventWish                          Type = 302
-	CharacterEventWish2                      Type = 400
+	NoviceWishes                             Type = "100"
+	PermanentWish                            Type = "200"
+	CharacterEventWish                       Type = "301"
+	CharacterEventWishAndCharacterEventWish2 Type = "301"
+	WeaponEventWish                          Type = "302"
+	CharacterEventWish2                      Type = "400"
 )
 
 var Wishes = []Type{

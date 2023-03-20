@@ -7,7 +7,7 @@ import (
 )
 
 type WishType struct {
-	Key  int    `json:"key,string" mapstructure:"key"`
+	Key  string `json:"key" mapstructure:"key"`
 	Name string `json:"name" mapstructure:"name"`
 }
 
