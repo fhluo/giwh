@@ -42,8 +42,8 @@ export namespace api {
         charactersInverse: { [key: string]: string };
         weapons: { [key: string]: string };
         weaponsInverse: { [key: string]: string };
-        wishes: Wish[];
-        sharedWishes: Wish[];
+        wishes: { [key: string]: string };
+        sharedWishes: { [key: string]: string };
     }
 
     export interface Wish {

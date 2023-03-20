@@ -5,8 +5,6 @@ export function GetAssets():Promise<string>;
 
 export function GetDefaultSharedWish():Promise<string>;
 
-export function GetItems():Promise<string>;
-
 export function GetLanguage():Promise<string>;
 
 export function GetLocale(arg1:string):Promise<string>;

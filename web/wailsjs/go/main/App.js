@@ -10,10 +10,6 @@ export function GetDefaultSharedWish() {
   return window['go']['main']['App']['GetDefaultSharedWish']();
 }
 
-export function GetItems() {
-  return window['go']['main']['App']['GetItems']();
-}
-
 export function GetLanguage() {
   return window['go']['main']['App']['GetLanguage']();
 }
