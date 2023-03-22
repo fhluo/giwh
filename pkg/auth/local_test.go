@@ -1,4 +1,4 @@
-package local
+package auth
 
 import (
 	"fmt"
@@ -24,9 +24,10 @@ func TestSearchCacheDataPaths(t *testing.T) {
 
 func TestGetAuths(t *testing.T) {
 	skipCI(t)
-	for _, a := range GetAuths() {
-		fmt.Println(a.Domain, a.AuthKeyVer, a.Lang)
-		fmt.Println(a.AuthKey)
-		fmt.Println(a.GetGachaLogURL())
+
+	infos := GetAllInfos()
+	for _, info := range infos {
+		fmt.Println(info.BaseURL, info.AuthKeyVer, info.Lang)
+		fmt.Println(info.AuthKey)
 	}
 }

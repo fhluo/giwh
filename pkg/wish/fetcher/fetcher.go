@@ -59,13 +59,13 @@ type Context struct {
 	interval time.Duration
 }
 
-func New(base auth.Base) *Context {
+func New(info auth.Info) *Context {
 	return &Context{
-		url: lo.Must(url.Parse(base.GetGachaLogURL())),
+		url: lo.Must(url.Parse(info.BaseURL)),
 		query: Query{
-			AuthKeyVer: base.AuthKeyVer,
-			AuthKey:    base.AuthKey,
-			Lang:       base.Lang,
+			AuthKeyVer: info.AuthKeyVer,
+			AuthKey:    info.AuthKey,
+			Lang:       info.Lang,
 			Size:       5,
 		},
 		interval: DefaultInterval,

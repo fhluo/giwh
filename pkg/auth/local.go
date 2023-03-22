@@ -1,8 +1,7 @@
-package local
+package auth
 
 import (
 	"errors"
-	"github.com/fhluo/giwh/pkg/auth"
 	"github.com/samber/lo"
 	"golang.org/x/exp/slog"
 	"io/fs"
@@ -26,7 +25,7 @@ func GetCacheDataPaths() (cacheDataPaths []string) {
 			if errors.Is(err, fs.ErrNotExist) {
 				slog.Debug("file does not exist", "path", outputLogPath)
 			} else {
-				slog.Error(err.Error(), nil)
+				slog.Error(err.Error())
 			}
 			continue
 		}
@@ -39,34 +38,41 @@ func GetCacheDataPaths() (cacheDataPaths []string) {
 
 var urlRE = regexp.MustCompile(`https?://[-a-zA-Z0-9.:/=&?_%+]+`)
 
-func GetAuths() (auths []auth.Base) {
+func ReadInfos(path string) (infos []Info, err error) {
+	data, err := os.ReadFile(path)
+	if err != nil {
+		return
+	}
+
+	return lo.FilterMap(urlRE.FindAll(data, -1), func(url []byte, _ int) (info Info, ok bool) {
+		info, err = FromURL(string(url))
+		if err != nil {
+			slog.Debug(err.Error(), "url", string(url))
+			return
+		}
+		ok = true
+		return
+	}), nil
+}
+
+func GetAllInfos() (infos []Info) {
 	cacheDataPaths := GetCacheDataPaths()
 	if len(cacheDataPaths) == 0 {
 		return
 	}
 
 	for _, cacheDataPath := range cacheDataPaths {
-		data, err := os.ReadFile(cacheDataPath)
+		result, err := ReadInfos(cacheDataPath)
 		if err != nil {
 			if errors.Is(err, fs.ErrNotExist) {
 				slog.Debug("file does not exist", "path", cacheDataPath)
 			} else {
-				slog.Error(err.Error(), nil)
+				slog.Error(err.Error())
 			}
 			continue
 		}
-
-		result := lo.FilterMap(urlRE.FindAll(data, -1), func(url []byte, _ int) (base auth.Base, ok bool) {
-			base, err = auth.FromURL(string(url))
-			if err != nil {
-				slog.Debug(err.Error(), "url", string(url))
-				return
-			}
-			ok = true
-			return
-		})
-		auths = append(auths, result...)
+		infos = append(infos, result...)
 	}
 
-	return lo.Uniq(auths)
+	return lo.Uniq(infos)
 }
