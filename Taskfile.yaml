@@ -1,0 +1,22 @@
+version: 3
+
+tasks:
+  build:
+    dir: ./app
+    cmds:
+      - wails build
+
+  dev:
+    dir: ./app
+    cmds:
+      - wails dev
+
+  web-build:
+    dir: ./app/ui
+    cmds:
+      - pnpm run build
+
+  web-dev:
+    dir: ./app/ui
+    cmds:
+      - pnpm run dev
