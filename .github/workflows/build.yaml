@@ -25,10 +25,11 @@ jobs:
       - name: Set up pnpm
         uses: pnpm/action-setup@v2
         with:
-          version: 7.27.1
+          version: 8.3.1
 
       - name: Install Wails
         run: go install github.com/wailsapp/wails/v2/cmd/wails@latest
 
       - name: Build
+        working-directory: ./app
         run: wails build
