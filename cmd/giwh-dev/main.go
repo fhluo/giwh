@@ -5,8 +5,8 @@ import (
 	"github.com/fhluo/giwh/pkg/cmd/dl"
 	"github.com/fhluo/giwh/pkg/cmd/gen"
 	"github.com/spf13/cobra"
-	"golang.org/x/exp/slog"
 	"log"
+	"log/slog"
 	"os"
 )
 
@@ -26,7 +26,7 @@ func main() {
 	defer config.Save()
 
 	if err := rootCmd.Execute(); err != nil {
-		slog.Error(err.Error(), nil)
+		slog.Error(err.Error())
 		os.Exit(1)
 	}
 }

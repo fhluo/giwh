@@ -8,21 +8,22 @@ import (
 	"github.com/fhluo/giwh/pkg/cmd/stat"
 	"github.com/fhluo/giwh/pkg/cmd/update"
 	"github.com/fhluo/giwh/pkg/cmd/version"
-	"github.com/fhluo/giwh/pkg/i18n"
 	"github.com/fhluo/giwh/pkg/wish/pipeline"
 	"github.com/fhluo/giwh/pkg/wish/repository"
 	"github.com/spf13/cobra"
-	"golang.org/x/exp/slog"
 	"log"
+	"log/slog"
 	"os"
 )
+
+var language string
 
 var rootCmd = &cobra.Command{
 	Use:   "giwh",
 	Short: "Genshin Impact Wish History Exporter",
 	Args:  cobra.NoArgs,
 	RunE: func(cmd *cobra.Command, args []string) error {
-		items, err := repository.LoadItems(config.WishHistoryPath)
+		items, err := repository.LoadItems(config.WishHistoryPath.Get())
 		if err != nil {
 			return err
 		}
@@ -32,11 +33,8 @@ var rootCmd = &cobra.Command{
 			return nil
 		}
 
-		if config.Language.Get() != "" {
-			i18n.Language = config.Language.Get()
-		}
 		if cmd.Flags().Changed("lang") {
-			config.Language.Set(i18n.Language)
+			config.Language.Set(language)
 		}
 
 		stat.Stat(p.FilterByUID(p.Items()[0].UID).Items())
@@ -57,14 +55,14 @@ func init() {
 
 	rootCmd.AddCommand(version.NewCmd())
 
-	rootCmd.PersistentFlags().StringVarP(&i18n.Language, "lang", "l", "", "set language")
+	rootCmd.PersistentFlags().StringVarP(&language, "lang", "l", "", "set language")
 }
 
 func main() {
 	defer config.Save()
 
 	if err := rootCmd.Execute(); err != nil {
-		slog.Error(err.Error(), nil)
+		slog.Error(err.Error())
 		os.Exit(1)
 	}
 }

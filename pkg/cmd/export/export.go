@@ -22,7 +22,7 @@ func NewCmd() *cobra.Command {
 		Short: "Export wish history",
 		Args:  cobra.ExactArgs(1),
 		RunE: func(cmd *cobra.Command, args []string) error {
-			items, err := repository.LoadItems(config.WishHistoryPath)
+			items, err := repository.LoadItems(config.WishHistoryPath.Get())
 			if err != nil {
 				return err
 			}

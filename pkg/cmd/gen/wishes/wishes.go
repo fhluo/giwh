@@ -9,9 +9,9 @@ import (
 	"github.com/mitchellh/mapstructure"
 	"github.com/samber/lo"
 	"github.com/spf13/cobra"
-	"golang.org/x/exp/slices"
-	"golang.org/x/exp/slog"
+	"log/slog"
 	"os"
+	"slices"
 )
 
 var (

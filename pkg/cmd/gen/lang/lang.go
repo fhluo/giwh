@@ -9,10 +9,10 @@ import (
 	"github.com/mitchellh/mapstructure"
 	"github.com/samber/lo"
 	"github.com/spf13/cobra"
-	"golang.org/x/exp/slices"
-	"golang.org/x/exp/slog"
 	"golang.org/x/text/language"
+	"log/slog"
 	"os"
+	"slices"
 )
 
 type Language = i18n.Language

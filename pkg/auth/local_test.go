@@ -2,7 +2,7 @@ package auth
 
 import (
 	"fmt"
-	"golang.org/x/exp/slog"
+	"log/slog"
 	"os"
 	"testing"
 )
@@ -14,6 +14,25 @@ func init() {
 func skipCI(t *testing.T) {
 	if os.Getenv("CI") != "" {
 		t.SkipNow()
+	}
+}
+
+func TestFindAllURL(t *testing.T) {
+	skipCI(t)
+
+	cacheDataPaths := GetCacheDataPaths()
+	if len(cacheDataPaths) == 0 {
+		return
+	}
+
+	data, err := os.ReadFile(cacheDataPaths[0])
+	if err != nil {
+		return
+	}
+
+	urls := FindAllURL(data)
+	for _, url := range urls {
+		fmt.Println(url)
 	}
 }
 

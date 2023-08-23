@@ -9,7 +9,7 @@ import (
 	"github.com/hashicorp/go-multierror"
 	"github.com/samber/lo"
 	"github.com/spf13/cobra"
-	"golang.org/x/exp/slog"
+	"log/slog"
 	"os"
 	"path/filepath"
 	"sync"
@@ -31,7 +31,7 @@ func NewCmd() *cobra.Command {
 
 			results, err := GetAllEntries()
 			if err != nil {
-				slog.Error(err.Error(), nil)
+				slog.Error(err.Error())
 				os.Exit(1)
 			}
 

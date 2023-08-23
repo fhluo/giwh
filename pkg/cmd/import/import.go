@@ -20,7 +20,7 @@ func NewCmd() *cobra.Command {
 				return err
 			}
 
-			items, err := repository.LoadItemsIfExits(config.WishHistoryPath)
+			items, err := repository.LoadItemsIfExits(config.WishHistoryPath.Get())
 			if err != nil {
 				return err
 			}
@@ -35,7 +35,7 @@ func NewCmd() *cobra.Command {
 				p.Append(items...)
 			}
 
-			if err = repository.BackupAndSaveItems(config.WishHistoryPath, p.Items()); err != nil {
+			if err = repository.BackupAndSaveItems(config.WishHistoryPath.Get(), p.Items()); err != nil {
 				return err
 			}
 

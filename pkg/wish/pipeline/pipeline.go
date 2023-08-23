@@ -3,16 +3,16 @@ package pipeline
 import (
 	"github.com/fhluo/giwh/pkg/wish"
 	"github.com/samber/lo"
-	"golang.org/x/exp/slices"
+	"slices"
 )
 
 type Pipeline struct {
 	items []wish.Item
-	index map[int64]struct{}
+	index map[string]struct{}
 }
 
 func New(items []wish.Item) *Pipeline {
-	index := make(map[int64]struct{})
+	index := make(map[string]struct{})
 	for _, item := range items {
 		index[item.ID] = struct{}{}
 	}
@@ -113,8 +113,8 @@ func (p *Pipeline) SortByIDDescending() *Pipeline {
 	return p
 }
 
-func (p *Pipeline) GroupByUID() map[int][]wish.Item {
-	return lo.GroupBy(p.items, func(item wish.Item) int {
+func (p *Pipeline) GroupByUID() map[string][]wish.Item {
+	return lo.GroupBy(p.items, func(item wish.Item) string {
 		return item.UID
 	})
 }
@@ -126,12 +126,12 @@ func (p *Pipeline) GroupBySharedWish() map[wish.Type][]wish.Item {
 }
 
 func (p *Pipeline) Unique() *Pipeline {
-	return New(lo.UniqBy(p.items, func(item wish.Item) int64 {
+	return New(lo.UniqBy(p.items, func(item wish.Item) string {
 		return item.ID
 	}))
 }
 
-func (p *Pipeline) FilterByUID(uid int) *Pipeline {
+func (p *Pipeline) FilterByUID(uid string) *Pipeline {
 	return New(lo.Filter(p.items, func(item wish.Item, _ int) bool {
 		return item.UID == uid
 	}))
@@ -159,7 +159,7 @@ func (p *Pipeline) FilterBySharedWish(types ...wish.Type) *Pipeline {
 	return p.FilterByWish(types...)
 }
 
-func (p *Pipeline) FilterByRarity(rarities ...int) *Pipeline {
+func (p *Pipeline) FilterByRarity(rarities ...wish.Rarity) *Pipeline {
 	switch len(rarities) {
 	case 0:
 		return nil
@@ -174,8 +174,8 @@ func (p *Pipeline) FilterByRarity(rarities ...int) *Pipeline {
 	}
 }
 
-func (p *Pipeline) UIDs() []int {
-	return lo.Uniq(lo.Map(p.items, func(item wish.Item, _ int) int {
+func (p *Pipeline) UIDs() []string {
+	return lo.Uniq(lo.Map(p.items, func(item wish.Item, _ int) string {
 		return item.UID
 	}))
 }
@@ -208,13 +208,13 @@ func (p *Pipeline) Progress4Star() int {
 	})
 }
 
-func (p *Pipeline) Pulls5Stars() map[int64]int {
+func (p *Pipeline) Pulls5Stars() map[string]int {
 	if len(p.UIDs()) != 1 || len(p.SharedWishes()) != 1 {
 		return nil
 	}
 
 	p.SortByIDAscending()
-	pulls := make(map[int64]int)
+	pulls := make(map[string]int)
 	prev := 0
 
 	for i, item := range p.items {
@@ -227,13 +227,13 @@ func (p *Pipeline) Pulls5Stars() map[int64]int {
 	return pulls
 }
 
-func (p *Pipeline) Pulls4Stars() map[int64]int {
+func (p *Pipeline) Pulls4Stars() map[string]int {
 	if len(p.UIDs()) != 1 || len(p.SharedWishes()) != 1 {
 		return nil
 	}
 
 	p.SortByIDAscending()
-	pulls := make(map[int64]int)
+	pulls := make(map[string]int)
 	prev := 0
 
 	for i, item := range p.items {

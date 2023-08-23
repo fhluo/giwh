@@ -4,11 +4,12 @@ import (
 	"errors"
 	"fmt"
 	"github.com/bytedance/sonic"
-	"github.com/fhluo/giwh/pkg/local"
+	"github.com/fhluo/giwh/pkg/auth"
 	"github.com/fhluo/giwh/pkg/wish"
+	"github.com/fhluo/giwh/pkg/wish/fetcher"
 	"github.com/fhluo/giwh/pkg/wish/pipeline"
-	"golang.org/x/exp/slog"
 	"io/fs"
+	"log/slog"
 	"os"
 	"path/filepath"
 	"strings"
@@ -62,8 +63,8 @@ func UpdateItems(filename string, handlers ...func(item wish.Item)) ([]wish.Item
 		return nil, err
 	}
 
-	auths := local.GetAuths()
-	if len(auths) == 0 {
+	infos := auth.GetAllInfos()
+	if len(infos) == 0 {
 		return nil, fmt.Errorf("")
 	}
 
@@ -71,7 +72,7 @@ func UpdateItems(filename string, handlers ...func(item wish.Item)) ([]wish.Item
 	length := p.Len()
 
 	for _, sharedWish := range wish.SharedWishes {
-		ctx := wish.New(auths[len(auths)-1]).WishType(sharedWish).Size(10)
+		ctx := fetcher.New(infos[len(infos)-1]).WishType(sharedWish).Size(10)
 
 		for {
 			items, err = ctx.Fetch()

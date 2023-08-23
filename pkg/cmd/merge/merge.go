@@ -5,8 +5,8 @@ import (
 	"github.com/fhluo/giwh/pkg/wish/pipeline"
 	"github.com/fhluo/giwh/pkg/wish/repository"
 	"github.com/spf13/cobra"
-	"golang.org/x/exp/slog"
 	"log"
+	"log/slog"
 	"os"
 )
 
@@ -44,7 +44,7 @@ func NewCmd() *cobra.Command {
 
 	cmd.Flags().StringVarP(&outputFilename, "output", "o", "", "specify output filename")
 	if err := cmd.MarkFlagRequired("output"); err != nil {
-		slog.Error(err.Error(), nil)
+		slog.Error(err.Error())
 		os.Exit(1)
 	}
 

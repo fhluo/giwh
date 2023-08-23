@@ -2,11 +2,11 @@ package main
 
 import (
 	"embed"
+	"log/slog"
 
 	"github.com/fhluo/giwh/internal/config"
 	"github.com/samber/lo"
 	"github.com/wailsapp/wails/v2/pkg/options/windows"
-	"golang.org/x/exp/slog"
 	"io/fs"
 	"log"
 	"net/http"

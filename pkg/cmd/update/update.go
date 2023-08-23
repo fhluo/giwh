@@ -14,7 +14,7 @@ func NewCmd() *cobra.Command {
 		Short: "Update wish history",
 		RunE: func(cmd *cobra.Command, args []string) error {
 			var count int
-			_, err := repository.UpdateItems(config.WishHistoryPath, func(item wish.Item) {
+			_, err := repository.UpdateItems(config.WishHistoryPath.Get(), func(item wish.Item) {
 				count++
 				fmt.Println(item.Name, item.UID, item.WishType, item.Time)
 			})

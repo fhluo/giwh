@@ -2,20 +2,20 @@ package assets
 
 import (
 	"fmt"
-	"github.com/fhluo/giwh/assets"
+	"github.com/fhluo/giwh/app/assets"
 	"github.com/fhluo/giwh/i18n"
 	"github.com/fhluo/giwh/pkg/wiki"
 	"github.com/goccy/go-json"
 	"github.com/samber/lo"
 	"github.com/spf13/cobra"
-	"golang.org/x/exp/slices"
-	"golang.org/x/exp/slog"
 	"io"
 	"log"
+	"log/slog"
 	"net/http"
 	"os"
 	"path"
 	"path/filepath"
+	"slices"
 	"sync"
 )
 
@@ -128,7 +128,7 @@ func (d Downloader) Characters() []wiki.Entry {
 	if d.characters == nil {
 		d.characters, err = d.GetEntries(wiki.CharacterArchive.ID)
 		if err != nil {
-			slog.Error(err.Error(), nil)
+			slog.Error(err.Error())
 			os.Exit(1)
 		}
 		d.characters = clean(d.characters)
@@ -143,7 +143,7 @@ func (d Downloader) Weapons() []wiki.Entry {
 	if d.weapons == nil {
 		d.weapons, err = d.GetEntries(wiki.Weapons.ID)
 		if err != nil {
-			slog.Error(err.Error(), nil)
+			slog.Error(err.Error())
 			os.Exit(1)
 		}
 

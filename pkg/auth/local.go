@@ -3,8 +3,8 @@ package auth
 import (
 	"errors"
 	"github.com/samber/lo"
-	"golang.org/x/exp/slog"
 	"io/fs"
+	"log/slog"
 	"os"
 	"path/filepath"
 	"regexp"
@@ -38,21 +38,33 @@ func GetCacheDataPaths() (cacheDataPaths []string) {
 
 var urlRE = regexp.MustCompile(`https?://[-a-zA-Z0-9.:/=&?_%+]+`)
 
+func FindAllURL(data []byte) []string {
+	result := urlRE.FindAll(data, -1)
+	urls := make([]string, len(result))
+	for i, url := range result {
+		urls[i] = string(url)
+	}
+	return urls
+}
+
 func ReadInfos(path string) (infos []Info, err error) {
 	data, err := os.ReadFile(path)
 	if err != nil {
 		return
 	}
 
-	return lo.FilterMap(urlRE.FindAll(data, -1), func(url []byte, _ int) (info Info, ok bool) {
-		info, err = FromURL(string(url))
+	urls := FindAllURL(data)
+	infos = make([]Info, 0, len(urls))
+	for _, url := range urls {
+		info, err := FromURL(url)
 		if err != nil {
-			slog.Debug(err.Error(), "url", string(url))
-			return
+			slog.Debug(err.Error(), "url", url)
+			continue
 		}
-		ok = true
-		return
-	}), nil
+		infos = append(infos, info)
+	}
+
+	return infos, nil
 }
 
 func GetAllInfos() (infos []Info) {

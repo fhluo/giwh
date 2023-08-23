@@ -3,7 +3,7 @@ package config
 import (
 	"github.com/fhluo/giwh/i18n"
 	"github.com/spf13/viper"
-	"golang.org/x/exp/slog"
+	"log/slog"
 	"os"
 	"path/filepath"
 	"sync"
@@ -12,10 +12,10 @@ import (
 var (
 	Dir = filepath.Join(os.Getenv("LOCALAPPDATA"), "giwh")
 
-	Path            = filepath.Join(Dir, "config.toml")
-	WishHistoryPath = filepath.Join(Dir, "wish_history.json")
+	Path = filepath.Join(Dir, "config.toml")
 
-	Language = NewItem("language", i18n.Default().Tag().String())
+	WishHistoryPath = NewItem("wish_history_path", filepath.Join(Dir, "wish_history.json"))
+	Language        = NewItem("language", i18n.Default().Tag().String())
 )
 
 func init() {
@@ -70,7 +70,7 @@ func Save() {
 				slog.Warn("failed to write config", "path", Path)
 			}
 		} else {
-			slog.Error(err.Error(), nil)
+			slog.Error(err.Error())
 		}
 	}
 }

@@ -1,8 +1,9 @@
-package wish
+package fetcher
 
 import (
 	"github.com/fhluo/giwh/pkg/auth"
 	"github.com/fhluo/giwh/pkg/wiki"
+	"github.com/fhluo/giwh/pkg/wish"
 	"github.com/google/go-querystring/query"
 	"github.com/samber/lo"
 	"net/http"
@@ -10,17 +11,15 @@ import (
 	"time"
 )
 
-//go:generate go run ../../cmd/giwh-dev gen wishes
-
 type GetWishHistoryResponseData struct {
-	List   []Item `json:"list"`
-	Page   int    `json:"page,string"`
-	Region string `json:"region"`
-	Size   int    `json:"size,string"`
-	Total  int    `json:"total,string"`
+	List   []wish.Item `json:"list"`
+	Page   int         `json:"page,string"`
+	Region string      `json:"region"`
+	Size   int         `json:"size,string"`
+	Total  int         `json:"total,string"`
 }
 
-func GetWishHistory(url string) ([]Item, error) {
+func GetWishHistory(url string) ([]wish.Item, error) {
 	resp, err := http.Get(url)
 	if err != nil {
 		return nil, err
@@ -39,10 +38,10 @@ type Query struct {
 	AuthKey    string `url:"authkey"`
 	Lang       string `url:"lang"`
 
-	WishType Type   `url:"gacha_type"`
-	Size     int    `url:"size"`
-	BeginID  string `url:"begin_id,omitempty"`
-	EndID    string `url:"end_id,omitempty"`
+	WishType wish.Type `url:"gacha_type"`
+	Size     int       `url:"size"`
+	BeginID  string    `url:"begin_id,omitempty"`
+	EndID    string    `url:"end_id,omitempty"`
 }
 
 func (q Query) Encode() string {
@@ -81,7 +80,7 @@ func (ctx *Context) String() string {
 	return ctx.URL()
 }
 
-func (ctx *Context) WishType(wishType Type) *Context {
+func (ctx *Context) WishType(wishType wish.Type) *Context {
 	ctx.query.WishType = wishType
 	return ctx
 }
@@ -107,7 +106,7 @@ func (ctx *Context) Interval(interval time.Duration) {
 	ctx.interval = interval
 }
 
-func (ctx *Context) Fetch() (items []Item, err error) {
+func (ctx *Context) Fetch() (items []wish.Item, err error) {
 	items, err = GetWishHistory(ctx.URL())
 	if err != nil || len(items) == 0 {
 		return
