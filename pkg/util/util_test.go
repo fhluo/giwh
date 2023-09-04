@@ -2,9 +2,9 @@ package util
 
 import (
 	"github.com/stretchr/testify/assert"
-	"golang.org/x/exp/slices"
 	"os"
 	"path/filepath"
+	"slices"
 	"testing"
 )
 

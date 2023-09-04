@@ -7,11 +7,11 @@ import (
 	"github.com/fhluo/giwh/pkg/fetcher"
 	"github.com/fhluo/giwh/pkg/util"
 	"github.com/fhluo/giwh/pkg/wish"
-	"golang.org/x/exp/slices"
 	"io/fs"
 	"log"
 	"os"
 	"path/filepath"
+	"slices"
 )
 
 var (
