@@ -6,12 +6,12 @@ Genshin Impact Wish History Exporter
 
 ## Features
 
-- Get the wish history through the API and save it to `%LocalAppData%\giwh\wish_history.json`.
-- Update the wish history.
+- Fetch wish history through API and save it to `%LocalAppData%\giwh\wish_history.json`.
+- Update wish history.
 - Show the progress of getting the next 4-Star and 5-Star.
 - Show the number of pulls used to acquire a 5-Star character or weapon.
-- Export the wish history in json, toml, csv or xlsx format.
-- Import the wish history in json or toml format.
+- Export wish history to json, toml, csv or xlsx format.
+- Import wish history in json or toml format.
 
 ### Note
 
