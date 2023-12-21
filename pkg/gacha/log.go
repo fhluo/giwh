@@ -1,4 +1,4 @@
-package db
+package gacha
 
 // Log 表示抽卡记录
 type Log struct {
