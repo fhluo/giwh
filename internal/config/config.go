@@ -15,7 +15,7 @@ var (
 	Path = filepath.Join(Dir, "config.toml")
 
 	WishHistoryPath = NewItem("wish_history_path", filepath.Join(Dir, "wish_history.json"))
-	LogsPath        = NewItem("logs_path", filepath.Join(Dir, "logs.db"))
+	LogsPath        = NewItem("logs_path", filepath.Join(Dir, "logs.sqlite3"))
 	Language        = NewItem("language", i18n.Default().Tag().String())
 )
 

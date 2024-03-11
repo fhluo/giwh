@@ -4,18 +4,21 @@ import (
 	"database/sql"
 	_ "embed"
 	"github.com/fhluo/giwh/internal/config"
+	"github.com/fhluo/giwh/pkg/gacha"
 	"github.com/goccy/go-json"
 	"log/slog"
+	_ "modernc.org/sqlite"
 	"os"
 	"sync"
 )
 
 var (
-	once sync.Once
-	logs LogsDB
-	//go:embed logs.sql
-	logsSQL string
+	once   sync.Once
+	logsDB LogsDB
 )
+
+//go:embed logs.sql
+var logsSQL string
 
 func Logs() LogsDB {
 	once.Do(func() {
@@ -24,31 +27,50 @@ func Logs() LogsDB {
 			slog.Error(err.Error())
 			os.Exit(1)
 		}
-		logs.db = db
-		logs.InitDB()
+		logsDB.db = db
+		logsDB.InitDB()
 	})
-	return logs
+	return logsDB
 }
 
 type LogsDB struct {
 	db *sql.DB
 }
 
-func (logs LogsDB) InitDB() {
-	_, err := logs.db.Exec(logsSQL)
+func (l LogsDB) InitDB() {
+	_, err := l.db.Exec(logsSQL)
 	if err != nil {
 		slog.Error(err.Error())
 		os.Exit(1)
 	}
 }
 
-func (logs LogsDB) ImportFromJSON(filename string) error {
-	tx, err := logs.db.Begin()
+func (l LogsDB) ImportFromJSON(filename string) error {
+	data, err := os.ReadFile(filename)
 	if err != nil {
 		return err
 	}
 
-	stmt, err := tx.Prepare(`insert into logs(id, uid, gacha_type, name, item_id, item_type, rank_type, count, time, lang)
+	var logs []gacha.Log
+	err = json.Unmarshal(data, &logs)
+	if err != nil {
+		return err
+	}
+
+	return l.Insert(logs...)
+}
+
+func (l LogsDB) ImportFromWishHistory() error {
+	return l.ImportFromJSON(config.WishHistoryPath.Get())
+}
+
+func (l LogsDB) Insert(logs ...gacha.Log) error {
+	tx, err := l.db.Begin()
+	if err != nil {
+		return err
+	}
+
+	stmt, err := tx.Prepare(`insert or ignore into log(id, uid, gacha_type, name, item_id, item_type, rank_type, count, time, lang)
 values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`)
 	if err != nil {
 		return err
@@ -60,18 +82,7 @@ values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`)
 		}
 	}()
 
-	data, err := os.ReadFile(filename)
-	if err != nil {
-		return err
-	}
-
-	var logs_ []Log
-	err = json.Unmarshal(data, &logs_)
-	if err != nil {
-		return err
-	}
-
-	for _, log := range logs_ {
+	for _, log := range logs {
 		_, err = stmt.Exec(log.ID, log.UID, log.GachaType, log.Name, log.ItemID, log.ItemType, log.RankType, log.Count, log.Time, log.Lang)
 		if err != nil {
 			return err
@@ -79,4 +90,57 @@ values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`)
 	}
 
 	return tx.Commit()
+}
+
+func (l LogsDB) UIDList() ([]string, error) {
+	rows, err := l.db.Query(`select uid from uid`)
+	if err != nil {
+		return nil, err
+	}
+	defer func() {
+		if err = rows.Close(); err != nil {
+			slog.Warn(err.Error())
+		}
+	}()
+
+	var uidList []string
+
+	for rows.Next() {
+		var uid string
+		err = rows.Scan(&uid)
+		if err != nil {
+			return nil, err
+		}
+		uidList = append(uidList, uid)
+	}
+
+	return uidList, nil
+}
+
+// Log 表示抽卡记录
+type Log struct {
+	ID        string `json:"id"`         // 记录 ID
+	UID       string `json:"uid"`        // 用户 ID
+	GachaType string `json:"gacha_type"` // 卡池类型
+	Name      string `json:"name"`       // 物品名称
+	ItemID    string `json:"item_id"`    // 物品 ID
+	ItemType  string `json:"item_type"`  // 物品类型
+	RankType  string `json:"rank_type"`  // 稀有度
+	Count     string `json:"count"`      // 物品数量
+	Time      string `json:"time"`       // 时间
+	Lang      string `json:"lang"`       // 语言
+}
+
+type Pity struct {
+	UID       string `json:"uid"`
+	GachaType string `json:"gacha_type"`
+	Pity      int
+}
+
+func (l LogsDB) Pity() {
+
+}
+
+func (l LogsDB) UpdateFromURL() {
+
 }
