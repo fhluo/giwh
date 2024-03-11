@@ -1,6 +1,6 @@
-/app/build/bin/
+giwh/app/build/bin/
 node_modules/
-/app/ui/dist/
+giwh/app/ui/dist/
 
 .idea/
 
