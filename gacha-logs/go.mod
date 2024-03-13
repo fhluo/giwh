@@ -4,7 +4,7 @@ go 1.22.1
 
 require (
 	github.com/google/go-querystring v1.1.0
-	modernc.org/sqlite v1.29.4
+	modernc.org/sqlite v1.29.5
 )
 
 require (
