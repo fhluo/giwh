@@ -167,7 +167,7 @@ func (c *Client) Until(condition func(Log) bool) ([]Log, error) {
 }
 
 // FetchAll 获取所有卡池的所有抽卡记录
-func FetchAll(u URLBuilder) ([]Log, error) {
+func FetchAll(u *URLBuilder) ([]Log, error) {
 	var logs []Log
 
 	for _, u := range u.GachaTypes(SharedGachaTypes) {
@@ -182,7 +182,7 @@ func FetchAll(u URLBuilder) ([]Log, error) {
 }
 
 // FetchAllUntil 获取所有卡池的所有抽卡记录，直到满足条件
-func FetchAllUntil(url URLBuilder, condition func(Log) bool) ([]Log, error) {
+func FetchAllUntil(url *URLBuilder, condition func(Log) bool) ([]Log, error) {
 	var logs []Log
 
 	for _, u := range url.GachaTypes(SharedGachaTypes) {

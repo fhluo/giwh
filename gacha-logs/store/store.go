@@ -1,10 +1,9 @@
-package gachalog
+package store
 
 import (
 	"encoding/json"
 	"errors"
-	"github.com/fhluo/giwh/pkg/gacha"
-	"github.com/fhluo/giwh/pkg/requests"
+	"github.com/fhluo/giwh/gacha-logs/api"
 	"io/fs"
 	"log/slog"
 	"os"
@@ -12,19 +11,19 @@ import (
 	"strings"
 )
 
-// Storage 是抽卡记录存储
-type Storage struct {
-	GachaLogs []gacha.Log // 抽卡记录
+// Store 是抽卡记录存储
+type Store struct {
+	GachaLogs []api.Log // 抽卡记录
 	ids       map[string]struct{}
 }
 
-// NewStorage 创建抽卡记录存储
-func NewStorage() *Storage {
-	return &Storage{}
+// New 创建抽卡记录存储
+func New() *Store {
+	return &Store{}
 }
 
 // Add 添加抽卡记录
-func (s *Storage) Add(logs ...gacha.Log) {
+func (s *Store) Add(logs ...api.Log) {
 	for _, log := range logs {
 		s.ids[log.ID] = struct{}{}
 	}
@@ -32,13 +31,13 @@ func (s *Storage) Add(logs ...gacha.Log) {
 }
 
 // ReadFromFile 从文件读取抽卡记录
-func (s *Storage) ReadFromFile(filename string) error {
+func (s *Store) ReadFromFile(filename string) error {
 	data, err := os.ReadFile(filename)
 	if err != nil {
 		return err
 	}
-	
-	var logs []gacha.Log
+
+	var logs []api.Log
 	if err = json.Unmarshal(data, &logs); err != nil {
 		return err
 	}
@@ -57,12 +56,12 @@ func ignoreErrNotExist(err error) error {
 }
 
 // ReadFromFileIfExits 从文件读取抽卡记录，如果文件不存在则忽略
-func (s *Storage) ReadFromFileIfExits(filename string) error {
+func (s *Store) ReadFromFileIfExits(filename string) error {
 	return ignoreErrNotExist(s.ReadFromFile(filename))
 }
 
 // WriteToFile 将抽卡记录写入文件
-func (s *Storage) WriteToFile(filename string) error {
+func (s *Store) WriteToFile(filename string) error {
 	data, err := json.Marshal(s.GachaLogs)
 	if err != nil {
 		return err
@@ -71,7 +70,7 @@ func (s *Storage) WriteToFile(filename string) error {
 }
 
 // BackupAndWriteToFile 备份并将抽卡记录写入文件
-func (s *Storage) BackupAndWriteToFile(filename string) error {
+func (s *Store) BackupAndWriteToFile(filename string) error {
 	dir, base := filepath.Split(filename)
 	ext := filepath.Ext(base)
 
@@ -83,8 +82,8 @@ func (s *Storage) BackupAndWriteToFile(filename string) error {
 }
 
 // Update 更新抽卡记录
-func (s *Storage) Update(url requests.RequestURL) error {
-	logs, err := requests.FetchGachaLogs(url).Until(func(log gacha.Log) bool {
+func (s *Store) Update(url *api.URLBuilder) error {
+	logs, err := api.NewClient(url).Until(func(log api.Log) bool {
 		_, ok := s.ids[log.ID]
 		return ok
 	})
@@ -99,8 +98,8 @@ func (s *Storage) Update(url requests.RequestURL) error {
 }
 
 // UpdateAll 更新所有抽卡记录
-func (s *Storage) UpdateAll(url requests.RequestURL) error {
-	logs, err := requests.FetchAllUntil(url, func(log gacha.Log) bool {
+func (s *Store) UpdateAll(url *api.URLBuilder) error {
+	logs, err := api.FetchAllUntil(url, func(log api.Log) bool {
 		_, ok := s.ids[log.ID]
 		return ok
 	})
