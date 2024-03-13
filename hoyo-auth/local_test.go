@@ -27,12 +27,12 @@ func TestGenshin(t *testing.T) {
 		"genshin_cn": map[string]any{
 			"output_log_path":   GenshinCN().outputLogPath(),
 			"program_data_path": GenshinCN().programDataPath(),
-			"infos":             GenshinCN().AuthInfos(),
+			"auths":             GenshinCN().Auths(),
 		},
 		"genshin_global": map[string]any{
 			"output_log_path":   GenshinGlobal().outputLogPath(),
 			"program_data_path": GenshinGlobal().programDataPath(),
-			"infos":             GenshinGlobal().AuthInfos(),
+			"auths":             GenshinGlobal().Auths(),
 		},
 	})
 	if err != nil {

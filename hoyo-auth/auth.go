@@ -4,54 +4,65 @@ import (
 	"fmt"
 	"net/url"
 	"reflect"
+	"slices"
 	"strings"
 )
 
-type Info struct {
-	BaseURL    string `url:"-" toml:"base_url"`
+type Auth struct {
+	Hostname   string `url:"-" toml:"hostname"`
 	AuthKeyVer string `url:"authkey_ver" toml:"authkey_ver"`
 	AuthKey    string `url:"authkey" toml:"authkey"`
 	Lang       string `url:"lang" toml:"lang"`
 }
 
-func GetBaseURL(hostname string) (string, error) {
-	switch {
-	case strings.HasSuffix(hostname, "mihoyo.com"):
-		return "https://hk4e-api.mihoyo.com/event/gacha_info/api/getGachaLog", nil
-	case strings.HasSuffix(hostname, "hoyoverse.com"):
-		return "https://hk4e-api-os.hoyoverse.com/event/gacha_info/api/getGachaLog", nil
-	case strings.HasSuffix(hostname, "mhyurl.cn"):
-		return "https://hk4e-api.mihoyo.com/event/gacha_info/api/getGachaLog", nil
-	default:
-		return "", fmt.Errorf("invalid hostname: %s", hostname)
-	}
-}
-
-func FromURL(rawURL string) (info Info, err error) {
+func New(rawURL string) (*Auth, error) {
 	u, err := url.Parse(rawURL)
 	if err != nil {
-		return
+		return nil, err
 	}
 
-	info.BaseURL, err = GetBaseURL(u.Hostname())
-	if err != nil {
-		return
+	auth := &Auth{Hostname: u.Hostname()}
+	if !auth.valid() {
+		return auth, fmt.Errorf("invalid hostname: %s", auth.Hostname)
 	}
 
-	query := u.Query()
-	value := reflect.Indirect(reflect.ValueOf(&info))
-	type_ := value.Type()
+	return auth, auth.decode(u.Query())
+}
 
-	for i := 0; i < value.NumField(); i++ {
-		key := type_.Field(i).Tag.Get("url")
-		if key != "" && key != "-" {
-			if !query.Has(key) {
-				err = fmt.Errorf("missing %s", key)
-				return
-			}
-			value.Field(i).SetString(query.Get(key))
+var domains = []string{
+	"mihoyo.com",
+	"hoyoverse.com",
+	"mhyurl.cn",
+}
+
+func (auth *Auth) valid() bool {
+	return slices.ContainsFunc(domains, func(domain string) bool {
+		return strings.HasSuffix(auth.Hostname, domain)
+	})
+}
+
+// decode 为指定字段赋予 query 中对应的值
+func (auth *Auth) decode(query url.Values) error {
+	value := reflect.Indirect(reflect.ValueOf(auth))
+	typ := value.Type()
+
+	for i := 0; i < typ.NumField(); i++ {
+		// 获取 url 标签的值
+		key := typ.Field(i).Tag.Get("url")
+
+		// 忽略不需要的字段
+		if key == "-" || key == "" {
+			continue
 		}
+
+		// 检查是否缺少必要的字段
+		if !query.Has(key) {
+			return fmt.Errorf("missing query key: %s", key)
+		}
+
+		// 为字段赋值
+		value.Field(i).SetString(query.Get(key))
 	}
 
-	return
+	return nil
 }

@@ -134,19 +134,18 @@ func (g Genshin) urlsInCacheData() []string {
 	return urls
 }
 
-func (g Genshin) AuthInfos() []Info {
+func (g Genshin) Auths() []*Auth {
 	urls := g.urlsInCacheData()
-	infos := make([]Info, 0, len(urls))
+	auths := make([]*Auth, 0, len(urls))
 
 	for _, url := range urls {
-		info, err := FromURL(url)
+		auth, err := New(url)
 		if err != nil {
 			slog.Debug("failed to get auth info from url", "url", url, "err", err)
 			continue
 		}
-
-		infos = append(infos, info)
+		auths = append(auths, auth)
 	}
 
-	return lo.Uniq(infos)
+	return lo.Uniq(auths)
 }
