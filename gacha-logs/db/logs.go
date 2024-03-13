@@ -3,34 +3,26 @@ package db
 import (
 	"database/sql"
 	_ "embed"
-	"github.com/fhluo/giwh/internal/config"
-	"github.com/fhluo/giwh/pkg/gacha"
-	"github.com/goccy/go-json"
+	"encoding/json"
+	"github.com/fhluo/giwh/gacha-logs/gacha"
 	"log/slog"
 	_ "modernc.org/sqlite"
 	"os"
-	"sync"
-)
-
-var (
-	once   sync.Once
-	logsDB LogsDB
 )
 
 //go:embed logs.sql
 var logsSQL string
 
-func Logs() LogsDB {
-	once.Do(func() {
-		db, err := sql.Open("sqlite", config.LogsPath.Get())
-		if err != nil {
-			slog.Error(err.Error())
-			os.Exit(1)
-		}
-		logsDB.db = db
-		logsDB.InitDB()
-	})
-	return logsDB
+func NewLogsDB(path string) (LogsDB, error) {
+	db, err := sql.Open("sqlite", path)
+	if err != nil {
+		return LogsDB{}, err
+	}
+	logsDB := LogsDB{
+		db: db,
+	}
+	logsDB.InitDB()
+	return logsDB, nil
 }
 
 type LogsDB struct {

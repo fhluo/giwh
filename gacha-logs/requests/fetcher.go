@@ -1,7 +1,7 @@
 package requests
 
 import (
-	"github.com/fhluo/giwh/pkg/gacha"
+	"github.com/fhluo/giwh/gacha-logs/gacha"
 	"slices"
 	"time"
 )
