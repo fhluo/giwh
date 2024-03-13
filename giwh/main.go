@@ -12,13 +12,12 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/wailsapp/wails/v2"
 	"github.com/wailsapp/wails/v2/pkg/options"
 	"github.com/wailsapp/wails/v2/pkg/options/assetserver"
 )
 
 var (
-	//go:embed ui/dist
+	//go:embed ../../ui/dist
 	assets embed.FS
 	//go:embed assets/images
 	images embed.FS
