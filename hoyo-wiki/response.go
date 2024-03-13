@@ -1,8 +1,7 @@
-package wiki
+package hoyo_wiki
 
 import (
 	"fmt"
-	"github.com/bytedance/sonic"
 	"io"
 	"net/http"
 )

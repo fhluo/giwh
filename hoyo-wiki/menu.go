@@ -1,4 +1,4 @@
-package wiki
+package hoyo_wiki
 
 import (
 	"regexp"
