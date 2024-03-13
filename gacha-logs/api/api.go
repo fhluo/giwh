@@ -52,14 +52,18 @@ func NewURLBuilder(auth *hoyo_auth.Auth) *URLBuilder {
 	}
 }
 
+func (u *URLBuilder) Copy() *URLBuilder {
+	return &(*u)
+}
+
+func (u *URLBuilder) Reset() *URLBuilder {
+	return u.Begin("").End("")
+}
+
 var baseURLs = map[string]string{
 	"mihoyo.com":    "https://hk4e-api.mihoyo.com/event/gacha_info/api/getGachaLog",
 	"hoyoverse.com": "https://hk4e-api-os.hoyoverse.com/event/gacha_info/api/getGachaLog",
 	"mhyurl.cn":     "https://hk4e-api.mihoyo.com/event/gacha_info/api/getGachaLog",
-}
-
-func (u *URLBuilder) Copy() *URLBuilder {
-	return &(*u)
 }
 
 // BaseURL 返回 hostname 对应的 GetGachaLog 基础 URL

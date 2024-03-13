@@ -1,4 +1,4 @@
-package api
+package gacha
 
 // Log 表示抽卡记录
 type Log struct {
@@ -14,18 +14,18 @@ type Log struct {
 	Lang      string `json:"lang"`       // 语言
 }
 
-type GachaType = string
+type Type = string
 
 const (
-	NoviceWishes        GachaType = "100" // 新手祈愿
-	PermanentWish       GachaType = "200" // 常驻祈愿
-	CharacterEventWish  GachaType = "301" // 角色活动祈愿
-	WeaponEventWish     GachaType = "302" // 武器活动祈愿
-	CharacterEventWish2 GachaType = "400" // 角色活动祈愿-2
-	ChronicledWish      GachaType = "500" // 集录祈愿
+	NoviceWishes        Type = "100" // 新手祈愿
+	PermanentWish       Type = "200" // 常驻祈愿
+	CharacterEventWish  Type = "301" // 角色活动祈愿
+	WeaponEventWish     Type = "302" // 武器活动祈愿
+	CharacterEventWish2 Type = "400" // 角色活动祈愿-2
+	ChronicledWish      Type = "500" // 集录祈愿
 )
 
-var GachaTypes = []GachaType{
+var Types = []Type{
 	NoviceWishes,        // 100
 	PermanentWish,       // 200
 	CharacterEventWish,  // 301
@@ -34,7 +34,7 @@ var GachaTypes = []GachaType{
 	ChronicledWish,      // 500
 }
 
-var SharedGachaTypes = []GachaType{
+var SharedTypes = []Type{
 	NoviceWishes,       // 100 新手祈愿
 	PermanentWish,      // 200 常驻祈愿
 	CharacterEventWish, // 301, 400 角色活动祈愿与角色活动祈愿-2
