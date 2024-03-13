@@ -2,15 +2,17 @@ package hoyo_auth
 
 import (
 	"fmt"
+	"github.com/lmittmann/tint"
 	"github.com/pelletier/go-toml/v2"
 	"log/slog"
 	"os"
 	"testing"
+	"time"
 )
 
 func init() {
 	slog.SetDefault(slog.New(
-		slog.NewTextHandler(os.Stderr, &slog.HandlerOptions{Level: slog.LevelDebug}),
+		tint.NewHandler(os.Stderr, &tint.Options{Level: slog.LevelDebug, TimeFormat: time.TimeOnly}),
 	))
 }
 

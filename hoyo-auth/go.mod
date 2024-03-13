@@ -3,6 +3,7 @@ module github.com/fhluo/giwh/hoyo-auth
 go 1.22.1
 
 require (
+	github.com/lmittmann/tint v1.0.4
 	github.com/pelletier/go-toml/v2 v2.1.1
 	github.com/samber/lo v1.39.0
 )
