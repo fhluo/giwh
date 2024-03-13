@@ -5,3 +5,6 @@ giwh/app/ui/dist/
 .idea/
 
 *.exe
+
+go.work
+go.work.sum
