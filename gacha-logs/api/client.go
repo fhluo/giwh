@@ -81,9 +81,7 @@ func (c *Fetcher) NextPage() ([]gacha.Log, error) {
 		return nil, nil
 	}
 
-	c.Begin(logs[0].ID)
 	c.End(logs[len(logs)-1].ID)
-
 	return logs, nil
 }
 

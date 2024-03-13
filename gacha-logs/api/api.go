@@ -57,7 +57,9 @@ func (u *URLBuilder) Copy() *URLBuilder {
 }
 
 func (u *URLBuilder) Reset() *URLBuilder {
-	return u.Begin("").End("")
+	u.Query.BeginID = ""
+	u.Query.EndID = ""
+	return u
 }
 
 var baseURLs = map[string]string{
@@ -101,11 +103,13 @@ func (u *URLBuilder) Size(size int) *URLBuilder {
 // Begin 设置开始 ID
 func (u *URLBuilder) Begin(id string) *URLBuilder {
 	u.Query.BeginID = id
+	u.Query.EndID = ""
 	return u
 }
 
 // End 设置结束 ID
 func (u *URLBuilder) End(id string) *URLBuilder {
+	u.Query.BeginID = ""
 	u.Query.EndID = id
 	return u
 }
