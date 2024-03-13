@@ -1,4 +1,4 @@
-package gacha_logs
+package api
 
 // Log 表示抽卡记录
 type Log struct {
