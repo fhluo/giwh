@@ -1,5 +1,7 @@
 package gacha
 
+import "time"
+
 // Log 表示抽卡记录
 type Log struct {
 	ID        string `json:"id"`         // 记录 ID
@@ -12,6 +14,19 @@ type Log struct {
 	Count     string `json:"count"`      // 物品数量
 	Time      string `json:"time"`       // 时间
 	Lang      string `json:"lang"`       // 语言
+}
+
+func (log *Log) ParseTime() (time.Time, error) {
+	return time.Parse(`"2006-01-02 15:04:05"`, log.Time)
+}
+
+func (log *Log) SharedWishType() Type {
+	switch log.GachaType {
+	case CharacterEventWish, CharacterEventWish2:
+		return CharacterEventWish
+	default:
+		return log.GachaType
+	}
 }
 
 type Type = string
