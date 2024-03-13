@@ -17,12 +17,12 @@ type Log struct {
 type GachaType = string
 
 const (
-	NoviceWishes        GachaType = "100"
-	PermanentWish       GachaType = "200"
-	CharacterEventWish  GachaType = "301"
-	WeaponEventWish     GachaType = "302"
-	CharacterEventWish2 GachaType = "400"
-	ChronicledWish      GachaType = "500"
+	NoviceWishes        GachaType = "100" // 新手祈愿
+	PermanentWish       GachaType = "200" // 常驻祈愿
+	CharacterEventWish  GachaType = "301" // 角色活动祈愿
+	WeaponEventWish     GachaType = "302" // 武器活动祈愿
+	CharacterEventWish2 GachaType = "400" // 角色活动祈愿-2
+	ChronicledWish      GachaType = "500" // 集录祈愿
 )
 
 var GachaTypes = []GachaType{
@@ -35,9 +35,9 @@ var GachaTypes = []GachaType{
 }
 
 var SharedGachaTypes = []GachaType{
-	NoviceWishes,       // 100
-	PermanentWish,      // 200
-	CharacterEventWish, // 301, 400
-	WeaponEventWish,    // 302
-	ChronicledWish,     // 500
+	NoviceWishes,       // 100 新手祈愿
+	PermanentWish,      // 200 常驻祈愿
+	CharacterEventWish, // 301, 400 角色活动祈愿与角色活动祈愿-2
+	WeaponEventWish,    // 302 武器活动祈愿
+	ChronicledWish,     // 500 集录祈愿
 }

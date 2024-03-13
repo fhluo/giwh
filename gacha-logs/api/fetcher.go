@@ -1,7 +1,7 @@
 package requests
 
 import (
-	"github.com/fhluo/giwh/gacha-logs/gacha"
+	"github.com/fhluo/giwh/gacha-logs"
 	"slices"
 	"time"
 )
@@ -13,11 +13,11 @@ const (
 
 // Response 是抽卡记录响应
 type Response struct {
-	List   []gacha.Log `json:"list"`         // 抽卡记录列表
-	Page   int         `json:"page,string"`  // 页码
-	Region string      `json:"region"`       // 地区
-	Size   int         `json:"size,string"`  // 每页数量
-	Total  int         `json:"total,string"` // 总数
+	List   []gacha_logs.Log `json:"list"`         // 抽卡记录列表
+	Page   int              `json:"page,string"`  // 页码
+	Region string           `json:"region"`       // 地区
+	Size   int              `json:"size,string"`  // 每页数量
+	Total  int              `json:"total,string"` // 总数
 }
 
 // GetGachaLog 获取抽卡记录
@@ -27,9 +27,9 @@ func GetGachaLog(url string) (Response, error) {
 
 // Fetcher 是抽卡记录获取器
 type Fetcher struct {
-	URL       RequestURL  // 请求 URL
-	GachaLogs []gacha.Log // 抽卡记录
-	Cache     []gacha.Log // 缓存
+	URL       RequestURL       // 请求 URL
+	GachaLogs []gacha_logs.Log // 抽卡记录
+	Cache     []gacha_logs.Log // 缓存
 
 	Done bool // 是否完成
 
@@ -68,7 +68,7 @@ func (f *Fetcher) PrevURL() RequestURL {
 }
 
 // PrevPage 获取上一页抽卡记录
-func (f *Fetcher) PrevPage() ([]gacha.Log, error) {
+func (f *Fetcher) PrevPage() ([]gacha_logs.Log, error) {
 	panic("not implemented")
 }
 
@@ -82,7 +82,7 @@ func (f *Fetcher) NextURL() RequestURL {
 }
 
 // NextPage 获取下一页抽卡记录
-func (f *Fetcher) NextPage() ([]gacha.Log, error) {
+func (f *Fetcher) NextPage() ([]gacha_logs.Log, error) {
 	// 等待下次请求
 	f.Wait()
 
@@ -108,12 +108,12 @@ func (f *Fetcher) NextPage() ([]gacha.Log, error) {
 }
 
 // Next 获取下一条抽卡记录
-func (f *Fetcher) Next() (gacha.Log, error) {
+func (f *Fetcher) Next() (gacha_logs.Log, error) {
 	// 如果缓存为空，则获取下一页
 	if len(f.Cache) == 0 {
 		_, err := f.NextPage()
 		if err != nil {
-			return gacha.Log{}, err
+			return gacha_logs.Log{}, err
 		}
 	}
 
@@ -124,7 +124,7 @@ func (f *Fetcher) Next() (gacha.Log, error) {
 }
 
 // All 获取所有抽卡记录
-func (f *Fetcher) All() ([]gacha.Log, error) {
+func (f *Fetcher) All() ([]gacha_logs.Log, error) {
 	for {
 		list, err := f.NextPage()
 		if err != nil {
@@ -141,7 +141,7 @@ func (f *Fetcher) All() ([]gacha.Log, error) {
 }
 
 // Until 获取所有抽卡记录，遇到满足条件的记录则停止
-func (f *Fetcher) Until(condition func(gacha.Log) bool) ([]gacha.Log, error) {
+func (f *Fetcher) Until(condition func(gacha_logs.Log) bool) ([]gacha_logs.Log, error) {
 	for {
 		// 如果已经完成，则退出
 		if f.Done {
@@ -156,7 +156,7 @@ func (f *Fetcher) Until(condition func(gacha.Log) bool) ([]gacha.Log, error) {
 
 		// 如果满足条件，则退出
 		if condition(log) {
-			i := slices.IndexFunc(f.GachaLogs, func(l gacha.Log) bool {
+			i := slices.IndexFunc(f.GachaLogs, func(l gacha_logs.Log) bool {
 				return l.ID == log.ID
 			})
 			return f.GachaLogs[:i], nil
@@ -167,8 +167,8 @@ func (f *Fetcher) Until(condition func(gacha.Log) bool) ([]gacha.Log, error) {
 }
 
 // FetchAll 获取所有卡池的所有抽卡记录
-func FetchAll(url RequestURL) ([]gacha.Log, error) {
-	var logs []gacha.Log
+func FetchAll(url RequestURL) ([]gacha_logs.Log, error) {
+	var logs []gacha_logs.Log
 
 	for _, u := range url.WithGachaTypes(SharedGachaTypes) {
 		list, err := u.FetchGachaLogs().All()
@@ -182,8 +182,8 @@ func FetchAll(url RequestURL) ([]gacha.Log, error) {
 }
 
 // FetchAllUntil 获取所有卡池的所有抽卡记录，直到满足条件
-func FetchAllUntil(url RequestURL, condition func(gacha.Log) bool) ([]gacha.Log, error) {
-	var logs []gacha.Log
+func FetchAllUntil(url RequestURL, condition func(gacha_logs.Log) bool) ([]gacha_logs.Log, error) {
+	var logs []gacha_logs.Log
 
 	for _, u := range url.WithGachaTypes(SharedGachaTypes) {
 		list, err := u.FetchGachaLogs().Until(condition)

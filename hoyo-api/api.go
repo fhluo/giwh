@@ -1,4 +1,4 @@
-package requests
+package hoyo_api
 
 import (
 	"encoding/json"
@@ -40,28 +40,29 @@ func GetJSON[T any](url string) (r T, err error) {
 	return
 }
 
-// APIResponse 是通用的 API 响应
-type APIResponse[T any] struct {
+// Response 是通用的 API 响应
+type Response[T any] struct {
 	ReturnCode int    `json:"retcode"`
 	Message    string `json:"message"`
 	Data       T      `json:"data"`
 }
 
 // OK 判断响应是否成功
-func (r *APIResponse[T]) OK() bool {
+func (r *Response[T]) OK() bool {
 	return r.ReturnCode == 0
 }
 
-// GetAPI 获取 API 响应
-func GetAPI[T any](url string) (resp APIResponse[T], err error) {
-	return GetJSON[APIResponse[T]](url)
+// Get 获取 API 响应
+func Get[T any](url string) (resp Response[T], err error) {
+	return GetJSON[Response[T]](url)
 }
 
-// GetDataFromAPI 获取 API 响应的数据
-func GetDataFromAPI[T any](url string) (T, error) {
-	resp, err := GetAPI[T](url)
+// GetData 获取 API 响应的数据
+func GetData[T any](url string) (T, error) {
+	resp, err := Get[T](url)
 	if err != nil {
-		return resp.Data, err
+		var t T
+		return t, err
 	}
 
 	if !resp.OK() {
