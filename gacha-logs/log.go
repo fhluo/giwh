@@ -22,6 +22,7 @@ const (
 	CharacterEventWish  GachaType = "301"
 	WeaponEventWish     GachaType = "302"
 	CharacterEventWish2 GachaType = "400"
+	ChronicledWish      GachaType = "500"
 )
 
 var GachaTypes = []GachaType{
@@ -30,6 +31,7 @@ var GachaTypes = []GachaType{
 	CharacterEventWish,  // 301
 	WeaponEventWish,     // 302
 	CharacterEventWish2, // 400
+	ChronicledWish,      // 500
 }
 
 var SharedGachaTypes = []GachaType{
@@ -37,4 +39,5 @@ var SharedGachaTypes = []GachaType{
 	PermanentWish,      // 200
 	CharacterEventWish, // 301, 400
 	WeaponEventWish,    // 302
+	ChronicledWish,     // 500
 }
