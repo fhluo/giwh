@@ -1,7 +1,8 @@
-package auth
+package hoyo_auth
 
 import (
 	"fmt"
+	"github.com/pelletier/go-toml/v2"
 	"log/slog"
 	"os"
 	"testing"
@@ -19,36 +20,24 @@ func skipCI(t *testing.T) {
 	}
 }
 
-func TestFindAllURL(t *testing.T) {
+func TestGenshin(t *testing.T) {
 	skipCI(t)
 
-	cacheDataPaths := GetCacheDataPaths()
-	if len(cacheDataPaths) == 0 {
-		return
-	}
-
-	data, err := os.ReadFile(cacheDataPaths[0])
+	data, err := toml.Marshal(map[string]any{
+		"genshin_cn": map[string]any{
+			"output_log_path":   GenshinCN().outputLogPath(),
+			"program_data_path": GenshinCN().programDataPath(),
+			"infos":             GenshinCN().AuthInfos(),
+		},
+		"genshin_global": map[string]any{
+			"output_log_path":   GenshinGlobal().outputLogPath(),
+			"program_data_path": GenshinGlobal().programDataPath(),
+			"infos":             GenshinGlobal().AuthInfos(),
+		},
+	})
 	if err != nil {
-		return
+		t.Fatal(err)
 	}
 
-	urls := FindAllURL(data)
-	for _, url := range urls {
-		fmt.Println(url)
-	}
-}
-
-func TestSearchCacheDataPaths(t *testing.T) {
-	skipCI(t)
-	fmt.Println(GetCacheDataPaths())
-}
-
-func TestGetAuths(t *testing.T) {
-	skipCI(t)
-
-	infos := GetAllInfos()
-	for _, info := range infos {
-		fmt.Println(info.BaseURL, info.AuthKeyVer, info.Lang)
-		fmt.Println(info.AuthKey)
-	}
+	fmt.Println(string(data))
 }

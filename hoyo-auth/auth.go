@@ -1,4 +1,4 @@
-package auth
+package hoyo_auth
 
 import (
 	"fmt"
@@ -8,10 +8,10 @@ import (
 )
 
 type Info struct {
-	BaseURL    string `url:"-"`
-	AuthKeyVer string `url:"authkey_ver"`
-	AuthKey    string `url:"authkey"`
-	Lang       string `url:"lang"`
+	BaseURL    string `url:"-" toml:"base_url"`
+	AuthKeyVer string `url:"authkey_ver" toml:"authkey_ver"`
+	AuthKey    string `url:"authkey" toml:"authkey"`
+	Lang       string `url:"lang" toml:"lang"`
 }
 
 func GetBaseURL(hostname string) (string, error) {
