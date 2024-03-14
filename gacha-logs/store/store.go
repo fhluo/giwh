@@ -17,13 +17,15 @@ import (
 
 // Store 是抽卡记录存储
 type Store struct {
-	logs []gacha.Log // 抽卡记录
-	ids  map[string]struct{}
+	logs  []gacha.Log // 抽卡记录
+	index map[string]struct{}
 }
 
 // New 创建抽卡记录存储
-func New() *Store {
-	return &Store{}
+func New(logs []gacha.Log) *Store {
+	store := new(Store)
+	store.Add(logs...)
+	return store
 }
 
 func (store *Store) Unique() []gacha.Log {
@@ -41,8 +43,12 @@ func (store *Store) Unique() []gacha.Log {
 
 // Add 添加抽卡记录
 func (store *Store) Add(logs ...gacha.Log) {
+	if store.index == nil {
+		store.index = make(map[string]struct{})
+	}
+
 	for _, log := range logs {
-		store.ids[log.ID] = struct{}{}
+		store.index[log.ID] = struct{}{}
 	}
 	store.logs = append(store.logs, logs...)
 }
@@ -103,7 +109,7 @@ func (store *Store) Update(auth *hyauth.Auth, f func(log gacha.Log)) error {
 	for _, typ := range gacha.SharedTypes {
 		logs, err := api.NewClient(auth).Fetch(typ, func(logs []gacha.Log) bool {
 			return slices.ContainsFunc(logs, func(log gacha.Log) bool {
-				if _, ok := store.ids[log.ID]; ok {
+				if _, ok := store.index[log.ID]; ok {
 					return true
 				}
 
