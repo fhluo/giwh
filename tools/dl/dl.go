@@ -1,7 +1,7 @@
 package dl
 
 import (
-	"github.com/fhluo/giwh/pkg/cmd/dl/assets"
+	"github.com/fhluo/giwh/giwh-cli/pkg/dl/assets"
 	"github.com/spf13/cobra"
 )
 

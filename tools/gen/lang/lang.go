@@ -3,9 +3,8 @@ package lang
 import (
 	"bytes"
 	_ "embed"
-	. "github.com/dave/jennifer/jen"
 	"github.com/dop251/goja"
-	"github.com/fhluo/giwh/i18n"
+	"github.com/fhluo/giwh/common/i18n"
 	"github.com/mitchellh/mapstructure"
 	"github.com/samber/lo"
 	"github.com/spf13/cobra"

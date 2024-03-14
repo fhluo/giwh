@@ -1,10 +1,10 @@
 package gen
 
 import (
-	"github.com/fhluo/giwh/pkg/cmd/gen/lang"
-	"github.com/fhluo/giwh/pkg/cmd/gen/locales"
-	"github.com/fhluo/giwh/pkg/cmd/gen/menus"
-	"github.com/fhluo/giwh/pkg/cmd/gen/wishes"
+	"github.com/fhluo/giwh/giwh-cli/pkg/gen/lang"
+	"github.com/fhluo/giwh/giwh-cli/pkg/gen/locales"
+	"github.com/fhluo/giwh/giwh-cli/pkg/gen/menus"
+	"github.com/fhluo/giwh/giwh-cli/pkg/gen/wishes"
 	"github.com/spf13/cobra"
 )
 
