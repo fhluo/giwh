@@ -32,6 +32,48 @@ func GenshinGlobal() Genshin {
 	}
 }
 
+func Latest() *Auth {
+	type Pair struct {
+		Genshin
+		time time.Time
+	}
+
+	pairs := lo.FilterMap([]Genshin{
+		GenshinCN(),
+		GenshinGlobal(),
+	}, func(genshin Genshin, _ int) (Pair, bool) {
+		info, err := os.Stat(genshin.outputLogPath())
+		if err != nil {
+			return Pair{}, false
+		}
+		return Pair{
+			Genshin: genshin,
+			time:    info.ModTime(),
+		}, true
+	})
+
+	if len(pairs) == 0 {
+		return nil
+	}
+
+	auths := slices.MaxFunc(pairs, func(a Pair, b Pair) int {
+		switch {
+		case a.time.Before(b.time):
+			return -1
+		case a.time.After(b.time):
+			return 1
+		default:
+			return 0
+		}
+	}).Auths()
+
+	if len(auths) == 0 {
+		return nil
+	}
+
+	return auths[len(auths)-1]
+}
+
 func (g Genshin) outputLogPath() string {
 	return filepath.Join(hoyoAppDataPath(), g.dataPath, "output_log.txt")
 }
