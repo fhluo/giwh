@@ -1,4 +1,4 @@
-module github.com/fhluo/giwh/hyauth
+module github.com/fhluo/giwh/hoyo-auth
 
 go 1.22.1
 

@@ -1,14 +1,14 @@
-package local
+package clients
 
 import (
 	"fmt"
+	"github.com/pelletier/go-toml/v2"
 	"log/slog"
 	"os"
 	"testing"
 	"time"
 
 	"github.com/lmittmann/tint"
-	"github.com/pelletier/go-toml/v2"
 )
 
 func init() {

@@ -1,6 +1,6 @@
 //go:build windows
 
-package local
+package clients
 
 import (
 	"log/slog"
@@ -10,7 +10,8 @@ import (
 	"slices"
 	"time"
 
-	"github.com/fhluo/giwh/hyauth"
+	"github.com/fhluo/giwh/hoyo-auth/auths"
+
 	"github.com/samber/lo"
 )
 
@@ -35,7 +36,7 @@ func GenshinGlobal() Genshin {
 }
 
 // Latest returns the latest auth info
-func Latest() *hyauth.Auth {
+func Latest() *auths.Auth {
 	type Pair struct {
 		Genshin
 		time time.Time
@@ -59,15 +60,15 @@ func Latest() *hyauth.Auth {
 		return nil
 	}
 
-	auths := slices.MaxFunc(pairs, func(a Pair, b Pair) int {
+	r := slices.MaxFunc(pairs, func(a Pair, b Pair) int {
 		return a.time.Compare(b.time)
 	}).Auths()
 
-	if len(auths) == 0 {
+	if len(r) == 0 {
 		return nil
 	}
 
-	return auths[len(auths)-1]
+	return r[len(r)-1]
 }
 
 func (g Genshin) outputLogPath() string {
@@ -114,21 +115,18 @@ func (g Genshin) latestCacheDataPath() string {
 		time time.Time
 	}
 
-	cacheDataPaths := g.cacheDataPaths()
-	pairs := make([]Pair, 0, len(cacheDataPaths))
-
-	for _, path := range cacheDataPaths {
+	pairs := lo.FilterMap(g.cacheDataPaths(), func(path string, _ int) (Pair, bool) {
 		info, err := os.Stat(path)
 		if err != nil {
 			slog.Warn("failed to get file info", "path", path, "err", err)
-			continue
+			return Pair{}, false
 		}
 
-		pairs = append(pairs, Pair{
+		return Pair{
 			path: path,
 			time: info.ModTime(),
-		})
-	}
+		}, true
+	})
 
 	if len(pairs) == 0 {
 		slog.Warn("failed to find latest cache data path")
@@ -138,7 +136,6 @@ func (g Genshin) latestCacheDataPath() string {
 	slices.SortFunc(pairs, func(a, b Pair) int {
 		return a.time.Compare(b.time)
 	})
-
 	return pairs[len(pairs)-1].path
 }
 
@@ -155,28 +152,20 @@ func (g Genshin) urlsInCacheData() []string {
 	re := regexp.MustCompile(`\x001/0/(?P<url>https://.*?)\x00`)
 	matches := re.FindAllSubmatch(g.latestCacheData(), -1)
 
-	urls := make([]string, 0, len(matches))
 	i := re.SubexpIndex("url")
-
-	for _, match := range matches {
-		urls = append(urls, string(match[i]))
-	}
-
-	return urls
+	return lo.Map(matches, func(match [][]byte, _ int) string {
+		return string(match[i])
+	})
 }
 
-func (g Genshin) Auths() []*hyauth.Auth {
-	urls := g.urlsInCacheData()
-	auths := make([]*hyauth.Auth, 0, len(urls))
-
-	for _, url := range urls {
-		auth, err := hyauth.New(url)
+func (g Genshin) Auths() []*auths.Auth {
+	r := lo.FilterMap(g.urlsInCacheData(), func(url string, _ int) (*auths.Auth, bool) {
+		auth, err := auths.New(url)
 		if err != nil {
 			slog.Debug("failed to get auth info from url", "url", url, "err", err)
-			continue
+			return nil, false
 		}
-		auths = append(auths, auth)
-	}
-
-	return lo.Uniq(auths)
+		return auth, true
+	})
+	return lo.Uniq(r)
 }

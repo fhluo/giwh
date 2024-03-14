@@ -1,4 +1,4 @@
-package hyauth
+package auths
 
 import (
 	"fmt"
