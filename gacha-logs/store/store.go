@@ -1,20 +1,24 @@
 package store
 
 import (
-	"encoding/json"
+	"cmp"
 	"errors"
+	"github.com/bytedance/sonic"
 	"github.com/fhluo/giwh/gacha-logs/api"
+	"github.com/fhluo/giwh/gacha-logs/gacha"
+	"github.com/fhluo/giwh/hyauth"
 	"io/fs"
 	"log/slog"
 	"os"
 	"path/filepath"
+	"slices"
 	"strings"
 )
 
 // Store 是抽卡记录存储
 type Store struct {
-	GachaLogs []api.Log // 抽卡记录
-	ids       map[string]struct{}
+	logs []gacha.Log // 抽卡记录
+	ids  map[string]struct{}
 }
 
 // New 创建抽卡记录存储
@@ -22,28 +26,40 @@ func New() *Store {
 	return &Store{}
 }
 
-// Add 添加抽卡记录
-func (s *Store) Add(logs ...api.Log) {
-	for _, log := range logs {
-		s.ids[log.ID] = struct{}{}
-	}
-	s.GachaLogs = append(s.GachaLogs, logs...)
+func (store *Store) Unique() []gacha.Log {
+	// descending order
+	slices.SortFunc(store.logs, func(a, b gacha.Log) int {
+		return -cmp.Compare(a.ID, b.ID)
+	})
+
+	store.logs = slices.CompactFunc(store.logs, func(a gacha.Log, b gacha.Log) bool {
+		return a.ID == b.ID
+	})
+
+	return store.logs
 }
 
-// ReadFromFile 从文件读取抽卡记录
-func (s *Store) ReadFromFile(filename string) error {
+// Add 添加抽卡记录
+func (store *Store) Add(logs ...gacha.Log) {
+	for _, log := range logs {
+		store.ids[log.ID] = struct{}{}
+	}
+	store.logs = append(store.logs, logs...)
+}
+
+// Load 从文件读取抽卡记录
+func (store *Store) Load(filename string) error {
 	data, err := os.ReadFile(filename)
 	if err != nil {
 		return err
 	}
 
-	var logs []api.Log
-	if err = json.Unmarshal(data, &logs); err != nil {
+	var logs []gacha.Log
+	if err = sonic.Unmarshal(data, &logs); err != nil {
 		return err
 	}
 
-	s.Add(logs...)
-
+	store.Add(logs...)
 	return nil
 }
 
@@ -55,60 +71,53 @@ func ignoreErrNotExist(err error) error {
 	return err
 }
 
-// ReadFromFileIfExits 从文件读取抽卡记录，如果文件不存在则忽略
-func (s *Store) ReadFromFileIfExits(filename string) error {
-	return ignoreErrNotExist(s.ReadFromFile(filename))
+// LoadIfExists 从文件读取抽卡记录，如果文件不存在则忽略
+func (store *Store) LoadIfExists(filename string) error {
+	return ignoreErrNotExist(store.Load(filename))
 }
 
-// WriteToFile 将抽卡记录写入文件
-func (s *Store) WriteToFile(filename string) error {
-	data, err := json.Marshal(s.GachaLogs)
+// Save 将抽卡记录写入文件
+func (store *Store) Save(filename string) error {
+	data, err := sonic.Marshal(store.Unique())
 	if err != nil {
 		return err
 	}
 	return os.WriteFile(filename, data, 0666)
 }
 
-// BackupAndWriteToFile 备份并将抽卡记录写入文件
-func (s *Store) BackupAndWriteToFile(filename string) error {
+// BackupAndSave 备份并将抽卡记录写入文件
+func (store *Store) BackupAndSave(filename string) error {
 	dir, base := filepath.Split(filename)
 	ext := filepath.Ext(base)
 
-	if err := os.Rename(filename, filepath.Join(dir, strings.TrimSuffix(base, ext)+"_backup"+ext)); err != nil {
-		slog.Warn("backup failed", "err", err.Error())
+	backupFilename := filepath.Join(dir, strings.TrimSuffix(base, ext)+"_backup"+ext)
+	if err := os.Rename(filename, backupFilename); err != nil {
+		slog.Warn("failed to backup", "filename", filename, "backupFilename", backupFilename, "err", err.Error())
 	}
 
-	return s.WriteToFile(filename)
+	return store.Save(filename)
 }
 
 // Update 更新抽卡记录
-func (s *Store) Update(url *api.URLBuilder) error {
-	logs, err := api.NewClient(url).Until(func(log api.Log) bool {
-		_, ok := s.ids[log.ID]
-		return ok
-	})
+func (store *Store) Update(auth *hyauth.Auth, f func(log gacha.Log)) error {
+	for _, typ := range gacha.SharedTypes {
+		logs, err := api.NewClient(auth).Fetch(typ, func(logs []gacha.Log) bool {
+			return slices.ContainsFunc(logs, func(log gacha.Log) bool {
+				if _, ok := store.ids[log.ID]; ok {
+					return true
+				}
 
-	if err != nil {
-		return err
+				if f != nil {
+					f(log)
+				}
+				return false
+			})
+		})
+
+		if err != nil {
+			return err
+		}
+		store.Add(logs...)
 	}
-
-	s.Add(logs...)
-
-	return nil
-}
-
-// UpdateAll 更新所有抽卡记录
-func (s *Store) UpdateAll(url *api.URLBuilder) error {
-	logs, err := api.FetchAllUntil(url, func(log api.Log) bool {
-		_, ok := s.ids[log.ID]
-		return ok
-	})
-
-	if err != nil {
-		return err
-	}
-
-	s.Add(logs...)
-
 	return nil
 }
