@@ -1,11 +1,11 @@
 package gen
 
 import (
-	"github.com/fhluo/giwh/giwh-cli/pkg/gen/lang"
-	"github.com/fhluo/giwh/giwh-cli/pkg/gen/locales"
-	"github.com/fhluo/giwh/giwh-cli/pkg/gen/menus"
-	"github.com/fhluo/giwh/giwh-cli/pkg/gen/wishes"
 	"github.com/spf13/cobra"
+	"tools/gen/lang"
+	"tools/gen/locales"
+	"tools/gen/menus"
+	"tools/gen/wishes"
 )
 
 func NewCmd() *cobra.Command {

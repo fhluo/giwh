@@ -2,10 +2,9 @@ package locales
 
 import (
 	_ "embed"
-	"github.com/fhluo/giwh/i18n"
-	"github.com/fhluo/giwh/pkg/cmd/gen/wishes"
-	"github.com/fhluo/giwh/pkg/wiki"
-	"github.com/fhluo/giwh/pkg/wish"
+	"github.com/fhluo/giwh/common/i18n"
+	"github.com/fhluo/giwh/gacha-logs/gacha"
+	"github.com/fhluo/giwh/hywiki"
 	"github.com/hashicorp/go-multierror"
 	"github.com/samber/lo"
 	"github.com/spf13/cobra"
@@ -13,6 +12,7 @@ import (
 	"os"
 	"path/filepath"
 	"sync"
+	"tools/gen/wishes"
 )
 
 type Locale = i18n.Locale
@@ -42,19 +42,19 @@ func NewCmd() *cobra.Command {
 			for lang, entries := range results {
 				locale := i18n.NewLocale(lang)
 
-				locale.Wishes = lo.SliceToMap(wishes.Wishes[lang.Key], func(wishType i18n.WishType) (wish.Type, string) {
-					return wish.Type(wishType.Key), wishType.Name
+				locale.Wishes = lo.SliceToMap(wishes.Wishes[lang.Key], func(wishType i18n.WishType) (gacha.Type, string) {
+					return wishType.Key, wishType.Name
 				})
-				locale.SharedWishes = lo.SliceToMap(wishes.SharedWishes[lang.Key], func(wishType i18n.WishType) (wish.Type, string) {
-					return wish.Type(wishType.Key), wishType.Name
+				locale.SharedWishes = lo.SliceToMap(wishes.SharedWishes[lang.Key], func(wishType i18n.WishType) (gacha.Type, string) {
+					return wishType.Key, wishType.Name
 				})
 
 				for index, entry := range entries {
 					switch index.MenuID {
-					case wiki.CharacterArchive.ID:
+					case hywiki.CharacterArchive.ID:
 						locale.Characters[en[index].Name] = entry.Name
 						locale.CharactersInverse[entry.Name] = en[index].Name
-					case wiki.Weapons.ID:
+					case hywiki.Weapons.ID:
 						locale.Weapons[en[index].Name] = entry.Name
 						locale.WeaponsInverse[entry.Name] = en[index].Name
 					}
@@ -80,13 +80,13 @@ func NewCmd() *cobra.Command {
 	return cmd
 }
 
-func GetAllEntries() (map[i18n.Language]map[wiki.EntryIndex]wiki.Entry, error) {
+func GetAllEntries() (map[i18n.Language]map[hywiki.EntryIndex]hywiki.Entry, error) {
 	var (
 		mutex  sync.Mutex
 		wg     sync.WaitGroup
 		errors error
 	)
-	results := make(map[i18n.Language]map[wiki.EntryIndex]wiki.Entry)
+	results := make(map[i18n.Language]map[hywiki.EntryIndex]hywiki.Entry)
 
 	wg.Add(len(i18n.Languages))
 
@@ -94,9 +94,9 @@ func GetAllEntries() (map[i18n.Language]map[wiki.EntryIndex]wiki.Entry, error) {
 		go func(lang i18n.Language) {
 			defer wg.Done()
 
-			w := wiki.New(lang)
+			w := hywiki.New(lang)
 
-			menusEntries, err := w.GetMenusEntries(wiki.CharacterArchive.ID, wiki.Weapons.ID)
+			menusEntries, err := w.GetMenusEntries(hywiki.CharacterArchive.ID, hywiki.Weapons.ID)
 
 			mutex.Lock()
 			defer mutex.Unlock()

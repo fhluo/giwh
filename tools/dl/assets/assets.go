@@ -2,12 +2,7 @@ package assets
 
 import (
 	"fmt"
-	"github.com/fhluo/giwh/app/assets"
-	"github.com/fhluo/giwh/i18n"
-	"github.com/fhluo/giwh/pkg/wiki"
-	"github.com/goccy/go-json"
 	"github.com/samber/lo"
-	"github.com/spf13/cobra"
 	"io"
 	"log"
 	"log/slog"

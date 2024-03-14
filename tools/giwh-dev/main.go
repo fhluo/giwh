@@ -1,13 +1,13 @@
 package main
 
 import (
-	"github.com/fhluo/giwh/internal/config"
-	"github.com/fhluo/giwh/pkg/cmd/dl"
-	"github.com/fhluo/giwh/pkg/cmd/gen"
+	"github.com/fhluo/giwh/common/config"
 	"github.com/spf13/cobra"
 	"log"
 	"log/slog"
 	"os"
+	"tools/dl"
+	"tools/gen"
 )
 
 var rootCmd = cobra.Command{

@@ -3,8 +3,8 @@ package menus
 import (
 	"bytes"
 	. "github.com/dave/jennifer/jen"
-	"github.com/fhluo/giwh/i18n"
-	"github.com/fhluo/giwh/pkg/wiki"
+	"github.com/fhluo/giwh/common/i18n"
+	"github.com/fhluo/giwh/hywiki"
 	"github.com/samber/lo"
 	"github.com/spf13/cobra"
 	"os"
@@ -15,16 +15,16 @@ func NewCmd() *cobra.Command {
 
 	cmd := &cobra.Command{
 		Use:   "menus",
-		Short: "Generate pkg/wiki/menus.go",
+		Short: "Generate pkg/hywiki/menus.go",
 		RunE: func(cmd *cobra.Command, args []string) error {
-			enWiki := wiki.Wiki{Language: i18n.English}
+			enWiki := hywiki.Wiki{Language: i18n.English}
 
 			leafMenus, err := enWiki.GetLeafMenus()
 			if err != nil {
 				return err
 			}
 
-			menus := Menus(lo.Filter(leafMenus, func(menu wiki.Menu, _ int) bool {
+			menus := Menus(lo.Filter(leafMenus, func(menu hywiki.Menu, _ int) bool {
 				return menu.HasPage
 			}))
 
@@ -46,15 +46,15 @@ func NewCmd() *cobra.Command {
 		},
 	}
 
-	cmd.Flags().StringVarP(&packageName, "pkg", "p", "wiki", "package name")
+	cmd.Flags().StringVarP(&packageName, "pkg", "p", "hywiki", "package name")
 
 	return cmd
 }
 
-type Menus []wiki.Menu
+type Menus []hywiki.Menu
 
 func (menus Menus) Defs() Code {
-	return Var().Defs(lo.Map(menus, func(menu wiki.Menu, _ int) Code {
+	return Var().Defs(lo.Map(menus, func(menu hywiki.Menu, _ int) Code {
 		return Id(menu.VarName()).Op("=").Id("Menu").Values(Dict{
 			Id("ID"):   Lit(menu.ID),
 			Id("Name"): Lit(menu.Name),
@@ -65,7 +65,7 @@ func (menus Menus) Defs() Code {
 func (menus Menus) Menus() Code {
 	return Var().Id("Menus").Op("=").Index().Id("Menu").Add(
 		Op("{").Line().Add(
-			lo.Map(menus, func(menu wiki.Menu, _ int) Code {
+			lo.Map(menus, func(menu hywiki.Menu, _ int) Code {
 				return Id(menu.VarName()).Op(",").Line()
 			})...,
 		).Op("}"),

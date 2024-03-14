@@ -3,11 +3,9 @@ package lang
 import (
 	"bytes"
 	_ "embed"
-	"github.com/dop251/goja"
 	"github.com/fhluo/giwh/common/i18n"
 	"github.com/mitchellh/mapstructure"
 	"github.com/samber/lo"
-	"github.com/spf13/cobra"
 	"golang.org/x/text/language"
 	"log/slog"
 	"os"

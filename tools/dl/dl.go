@@ -1,8 +1,8 @@
 package dl
 
 import (
-	"github.com/fhluo/giwh/giwh-cli/pkg/dl/assets"
 	"github.com/spf13/cobra"
+	"tools/dl/assets"
 )
 
 func NewCmd() *cobra.Command {
