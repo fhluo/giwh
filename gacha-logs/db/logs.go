@@ -3,7 +3,7 @@ package db
 import (
 	"database/sql"
 	_ "embed"
-	"encoding/json"
+	"github.com/bytedance/sonic"
 	"github.com/fhluo/giwh/gacha-logs/gacha"
 	"log/slog"
 	_ "modernc.org/sqlite"
@@ -44,16 +44,12 @@ func (l LogsDB) ImportFromJSON(filename string) error {
 	}
 
 	var logs []gacha.Log
-	err = json.Unmarshal(data, &logs)
+	err = sonic.Unmarshal(data, &logs)
 	if err != nil {
 		return err
 	}
 
 	return l.Insert(logs...)
-}
-
-func (l LogsDB) ImportFromWishHistory() error {
-	return l.ImportFromJSON(config.WishHistoryPath.Get())
 }
 
 func (l LogsDB) Insert(logs ...gacha.Log) error {
