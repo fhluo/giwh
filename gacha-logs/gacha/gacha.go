@@ -17,7 +17,7 @@ type Log struct {
 }
 
 func (log Log) ParseTime() (time.Time, error) {
-	return time.Parse(`"2006-01-02 15:04:05"`, log.Time)
+	return time.Parse(`2006-01-02 15:04:05`, log.Time)
 }
 
 func (log Log) SharedWishType() Type {
