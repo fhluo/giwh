@@ -1,7 +1,7 @@
 package hywiki
 
 import (
-	"github.com/fhluo/giwh/i18n"
+	"github.com/fhluo/giwh/common/i18n"
 	"net/http"
 )
 

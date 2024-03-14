@@ -2,6 +2,7 @@ package hywiki
 
 import (
 	"fmt"
+	"github.com/bytedance/sonic"
 	"io"
 	"net/http"
 )

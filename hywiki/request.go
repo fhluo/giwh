@@ -2,7 +2,8 @@ package hywiki
 
 import (
 	"bytes"
-	"github.com/fhluo/giwh/i18n"
+	"github.com/bytedance/sonic"
+	"github.com/fhluo/giwh/common/i18n"
 	"io"
 	"net/http"
 	"net/url"
