@@ -1,10 +1,11 @@
-package hyapi
+package requests
 
 import (
-	"encoding/json"
 	"fmt"
 	"io"
 	"net/http"
+
+	"github.com/bytedance/sonic"
 )
 
 // GetBinary 获取二进制数据
@@ -33,7 +34,7 @@ func GetJSON[T any](url string) (r T, err error) {
 		return
 	}
 
-	if err = json.Unmarshal(data, &r); err != nil {
+	if err = sonic.Unmarshal(data, &r); err != nil {
 		return
 	}
 
