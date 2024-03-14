@@ -1,10 +1,10 @@
 package main
 
 import (
-	assetsPkg "github.com/fhluo/giwh/app/assets"
-	"github.com/fhluo/giwh/i18n"
-	"github.com/fhluo/giwh/internal/config"
-	"github.com/fhluo/giwh/pkg/wish"
+	assetsPkg "github.com/fhluo/giwh/assets"
+	"github.com/fhluo/giwh/common/config"
+	"github.com/fhluo/giwh/common/i18n"
+	"github.com/fhluo/giwh/gacha-logs/gacha"
 	"golang.org/x/net/context"
 	"os"
 	"unsafe"
@@ -23,7 +23,7 @@ func (a *App) startup(ctx context.Context) {
 }
 
 func (a *App) GetDefaultSharedWish() string {
-	return string(wish.CharacterEventWishAndCharacterEventWish2)
+	return gacha.CharacterEventWish
 }
 
 func (a *App) GetAssets() string {

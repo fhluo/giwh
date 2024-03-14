@@ -2,9 +2,10 @@ package main
 
 import (
 	"embed"
+	"github.com/wailsapp/wails/v2"
 	"log/slog"
 
-	"github.com/fhluo/giwh/internal/config"
+	"github.com/fhluo/giwh/common/config"
 	"github.com/samber/lo"
 	"github.com/wailsapp/wails/v2/pkg/options/windows"
 	"io/fs"
@@ -17,7 +18,7 @@ import (
 )
 
 var (
-	//go:embed ../../ui/dist
+	//go:embed web/dist
 	assets embed.FS
 	//go:embed assets/images
 	images embed.FS
