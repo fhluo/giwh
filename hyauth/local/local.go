@@ -1,15 +1,17 @@
 //go:build windows
 
-package hyauth
+package local
 
 import (
-	"github.com/samber/lo"
 	"log/slog"
 	"os"
 	"path/filepath"
 	"regexp"
 	"slices"
 	"time"
+
+	"github.com/fhluo/giwh/hyauth"
+	"github.com/samber/lo"
 )
 
 func hoyoAppDataPath() string {
@@ -32,7 +34,8 @@ func GenshinGlobal() Genshin {
 	}
 }
 
-func Latest() *Auth {
+// Latest returns the latest auth info
+func Latest() *hyauth.Auth {
 	type Pair struct {
 		Genshin
 		time time.Time
@@ -57,14 +60,7 @@ func Latest() *Auth {
 	}
 
 	auths := slices.MaxFunc(pairs, func(a Pair, b Pair) int {
-		switch {
-		case a.time.Before(b.time):
-			return -1
-		case a.time.After(b.time):
-			return 1
-		default:
-			return 0
-		}
+		return a.time.Compare(b.time)
 	}).Auths()
 
 	if len(auths) == 0 {
@@ -114,8 +110,8 @@ func (g Genshin) cacheDataPaths() []string {
 
 func (g Genshin) latestCacheDataPath() string {
 	type Pair struct {
-		path    string
-		modTime time.Time
+		path string
+		time time.Time
 	}
 
 	cacheDataPaths := g.cacheDataPaths()
@@ -129,8 +125,8 @@ func (g Genshin) latestCacheDataPath() string {
 		}
 
 		pairs = append(pairs, Pair{
-			path:    path,
-			modTime: info.ModTime(),
+			path: path,
+			time: info.ModTime(),
 		})
 	}
 
@@ -140,14 +136,7 @@ func (g Genshin) latestCacheDataPath() string {
 	}
 
 	slices.SortFunc(pairs, func(a, b Pair) int {
-		switch {
-		case a.modTime.Before(b.modTime):
-			return -1
-		case a.modTime.After(b.modTime):
-			return 1
-		default:
-			return 0
-		}
+		return a.time.Compare(b.time)
 	})
 
 	return pairs[len(pairs)-1].path
@@ -176,12 +165,12 @@ func (g Genshin) urlsInCacheData() []string {
 	return urls
 }
 
-func (g Genshin) Auths() []*Auth {
+func (g Genshin) Auths() []*hyauth.Auth {
 	urls := g.urlsInCacheData()
-	auths := make([]*Auth, 0, len(urls))
+	auths := make([]*hyauth.Auth, 0, len(urls))
 
 	for _, url := range urls {
-		auth, err := New(url)
+		auth, err := hyauth.New(url)
 		if err != nil {
 			slog.Debug("failed to get auth info from url", "url", url, "err", err)
 			continue

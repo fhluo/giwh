@@ -1,13 +1,14 @@
-package hyauth
+package local
 
 import (
 	"fmt"
-	"github.com/lmittmann/tint"
-	"github.com/pelletier/go-toml/v2"
 	"log/slog"
 	"os"
 	"testing"
 	"time"
+
+	"github.com/lmittmann/tint"
+	"github.com/pelletier/go-toml/v2"
 )
 
 func init() {
@@ -20,6 +21,12 @@ func skipCI(t *testing.T) {
 	if os.Getenv("CI") != "" {
 		t.SkipNow()
 	}
+}
+
+func TestLatest(t *testing.T) {
+	skipCI(t)
+
+	fmt.Println(Latest())
 }
 
 func TestGenshin(t *testing.T) {
