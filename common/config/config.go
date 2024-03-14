@@ -2,7 +2,7 @@ package config
 
 import (
 	"errors"
-	"github.com/fhluo/giwh/i18n"
+	"github.com/fhluo/giwh/common/i18n"
 	"github.com/spf13/viper"
 	"log/slog"
 	"os"
