@@ -2,13 +2,13 @@ package export
 
 import (
 	"fmt"
-	"github.com/fhluo/giwh/internal/config"
-	"github.com/fhluo/giwh/pkg/wish"
-	"github.com/fhluo/giwh/pkg/wish/pipeline"
-	"github.com/fhluo/giwh/pkg/wish/repository"
+	"github.com/fhluo/giwh/common/config"
+	"github.com/fhluo/giwh/gacha-logs/pipeline"
+	"github.com/fhluo/giwh/gacha-logs/store"
 	"github.com/samber/lo"
 	"github.com/spf13/cobra"
 	"log"
+	"strconv"
 )
 
 func NewCmd() *cobra.Command {
@@ -22,20 +22,22 @@ func NewCmd() *cobra.Command {
 		Short: "Export wish history",
 		Args:  cobra.ExactArgs(1),
 		RunE: func(cmd *cobra.Command, args []string) error {
-			items, err := repository.LoadItems(config.WishHistoryPath.Get())
+			s := store.New(nil)
+
+			err := s.LoadIfExists(config.WishHistoryPath.Get())
 			if err != nil {
 				return err
 			}
 
-			p := pipeline.New(items)
+			p := pipeline.New(s.Unique())
 
 			if cmd.Flags().Changed("uid") {
-				p = p.FilterByUID(uid)
+				p = p.FilterByUID(strconv.Itoa(uid))
 			}
 
 			if cmd.Flags().Changed("wish") {
-				p = p.FilterBySharedWish(lo.Map(wishes, func(i int, _ int) wish.Type {
-					return wish.Type(i)
+				p = p.FilterBySharedWish(lo.Map(wishes, func(i int, _ int) string {
+					return strconv.Itoa(i)
 				})...)
 			}
 
@@ -43,7 +45,7 @@ func NewCmd() *cobra.Command {
 				log.Fatalln("No such wish history.")
 			}
 
-			if err = repository.SaveItems(args[0], p.Items()); err != nil {
+			if err = store.New(p.Logs()).Save(args[0]); err != nil {
 				return err
 			} else {
 				fmt.Printf("%d items exported.\n", p.Len())

@@ -1,34 +1,36 @@
 package main
 
 import (
-	"github.com/fhluo/giwh/internal/config"
-	"github.com/fhluo/giwh/pkg/cmd/export"
-	_import "github.com/fhluo/giwh/pkg/cmd/import"
-	"github.com/fhluo/giwh/pkg/cmd/merge"
-	"github.com/fhluo/giwh/pkg/cmd/stat"
-	"github.com/fhluo/giwh/pkg/cmd/update"
-	"github.com/fhluo/giwh/pkg/cmd/version"
-	"github.com/fhluo/giwh/pkg/wish/pipeline"
-	"github.com/fhluo/giwh/pkg/wish/repository"
+	"github.com/fhluo/giwh/common/config"
+	"github.com/fhluo/giwh/gacha-logs/pipeline"
+	"github.com/fhluo/giwh/gacha-logs/store"
+	"github.com/fhluo/giwh/giwh-cli/pkg/export"
+	_import "github.com/fhluo/giwh/giwh-cli/pkg/import"
+	"github.com/fhluo/giwh/giwh-cli/pkg/merge"
+	"github.com/fhluo/giwh/giwh-cli/pkg/stat"
+	"github.com/fhluo/giwh/giwh-cli/pkg/update"
+	"github.com/fhluo/giwh/giwh-cli/pkg/version"
+	"github.com/lmittmann/tint"
 	"github.com/spf13/cobra"
-	"log"
 	"log/slog"
 	"os"
+	"time"
 )
 
 var language string
 
 var rootCmd = &cobra.Command{
 	Use:   "giwh",
-	Short: "Genshin Impact Wish History Exporter",
+	Short: "Keep track of your Genshin Impact Wish History",
 	Args:  cobra.NoArgs,
 	RunE: func(cmd *cobra.Command, args []string) error {
-		items, err := repository.LoadItems(config.WishHistoryPath.Get())
+		s := store.New(nil)
+		err := s.LoadIfExists(config.WishHistoryPath.Get())
 		if err != nil {
 			return err
 		}
 
-		p := pipeline.New(items)
+		p := pipeline.New(s.Unique())
 		if p.Len() == 0 {
 			return nil
 		}
@@ -37,23 +39,25 @@ var rootCmd = &cobra.Command{
 			config.Language.Set(language)
 		}
 
-		stat.Stat(p.FilterByUID(p.Items()[0].UID).Items())
+		stat.Stat(p.FilterByUID(p.Logs()[0].UID).Logs())
 
 		return nil
 	},
 }
 
 func init() {
-	log.SetFlags(0)
+	slog.SetDefault(slog.New(
+		tint.NewHandler(os.Stderr, &tint.Options{Level: slog.LevelDebug, TimeFormat: time.TimeOnly}),
+	))
 
-	rootCmd.AddCommand(update.NewCmd())
-	rootCmd.AddCommand(stat.NewCmd())
-
-	rootCmd.AddCommand(_import.NewCmd())
-	rootCmd.AddCommand(export.NewCmd())
-	rootCmd.AddCommand(merge.NewCmd())
-
-	rootCmd.AddCommand(version.NewCmd())
+	rootCmd.AddCommand(
+		update.NewCmd(),
+		stat.NewCmd(),
+		_import.NewCmd(),
+		export.NewCmd(),
+		merge.NewCmd(),
+		version.NewCmd(),
+	)
 
 	rootCmd.PersistentFlags().StringVarP(&language, "lang", "l", "", "set language")
 }

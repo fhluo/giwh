@@ -1,9 +1,8 @@
 package merge
 
 import (
-	"github.com/fhluo/giwh/pkg/cmd/util"
-	"github.com/fhluo/giwh/pkg/wish/pipeline"
-	"github.com/fhluo/giwh/pkg/wish/repository"
+	"github.com/fhluo/giwh/gacha-logs/store"
+	"github.com/fhluo/giwh/giwh-cli/pkg/util"
 	"github.com/spf13/cobra"
 	"log"
 	"log/slog"
@@ -23,18 +22,15 @@ func NewCmd() *cobra.Command {
 				log.Fatalln(err)
 			}
 
-			p := pipeline.New(nil)
+			s := store.New(nil)
 
 			for _, filename := range filenames {
-				items, err := repository.LoadItemsIfExits(filename)
-				if err != nil {
+				if err := s.LoadIfExists(filename); err != nil {
 					return err
 				}
-				p.Append(items...)
 			}
 
-			p.SortByIDDescending()
-			if err = repository.SaveItems(outputFilename, p.Unique().Items()); err != nil {
+			if err = s.Save(outputFilename); err != nil {
 				return err
 			}
 

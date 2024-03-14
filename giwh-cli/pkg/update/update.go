@@ -2,10 +2,12 @@ package update
 
 import (
 	"fmt"
-	"github.com/fhluo/giwh/internal/config"
-	"github.com/fhluo/giwh/pkg/wish"
-	"github.com/fhluo/giwh/pkg/wish/repository"
+	"github.com/fhluo/giwh/common/config"
+	"github.com/fhluo/giwh/gacha-logs/gacha"
+	"github.com/fhluo/giwh/gacha-logs/store"
+	"github.com/fhluo/giwh/hyauth"
 	"github.com/spf13/cobra"
+	"log/slog"
 )
 
 func NewCmd() *cobra.Command {
@@ -14,9 +16,22 @@ func NewCmd() *cobra.Command {
 		Short: "Update wish history",
 		RunE: func(cmd *cobra.Command, args []string) error {
 			var count int
-			_, err := repository.UpdateItems(config.WishHistoryPath.Get(), func(item wish.Item) {
+			s := store.New(nil)
+			err := s.LoadIfExists(config.WishHistoryPath.Get())
+			if err != nil {
+				return err
+			}
+
+			auths := hyauth.GenshinCN().Auths()
+			if len(auths) == 0 {
+				return fmt.Errorf("failed to find auth infos")
+			}
+			auth := auths[len(auths)-1]
+			slog.Debug("update", "auth", auth)
+
+			err = s.Update(auth, func(log gacha.Log) {
 				count++
-				fmt.Println(item.Name, item.UID, item.WishType, item.Time)
+				fmt.Println(log.Name, log.UID, log.GachaType, log.Time)
 			})
 			if err != nil {
 				return err
@@ -28,7 +43,7 @@ func NewCmd() *cobra.Command {
 				fmt.Printf("%d items fetched.\n", count)
 			}
 
-			return nil
+			return s.BackupAndSave(config.WishHistoryPath.Get())
 		},
 	}
 

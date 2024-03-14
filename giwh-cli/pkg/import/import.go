@@ -1,10 +1,9 @@
 package _import
 
 import (
-	"github.com/fhluo/giwh/internal/config"
-	"github.com/fhluo/giwh/pkg/cmd/util"
-	"github.com/fhluo/giwh/pkg/wish/pipeline"
-	"github.com/fhluo/giwh/pkg/wish/repository"
+	"github.com/fhluo/giwh/common/config"
+	"github.com/fhluo/giwh/gacha-logs/store"
+	"github.com/fhluo/giwh/giwh-cli/pkg/util"
 	"github.com/spf13/cobra"
 	"log"
 )
@@ -20,22 +19,20 @@ func NewCmd() *cobra.Command {
 				return err
 			}
 
-			items, err := repository.LoadItemsIfExits(config.WishHistoryPath.Get())
+			s := store.New(nil)
+			err = s.LoadIfExists(config.WishHistoryPath.Get())
 			if err != nil {
 				return err
 			}
 
-			p := pipeline.New(items)
-
 			for _, filename := range filenames {
-				items, err = repository.LoadItemsIfExits(filename)
+				err = s.LoadIfExists(filename)
 				if err != nil {
 					log.Fatalln(err)
 				}
-				p.Append(items...)
 			}
 
-			if err = repository.BackupAndSaveItems(config.WishHistoryPath.Get(), p.Items()); err != nil {
+			if err = s.BackupAndSave(config.WishHistoryPath.Get()); err != nil {
 				return err
 			}
 
