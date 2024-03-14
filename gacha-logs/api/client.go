@@ -2,8 +2,8 @@ package api
 
 import (
 	"github.com/fhluo/giwh/gacha-logs/gacha"
-	"github.com/fhluo/giwh/hoyo-api"
-	"github.com/fhluo/giwh/hoyo-auth"
+	"github.com/fhluo/giwh/hyapi"
+	"github.com/fhluo/giwh/hyauth"
 	"time"
 )
 
@@ -19,15 +19,15 @@ type Data struct {
 
 // GetGachaLog 获取抽卡记录
 func GetGachaLog(url string) (Data, error) {
-	return hoyo_api.GetData[Data](url)
+	return hyapi.GetData[Data](url)
 }
 
 type Client struct {
-	*hoyo_auth.Auth
+	*hyauth.Auth
 	LastRequestTime time.Time // 上次请求时间
 }
 
-func NewClient(auth *hoyo_auth.Auth) *Client {
+func NewClient(auth *hyauth.Auth) *Client {
 	return &Client{
 		Auth: auth,
 	}
@@ -92,7 +92,7 @@ func (c *Client) NewFetcher(gachaType gacha.Type) *Fetcher {
 	}
 }
 
-func (c *Client) Fetch(gachaType gacha.Type, stop func(logs []gacha.Log) bool) ([]gacha.Log, error) {
+func (c *Client) Fetch(gachaType gacha.Type, f func(logs []gacha.Log) (stop bool)) ([]gacha.Log, error) {
 	fetcher := c.NewFetcher(gachaType)
 
 	var result []gacha.Log
@@ -103,26 +103,7 @@ func (c *Client) Fetch(gachaType gacha.Type, stop func(logs []gacha.Log) bool) (
 		}
 		result = append(result, logs...)
 
-		if len(logs) < fetcher.Query.Size || stop(logs) {
-			break
-		}
-	}
-
-	return result, nil
-}
-
-func (c *Client) FetchAll(gachaType gacha.Type) ([]gacha.Log, error) {
-	fetcher := c.NewFetcher(gachaType)
-
-	var result []gacha.Log
-	for {
-		logs, err := fetcher.NextPage()
-		if err != nil {
-			return result, err
-		}
-		result = append(result, logs...)
-
-		if len(logs) < fetcher.Query.Size {
+		if len(logs) < fetcher.Query.Size || (f != nil && f(logs)) {
 			break
 		}
 	}

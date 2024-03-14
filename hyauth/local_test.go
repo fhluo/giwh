@@ -1,4 +1,4 @@
-package hoyo_auth
+package hyauth
 
 import (
 	"fmt"
@@ -42,4 +42,20 @@ func TestGenshin(t *testing.T) {
 	}
 
 	fmt.Println(string(data))
+}
+
+func TestGenshin_urlsInCacheData(t *testing.T) {
+	skipCI(t)
+
+	if GenshinCN().Executed() {
+		for _, url := range GenshinCN().urlsInCacheData() {
+			fmt.Println(url)
+		}
+	}
+
+	if GenshinGlobal().Executed() {
+		for _, url := range GenshinGlobal().urlsInCacheData() {
+			fmt.Println(url)
+		}
+	}
 }

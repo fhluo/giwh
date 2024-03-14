@@ -16,11 +16,11 @@ type Log struct {
 	Lang      string `json:"lang"`       // 语言
 }
 
-func (log *Log) ParseTime() (time.Time, error) {
+func (log Log) ParseTime() (time.Time, error) {
 	return time.Parse(`"2006-01-02 15:04:05"`, log.Time)
 }
 
-func (log *Log) SharedWishType() Type {
+func (log Log) SharedWishType() Type {
 	switch log.GachaType {
 	case CharacterEventWish, CharacterEventWish2:
 		return CharacterEventWish

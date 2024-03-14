@@ -1,4 +1,4 @@
-package hoyo_api
+package hyapi
 
 import (
 	"encoding/json"

@@ -1,4 +1,4 @@
-package hoyo_auth
+package hyauth
 
 import (
 	"fmt"

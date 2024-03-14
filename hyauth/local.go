@@ -1,6 +1,6 @@
 //go:build windows
 
-package hoyo_auth
+package hyauth
 
 import (
 	"github.com/samber/lo"

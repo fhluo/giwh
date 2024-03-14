@@ -1,4 +1,4 @@
-package hoyo_wiki
+package hywiki
 
 import (
 	"github.com/fhluo/giwh/i18n"
