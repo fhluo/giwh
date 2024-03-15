@@ -35,8 +35,8 @@ func GenshinGlobal() Genshin {
 	}
 }
 
-// Latest returns the latest auth info
-func Latest() *auths.Auth {
+// Latest returns the latest client
+func Latest() *Genshin {
 	type Pair struct {
 		Genshin
 		time time.Time
@@ -62,13 +62,9 @@ func Latest() *auths.Auth {
 
 	r := slices.MaxFunc(pairs, func(a Pair, b Pair) int {
 		return a.time.Compare(b.time)
-	}).Auths()
+	})
 
-	if len(r) == 0 {
-		return nil
-	}
-
-	return r[len(r)-1]
+	return &r.Genshin
 }
 
 func (g Genshin) outputLogPath() string {
