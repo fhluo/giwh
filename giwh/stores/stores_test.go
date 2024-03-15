@@ -75,5 +75,9 @@ func TestStore_Update(t *testing.T) {
 		return
 	}
 
+	err = store.BackupAndSave(DefaultPath())
+	if err != nil {
+		t.Fatal(err)
+	}
 	fmt.Printf("Updated %d pulls.\n", count)
 }
