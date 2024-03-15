@@ -4,9 +4,8 @@ import (
 	"cmp"
 	"errors"
 	"github.com/bytedance/sonic"
-	"github.com/fhluo/giwh/gacha-logs/api"
 	"github.com/fhluo/giwh/gacha-logs/gacha"
-	"github.com/fhluo/giwh/hyauth"
+	"github.com/fhluo/giwh/hoyo-auth/auths"
 	"io/fs"
 	"log/slog"
 	"os"
@@ -105,9 +104,9 @@ func (store *Store) BackupAndSave(filename string) error {
 }
 
 // Update 更新抽卡记录
-func (store *Store) Update(auth *hyauth.Auth, f func(log gacha.Log)) error {
+func (store *Store) Update(auth *auths.Auth, f func(log gacha.Log)) error {
 	for _, typ := range gacha.SharedTypes {
-		logs, err := api.NewClient(auth).Fetch(typ, func(logs []gacha.Log) bool {
+		logs, err := gacha.NewClient(auth).Fetch(typ, func(logs []gacha.Log) bool {
 			return slices.ContainsFunc(logs, func(log gacha.Log) bool {
 				if _, ok := store.index[log.ID]; ok {
 					return true

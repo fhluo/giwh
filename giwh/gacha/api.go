@@ -2,7 +2,7 @@ package api
 
 import (
 	"fmt"
-	"github.com/fhluo/giwh/hyauth"
+	"github.com/fhluo/giwh/hoyo-auth/auths"
 	"github.com/google/go-querystring/query"
 	"net/url"
 	"strings"
@@ -40,7 +40,7 @@ type URLBuilder struct {
 const DefaultSize = 5 // 默认每页数量
 
 // NewURLBuilder 返回一个初始化的 URLBuilder
-func NewURLBuilder(auth *hyauth.Auth) *URLBuilder {
+func NewURLBuilder(auth *auths.Auth) *URLBuilder {
 	return &URLBuilder{
 		Hostname: auth.Hostname,
 		Query: Query{

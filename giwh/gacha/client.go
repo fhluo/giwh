@@ -2,8 +2,8 @@ package api
 
 import (
 	"github.com/fhluo/giwh/gacha-logs/gacha"
-	"github.com/fhluo/giwh/hyapi"
-	"github.com/fhluo/giwh/hyauth"
+	"github.com/fhluo/giwh/hoyo-api/requests"
+	"github.com/fhluo/giwh/hoyo-auth/auths"
 	"time"
 )
 
@@ -19,15 +19,15 @@ type Data struct {
 
 // GetGachaLog 获取抽卡记录
 func GetGachaLog(url string) (Data, error) {
-	return hyapi.GetData[Data](url)
+	return requests.GetData[Data](url)
 }
 
 type Client struct {
-	*hyauth.Auth
+	*auths.Auth
 	LastRequestTime time.Time // 上次请求时间
 }
 
-func NewClient(auth *hyauth.Auth) *Client {
+func NewClient(auth *auths.Auth) *Client {
 	return &Client{
 		Auth: auth,
 	}

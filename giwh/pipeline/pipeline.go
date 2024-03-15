@@ -4,6 +4,7 @@ import (
 	"cmp"
 	"github.com/fhluo/giwh/gacha-logs/gacha"
 	"github.com/samber/lo"
+	"log/slog"
 	"slices"
 )
 
@@ -63,7 +64,7 @@ func (p *Pipeline) Append(logs ...gacha.Log) {
 }
 
 func (p *Pipeline) Reverse() *Pipeline {
-	lo.Reverse(p.logs)
+	slices.Reverse(p.logs)
 	return p
 }
 
@@ -90,7 +91,9 @@ func (p *Pipeline) IDDescending() bool {
 func (p *Pipeline) SortByIDAscending() *Pipeline {
 	switch {
 	case p.IDAscending():
+		slog.Debug("pipeline", "idAscending", p.IDAscending())
 	case p.IDDescending():
+		slog.Debug("pipeline", "idDescending", p.IDDescending())
 		p.Reverse()
 	default:
 		slices.SortFunc(p.logs, func(a gacha.Log, b gacha.Log) int {
