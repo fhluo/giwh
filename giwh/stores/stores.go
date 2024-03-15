@@ -1,7 +1,8 @@
-package store
+package stores
 
 import (
 	"cmp"
+	"encoding/json"
 	"errors"
 	"github.com/bytedance/sonic"
 	"github.com/fhluo/giwh/gacha-logs/gacha"
@@ -83,7 +84,7 @@ func (store *Store) LoadIfExists(filename string) error {
 
 // Save 将抽卡记录写入文件
 func (store *Store) Save(filename string) error {
-	data, err := sonic.Marshal(store.Unique())
+	data, err := json.MarshalIndent(store.Unique(), "", "  ")
 	if err != nil {
 		return err
 	}
