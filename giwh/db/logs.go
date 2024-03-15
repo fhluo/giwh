@@ -4,7 +4,7 @@ import (
 	"database/sql"
 	_ "embed"
 	"github.com/bytedance/sonic"
-	"github.com/fhluo/giwh/gacha-logs/gacha"
+	"github.com/fhluo/giwh/giwh/api/gacha"
 	"log/slog"
 	_ "modernc.org/sqlite"
 	"os"

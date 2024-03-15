@@ -1,14 +1,19 @@
 package db
 
 import (
+	"github.com/fhluo/giwh/giwh/stores"
 	"testing"
 )
 
 func TestLogs(t *testing.T) {
-	err := Logs().ImportFromWishHistory()
+	logs, err := NewLogsDB(DefaultPath())
 	if err != nil {
 		t.Fatal(err)
 	}
 
-	t.Log(Logs().UIDList())
+	if err = logs.ImportFromJSON(stores.DefaultPath()); err != nil {
+		t.Fatal(err)
+	}
+
+	t.Log(logs.UIDList())
 }

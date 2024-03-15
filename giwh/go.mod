@@ -1,12 +1,13 @@
-module github.com/fhluo/giwh/gacha-logs
+module github.com/fhluo/giwh/giwh
 
 go 1.22.1
 
 require (
 	github.com/bytedance/sonic v1.11.3
 	github.com/fhluo/giwh/hoyo-api v0.4.0
-	github.com/fhluo/giwh/hoyo-auth v0.4.0
+	github.com/fhluo/giwh/hoyo-auth v0.4.1
 	github.com/google/go-querystring v1.1.0
+	github.com/lmittmann/tint v1.0.4
 	github.com/samber/lo v1.39.0
 	modernc.org/sqlite v1.29.5
 )

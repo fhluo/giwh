@@ -1,9 +1,10 @@
 package api
 
 import (
-	"github.com/fhluo/giwh/gacha-logs/gacha"
+	"github.com/fhluo/giwh/giwh/api/gacha"
 	"github.com/fhluo/giwh/hoyo-api/requests"
 	"github.com/fhluo/giwh/hoyo-auth/auths"
+	"log/slog"
 	"time"
 )
 
@@ -24,7 +25,6 @@ func GetGachaLog(url string) (Data, error) {
 
 type Client struct {
 	*auths.Auth
-	LastRequestTime time.Time // 上次请求时间
 }
 
 func NewClient(auth *auths.Auth) *Client {
@@ -33,27 +33,33 @@ func NewClient(auth *auths.Auth) *Client {
 	}
 }
 
+var LastRequestTime time.Time // 上次请求时间
+
 // Wait 等待下次请求
 func (c *Client) Wait() {
 	// 第一次请求不等待
-	if c.LastRequestTime.IsZero() {
-		c.LastRequestTime = time.Now()
+	if LastRequestTime.IsZero() {
+		LastRequestTime = time.Now()
+		slog.Debug("wait", "time", "0")
 		return
 	}
 
 	now := time.Now()
 	// 如果请求间隔小于默认间隔，则等待
-	if now.Sub(c.LastRequestTime) < DefaultInterval {
-		time.Sleep(DefaultInterval - now.Sub(c.LastRequestTime))
+	if now.Sub(LastRequestTime) < DefaultInterval {
+		d := DefaultInterval - now.Sub(LastRequestTime)
+		time.Sleep(d)
+		slog.Debug("wait", "time", d.Milliseconds())
 	}
 
-	c.LastRequestTime = time.Now()
+	LastRequestTime = time.Now()
 }
 
 func (c *Client) GetGachaLog(url string) ([]gacha.Log, error) {
 	c.Wait()
 
 	resp, err := GetGachaLog(url)
+	slog.Debug("GetGachaLog", "url", url)
 	if err != nil {
 		return nil, err
 	}
@@ -66,8 +72,12 @@ type Fetcher struct {
 	*URLBuilder
 }
 
+func (c *Fetcher) NextURL() (string, error) {
+	return c.Build()
+}
+
 func (c *Fetcher) NextPage() ([]gacha.Log, error) {
-	u, err := c.Build()
+	u, err := c.NextURL()
 	if err != nil {
 		return nil, err
 	}

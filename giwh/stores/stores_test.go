@@ -2,7 +2,7 @@ package stores
 
 import (
 	"fmt"
-	"github.com/fhluo/giwh/gacha-logs/gacha"
+	"github.com/fhluo/giwh/giwh/api/gacha"
 	"github.com/fhluo/giwh/hoyo-auth/clients"
 	"github.com/lmittmann/tint"
 	"log/slog"

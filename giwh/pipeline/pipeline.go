@@ -2,7 +2,7 @@ package pipeline
 
 import (
 	"cmp"
-	"github.com/fhluo/giwh/gacha-logs/gacha"
+	"github.com/fhluo/giwh/giwh/api/gacha"
 	"github.com/samber/lo"
 	"log/slog"
 	"slices"
